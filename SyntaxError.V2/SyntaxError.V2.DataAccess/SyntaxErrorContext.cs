@@ -19,6 +19,7 @@ namespace SyntaxError.V2.DataAccess
         public DbSet<UsingChallenge> UsingChallenges { get; set; }
         public DbSet<OuterSourceObject> Objects { get; set; }
         public DbSet<Answers> Answers { get; set; }
+        public DbSet<CrewMember> CrewMembers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

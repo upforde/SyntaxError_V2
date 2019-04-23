@@ -16,74 +16,56 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             FindWhatToDo(Console.ReadLine());
         }
 
-        static void FindWhatToDo(string argument)
-        {
-            switch (argument.ToLower())
-            {
-                case "show challenges":
-                    ShowChallenges();
-                    break;
-                case "add challenge":
-                    AddChallenge();
-                    break;
-                case "help":
-                    WriteHelpCommands();
-                    break;
-                case "cls":
-                    Console.Clear();
-                    break;
-                case "exit":
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid command");
-                    break;
-            }
-            FindWhatToDo(Console.ReadLine());
-        }
-
-        /// <summary>Writes the help commands.</summary>
-        private static void WriteHelpCommands()
-        {
-            Console.WriteLine("Show challenges: Lets the user see the challenges stored in the database\n" +
-                "Add challenge: Lets the user add a challenge to the database\n" +
-                "Help: Lets the user see all available commands\n" +
-                "cls: Clears the terminal\n" +
-                "exit: closes the terminal");
-        }
-
         /// <summary>Adds a challenge to the database.</summary>
         private static void AddChallenge()
         {
-            Console.WriteLine("What kind of challenge do you want to add?");
+            Console.WriteLine("What kind of challenge do you want to add?\nAvailable Challenges:\n" +
+                "\t-AudienceChallenge\n" +
+                "\t-CrewChallenge\n" +
+                "\t-MultipleChoiceChallenge\n" +
+                "\t-MusicChallenge\n" +
+                "\t-QuizChallenge\n" +
+                "\t-ScreenshotChallenge\n" +
+                "\t-SilhouetteChallenge\n" +
+                "\t-SologameChallenge\n\nType 'back' to go back");
             switch (Console.ReadLine().ToLower()) {
                 case "audiencechallenge":
+                    Console.Clear();
                     AddAudienceChallenge();
                     break;
                 case "crewchallenge":
+                    Console.Clear();
                     AddCrewChallenge();
                     break;
                 case "multiplechoicechallenge":
+                    Console.Clear();
                     AddMultipleChouceChallenge();
                     break;
                 case "musicchallenge":
+                    Console.Clear();
                     AddMusicChallenge();
                     break;
                 case "quizchallenge":
+                    Console.Clear();
                     AddQuizChallenge();
                     break;
                 case "screenshotchallenge":
+                    Console.Clear();
                     AddScreenshotChallenge();
                     break;
                 case "silhouettechallenge":
+                    Console.Clear();
                     AddSilhouetteChallenge();
                     break;
                 case "sologamechallenge":
+                    Console.Clear();
                     AddSologameChallenge();
                     break;
                 case "back":
+                    Console.Clear();
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("No such type of challenge\n");
                     AddChallenge();
                     break;
@@ -93,55 +75,9 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
         /// <summary>Adds the audience challenge.</summary>
         private static void AddAudienceChallenge()
         {
-            Console.WriteLine("Add game to database? (y/n)");
-            Game game = null;
-            AudienceChallenge newChallenge = null;
-            switch (Console.ReadLine().ToLower())
-            {
-                case "y":
-                    game = new Game();
-                    Console.WriteLine("What is the name of the game?");
-                    game.Name = Console.ReadLine();
-                    Console.WriteLine("What is the path to the game poster?");
-                    game.URI = Console.ReadLine();
-
-                    newChallenge = new AudienceChallenge() { Game = game };
-                    break;
-                case "n":
-                    Console.WriteLine("Which game do you want to use for this challenge?\n" +
-                        "(Use the ID to choose the game)");
-                    using (var db = new SyntaxErrorContext())
-                    {
-                        var games = GetObjectsOfType(db, "Game");
-
-                        if (games.Length != 0)
-                        {
-                            foreach(Game item in games)
-                            {
-                                Console.WriteLine("-----------------------------------------------\n" +
-                                    "GameID: {0}\n" +
-                                    "GameName: {1}\n" +
-                                    "-----------------------------------------------\n",
-                                    item.ID,
-                                    item.Name
-                                    );
-                            }
-
-                            var choice = int.Parse(Console.ReadLine());
-
-                            game = (Game) db.Objects
-                                .Where(g => g.ID == choice)
-                                .Single();
-
-                            newChallenge = new AudienceChallenge() { GameID = game.ID };
-
-                        } else Console.WriteLine("No games in the database.");
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Wrong input");
-                    break;
-            }
+            Console.WriteLine("Add a new game to database? (y/n)");
+            string yesNo = Console.ReadLine().ToLower();
+            Game game = (Game) GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Game");
 
             if (game != null)
             {
@@ -150,18 +86,52 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
 
                 using (var db = new SyntaxErrorContext())
                 {
-                    newChallenge.ChallengeTask = task;
+                    AudienceChallenge newChallenge = new AudienceChallenge() { ChallengeTask = task };
+
+                    if (yesNo.Equals("y")) newChallenge.Game = game;
+                    else newChallenge.GameID = game.ID;
 
                     db.Challenges.Add(newChallenge);
                     db.SaveChanges();
                 }
-            }
-            else Console.WriteLine("No game selected.");
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("No game selected.");
         }
-        
+
+        /// <summary>Adds the crew challenge.</summary>
         private static void AddCrewChallenge()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Add a new crew member to the database? (y/n)");
+            string yesNoCrew = Console.ReadLine().ToLower();
+            CrewMember crewMember = GetCrewMemberForChallenge(new SyntaxErrorContext(), yesNoCrew);
+            Console.WriteLine("Add a new game to the database? (y/n)");
+            string yesNoGame = Console.ReadLine().ToLower();
+            Game game = (Game) GetObjectForChallenge(new SyntaxErrorContext(), yesNoGame, "Game");
+
+            if (game == null)
+                Console.WriteLine("No game selected");
+            else if (crewMember == null)
+                Console.WriteLine("No crew member selected");
+            else
+            {
+                Console.WriteLine("What is the task?");
+                var task = Console.ReadLine();
+
+                using (var db = new SyntaxErrorContext())
+                {
+                    CrewChallenge newChallenge = new CrewChallenge() { ChallengeTask = task };
+
+                    if (yesNoCrew.Equals("y")) newChallenge.CrewMember = crewMember;
+                    else newChallenge.CrewMemberID = crewMember.CrewMemberID;
+
+                    if (yesNoGame.Equals("y")) newChallenge.Game = game;
+                    else newChallenge.GameID = game.ID;
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
+                Console.WriteLine("Done!");
+            }
         }
 
         /// <summary>Adds the multiple chouce challenge.</summary>
@@ -197,6 +167,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 db.Challenges.Add(newChallenge);
                 db.SaveChanges();
             }
+            Console.WriteLine("Done!");
         }
         
         private static void AddMusicChallenge()
@@ -214,7 +185,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
 
             using(var db = new SyntaxErrorContext())
             {
-                Answers quizAnswer = new Answers() {Answer = answer };
+                Answers quizAnswer = new Answers() { Answer = answer };
 
                 QuizChallenge newChallenge = new QuizChallenge()
                 {
@@ -225,6 +196,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 db.Challenges.Add(newChallenge);
                 db.SaveChanges();
             }
+            Console.WriteLine("Done!");
         }
 
         private static void AddScreenshotChallenge()
@@ -242,7 +214,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             throw new NotImplementedException();
         }
 
-        /// <summary>Shows the challenges.</summary>
+        /// <summary>Shows all of the challenges.</summary>
         private static void ShowChallenges()
         {
             using (var db = new SyntaxErrorContext())
@@ -308,7 +280,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             {
                 foreach (AudienceChallenge challenge in challenges)
                 {
-                    challenge.Game = (Game)db.Objects
+                    challenge.Game = (Game) db.Objects
                         .Where(g => g.ID == challenge.GameID)
                         .Single();
 
@@ -323,10 +295,37 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 }
             } else Console.WriteLine("No challenges of type AudienceChallenge in database.");
         }
-        
+
+        /// <summary>Shows the crew challenges.</summary>
+        /// <param name="db">The database.</param>
         private static void ShowCrewChallenges(SyntaxErrorContext db)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            var challenges = GetChallengesOfType(db, "CrewChallenge");
+
+            if (challenges.Length != 0)
+            {
+                foreach (CrewChallenge challenge in challenges)
+                {
+                    challenge.CrewMember = db.CrewMembers
+                        .Where(cm => cm.CrewMemberID == challenge.CrewMemberID)
+                        .Single();
+                    challenge.Game = (Game) db.Objects
+                        .Where(g => g.ID == challenge.GameID)
+                        .Single();
+
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Challenge ID: {0}\n" +
+                        "Challenge task: {1}\n" +
+                        "Challenge Game: {2}\n" +
+                        "Challenge Crewmember: {3}\n" +
+                        "-----------------------------------------------\n",
+                        challenge.ChallengeID,
+                        challenge.ChallengeTask,
+                        challenge.Game.Name,
+                        challenge.CrewMember.CrewTag);
+                }
+            } else Console.WriteLine("No challenges of type AudienceChallenge in database.");
         }
 
         /// <summary>Shows the multiple choice challenges.</summary>
@@ -404,7 +403,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
         {
             throw new NotImplementedException();
         }
-
+        
         /// <summary>Shows all challenges.</summary>
         /// <param name="db">The database.</param>
         private static void ShowAllChallenges(SyntaxErrorContext db)
@@ -428,6 +427,68 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 }
             } else Console.WriteLine("No challenges in the database.");
         }
+        
+        static void FindWhatToDo(string argument)
+        {
+            switch (argument.ToLower())
+            {
+                case "show challenges":
+                    ShowChallenges();
+                    break;
+                case "add challenge":
+                    AddChallenge();
+                    break;
+                case "remove challenge":
+                    RemoveChallenge();
+                    break;
+                case "help":
+                    WriteHelpCommands();
+                    break;
+                case "cls":
+                    Console.Clear();
+                    break;
+                case "exit":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid command");
+                    break;
+            }
+            FindWhatToDo(Console.ReadLine());
+        }
+
+        /// <summary>Removes the specified challenge from the database.</summary>
+        private static void RemoveChallenge()
+        {
+            Console.WriteLine("Which challenge would you like to remove?\n" +
+                "(Use ID to identify the challenge)");
+            ShowAllChallenges(new SyntaxErrorContext());
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    var challenge = db.Challenges
+                        .Where(c => c.ChallengeID == choice)
+                        .Single();
+
+                    db.Challenges.Remove(challenge);
+                    db.SaveChanges();
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("Invalid input");
+        }
+
+        /// <summary>Writes the help commands.</summary>
+        private static void WriteHelpCommands()
+        {
+            Console.WriteLine("Show challenges: Lets the user see the challenges stored in the database\n" +
+                "Add challenge: Lets the user add a challenge to the database\n" +
+                "Remove challenge: Lets the user choose and remove a challenge from the database\n" +
+                "Help: Lets the user see all available commands\n" +
+                "cls: Clears the terminal\n" +
+                "exit: closes the terminal");
+        }
 
         /// <summary>Gets challenges of specific types.
         /// Type of challenges is specified in the parameters</summary>
@@ -450,6 +511,123 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             return db.Objects
                 .Where(g => g.GetType().Name.Equals(type))
                 .ToArray();
+        }
+
+        /// <summary>Gets the object needed for challenge.
+        /// The method either creates a new object, or gets one from the database</summary>
+        /// <param name="db">The database.</param>
+        /// <param name="yesNo">The yes no.</param>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
+        private static OuterSourceObject GetObjectForChallenge(SyntaxErrorContext db, string yesNo, string type)
+        {
+            OuterSourceObject outerSourceObject;
+            switch (yesNo)
+            {
+                case "y":
+                    outerSourceObject = new OuterSourceObject();
+                    Console.WriteLine("What is the name of the {0}?", type);
+                    outerSourceObject.Name = Console.ReadLine();
+                    Console.WriteLine("What is the path to the {0} picture?", type);
+                    outerSourceObject.URI = Console.ReadLine();
+                    return outerSourceObject;
+                case "n":
+                    outerSourceObject = new OuterSourceObject();
+                    Console.WriteLine("Which {0} do you want to have in this challenge?\n" +
+                        "(Use the ID to choose the game)", type);
+
+                    using (db)
+                    {
+                        var objects = GetObjectsOfType(db, type);
+
+                        if (objects.Length != 0)
+                        {
+                            foreach(var item in objects)
+                            {
+                                Console.WriteLine("-----------------------------------------------\n" +
+                                    " ID: {0}\n" +
+                                    " Name: {1}\n" +
+                                    "-----------------------------------------------\n",
+                                    
+                                    item.ID,
+                                    item.Name
+                                    );
+                            }
+                            if (int.TryParse(Console.ReadLine(), out int choice))
+                            {
+                                try
+                                {
+                                    outerSourceObject = db.Objects
+                                        .Where(g => g.ID == choice)
+                                        .Single();
+                                } catch(InvalidOperationException)
+                                {
+                                    return null;
+                                }
+                            } else { Console.WriteLine("Wrong input"); outerSourceObject = null; }
+                        } else Console.WriteLine("No {0}s registered in the database.", type);
+                    }
+                    return outerSourceObject;
+                default:
+                    Console.WriteLine("Wrong input");
+                    return null;
+            }
+        }
+
+        /// <summary>Gets the crew member for challenge.
+        /// The method either creates a new crew member, or gets one from the database</summary>
+        /// <param name="db">The database.</param>
+        /// <param name="yesNo">The yes no.</param>
+        /// <returns></returns>
+        private static CrewMember GetCrewMemberForChallenge(SyntaxErrorContext db, string yesNo)
+        {
+            CrewMember crewMember;
+            switch (yesNo)
+            {
+                case "y":
+                    crewMember = new CrewMember();
+                    Console.WriteLine("What is the CrewTag of the crew member?");
+                    crewMember.CrewTag = Console.ReadLine();
+                    return crewMember;
+                case "n":
+                    crewMember = new CrewMember();
+                    Console.WriteLine("Which crew member do you want to have in this challenge?\n" +
+                        "(Use the ID to choose the game)");
+                    using (db)
+                    {
+                        var crewMembers = db.CrewMembers
+                            .ToArray();
+
+                        if (crewMembers.Length != 0)
+                        {
+                            foreach (var member in crewMembers)
+                            {
+                                Console.WriteLine("-----------------------------------------------\n" +
+                                    "CrewMember ID: {0}\n" +
+                                    "CrewTag: {1}\n" +
+                                    "-----------------------------------------------\n",
+                                    member.CrewMemberID,
+                                    member.CrewTag);
+                            }
+                            if (int.TryParse(Console.ReadLine(), out int choice))
+                            {
+                                try
+                                {
+                                    crewMember = db.CrewMembers
+                                        .Where(cm => cm.CrewMemberID == choice)
+                                        .Single();
+                                } catch(InvalidOperationException)
+                                {
+                                    crewMember = null;
+                                }
+                            } else Console.WriteLine("Wrong input");
+                        } else Console.WriteLine("No crew members registered in the database.");
+                    }
+                    return crewMember;
+                default:
+                    Console.WriteLine("Wrong input");
+                    return null;
+            }
         }
     }
 }

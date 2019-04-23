@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SyntaxError.V2.Modell.ChallengeObjects
 {
     [Table("Objects")]
-    public abstract class OuterSourceObject
+    public class OuterSourceObject
     {
         [Key]
         public int ID { get; set; }

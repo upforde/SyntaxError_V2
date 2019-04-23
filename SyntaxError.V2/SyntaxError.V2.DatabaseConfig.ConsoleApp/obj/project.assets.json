@@ -3656,11 +3656,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
+      "projectUniqueName": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
       "projectName": "SyntaxError.V2.DatabaseConfig.ConsoleApp",
-      "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
+      "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\upfor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\obj\\",
+      "outputPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3679,11 +3679,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj"
+            "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj"
             },
-            "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj": {
-              "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj"
+            "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj": {
+              "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj"
             }
           }
         }
