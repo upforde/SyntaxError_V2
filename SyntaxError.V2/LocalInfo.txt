@@ -1,0 +1,4 @@
+Server=(localdb)\MSSQLLocalDB;
+Database=SyntaxError;
+Trusted_Connection=True;
+ConnectRetryCount=0;

@@ -1,0 +1,8 @@
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Model.deps.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Model.runtimeconfig.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Model.runtimeconfig.dev.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Model.dll
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\obj\Debug\netcoreapp2.1\SyntaxError.V2.Model.csprojAssemblyReference.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\obj\Debug\netcoreapp2.1\SyntaxError.V2.Model.csproj.CoreCompileInputs.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\obj\Debug\netcoreapp2.1\SyntaxError.V2.Model.AssemblyInfoInputs.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError.V2\SyntaxError.V2.Model\obj\Debug\netcoreapp2.1\SyntaxError.V2.Model.AssemblyInfo.cs
