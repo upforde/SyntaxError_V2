@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SyntaxError.V2.DataAccess;
+﻿using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using System;
@@ -14,6 +13,16 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             Console.WriteLine("Welcome, user! Here are the available commands:\n");
             WriteHelpCommands();
             FindWhatToDo(Console.ReadLine());
+        }
+
+        private static void NewGame()
+        {
+            throw new NotImplementedException();
+        }
+        
+        private static void Play()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>Adds a challenge to the database.</summary>
@@ -77,7 +86,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
         {
             Console.WriteLine("Add a new game to database? (y/n)");
             string yesNo = Console.ReadLine().ToLower();
-            Game game = (Game) GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Game");
+            Game game = ConvertToGame(GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Game"));
 
             if (game != null)
             {
@@ -106,7 +115,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             CrewMember crewMember = GetCrewMemberForChallenge(new SyntaxErrorContext(), yesNoCrew);
             Console.WriteLine("Add a new game to the database? (y/n)");
             string yesNoGame = Console.ReadLine().ToLower();
-            Game game = (Game) GetObjectForChallenge(new SyntaxErrorContext(), yesNoGame, "Game");
+            Game game = ConvertToGame(GetObjectForChallenge(new SyntaxErrorContext(), yesNoGame, "Game"));
 
             if (game == null)
                 Console.WriteLine("No game selected");
@@ -169,10 +178,28 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             }
             Console.WriteLine("Done!");
         }
-        
+
+        /// <summary>Adds the music challenge.</summary>
         private static void AddMusicChallenge()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Add a new song to the database? (y/n)");
+            string yesNo = Console.ReadLine().ToLower();
+            Music music = ConvertToMusic(GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Music"));
+
+            if (music != null)
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    MusicChallenge newChallenge = new MusicChallenge() { ChallengeTask = "Guess the song" };
+
+                    if (yesNo.Equals("y")) newChallenge.Song = music;
+                    else newChallenge.SongID = music.ID;
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("No music selected.");
         }
 
         /// <summary>Adds the quiz challenge.</summary>
@@ -199,19 +226,76 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             Console.WriteLine("Done!");
         }
 
+        /// <summary>Adds the screenshot challenge.</summary>
         private static void AddScreenshotChallenge()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Add a new screenshot to the database? (y/n)");
+            string yesNo = Console.ReadLine();
+            Image image = ConvertToImage(GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Image"));
+
+            if (image != null)
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    ScreenshotChallenge newChallenge = new ScreenshotChallenge() { ChallengeTask = "What game is this screenshot from?" };
+
+                    if(yesNo.Equals("y")) newChallenge.Image = image;
+                    else newChallenge.ImageID = image.ID;
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
+            Console.WriteLine("Done!");
+            } else Console.WriteLine("No screenshots selected.");
         }
 
+        /// <summary>Adds the silhouette challenge.</summary>
         private static void AddSilhouetteChallenge()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Add a new silhouette to the database? (y/n)");
+            string yesNo = Console.ReadLine();
+            Image image = ConvertToImage(GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Image"));
+
+            if (image != null)
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    SilhouetteChallenge newChallenge = new SilhouetteChallenge() { ChallengeTask = "What character is this?" };
+
+                    if(yesNo.Equals("y")) newChallenge.Image = image;
+                    else newChallenge.ImageID = image.ID;
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
+            Console.WriteLine("Done!");
+            } else Console.WriteLine("No screenshots selected.");
         }
 
+        /// <summary>Adds the sologame challenge.</summary>
         private static void AddSologameChallenge()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Add a new game to database? (y/n)");
+            string yesNo = Console.ReadLine().ToLower();
+            Game game = ConvertToGame(GetObjectForChallenge(new SyntaxErrorContext(), yesNo, "Game"));
+
+            if (game != null)
+            {
+                Console.WriteLine("What is the task?");
+                var task = Console.ReadLine();
+
+                using (var db = new SyntaxErrorContext())
+                {
+                    SologameChallenge newChallenge = new SologameChallenge() { ChallengeTask = task };
+
+                    if (yesNo.Equals("y")) newChallenge.Game = game;
+                    else newChallenge.GameID = game.ID;
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("No game selected.");
         }
 
         /// <summary>Shows all of the challenges.</summary>
@@ -345,7 +429,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                     
                     Console.WriteLine("-----------------------------------------------\n" +
                         "Challenge ID: {0}\n" +
-                        "Challenge task: {0}",
+                        "Challenge task: {1}",
                         challenge.ChallengeID,
                         challenge.ChallengeTask);
 
@@ -357,9 +441,31 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             } else Console.WriteLine("No challenges of type MultipleChoiceChallenge in database.");
         }
 
+        /// <summary>Shows the music challenges.</summary>
+        /// <param name="db">The database.</param>
         private static void ShowMusicChallenges(SyntaxErrorContext db)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            var challenges = GetChallengesOfType(db, "MusicChallenge");
+
+            if (challenges.Length != 0)
+            {
+                foreach(MusicChallenge challenge in challenges)
+                {
+                    challenge.Song = (Music) db.Objects
+                        .Where(m => m.ID == challenge.SongID)
+                        .Single();
+
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Challenge ID: {0}\n" +
+                        "Challenge task: {1}\n" +
+                        "Challenge song: {2}\n" +
+                        "-----------------------------------------------\n",
+                        challenge.ChallengeID,
+                        challenge.ChallengeTask,
+                        challenge.Song.Name);
+                }
+            } else Console.WriteLine("No challenges of type MusicChallenge in database.");
         }
 
         /// <summary>Shows the quiz challenges.</summary>
@@ -389,19 +495,85 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             } else Console.WriteLine("No challenges of type QuizChallenge in database.");
         }
 
+        /// <summary>Shows the screenshot challenges.</summary>
+        /// <param name="db">The database.</param>
         private static void ShowScreenshotChallenges(SyntaxErrorContext db)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            var challenges = GetChallengesOfType(db, "ScreenshotChallenge");
+
+            if (challenges.Length != 0)
+            {
+                foreach (ScreenshotChallenge challenge in challenges)
+                    {
+                    challenge.Image = (Image) db.Objects
+                        .Where(i => i.ID == challenge.ImageID)
+                        .Single();
+
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Challenge ID: {0}\n" + 
+                        "Challenge task: {1}\n" +
+                        "Image: {2}\n" +
+                        "-----------------------------------------------\n",
+                        challenge.ChallengeID,
+                        challenge.ChallengeTask,
+                        challenge.Image.Name);
+                }
+            } else Console.WriteLine("No challenges of type ScreenshotChallenge in database.");
         }
 
+        /// <summary>Shows the silhouette challenges.</summary>
+        /// <param name="db">The database.</param>
         private static void ShowSilhouetteChallenges(SyntaxErrorContext db)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            var challenges = GetChallengesOfType(db, "SilhouetteChallenge");
+
+            if (challenges.Length != 0)
+            {
+                foreach (SilhouetteChallenge challenge in challenges)
+                    {
+                    challenge.Image = (Image) db.Objects
+                        .Where(i => i.ID == challenge.ImageID)
+                        .Single();
+
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Challenge ID: {0}\n" + 
+                        "Challenge task: {1}\n" +
+                        "Silhouette: {2}\n" +
+                        "-----------------------------------------------\n",
+                        challenge.ChallengeID,
+                        challenge.ChallengeTask,
+                        challenge.Image.Name);
+                }
+            } else Console.WriteLine("No challenges of type SilhouetteChallenge in database.");
         }
 
+        /// <summary>Shows the sologame challenges.</summary>
+        /// <param name="db">The database.</param>
         private static void ShowSologameChallenges(SyntaxErrorContext db)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            var challenges = GetChallengesOfType(db, "SologameChallenge");
+
+            if (challenges.Length != 0)
+            {
+                foreach (SologameChallenge challenge in challenges)
+                {
+                    challenge.Game = (Game) db.Objects
+                        .Where(g => g.ID == challenge.GameID)
+                        .Single();
+
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Challenge ID: {0}\n" +
+                        "Challenge task: {1}\n" +
+                        "Challenge Game: {2}\n" +
+                        "-----------------------------------------------\n",
+                        challenge.ChallengeID,
+                        challenge.ChallengeTask,
+                        challenge.Game.Name);
+                }
+            } else Console.WriteLine("No challenges of type SologameChallenge in database.");
         }
         
         /// <summary>Shows all challenges.</summary>
@@ -428,35 +600,6 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             } else Console.WriteLine("No challenges in the database.");
         }
         
-        static void FindWhatToDo(string argument)
-        {
-            switch (argument.ToLower())
-            {
-                case "show challenges":
-                    ShowChallenges();
-                    break;
-                case "add challenge":
-                    AddChallenge();
-                    break;
-                case "remove challenge":
-                    RemoveChallenge();
-                    break;
-                case "help":
-                    WriteHelpCommands();
-                    break;
-                case "cls":
-                    Console.Clear();
-                    break;
-                case "exit":
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid command");
-                    break;
-            }
-            FindWhatToDo(Console.ReadLine());
-        }
-
         /// <summary>Removes the specified challenge from the database.</summary>
         private static void RemoveChallenge()
         {
@@ -477,6 +620,91 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 }
                 Console.WriteLine("Done!");
             } else Console.WriteLine("Invalid input");
+        }
+
+        /// <summary>Accepts input commands through the terminal and determines what to do.</summary>
+        /// <param name="argument">The argument.</param>
+        static void FindWhatToDo(string argument)
+        {
+            switch (argument.ToLower())
+            {
+                case "new game":
+                    NewGame();
+                    break;
+                case "play":
+                    Play();
+                    break;
+                case "show challenges":
+                    ShowChallenges();
+                    break;
+                case "add challenge":
+                    AddChallenge();
+                    break;
+                case "remove challenge":
+                    RemoveChallenge();
+                    break;
+                case "show objects":
+                    ShowObjects();
+                    break;
+                case "add object":
+                    AddObject();
+                    break;
+                case "remove object":
+                    RemoveObject();
+                    break;
+                case "show crew members":
+                    ShowCrewMembers();
+                    break;
+                case "register crew member":
+                    RegisterCrewMember();
+                    break;
+                case "remove crew member":
+                    RemoveCrewMember();
+                    break;
+                case "help":
+                    WriteHelpCommands();
+                    break;
+                case "cls":
+                    Console.Clear();
+                    break;
+                case "exit":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid command");
+                    break;
+            }
+            FindWhatToDo(Console.ReadLine());
+        }
+
+        private static void ShowObjects()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void AddObject()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void RemoveObject()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ShowCrewMembers()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void RegisterCrewMember()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void RemoveCrewMember()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>Writes the help commands.</summary>
@@ -525,7 +753,21 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             switch (yesNo)
             {
                 case "y":
-                    outerSourceObject = new OuterSourceObject();
+                    switch (type)
+                    {
+                        case "Game":
+                            outerSourceObject = new Game();
+                            break;
+                        case "Image":
+                            outerSourceObject = new Image();
+                            break;
+                        case "Music":
+                            outerSourceObject = new Music();
+                            break;
+                        default:
+                            outerSourceObject = new OuterSourceObject();
+                            break;
+                    }
                     Console.WriteLine("What is the name of the {0}?", type);
                     outerSourceObject.Name = Console.ReadLine();
                     Console.WriteLine("What is the path to the {0} picture?", type);
@@ -565,7 +807,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                                     return null;
                                 }
                             } else { Console.WriteLine("Wrong input"); outerSourceObject = null; }
-                        } else Console.WriteLine("No {0}s registered in the database.", type);
+                        } else { Console.WriteLine("No {0}s registered in the database.", type); outerSourceObject = null; }
                     }
                     return outerSourceObject;
                 default:
@@ -629,5 +871,18 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                     return null;
             }
         }
+
+        /// <summary>Converts to game.</summary>
+        /// <param name="obj">The object.</param>
+        /// <returns>Game</returns>
+        private static Game ConvertToGame(OuterSourceObject obj) { return obj as Game; }
+        /// <summary>Converts to image.</summary>
+        /// <param name="obj">The object.</param>
+        /// <returns>Image</returns>
+        private static Image ConvertToImage(OuterSourceObject obj) { return obj as Image; }
+        /// <summary>Converts to music.</summary>
+        /// <param name="obj">The object.</param>
+        /// <returns>Music</returns>
+        private static Music ConvertToMusic(OuterSourceObject obj) { return obj as Music; }
     }
 }
