@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SyntaxError.V2.DatabaseConfig.ConsoleApp.Migrations
@@ -114,6 +115,33 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GameProfiles",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    SaveGameID = table.Column<int>(nullable: true),
+                    ProfileID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameProfiles", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_GameProfiles_UsingProfiles_ProfileID",
+                        column: x => x.ProfileID,
+                        principalTable: "UsingProfiles",
+                        principalColumn: "UsingID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_GameProfiles_UsingProfiles_SaveGameID",
+                        column: x => x.SaveGameID,
+                        principalTable: "UsingProfiles",
+                        principalColumn: "UsingID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UsingProfileToChallenge",
                 columns: table => new
                 {
@@ -163,6 +191,16 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp.Migrations
                 column: "AnswersID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_GameProfiles_ProfileID",
+                table: "GameProfiles",
+                column: "ProfileID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GameProfiles_SaveGameID",
+                table: "GameProfiles",
+                column: "SaveGameID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UsingProfileToChallenge_UsingID",
                 table: "UsingProfileToChallenge",
                 column: "UsingID");
@@ -170,6 +208,9 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "GameProfiles");
+
             migrationBuilder.DropTable(
                 name: "UsingProfileToChallenge");
 

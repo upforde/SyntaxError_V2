@@ -1,7 +1,10 @@
-﻿using SyntaxError.V2.DataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
+using SyntaxError.V2.Modell.Utility;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
@@ -15,14 +18,220 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             FindWhatToDo(Console.ReadLine());
         }
 
-        private static void NewGame()
+        /// <summary>Creates a new game profile.</summary>
+        private static void NewGameProfile()
         {
-            throw new NotImplementedException();
+            bool enough = false;
+            List<int> idList = new List<int>(); 
+            GameProfile newGame = new GameProfile()
+            { 
+                DateCreated = DateTime.Now,
+                Profile = new Profile(),
+                SaveGame = new SaveGame()
+            };
+
+            Console.WriteLine("Which challenges would you like to include?\n" +
+                "(Use ID to identify the challenges. Type 'Stop' when you have enough challenges or 'All' for all challenges in the database)");
+            ShowAllChallenges(new SyntaxErrorContext());
+            string input = "undefined";
+            
+            while (!enough)
+            {
+                foreach (int i in idList) { Console.Write(" {0}", i.ToString()); };
+                Console.WriteLine();
+                input = Console.ReadLine().ToLower();
+                if (input.Equals("stop")||input.Equals("all"))
+                {
+                    enough = !enough;
+                }
+                else
+                {
+                    if(int.TryParse(input, out int choice))
+                    {
+                        idList.Add(choice);
+                        ClearTwoLines();
+                    } else Console.WriteLine("Invalid input. Try again.");
+                }
+            }
+
+            using (var db = new SyntaxErrorContext())
+            {
+                if (input.Equals("all"))
+                {
+                    var challenges = db.Challenges.ToArray();
+                    foreach(var challenge in challenges) 
+                    {
+                        UsingChallenge usingChallenge = new UsingChallenge()
+                        {
+                            ChallengeID = challenge.ChallengeID
+                        };
+                        newGame.Profile.Challenges.Add(usingChallenge);
+                    }
+                }
+                else
+                {
+                    foreach(int id in idList)
+                    {
+                        var challenge = db.Challenges.Find(id);
+                    
+                        if(challenge != null)
+                        {
+                            UsingChallenge usingChallenge = new UsingChallenge()
+                            {
+                                ChallengeID = challenge.ChallengeID
+                            };
+                            newGame.Profile.Challenges.Add(usingChallenge);
+                        }
+                    }
+                }
+                db.GameProfiles.Add(newGame);
+                db.SaveChanges();
+            }
+            Console.WriteLine("Done!");
         }
-        
+
+        /// <summary>Shows the game profiles.</summary>
+        private static void ShowGameProfiles()
+        {
+            Console.WriteLine();
+
+            using (var db = new SyntaxErrorContext())
+            {
+                var games = db.GameProfiles
+                    .Include(g => g.Profile)
+                    .ThenInclude(p => p.Challenges)
+                    .Include(g => g.SaveGame)
+                    .ThenInclude(sg => sg.Challenges)
+                    .ToArray();
+
+                foreach (var game in games)
+                {
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Game ID: {0}\n" +
+                        "Date of game created: {1}\n" +
+                        "Number of challenges in the profile: {2}\n" +
+                        "Number of those challenges completed: {3}\n" +
+                        "-----------------------------------------------\n",
+                        game.ID,
+                        game.DateCreated.ToShortDateString(),
+                        game.Profile.Challenges.Count,
+                        game.SaveGame.Challenges.Count);
+                }
+            }
+        }
+
+        /// <summary>Removes the game profile.</summary>
+        private static void RemoveGameProfile()
+        {
+            Console.WriteLine("Which game would you like to remove?\n" +
+                "(Use ID to identify the game)");
+            ShowGameProfiles();
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    try 
+                    {
+                        var game = db.GameProfiles
+                            .Where(gp => gp.ID == choice)
+                            .Include(gp => gp.Profile)
+                            .ThenInclude(p => p.Challenges)
+                            .Include(gp => gp.SaveGame)
+                            .ThenInclude(sg => sg.Challenges)
+                            .Single();
+
+                        db.UsingChallenges.RemoveRange(game.Profile.Challenges);
+                        db.UsingChallenges.RemoveRange(game.SaveGame.Challenges);
+                        db.UsingPanes.Remove(game.Profile);
+                        db.UsingPanes.Remove(game.SaveGame);
+                        db.GameProfiles.Remove(game);
+                        db.SaveChanges();
+                    } catch (InvalidOperationException)
+                    {
+                        Console.WriteLine("No such challenge\n");
+                    }
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("Invalid input");
+        }
+
         private static void Play()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Which game would you like to play?\n" +
+                "(Use ID to identify the game)");
+            ShowGameProfiles();
+
+            GameProfile game;
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    try 
+                    {
+                        game = db.GameProfiles
+                            .Where(gp => gp.ID == choice)
+                            .Include(g => g.Profile)
+                            .ThenInclude(p => p.Challenges)
+                            .Include(g => g.SaveGame)
+                            .ThenInclude(sg => sg.Challenges)
+                            .Single();
+                        
+                    } catch (InvalidOperationException)
+                    {
+                        Console.WriteLine("No such challenge\n");
+                        game = null;
+                    }
+                    
+                    if(game != null) 
+                    {
+                        Console.WriteLine("Game retrieved.\n");
+                        SimulateGame(game);
+
+                        db.SaveChanges();
+                        
+                        Console.WriteLine("Saved!");
+                    }
+                }
+            } else { Console.WriteLine("Invalid input"); game = null; }
+        }
+
+        private static void SimulateGame(GameProfile game)
+        {
+            Console.WriteLine("What to do?\nAvailable options:\n" +
+                "\t-next round\n" +
+                "\t-end game");
+            switch (Console.ReadLine())
+            {
+                case "end game":
+                    return;
+                case "next round":
+                    Random randomNumberGen = new Random();
+                    int randomNumber = randomNumberGen.Next(0, game.Profile.Challenges.Count-1);
+
+                    if(!(randomNumber < 0))
+                    {
+                        var rndChallenge = game.Profile.Challenges.ElementAt(randomNumber);
+                        if (!game.SaveGame.Challenges.Contains(rndChallenge))
+                        {
+                            game.SaveGame.Challenges.Add(rndChallenge);
+                        }
+
+                        Console.WriteLine("Added challenge {0} to the SaveGame",
+                            rndChallenge.ChallengeID.ToString());
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No more challenges. Game ended.");
+                        return;
+                    }
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+            SimulateGame(game);
         }
 
         /// <summary>Adds a challenge to the database.</summary>
@@ -298,12 +507,12 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             } else Console.WriteLine("No game selected.");
         }
 
-        /// <summary>Shows all of the challenges.</summary>
+        /// <summary>Shows the challenges specified by a terminal input.</summary>
         private static void ShowChallenges()
         {
             using (var db = new SyntaxErrorContext())
             {
-                Console.WriteLine("What kind of challenes would you like to see?");
+                Console.WriteLine("What kind of challenges would you like to see?\nAvailable challenges");
 
                 var types = db.Challenges
                     .Select(x => x.GetDiscriminator())
@@ -315,9 +524,9 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 }
                 Console.WriteLine("\t-All");
                 
-                var typeOfChallenge = Console.ReadLine();
+                var typeOfChallenge = Console.ReadLine().ToLower();
 
-                switch (typeOfChallenge.ToLower())
+                switch (typeOfChallenge)
                 {
                     case "audiencechallenge":
                         ShowAudienceChallenges(db);
@@ -611,12 +820,23 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             {
                 using (var db = new SyntaxErrorContext())
                 {
-                    var challenge = db.Challenges
-                        .Where(c => c.ChallengeID == choice)
-                        .Single();
+                    try 
+                    {
+                        var challenge = db.Challenges
+                            .Where(c => c.ChallengeID == choice)
+                            .Single();
 
-                    db.Challenges.Remove(challenge);
-                    db.SaveChanges();
+                        db.Challenges.Remove(challenge);
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateException)
+                    {
+                        Console.WriteLine("Challenge in use.\n");
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        Console.WriteLine("No such challenge.\n");
+                    }
                 }
                 Console.WriteLine("Done!");
             } else Console.WriteLine("Invalid input");
@@ -629,7 +849,13 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             switch (argument.ToLower())
             {
                 case "new game":
-                    NewGame();
+                    NewGameProfile();
+                    break;
+                case "show games":
+                    ShowGameProfiles();
+                    break;
+                case "remove game profile":
+                    RemoveGameProfile();
                     break;
                 case "play":
                     Play();
@@ -677,42 +903,283 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             FindWhatToDo(Console.ReadLine());
         }
 
+        /// <summary>Shows the objects specified by a terminal input.</summary>
         private static void ShowObjects()
         {
-            throw new NotImplementedException();
+            using (var db = new SyntaxErrorContext())
+            {
+                Console.WriteLine("What kind of objects would you like to see?\nAvailable object types");
+
+                var types = db.Objects
+                    .Select(x => x.GetType().Name)
+                    .Distinct();
+
+                foreach(var type in types)
+                {
+                    Console.WriteLine("\t-{0}", type);
+                }
+                Console.WriteLine("\t-All");
+                
+                var typeOfObject = Console.ReadLine().ToLower();
+                OuterSourceObject[] objects;
+
+                Console.WriteLine();
+                switch (typeOfObject)
+                {
+                    case "game":
+                        objects = GetObjectsOfType(db, "Game");
+                        break;
+                    case "image":
+                        objects = GetObjectsOfType(db, "Image");
+                        break;
+                    case "music":
+                        objects = GetObjectsOfType(db, "Music");
+                        break;
+                    case "all":
+                        objects = db.Objects.ToArray();
+                        break;
+                    default:
+                        objects = null;
+                        break;
+                }
+
+                if(objects != null)
+                {
+                    if (objects.Length != 0)
+                    {
+                        foreach (var item in objects)
+                        {
+                            Console.WriteLine("-----------------------------------------------\n" +
+                                "Object ID: {0}\n" +
+                                "Object name: {1}\n" +
+                                "Object URI: {2}\n" +
+                                "-----------------------------------------------\n",
+                                item.ID,
+                                item.Name,
+                                item.URI);
+                        }
+                    } else Console.WriteLine("No challenges of type {0} in database.", typeOfObject);
+                } else Console.WriteLine("Invalid input");
+            }
         }
 
+        /// <summary>Adds the object.</summary>
         private static void AddObject()
         {
-            throw new NotImplementedException();
+            OuterSourceObject outerSourceObject;
+            Console.WriteLine("What kind of object do you want to add to the database?\nAvailable types:\n" +
+                "\t-Game\n" +
+                "\t-Image\n" +
+                "\t-Music\n");
+            string type = Console.ReadLine().ToLower();
+
+            switch (type)
+            {
+                case "game":
+                    outerSourceObject = new Game();
+                    break;
+                case "image":
+                    outerSourceObject = new Image();
+                    break;
+                case "music":
+                    outerSourceObject = new Music();
+                    break;
+                default:
+                    outerSourceObject = null;
+                    break;
+            }
+
+            if (outerSourceObject != null)
+            {
+                Console.WriteLine("What is the name of the {0}?", type);
+                outerSourceObject.Name = Console.ReadLine();
+                Console.WriteLine("What is the path to the {0} picture?", type);
+                outerSourceObject.URI = Console.ReadLine();
+
+                using (var db = new SyntaxErrorContext())
+                {
+                    db.Objects.Add(outerSourceObject);
+                    db.SaveChanges();
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("Invalid input");
         }
 
+        /// <summary>Removes the specified object from the database.</summary>
         private static void RemoveObject()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Choose the object you want to delete\n" +
+                "(Use the ID to identify the object)");
+            using (var db = new SyntaxErrorContext())
+            {
+                var objects = db.Objects.ToArray();
+
+                foreach (var item in objects)
+                {
+                    Console.WriteLine("-----------------------------------------------\n" +
+                                "Object ID: {0}\n" +
+                                "Object name: {1}\n" +
+                                "Object URI: {2}\n" +
+                                "-----------------------------------------------\n",
+                                item.ID,
+                                item.Name,
+                                item.URI);
+                }
+            }
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    try
+                    {
+                        var objectToDelete = db.Objects
+                            .Where(o => o.ID == choice)
+                            .Single();
+                        db.Objects.Remove(objectToDelete);
+                        db.SaveChanges();
+                    } catch (DbUpdateException)
+                    {
+                        var assignedChallenge = "undefined";
+                        var challenges = db.Challenges
+                            .Where(c => !c.GetDiscriminator().Equals("MultipleChoiceChallenge") ||
+                                !c.GetDiscriminator().Equals("QuizChallenge"))
+                            .ToArray();
+
+                        foreach (var challenge in challenges)
+                        {
+                            if (challenge.GetDiscriminator().Equals("AudienceChallenge"))
+                            {
+                                var tempChallenge = (AudienceChallenge) challenge;
+                                if (tempChallenge.GameID == choice) assignedChallenge = tempChallenge.ChallengeID.ToString();
+                            }
+                            else if (challenge.GetDiscriminator().Equals("CrewChallenge"))
+                            {
+                                var tempChallenge = (CrewChallenge) challenge;
+                                if (tempChallenge.GameID == choice) assignedChallenge = tempChallenge.ChallengeID.ToString();
+                            }
+                            else if (challenge.GetDiscriminator().Equals("MusicChallenge"))
+                            {
+                                var tempChallenge = (MusicChallenge) challenge;
+                                if (tempChallenge.SongID == choice) assignedChallenge = tempChallenge.ChallengeID.ToString();
+                            }
+                            else if (challenge.GetDiscriminator().Equals("ScreenshotChallenge"))
+                            {
+                                var tempChallenge = (ScreenshotChallenge) challenge;
+                                if (tempChallenge.ImageID == choice) assignedChallenge = tempChallenge.ChallengeID.ToString();
+                            }
+                            else if (challenge.GetDiscriminator().Equals("SilhouetteChallenge"))
+                            {
+                                var tempChallenge = (SilhouetteChallenge) challenge;
+                                if (tempChallenge.ImageID == choice) assignedChallenge = tempChallenge.ChallengeID.ToString();
+                            }
+                            else
+                            {
+                                var tempChallenge = (SologameChallenge) challenge;
+                                if (tempChallenge.GameID == choice) assignedChallenge = tempChallenge.ChallengeID.ToString();
+                            }
+                        }
+                        Console.WriteLine("Object in use in challenge ID {0}.\n" +
+                            "Delete the challenge that is using the object first before deleting the object.", assignedChallenge);
+                    }
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("Invalid Input");
         }
 
+        /// <summary>Shows the crew members.</summary>
         private static void ShowCrewMembers()
         {
-            throw new NotImplementedException();
+            using (var db = new SyntaxErrorContext())
+            {
+                var crewMembers = db.CrewMembers.ToArray();
+
+                foreach (var member in crewMembers)
+                {
+                    Console.WriteLine("-----------------------------------------------\n" +
+                        "Crew member ID: {0}\n" +
+                        "Crew member tag: {1}\n" +
+                        "-----------------------------------------------\n",
+                        member.CrewMemberID,
+                        member.CrewTag);
+                }
+            }
         }
 
+        /// <summary>Registers the crew member.</summary>
         private static void RegisterCrewMember()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("What is the CrewTag of the crew member?");
+            CrewMember newCrewMember = new CrewMember(){ CrewTag = Console.ReadLine() };
+
+            using (var db = new SyntaxErrorContext())
+            {
+                db.CrewMembers.Add(newCrewMember);
+                db.SaveChanges();
+            }
+            Console.WriteLine("Done!");
         }
 
+        /// <summary>Removes the crew member.</summary>
         private static void RemoveCrewMember()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Choose the crew member you want to delete\n" +
+                "(Use the ID to identify the crew member)");
+
+            ShowCrewMembers();
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                using (var db = new SyntaxErrorContext())
+                {
+                    try
+                    {
+                        var crewMemberToDelete = db.CrewMembers
+                            .Where(cm => cm.CrewMemberID == choice)
+                            .Single();
+                        db.CrewMembers.Remove(crewMemberToDelete);
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateException)
+                    {
+                        
+                        var assignedChallenge = "undefined";
+                        var challenges = db.Challenges
+                            .Where(c => c.GetDiscriminator().Equals("CrewChallenge"))
+                            .ToArray();
+
+                        foreach (CrewChallenge item in challenges)
+                        {
+                            if(item.CrewMemberID == choice)
+                            {
+                                assignedChallenge = item.ChallengeID.ToString();
+                            }
+                        }
+                        Console.WriteLine("Crew member assigned to a challenge with ID {0}.\n" +
+                            "Delete the challenge that the crew member is assigned to first before deleting the crew member.",
+                            assignedChallenge);
+                    }
+                }
+                Console.WriteLine("Done!");
+            } else Console.WriteLine("Invalid Input");
         }
 
         /// <summary>Writes the help commands.</summary>
         private static void WriteHelpCommands()
         {
-            Console.WriteLine("Show challenges: Lets the user see the challenges stored in the database\n" +
+            Console.WriteLine("New game: Lets the user create a new game and choose which challenges they want in the game profile\n" +
+                "Show games: \n" +
+                "Play: \n" +
+                "Remove game: \n" +
+                "Show challenges: Lets the user see the challenges stored in the database\n" +
                 "Add challenge: Lets the user add a challenge to the database\n" +
                 "Remove challenge: Lets the user choose and remove a challenge from the database\n" +
+                "Show objects: Lets the user see the objects stored in the database\n" +
+                "Add object: Lets the user add an object to the database\n" +
+                "Remove object: Lets the user choose and remove an object from the database\n" +
+                "Show crew members: Lets the user see the crew members registered in the database\n" +
+                "Register crew member: Lets the user register a crew member into the database\n" +
+                "Remove crew member: Lets the user choose and remove a crew member from the database\n" +
                 "Help: Lets the user see all available commands\n" +
                 "cls: Clears the terminal\n" +
                 "exit: closes the terminal");
@@ -884,5 +1351,22 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
         /// <param name="obj">The object.</param>
         /// <returns>Music</returns>
         private static Music ConvertToMusic(OuterSourceObject obj) { return obj as Music; }
+
+        /// <summary>Clears the current console line.</summary>
+        private static void ClearCurrentConsoleLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth)); 
+            Console.SetCursorPosition(0, currentLineCursor);
+        }
+        /// <summary>Clears two console lines.</summary>
+        private static void ClearTwoLines()
+        {
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            ClearCurrentConsoleLine();
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            ClearCurrentConsoleLine();
+        }
     }
 }

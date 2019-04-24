@@ -92,6 +92,27 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("ChallengeBase");
                 });
 
+            modelBuilder.Entity("SyntaxError.V2.Modell.Utility.GameProfile", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<int?>("ProfileID");
+
+                    b.Property<int?>("SaveGameID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProfileID");
+
+                    b.HasIndex("SaveGameID");
+
+                    b.ToTable("GameProfiles");
+                });
+
             modelBuilder.Entity("SyntaxError.V2.Modell.Utility.UsingBase", b =>
                 {
                     b.Property<int>("UsingID")
@@ -294,6 +315,17 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp.Migrations
                     b.ToTable("Challenges");
 
                     b.HasDiscriminator().HasValue("QuizChallenge");
+                });
+
+            modelBuilder.Entity("SyntaxError.V2.Modell.Utility.GameProfile", b =>
+                {
+                    b.HasOne("SyntaxError.V2.Modell.Utility.Profile", "Profile")
+                        .WithMany()
+                        .HasForeignKey("ProfileID");
+
+                    b.HasOne("SyntaxError.V2.Modell.Utility.SaveGame", "SaveGame")
+                        .WithMany()
+                        .HasForeignKey("SaveGameID");
                 });
 
             modelBuilder.Entity("SyntaxError.V2.Modell.Utility.UsingChallenge", b =>

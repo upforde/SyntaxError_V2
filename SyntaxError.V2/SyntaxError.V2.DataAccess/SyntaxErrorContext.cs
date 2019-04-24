@@ -2,7 +2,6 @@
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
-using System.Data.SqlClient;
 using System.IO;
 
 namespace SyntaxError.V2.DataAccess
@@ -20,6 +19,7 @@ namespace SyntaxError.V2.DataAccess
         public DbSet<OuterSourceObject> Objects { get; set; }
         public DbSet<Answers> Answers { get; set; }
         public DbSet<CrewMember> CrewMembers { get; set; }
+        public DbSet<GameProfile> GameProfiles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
