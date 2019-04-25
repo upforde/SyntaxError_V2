@@ -10,7 +10,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxError.V2.DataAccess",
 		{A7050338-B932-4269-AB08-3E82F793EAE5} = {A7050338-B932-4269-AB08-3E82F793EAE5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxError.V2.DatabaseConfig.ConsoleApp", "SyntaxError.V2.DatabaseConfig.ConsoleApp\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj", "{9EE2D503-ABBE-4D9F-88FF-05BD188FF62A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxError.V2.DatabaseConfig.ConsoleApp", "SyntaxError.V2.DatabaseConfig.ConsoleApp\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj", "{9EE2D503-ABBE-4D9F-88FF-05BD188FF62A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A7050338-B932-4269-AB08-3E82F793EAE5} = {A7050338-B932-4269-AB08-3E82F793EAE5}
+		{7883B969-6969-49C6-8FC4-3A20D059EABD} = {7883B969-6969-49C6-8FC4-3A20D059EABD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxError.V2.DatabaseAPI", "SyntaxError.V2.DatabaseAPI\SyntaxError.V2.DatabaseAPI.csproj", "{2C2E5B46-2EFC-4D07-8C92-9F463519E650}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A7050338-B932-4269-AB08-3E82F793EAE5} = {A7050338-B932-4269-AB08-3E82F793EAE5}
 		{7883B969-6969-49C6-8FC4-3A20D059EABD} = {7883B969-6969-49C6-8FC4-3A20D059EABD}
@@ -34,6 +40,10 @@ Global
 		{9EE2D503-ABBE-4D9F-88FF-05BD188FF62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EE2D503-ABBE-4D9F-88FF-05BD188FF62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EE2D503-ABBE-4D9F-88FF-05BD188FF62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2E5B46-2EFC-4D07-8C92-9F463519E650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2E5B46-2EFC-4D07-8C92-9F463519E650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2E5B46-2EFC-4D07-8C92-9F463519E650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2E5B46-2EFC-4D07-8C92-9F463519E650}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
