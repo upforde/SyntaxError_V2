@@ -40,10 +40,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 foreach (int i in idList) { Console.Write(" {0}", i.ToString()); };
                 Console.WriteLine();
                 input = Console.ReadLine().ToLower();
-                if (input.Equals("stop")||input.Equals("all"))
-                {
-                    enough = !enough;
-                }
+                if (input.Equals("stop")||input.Equals("all")) enough = !enough;
                 else
                 {
                     if(int.TryParse(input, out int choice))
@@ -56,34 +53,22 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
 
             using (var db = new SyntaxErrorContext())
             {
+                List<ChallengeBase> challenges;
                 if (input.Equals("all"))
                 {
-                    var challenges = db.Challenges.ToArray();
-                    foreach(var challenge in challenges) 
-                    {
-                        UsingChallenge usingChallenge = new UsingChallenge()
-                        {
-                            ChallengeID = challenge.ChallengeID
-                        };
-                        newGame.Profile.Challenges.Add(usingChallenge);
-                    }
+                    challenges = db.Challenges.ToList();
                 }
                 else
                 {
-                    foreach(int id in idList)
-                    {
-                        var challenge = db.Challenges.Find(id);
-                    
-                        if(challenge != null)
-                        {
-                            UsingChallenge usingChallenge = new UsingChallenge()
-                            {
-                                ChallengeID = challenge.ChallengeID
-                            };
-                            newGame.Profile.Challenges.Add(usingChallenge);
-                        }
-                    }
+                    challenges = new List<ChallengeBase>();
+                    foreach(int id in idList) challenges.Add(db.Challenges.Find(id));
                 }
+                foreach(var challenge in challenges) 
+                {
+                    UsingChallenge usingChallenge = new UsingChallenge() { ChallengeID = challenge.ChallengeID };
+                    newGame.Profile.Challenges.Add(usingChallenge);
+                }
+
                 db.GameProfiles.Add(newGame);
                 db.SaveChanges();
             }
@@ -104,19 +89,22 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                     .ThenInclude(sg => sg.Challenges)
                     .ToArray();
 
-                foreach (var game in games)
+                if (games.Length != 0)
                 {
-                    Console.WriteLine("-----------------------------------------------\n" +
-                        "Game ID: {0}\n" +
-                        "Date of game created: {1}\n" +
-                        "Number of challenges in the profile: {2}\n" +
-                        "Number of those challenges completed: {3}\n" +
-                        "-----------------------------------------------\n",
-                        game.ID,
-                        game.DateCreated.ToShortDateString(),
-                        game.Profile.Challenges.Count,
-                        game.SaveGame.Challenges.Count);
-                }
+                    foreach (var game in games)
+                    {
+                        Console.WriteLine("-----------------------------------------------\n" +
+                            "Game ID: {0}\n" +
+                            "Date of game created: {1}\n" +
+                            "Number of challenges in the profile: {2}\n" +
+                            "Number of those challenges completed: {3}\n" +
+                            "-----------------------------------------------\n",
+                            game.ID,
+                            game.DateCreated.ToShortDateString(),
+                            game.Profile.Challenges.Count,
+                            game.SaveGame.Challenges.Count);
+                    }
+                } else Console.WriteLine("No games in the database.");
             }
         }
 
@@ -156,13 +144,15 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             } else Console.WriteLine("Invalid input");
         }
 
+        /// <summary>Simulates a session with a specified game profile.</summary>
         private static void Play()
         {
+            GameProfile game;
+
             Console.WriteLine("Which game would you like to play?\n" +
                 "(Use ID to identify the game)");
-            ShowGameProfiles();
 
-            GameProfile game;
+            ShowGameProfiles();
 
             if (int.TryParse(Console.ReadLine(), out int choice))
             {
@@ -183,55 +173,31 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                         Console.WriteLine("No such challenge\n");
                         game = null;
                     }
-                    
-                    if(game != null) 
-                    {
-                        Console.WriteLine("Game retrieved.\n");
-                        SimulateGame(game);
-
-                        db.SaveChanges();
-                        
-                        Console.WriteLine("Saved!");
-                    }
                 }
             } else { Console.WriteLine("Invalid input"); game = null; }
-        }
 
-        private static void SimulateGame(GameProfile game)
-        {
-            Console.WriteLine("What to do?\nAvailable options:\n" +
-                "\t-next round\n" +
-                "\t-end game");
-            switch (Console.ReadLine())
+            if(game != null) 
             {
-                case "end game":
-                    return;
-                case "next round":
-                    Random randomNumberGen = new Random();
-                    int randomNumber = randomNumberGen.Next(0, game.Profile.Challenges.Count-1);
+                Console.WriteLine("Game retrieved.\n");
 
-                    if(!(randomNumber < 0))
-                    {
-                        var rndChallenge = game.Profile.Challenges.ElementAt(randomNumber);
-                        if (!game.SaveGame.Challenges.Contains(rndChallenge))
-                        {
-                            game.SaveGame.Challenges.Add(rndChallenge);
-                        }
+                SimulateGame(game);
 
-                        Console.WriteLine("Added challenge {0} to the SaveGame",
-                            rndChallenge.ChallengeID.ToString());
-                        break;
-                    }
-                    else
+                using (var db = new SyntaxErrorContext())
+                {
+                    var dbChallenges = db.UsingChallenges
+                        .Where(uc => uc.UsingID == game.SaveGameID)
+                        .ToArray();
+
+                    foreach(var challenge in game.SaveGame.Challenges)
                     {
-                        Console.WriteLine("No more challenges. Game ended.");
-                        return;
+                        if (IsDuplicateAbsent(dbChallenges, challenge)) db.UsingChallenges.Add(challenge);
                     }
-                default:
-                    Console.WriteLine("Invalid input");
-                    break;
+
+                    db.SaveChanges();
+                }
+                
+                Console.WriteLine("Saved!");
             }
-            SimulateGame(game);
         }
 
         /// <summary>Adds a challenge to the database.</summary>
@@ -854,7 +820,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 case "show games":
                     ShowGameProfiles();
                     break;
-                case "remove game profile":
+                case "remove game":
                     RemoveGameProfile();
                     break;
                 case "play":
@@ -1167,10 +1133,10 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
         /// <summary>Writes the help commands.</summary>
         private static void WriteHelpCommands()
         {
-            Console.WriteLine("New game: Lets the user create a new game and choose which challenges they want in the game profile\n" +
-                "Show games: \n" +
-                "Play: \n" +
-                "Remove game: \n" +
+            Console.WriteLine("New game: Lets the user create a new game profile and choose which challenges they want in it\n" +
+                "Show games: Lets the user see the game profiless stored in the database\n" +
+                "Play: Lets the user simulate a play session with a specified game profile\n" +
+                "Remove game: Lets the user delete a specified game profile\n" +
                 "Show challenges: Lets the user see the challenges stored in the database\n" +
                 "Add challenge: Lets the user add a challenge to the database\n" +
                 "Remove challenge: Lets the user choose and remove a challenge from the database\n" +
@@ -1339,6 +1305,82 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             }
         }
 
+        
+        /// <summary>Simulates the game.</summary>
+        /// <param name="game">The game.</param>
+        private static void SimulateGame(GameProfile game)
+        {
+            Console.WriteLine("What to do?\nAvailable options:\n" +
+                "\t-next round\n" +
+                "\t-end game");
+            switch (Console.ReadLine())
+            {
+                case "end game":
+                    return;
+                case "next round":
+                    if (game.Profile.Challenges.Count != game.SaveGame.Challenges.Count)
+                    {
+                        var rndChallenge = RollForRandomChallengeRecursive(game);
+
+                        if(rndChallenge != null)
+                        {
+                            game.SaveGame.Challenges.Add(rndChallenge);
+
+                            Console.WriteLine("\nAdded challenge {0} to the SaveGame\n",
+                                rndChallenge.ChallengeID.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No more challenges. Game ended.");
+                        return;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+            SimulateGame(game);
+        }
+        /// <summary>Rolls for random challenge recursive.</summary>
+        /// <param name="game">The game.</param>
+        /// <returns></returns>
+        private static UsingChallenge RollForRandomChallengeRecursive(GameProfile game)
+        {
+            var randomNumberGen = new Random();
+            int randomNumber = randomNumberGen.Next(0, game.Profile.Challenges.Count);
+
+            if(!(randomNumber < 0))
+            {
+                var rndChallenge = new UsingChallenge()
+                {
+                   ChallengeID = game.Profile.Challenges.ElementAt(randomNumber).ChallengeID,
+                   UsingID = game.SaveGameID
+                };
+                if (!IsDuplicateAbsent(game.SaveGame.Challenges.ToArray(), rndChallenge))
+                {
+                    Console.WriteLine("Reroling...");
+                    return RollForRandomChallengeRecursive(game);
+                }
+                else return rndChallenge;
+            } else return null;
+        }
+        /// <summary>Determines whether there is a duplicate in the specified challenges.</summary>
+        /// <param name="challenges">The challenges.</param>
+        /// <param name="dupeTestChallenge">The dupe test challenge.</param>
+        /// <returns>
+        ///   <c>true</c> if no duplicates; otherwise, <c>false</c>.</returns>
+        private static bool IsDuplicateAbsent(UsingChallenge[] challenges, UsingChallenge dupeTestChallenge)
+        {
+            bool noDupes = true;
+            foreach(var dbChallenge in challenges)
+            {
+                if (dbChallenge.ChallengeID == dupeTestChallenge.ChallengeID &&
+                    dbChallenge.UsingID == dupeTestChallenge.UsingID) noDupes = !noDupes;
+            }
+            return noDupes;
+        }
+        
         /// <summary>Converts to game.</summary>
         /// <param name="obj">The object.</param>
         /// <returns>Game</returns>
