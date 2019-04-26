@@ -1,5 +1,4 @@
-﻿using SyntaxError.V2.Modell.Challenges;
-using SyntaxError.V2.Modell.Utility;
+﻿using SyntaxError.V2.Modell.Utility;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

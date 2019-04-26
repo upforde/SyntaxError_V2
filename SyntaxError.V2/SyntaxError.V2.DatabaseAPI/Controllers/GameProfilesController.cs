@@ -1,0 +1,150 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SyntaxError.V2.DataAccess;
+using SyntaxError.V2.Modell.Utility;
+
+namespace SyntaxError.V2.DatabaseAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GameProfilesController : ControllerBase
+    {
+        private readonly SyntaxErrorContext _context;
+
+        public GameProfilesController(SyntaxErrorContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/GameProfiles
+        [HttpGet]
+        public IEnumerable<GameProfile> GetGameProfiles()
+        {
+            return _context.GameProfiles
+                .Include(gp => gp.SaveGame)
+                .ThenInclude(sg => sg.Challenges)
+                .Include(gp => gp.Profile)
+                .ThenInclude(p => p.Challenges);
+        }
+
+        // GET: api/GameProfiles/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetGameProfile([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var gameProfile = await _context.GameProfiles.FindAsync(id);
+
+            if (gameProfile == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var profileID = (int) gameProfile.ProfileID;
+                var saveGameID = (int) gameProfile.SaveGameID;
+                gameProfile.Profile = (Profile) await _context.UsingPanes.FindAsync(profileID);
+                gameProfile.Profile.Challenges = await _context.UsingChallenges.Where(c => c.UsingID == profileID).ToListAsync();
+                gameProfile.SaveGame = (SaveGame) await _context.UsingPanes.FindAsync(saveGameID);
+                gameProfile.SaveGame.Challenges = await _context.UsingChallenges.Where(c => c.UsingID == saveGameID).ToListAsync();
+            }
+
+            return Ok(gameProfile);
+        }
+
+        // PUT: api/GameProfiles/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutGameProfile([FromRoute] int id, [FromBody] GameProfile gameProfile)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != gameProfile.ID)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(gameProfile).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GameProfileExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/GameProfiles
+        [HttpPost]
+        public async Task<IActionResult> PostGameProfile([FromBody] GameProfile gameProfile)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.GameProfiles.Add(gameProfile);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetGameProfile", new { id = gameProfile.ID }, gameProfile);
+        }
+
+        // DELETE: api/GameProfiles/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGameProfile([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var gameProfile = await _context.GameProfiles.FindAsync(id);
+            if (gameProfile == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var profileID = (int) gameProfile.ProfileID;
+                var saveGameID = (int) gameProfile.SaveGameID;
+                gameProfile.Profile = (Profile) await _context.UsingPanes.FindAsync(profileID);
+                gameProfile.Profile.Challenges = await _context.UsingChallenges.Where(c => c.UsingID == profileID).ToListAsync();
+                gameProfile.SaveGame = (SaveGame) await _context.UsingPanes.FindAsync(saveGameID);
+                gameProfile.SaveGame.Challenges = await _context.UsingChallenges.Where(c => c.UsingID == saveGameID).ToListAsync();
+            }
+
+            _context.UsingChallenges.RemoveRange(gameProfile.Profile.Challenges);
+            _context.UsingChallenges.RemoveRange(gameProfile.SaveGame.Challenges);
+            _context.UsingPanes.Remove(gameProfile.Profile);
+            _context.UsingPanes.Remove(gameProfile.SaveGame);
+            _context.GameProfiles.Remove(gameProfile);
+            await _context.SaveChangesAsync();
+
+            return Ok(gameProfile);
+        }
+
+        private bool GameProfileExists(int id)
+        {
+            return _context.GameProfiles.Any(e => e.ID == id);
+        }
+    }
+}

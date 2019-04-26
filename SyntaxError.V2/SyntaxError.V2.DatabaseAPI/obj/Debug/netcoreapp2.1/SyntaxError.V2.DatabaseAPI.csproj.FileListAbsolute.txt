@@ -1,8 +1,3 @@
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.deps.json
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.runtimeconfig.json
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.runtimeconfig.dev.json
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.dll
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.pdb
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DataAccess.dll
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.Modell.dll
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DataAccess.pdb
@@ -15,5 +10,10 @@ C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.AssemblyInfo.cs
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.RazorTargetAssemblyInfo.cache
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.csproj.CopyComplete
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.dll
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.pdb
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.deps.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.runtimeconfig.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.runtimeconfig.dev.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.dll
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.pdb
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.dll
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.pdb
