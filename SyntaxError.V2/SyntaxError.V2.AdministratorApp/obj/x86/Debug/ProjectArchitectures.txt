@@ -1,0 +1,1 @@
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp\SyntaxError.V2.AdministratorApp.csproj;x86

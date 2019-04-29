@@ -2,7 +2,7 @@
 
 namespace SyntaxError.V2.Modell.ChallengeObjects
 {
-    public class Image: OuterSourceObject
+    public class Image: MediaObject
     {
     }
 }

@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.IO;
+
+using Microsoft.EntityFrameworkCore;
+
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
-using System.IO;
 
 namespace SyntaxError.V2.DataAccess
 {
@@ -16,7 +18,7 @@ namespace SyntaxError.V2.DataAccess
         public DbSet<ImageChallenge> ImageChallenges { get; set; }
         public DbSet<UsingBase> UsingPanes { get; set; }
         public DbSet<UsingChallenge> UsingChallenges { get; set; }
-        public DbSet<OuterSourceObject> Objects { get; set; }
+        public DbSet<MediaObject> Objects { get; set; }
         public DbSet<Answers> Answers { get; set; }
         public DbSet<CrewMember> CrewMembers { get; set; }
         public DbSet<GameProfile> GameProfiles { get; set; }
@@ -57,7 +59,7 @@ namespace SyntaxError.V2.DataAccess
                 .WithMany(u => u.Challenges)
                 .HasForeignKey(uc => uc.UsingID);
 
-            modelBuilder.Entity<OuterSourceObject>()
+            modelBuilder.Entity<MediaObject>()
                 .HasDiscriminator<string>("Discriminator")
                 .HasValue<Game>("Game")
                 .HasValue<Image>("Image")

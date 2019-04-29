@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
@@ -60,7 +62,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
         // PUT: api/OuterSourceObjects/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOuterSourceObject([FromRoute] int id, [FromBody] OuterSourceObject outerSourceObject)
+        public async Task<IActionResult> PutOuterSourceObject([FromRoute] int id, [FromBody] MediaObject outerSourceObject)
         {
             if (!ModelState.IsValid)
             {
@@ -95,7 +97,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
         // POST: api/OuterSourceObjects
         [HttpPost]
-        public async Task<IActionResult> PostOuterSourceObject([FromBody] OuterSourceObject outerSourceObject)
+        public async Task<IActionResult> PostOuterSourceObject([FromBody] MediaObject outerSourceObject)
         {
             if (!ModelState.IsValid)
             {

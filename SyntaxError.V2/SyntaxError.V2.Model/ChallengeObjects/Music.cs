@@ -2,7 +2,7 @@
 
 namespace SyntaxError.V2.Modell.ChallengeObjects
 {
-    public class Music: OuterSourceObject
+    public class Music: MediaObject
     {
     }
 }
