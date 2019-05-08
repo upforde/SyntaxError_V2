@@ -1,19 +1,809 @@
-﻿<Page
+﻿<Page x:ConnectionId='1'
     x:Class="SyntaxError.V2.App.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:SyntaxError.V2.App.Helpers"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-    <Grid x:ConnectionId='2'
+    <Grid x:ConnectionId='2' 
         x:Name="ContentArea"
-        Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
-        </Grid>
+        Margin="{StaticResource SmallLeftRightMargin}">
+        <Pivot x:ConnectionId='3'
+            x:Name="Items">
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Text="{Binding}"
+                        Style="{ThemeResource SubtitleTextBlockStyle}" />
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <PivotItem x:Uid="Main_PivotItem1">
+                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Top text-->
+                    <StackPanel Grid.Column="0"
+                                Grid.Row="0"
+                                BorderThickness="0, 0, 5, 0"
+                                BorderBrush="Black"
+                                Padding="15">
+                        <TextBlock Text="Game Profiles" Style="{ThemeResource TitleTextBlockStyle}"/>
+                    </StackPanel>
+                    <!--The GameProfile list-->
+                    <StackPanel Grid.Column="0"
+                                Grid.Row="1"
+                                BorderThickness="0, 0, 5, 0"
+                                BorderBrush="Black">
+                        
+                        <ProgressBar x:ConnectionId='66' x:Name="listViewProgressBar" IsIndeterminate="True"/>
+
+                        <ListView x:ConnectionId='67' x:Name="GameProfilesList"
+                                                                               
+                                  SelectionMode="Single"
+                                                                                      >
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:Name="SingleLineDataTemplate"
+                                                                                   >
+                                    <StackPanel x:ConnectionId='68'>
+                                        <TextBlock x:ConnectionId='69'                                            
+                                                   Style="{ThemeResource BaseTextBlockStyle}"
+                                                   Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                        
+                                        <TextBlock x:ConnectionId='70'                                                                         
+                                                   Style="{ThemeResource BodyTextBlockStyle}"
+                                                   Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <!--Bottom AppBarButtons-->
+                    <StackPanel Grid.Column="0"
+                                Grid.Row="2"
+                                BorderThickness="0, 0, 5, 0"
+                                BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Padding="0, 0, 5, 0">
+                            <AppBarButton x:ConnectionId='62' IsTabStop="False"
+                                          Icon="Play"
+                                          Label="Play"
+                                          Visibility="Visible"
+                                                                                               
+                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                            <AppBarButton x:ConnectionId='63' IsTabStop="False"
+                                          Icon="Add"
+                                          Label="Add"
+                                          Visibility="Visible"
+                                                                                               
+                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                            <AppBarButton x:ConnectionId='64' IsTabStop="False"
+                                          Icon="Edit"
+                                          Label="Edit"
+                                          Visibility="Visible"
+                                                                                               
+                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                            <AppBarButton x:ConnectionId='65' IsTabStop="False"
+                                          Icon="Delete"
+                                          Label="Delete"
+                                          Visibility="Visible"
+                                                                                               
+                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!--The Challenge pivot-->
+                    <Pivot x:ConnectionId='5' x:Name="ChallengeList"
+                           Grid.Column="1"
+                           Grid.RowSpan="3"
+                           BorderThickness="5, 0, 0, 0"
+                           BorderBrush="Black">
+                        <PivotItem Header="Audience challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='55' x:Name="AudienceChallengeList"
+                                                                                             
+                                          SelectionMode="Single"
+                                          IsItemClickEnabled="True">
+                            
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:Name="AudienceChallengeDataTemplate"
+                                                                                             >
+                                        
+                                            <Grid x:ConnectionId='57' x:Name="challengeItemGrid">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                        
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel x:Name="TextColumn" Grid.Column="0">
+                                                    <TextBlock Grid.Row="0" Text="AudienceChallenge"
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BaseTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                    <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+
+                                                <StackPanel x:Name="InfoColumn" Grid.Column="1">
+                                                    <TextBlock Grid.Row="0"/>
+                                                    <TextBlock x:ConnectionId='58' Grid.Row="1"                                              
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock x:ConnectionId='59' Grid.Row="2"                                                
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock x:ConnectionId='60' Grid.Row="3"                                            
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock x:ConnectionId='61' Grid.Row="4"                                                
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <TextBlock x:ConnectionId='56' x:Name="EmptyAudienceChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Crew challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='48' x:Name="CrewChallengeList"
+                                                                                           
+                                            SelectionMode="Single"
+                                            IsItemClickEnabled="True">
+                            
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:Name="CrewChallengeDataTemplate"
+                                                                                             >
+                                            <Grid x:ConnectionId='50' x:Name="challengeItemGrid">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                        
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0">
+                                                    <TextBlock Grid.Row="0" Text="CrewChallenge"
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BaseTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                    <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                                HorizontalAlignment="Stretch"
+                                                                Margin="5, 0, 5, 0"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="1">
+                                                    <TextBlock Grid.Row="0"/>
+                                                    <TextBlock x:ConnectionId='51' Grid.Row="1"                                          
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock x:ConnectionId='52' Grid.Row="2"                                            
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock x:ConnectionId='53' Grid.Row="3"                                        
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                    <TextBlock x:ConnectionId='54' Grid.Row="4"                                                
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <TextBlock x:ConnectionId='49' x:Name="EmptyCrewChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Multiple choice challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='41' x:Name="MultipleChoiceChallengeList"
+                                                                                                 
+                                        SelectionMode="Single"
+                                        IsItemClickEnabled="True">
+                            
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
+                                                                                         >
+                                        <Grid x:ConnectionId='43' x:Name="challengeItemGrid">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                        
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Grid.Row="0" Text="MultipleChoiceChallenge"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BaseTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Grid.Row="0"/>
+                                                <TextBlock x:ConnectionId='44' Grid.Row="1"                                                    
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='45' Grid.Row="2"                                                      
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='46' Grid.Row="3"                                                       
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='47' Grid.Row="4"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            
+                            </ListView>
+                                <TextBlock x:ConnectionId='42' x:Name="EmptyMultipleChoiceChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Music challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='34' x:Name="MusicChallengeList"
+                                                                                        
+                                        SelectionMode="Single"
+                                        IsItemClickEnabled="True">
+                            
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:Name="MusicChallengeDataTemplate"
+                                                                                         >
+                                        <Grid x:ConnectionId='36' x:Name="challengeItemGrid">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                        
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Grid.Row="0" Text="MusicChallenge"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BaseTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Grid.Row="0"/>
+                                                <TextBlock x:ConnectionId='37' Grid.Row="1"                                           
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='38' Grid.Row="2"                                             
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='39' Grid.Row="3"                                         
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='40' Grid.Row="4"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            
+                            </ListView>
+                                <TextBlock x:ConnectionId='35' x:Name="EmptyMusicChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Quiz challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='27' x:Name="QuizChallengeList"
+                                                                                       
+                                        SelectionMode="Single"
+                                        IsItemClickEnabled="True">
+                            
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:Name="QuizChallengeDataTemplate"
+                                                                                         >
+                                        <Grid x:ConnectionId='29' x:Name="challengeItemGrid">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                        
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Grid.Row="0" Text="QuizChallenge"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BaseTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Grid.Row="0"/>
+                                                <TextBlock x:ConnectionId='30' Grid.Row="1"                                          
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='31' Grid.Row="2"                                            
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='32' Grid.Row="3"                                             
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='33' Grid.Row="4"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            
+                            </ListView>
+                                <TextBlock x:ConnectionId='28' x:Name="EmptyQuizChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Screenshot challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='20' x:Name="ScreenshotChallengeList"
+                                                                                             
+                                        SelectionMode="Single"
+                                        IsItemClickEnabled="True">
+                            
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:Name="ScreenshotChallengeDataTemplate"
+                                                                                         >
+                                        <Grid x:ConnectionId='22' x:Name="challengeItemGrid">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                        
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Grid.Row="0" Text="ScreenshotChallenge"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BaseTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Grid.Row="0"/>
+                                                <TextBlock x:ConnectionId='23' Grid.Row="1"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='24' Grid.Row="2"                                                  
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='25' Grid.Row="3"                                               
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='26' Grid.Row="4"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            
+                            </ListView>
+                                <TextBlock x:ConnectionId='21' x:Name="EmptyScreenshotChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Silhouette challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='13' x:Name="SilhouetteChallengeList"
+                                                                                             
+                                        SelectionMode="Single"
+                                        IsItemClickEnabled="True">
+                            
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:Name="SilhouetteChallengeDataTemplate"
+                                                                                         >
+                                        <Grid x:ConnectionId='15' x:Name="challengeItemGrid">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                        
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Grid.Row="0" Text="SilhouetteChallenge"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BaseTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                                <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                            HorizontalAlignment="Stretch"
+                                                            Margin="5, 0, 5, 0"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Grid.Row="0"/>
+                                                <TextBlock x:ConnectionId='16' Grid.Row="1"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='17' Grid.Row="2"                                                  
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='18' Grid.Row="3"                                               
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                <TextBlock x:ConnectionId='19' Grid.Row="4"                                                
+                                                            HorizontalAlignment="Stretch"
+                                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            
+                            </ListView>
+                                <TextBlock x:ConnectionId='14' x:Name="EmptySilhouetteChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Sologame challenges">
+                            <Grid>
+                                <ListView x:ConnectionId='6' x:Name="SologameChallengeList"
+                                                                                           
+                                        SelectionMode="Single"
+                                        IsItemClickEnabled="True">
+                            
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="SologameChallengeDataTemplate"
+                                                                                 >
+                                <Grid x:ConnectionId='8' x:Name="challengeItemGrid">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                        
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Grid.Row="0" Text="SologameChallenge"
+                                                    HorizontalAlignment="Stretch"
+                                                    Margin="5, 0, 5, 0"
+                                                    Style="{ThemeResource BaseTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                                        <TextBlock Grid.Row="1" Text="Challenge ID: "
+                                                    HorizontalAlignment="Stretch"
+                                                    Margin="5, 0, 5, 0"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock Grid.Row="2" Text="Challenge task:"
+                                                    HorizontalAlignment="Stretch"
+                                                    Margin="5, 0, 5, 0"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock Grid.Row="3" Text="Which game is played?"
+                                                    HorizontalAlignment="Stretch"
+                                                    Margin="5, 0, 5, 0"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock Grid.Row="4" Text="Is challenge completed? "
+                                                    HorizontalAlignment="Stretch"
+                                                    Margin="5, 0, 5, 0"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Grid.Row="0"/>
+                                        <TextBlock x:ConnectionId='9' Grid.Row="1"                                              
+                                                    HorizontalAlignment="Stretch"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock x:ConnectionId='10' Grid.Row="2"                                                
+                                                    HorizontalAlignment="Stretch"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock x:ConnectionId='11' Grid.Row="3"                                            
+                                                    HorizontalAlignment="Stretch"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock x:ConnectionId='12' Grid.Row="4"                                                
+                                                    HorizontalAlignment="Stretch"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                                <TextBlock x:ConnectionId='7' x:Name="EmptySologameChallenges"
+                                           Text="No items found"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </PivotItem>
+                    </Pivot>
+                    
+                </Grid>
+            </PivotItem>
+            
+            <PivotItem x:Uid="Main_PivotItem2">
+                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                    <!--
+                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                    Place your content here.
+                    -->
+
+                </Grid>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>
 

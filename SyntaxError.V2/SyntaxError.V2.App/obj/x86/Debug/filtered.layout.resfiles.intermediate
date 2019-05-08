@@ -12,8 +12,9 @@ Styles\_FontSizes.xbf
 Styles\_Thickness.xbf
 Styles\Page.xbf
 Styles\TextBlock.xbf
-SyntaxError.V2.App.xr.xml
+SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml
 Views\CreateChallengesPage.xbf
+Views\CreateCrewPage.xbf
 Views\CreateObjectsPage.xbf
 Views\MainPage.xbf
 Views\SettingsPage.xbf

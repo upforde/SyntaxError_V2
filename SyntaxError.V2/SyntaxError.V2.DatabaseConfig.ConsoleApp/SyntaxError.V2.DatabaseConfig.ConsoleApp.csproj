@@ -19,4 +19,10 @@
     <ProjectReference Include="..\SyntaxError.V2.Model\SyntaxError.V2.Modell.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Migrations\20190507211549_InitialCreate.Designer.cs">
+      <DependentUpon>20190507211549_InitialCreate.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

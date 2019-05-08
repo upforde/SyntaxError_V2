@@ -34,7 +34,7 @@ namespace SyntaxError.V2.DataAccess
         {
             modelBuilder.Entity<ChallengeBase>()
                 .HasDiscriminator<string>("Discriminator")
-                .HasValue<AudienceChallenge>("AuddienceChallenge")
+                .HasValue<AudienceChallenge>("AudienceChallenge")
                 .HasValue<CrewChallenge>("CrewChallenge")
                 .HasValue<MultipleChoiceChallenge>("MultipleChoiceChallenge")
                 .HasValue<MusicChallenge>("MusicChallenge")

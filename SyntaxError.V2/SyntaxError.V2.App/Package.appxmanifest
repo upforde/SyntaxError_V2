@@ -8,11 +8,11 @@
   IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3"
+    Name="B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF"
     Publisher="CN=upfor"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>SyntaxError.V2.App</DisplayName>
@@ -55,7 +55,7 @@
     <genTemplate:Item Name="generator" Value="Windows Template Studio"/>
     <genTemplate:Item Name="wizardVersion" Version="v3.1.19092.1" />
     <genTemplate:Item Name="templatesVersion" Version="v3.1.19092.1" />
-    <genTemplate:Item Name="projectType" Value="SplitView" />
+    <genTemplate:Item Name="projectType" Value="TabbedNav" />
     <genTemplate:Item Name="framework" Value="MVVMBasic" />
     <genTemplate:Item Name="platform" Value="Uwp" />
   </genTemplate:Metadata>

@@ -8,7 +8,7 @@
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
-    <PackageIdentityName>AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3</PackageIdentityName>
+    <PackageIdentityName>B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF</PackageIdentityName>
     <PackageIdentityPublisher>CN=upfor</PackageIdentityPublisher>
     <IntermediateOutputPath>C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
@@ -25,8 +25,8 @@
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.App.exe">
-      <PackagePath>entrypoint\SyntaxError.V2.App.exe</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
+      <PackagePath>entrypoint\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp.notifications\5.1.1\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
@@ -45,6 +45,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll">
       <PackagePath>SyntaxError.V2.App.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Modell.dll">
+      <PackagePath>SyntaxError.V2.Modell.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -79,8 +82,8 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.App.xr.xml">
-      <PackagePath>SyntaxError.V2.App.xr.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml">
+      <PackagePath>SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
@@ -102,6 +105,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateChallengesPage.xbf">
       <PackagePath>Views\CreateChallengesPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateCrewPage.xbf">
+      <PackagePath>Views\CreateCrewPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateObjectsPage.xbf">
       <PackagePath>Views\CreateObjectsPage.xbf</PackagePath>
@@ -127,8 +133,8 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\SyntaxError.V2.App.exe">
-      <PackagePath>SyntaxError.V2.App.exe</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
+      <PackagePath>SyntaxError.V2.DatabaseConfig.ConsoleApp.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

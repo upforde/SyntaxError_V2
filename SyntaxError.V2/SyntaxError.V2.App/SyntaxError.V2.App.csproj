@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{DC52AD91-77EA-4153-94C4-84BB6B408878}</ProjectGuid>
+    <ProjectGuid>{5C4297E1-AC5F-4328-8E28-CC48608A97E2}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SyntaxError.V2.App</RootNamespace>
-    <AssemblyName>SyntaxError.V2.App</AssemblyName>
+    <AssemblyName>SyntaxError.V2.DatabaseConfig.ConsoleApp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
@@ -110,9 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
-    <Compile Include="Behaviors\NavigationViewHeaderBehavior.cs" />
-    <Compile Include="Behaviors\NavigationViewHeaderMode.cs" />
+    <Compile Include="DataAccess\Challenges.cs" />
+    <Compile Include="DataAccess\GameProfiles.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
+    <Compile Include="Helpers\ListItemMainPage.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\Observable.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
@@ -126,12 +127,16 @@
     <Compile Include="Services\ViewLifetimeControl.cs" />
     <Compile Include="Services\WindowManagerService.cs" />
     <Compile Include="ViewModels\CreateChallengesViewModel.cs" />
+    <Compile Include="ViewModels\CreateCrewViewModel.cs" />
     <Compile Include="ViewModels\CreateObjectsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\CreateChallengesPage.xaml.cs">
       <DependentUpon>CreateChallengesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateCrewPage.xaml.cs">
+      <DependentUpon>CreateCrewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateObjectsPage.xaml.cs">
       <DependentUpon>CreateObjectsPage.xaml</DependentUpon>
@@ -174,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateChallengesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CreateCrewPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -224,9 +233,14 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SyntaxError.V2.App.Core\SyntaxError.V2.App.Core.csproj">
-      <Project>{39A7CEFF-9661-41FB-9010-394EDB309F1D}</Project>
+      <Project>{86CE3FD0-782E-4E96-9F4D-9A1B7378ED9E}</Project>
       <Name>SyntaxError.V2.App.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SyntaxError.V2.Modell">
+      <HintPath>..\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Modell.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

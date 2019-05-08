@@ -8,7 +8,7 @@
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
-    <PackageIdentityName>AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3</PackageIdentityName>
+    <PackageIdentityName>B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF</PackageIdentityName>
     <PackageIdentityPublisher>CN=upfor</PackageIdentityPublisher>
     <IntermediateOutputPath>C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
@@ -19,10 +19,10 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>B68C0FA7A04B174417E576CCA504F0ACE6DFFDAC0393E2FD444BFDED01FCE89B</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3_1.0.0.0_x86__r06kpca8jmwzw</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3_r06kpca8jmwzw!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>AAE1E867-1FD6-4664-BB5F-E9B677B9EDB3</RegisteredPackageID>
+    <RegisteredManifestChecksum>E23504B328CE7782F33A989FFAC1E0B4A2089D10E190323820C9EE31E3CA99DA</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF_1.0.0.0_x86__r06kpca8jmwzw</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF_r06kpca8jmwzw!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=upfor</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:54:22.075</Modified>
+      <Modified>2019-05-08T09:59:59.178</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.App.exe">
-      <PackagePath>entrypoint\SyntaxError.V2.App.exe</PackagePath>
-      <Modified>2019-04-26T13:54:20.004</Modified>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
+      <PackagePath>entrypoint\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe</PackagePath>
+      <Modified>2019-05-08T09:59:58.558</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp.notifications\5.1.1\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
@@ -60,7 +60,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll">
       <PackagePath>SyntaxError.V2.App.Core.dll</PackagePath>
-      <Modified>2019-04-26T13:54:14.131</Modified>
+      <Modified>2019-04-30T09:19:19.924</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Modell.dll">
+      <PackagePath>SyntaxError.V2.Modell.dll</PackagePath>
+      <Modified>2019-05-07T09:58:54.442</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -68,89 +72,93 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2019-04-26T13:52:35.658</Modified>
+      <Modified>2019-04-29T08:30:41.845</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2019-04-26T13:52:34.495</Modified>
+      <Modified>2019-04-29T08:30:40.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:52:34.499</Modified>
+      <Modified>2019-04-29T08:30:40.793</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:52:34.503</Modified>
+      <Modified>2019-04-29T08:30:40.796</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:52:34.506</Modified>
+      <Modified>2019-04-29T08:30:40.799</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:52:34.510</Modified>
+      <Modified>2019-04-29T08:30:40.803</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:52:34.521</Modified>
+      <Modified>2019-04-29T08:30:40.805</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-26T13:52:34.524</Modified>
+      <Modified>2019-04-29T08:30:40.808</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.App.xr.xml">
-      <PackagePath>SyntaxError.V2.App.xr.xml</PackagePath>
-      <Modified>2019-04-26T13:54:19.742</Modified>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml">
+      <PackagePath>SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml</PackagePath>
+      <Modified>2019-05-08T08:56:19.708</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.796</Modified>
+      <Modified>2019-05-08T09:59:58.321</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\Page.xbf">
       <PackagePath>Styles\Page.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.794</Modified>
+      <Modified>2019-05-08T09:59:58.320</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\_Colors.xbf">
       <PackagePath>Styles\_Colors.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.794</Modified>
+      <Modified>2019-05-08T09:59:58.320</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\_FontSizes.xbf">
       <PackagePath>Styles\_FontSizes.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.795</Modified>
+      <Modified>2019-05-08T09:59:58.320</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\_Thickness.xbf">
       <PackagePath>Styles\_Thickness.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.795</Modified>
+      <Modified>2019-05-08T09:59:58.321</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\TextBlock.xbf">
       <PackagePath>Styles\TextBlock.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.795</Modified>
+      <Modified>2019-05-08T09:59:58.321</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateChallengesPage.xbf">
       <PackagePath>Views\CreateChallengesPage.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.796</Modified>
+      <Modified>2019-05-08T09:59:58.322</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateCrewPage.xbf">
+      <PackagePath>Views\CreateCrewPage.xbf</PackagePath>
+      <Modified>2019-05-08T09:59:58.322</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateObjectsPage.xbf">
       <PackagePath>Views\CreateObjectsPage.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.797</Modified>
+      <Modified>2019-05-08T09:59:58.322</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.797</Modified>
+      <Modified>2019-05-08T09:59:58.316</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\SettingsPage.xbf">
       <PackagePath>Views\SettingsPage.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.797</Modified>
+      <Modified>2019-05-08T09:59:58.323</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\ShellPage.xbf">
       <PackagePath>Views\ShellPage.xbf</PackagePath>
-      <Modified>2019-04-26T13:54:19.798</Modified>
+      <Modified>2019-05-08T09:59:58.323</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.17763.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -166,11 +174,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-04-26T13:54:20.376</Modified>
+      <Modified>2019-05-07T21:16:38.077</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\SyntaxError.V2.App.exe">
-      <PackagePath>SyntaxError.V2.App.exe</PackagePath>
-      <Modified>2019-04-26T13:54:22.056</Modified>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
+      <PackagePath>SyntaxError.V2.DatabaseConfig.ConsoleApp.exe</PackagePath>
+      <Modified>2019-05-08T09:59:59.173</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

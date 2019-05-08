@@ -129,7 +129,7 @@
     <value>Main</value>
     <comment>Navigation view item name for Main</comment>
   </data>
-  <data name="CreateChallenges_PivotItem1.Header" xml:space="preserve">  
+  <data name="CreateChallenges_PivotItem1.Header" xml:space="preserve">
     <value>Item 1</value>
     <comment>First Pivot item title for CreateChallenges</comment>
   </data>
@@ -141,7 +141,7 @@
     <value>CreateChallenges</value>
     <comment>Navigation view item name for CreateChallenges</comment>
   </data>
-  <data name="CreateObjects_PivotItem1.Header" xml:space="preserve">  
+  <data name="CreateObjects_PivotItem1.Header" xml:space="preserve">
     <value>Item 1</value>
     <comment>First Pivot item title for CreateObjects</comment>
   </data>
@@ -152,6 +152,18 @@
   <data name="Shell_CreateObjects.Content" xml:space="preserve">
     <value>CreateObjects</value>
     <comment>Navigation view item name for CreateObjects</comment>
+  </data>
+  <data name="CreateCrew_PivotItem1.Header" xml:space="preserve">
+    <value>Item 1</value>
+    <comment>First Pivot item title for CreateCrew</comment>
+  </data>
+  <data name="CreateCrew_PivotItem2.Header" xml:space="preserve">
+    <value>Item 2</value>
+    <comment>Second Pivot item title for CreateCrew</comment>
+  </data>
+  <data name="Shell_CreateCrew.Content" xml:space="preserve">
+    <value>CreateCrew</value>
+    <comment>Navigation view item name for CreateCrew</comment>
   </data>
   <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
     <value>File name is null or empty. Specify a valid file name</value>
@@ -173,31 +185,31 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">    
+  <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">    
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>Settings page placeholder text.  Your app description goes here.</value>
     <comment>About this application description for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">    
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">  
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">   
+  <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
   </data>
-  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">   
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
     <value>value must be an Enum!</value>
     <comment>Value must be an Enum in enum to boolean converter</comment>
   </data>
-  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">   
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
     <value>parameter must be an Enum name!</value>
     <comment>Parameter must be an Enum name in enum to boolean converter</comment>
   </data>
@@ -208,5 +220,13 @@
   <data name="ExceptionViewLifeTimeControlMissingReleasedSubscription" xml:space="preserve">
     <value>All pages opened in a new window must subscribe to the Released Event.</value>
     <comment>The page is not subscribed to the Released event.</comment>
+  </data>
+  <data name="Main_PivotItem1.Header" xml:space="preserve">
+    <value>Games</value>
+    <comment>First Pivot item title for Main</comment>
+  </data>
+  <data name="Main_PivotItem2.Header" xml:space="preserve">
+    <value>New Game</value>
+    <comment>Second Pivot item title for Main</comment>
   </data>
 </root>

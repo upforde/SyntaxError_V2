@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
+
 using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
@@ -12,7 +13,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
 {
     class Program
     {
-        static readonly string DONE = "Done!";
+        const string DONE = "Done!";
 
         static void Main(string[] args)
         {
@@ -26,13 +27,19 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
         {
             bool enough = false;
             List<int> idList = new List<int>(); 
+            
+            Console.WriteLine("What would you like to name your game profile?");
+            string gameProfileName = Console.ReadLine();
+            if (gameProfileName.Length == 0) gameProfileName = "SyntaxError game profile ";
+
             GameProfile newGame = new GameProfile()
             { 
+                GameProfileName = gameProfileName,
                 DateCreated = DateTime.Now,
                 Profile = new Profile(),
                 SaveGame = new SaveGame()
             };
-
+            
             Console.WriteLine("Which challenges would you like to include?\n" +
                 "(Use ID to identify the challenges. Type 'Stop' when you have enough challenges or 'All' for all challenges in the database)");
             ShowAllChallenges(new SyntaxErrorContext());
@@ -45,7 +52,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 foreach (int i in idList) { Console.Write(" {0}", i.ToString()); };
                 Console.WriteLine();
                 input = Console.ReadLine().ToLower();
-                if (input.Equals("stop")||input.Equals("all")||input.Count() >= elementCount) enough = !enough;
+                if (input.Equals("stop")||input.Equals("all")||idList.Count() >= elementCount) enough = !enough;
                 else
                 {
                     if(int.TryParse(input, out int choice))
@@ -70,8 +77,11 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 }
                 foreach(var challenge in challenges) 
                 {
-                    UsingChallenge usingChallenge = new UsingChallenge() { ChallengeID = challenge.ChallengeID };
-                    newGame.Profile.Challenges.Add(usingChallenge);
+                    if (challenge != null)
+                    {
+                        UsingChallenge usingChallenge = new UsingChallenge() { ChallengeID = challenge.ChallengeID };
+                        newGame.Profile.Challenges.Add(usingChallenge);
+                    }
                 }
 
                 db.GameProfiles.Add(newGame);
@@ -100,11 +110,13 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                     {
                         Console.WriteLine("-----------------------------------------------\n" +
                             "Game ID: {0}\n" +
-                            "Date of game created: {1}\n" +
-                            "Number of challenges in the profile: {2}\n" +
-                            "Number of those challenges completed: {3}\n" +
+                            "GameProfile name: {1}\n" +
+                            "Date of game created: {2}\n" +
+                            "Number of challenges in the profile: {3}\n" +
+                            "Number of those challenges completed: {4}\n" +
                             "-----------------------------------------------\n",
                             game.ID,
+                            game.GameProfileName,
                             game.DateCreated.ToShortDateString(),
                             game.Profile.Challenges.Count,
                             game.SaveGame.Challenges.Count);
@@ -614,7 +626,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                         challenge.ChallengeTask);
 
                     foreach (var answer in challenge.Answers.GetAll())
-                        Console.WriteLine("\t-{0}" + ((answer.Equals(challenge.Answers.Answer))?" (answer)":""), answer);
+                        Console.WriteLine("\t-{0}" + (answer.Equals(challenge.Answers.Answer)?" (answer)":""), answer);
 
                     Console.WriteLine("-----------------------------------------------\n");
                 }

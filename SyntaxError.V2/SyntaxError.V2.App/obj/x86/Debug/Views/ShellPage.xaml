@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:behaviors="using:SyntaxError.V2.App.Behaviors"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:helpers="using:SyntaxError.V2.App.Helpers"
     xmlns:views="using:SyntaxError.V2.App.Views"
@@ -24,6 +23,7 @@
                                                                      
                                                                
         IsSettingsVisible="True"
+        PaneDisplayMode="Top"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
         <winui:NavigationView.MenuItems>
             <!--
@@ -32,30 +32,18 @@
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
-            <winui:NavigationViewItem x:Uid="Shell_Main" Icon="Document" helpers:NavHelper.NavigateTo="views:MainPage" />
-            <winui:NavigationViewItem x:Uid="Shell_CreateChallenges" Icon="Document" helpers:NavHelper.NavigateTo="views:CreateChallengesPage" />
-            <winui:NavigationViewItem x:Uid="Shell_CreateObjects" Icon="Document" helpers:NavHelper.NavigateTo="views:CreateObjectsPage" />
+            <winui:NavigationViewItem x:Uid="Shell_Main" Icon="Home" helpers:NavHelper.NavigateTo="views:MainPage" />
+            <winui:NavigationViewItem x:Uid="Shell_CreateChallenges" Icon="OutlineStar" helpers:NavHelper.NavigateTo="views:CreateChallengesPage" />
+            <winui:NavigationViewItem x:Uid="Shell_CreateObjects" Icon="Library" helpers:NavHelper.NavigateTo="views:CreateObjectsPage" />
+            <winui:NavigationViewItem x:Uid="Shell_CreateCrew"  Icon="Contact" helpers:NavHelper.NavigateTo="views:CreateCrewPage" />
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>
-            <behaviors:NavigationViewHeaderBehavior x:ConnectionId='4'
-                                                                                >
-                <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <TextBlock
-                                Text="{Binding}"
-                                Style="{ThemeResource TitleTextBlockStyle}"
-                                Margin="{StaticResource SmallLeftRightMargin}" />
-                        </Grid>
-                    </DataTemplate>
-                </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-            </behaviors:NavigationViewHeaderBehavior>
             <ic:EventTriggerBehavior EventName="ItemInvoked">
-                <ic:InvokeCommandAction x:ConnectionId='5'                                                 />
+                <ic:InvokeCommandAction x:ConnectionId='4'                                                 />
             </ic:EventTriggerBehavior>
         </i:Interaction.Behaviors>
         <Grid>
-            <Frame x:ConnectionId='7' x:Name="shellFrame" />
+            <Frame x:ConnectionId='5' x:Name="shellFrame" />
         </Grid>
     </winui:NavigationView>
 </Page>

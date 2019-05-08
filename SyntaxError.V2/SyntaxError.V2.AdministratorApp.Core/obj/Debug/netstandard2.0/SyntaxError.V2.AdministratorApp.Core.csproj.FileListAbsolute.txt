@@ -1,9 +1,0 @@
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\obj\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.csproj.CoreCompileInputs.cache
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\obj\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.AssemblyInfoInputs.cache
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\obj\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.AssemblyInfo.cs
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\bin\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.deps.json
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\bin\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.dll
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\bin\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.pdb
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\obj\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.csprojAssemblyReference.cache
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\obj\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.dll
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.AdministratorApp.Core\obj\Debug\netstandard2.0\SyntaxError.V2.AdministratorApp.Core.pdb
