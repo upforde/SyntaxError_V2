@@ -56,6 +56,14 @@
                 </StackPanel>
             </StackPanel>
 
+            
+            <StackPanel>
+                <TextBlock
+                    Text="Configure database"
+                    Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <Button>DatabaseConfig ConsoleApp</Button>
+            </StackPanel>
+
             <TextBlock
                 x:Uid="Settings_About"
                 Style="{ThemeResource SubtitleTextBlockStyle}" />

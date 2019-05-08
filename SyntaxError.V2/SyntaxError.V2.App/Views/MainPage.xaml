@@ -36,7 +36,7 @@
                     <StackPanel Grid.Column="0"
                                 Grid.Row="0"
                                 BorderThickness="0, 0, 5, 0"
-                                BorderBrush="Black"
+                                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                                 Padding="15">
                         <TextBlock Text="Game Profiles" Style="{ThemeResource TitleTextBlockStyle}"/>
                     </StackPanel>
@@ -44,7 +44,7 @@
                     <StackPanel Grid.Column="0"
                                 Grid.Row="1"
                                 BorderThickness="0, 0, 5, 0"
-                                BorderBrush="Black">
+                                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                         
                         <ProgressBar x:Name="listViewProgressBar" IsIndeterminate="True"/>
 
@@ -74,7 +74,7 @@
                     <StackPanel Grid.Column="0"
                                 Grid.Row="2"
                                 BorderThickness="0, 0, 5, 0"
-                                BorderBrush="Black">
+                                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                         <StackPanel Orientation="Horizontal"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
@@ -110,7 +110,7 @@
                            Grid.Column="1"
                            Grid.RowSpan="3"
                            BorderThickness="5, 0, 0, 0"
-                           BorderBrush="Black">
+                           BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                         <PivotItem Header="Audience challenges">
                             <Grid>
                                 <ListView x:Name="AudienceChallengeList"

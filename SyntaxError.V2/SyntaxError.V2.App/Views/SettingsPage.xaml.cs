@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Diagnostics;
 using SyntaxError.V2.App.ViewModels;
 
 using Windows.UI.Xaml.Controls;
