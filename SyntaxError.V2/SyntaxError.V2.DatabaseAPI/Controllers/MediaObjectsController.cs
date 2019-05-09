@@ -13,16 +13,16 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OuterSourceObjectsController : ControllerBase
+    public class MediaObjectsController : ControllerBase
     {
         private readonly SyntaxErrorContext _context;
 
-        public OuterSourceObjectsController(SyntaxErrorContext context)
+        public MediaObjectsController(SyntaxErrorContext context)
         {
             _context = context;
         }
 
-        // GET: api/OuterSourceObjects/?type=Type
+        // GET: api/MediaObjects/?type=Type
         [HttpGet]
         public async Task<IActionResult> GetObjectsOfType([FromQuery]string type)
         {
@@ -41,7 +41,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(outerSourceObjects);
         }
 
-        // GET: api/OuterSourceObjects/5
+        // GET: api/MediaObjects/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOuterSourceObject([FromRoute] int id)
         {
@@ -60,7 +60,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(outerSourceObject);
         }
 
-        // PUT: api/OuterSourceObjects/5
+        // PUT: api/MediaObjects/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOuterSourceObject([FromRoute] int id, [FromBody] MediaObject outerSourceObject)
         {
@@ -95,7 +95,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/OuterSourceObjects
+        // POST: api/MediaObjects
         [HttpPost]
         public async Task<IActionResult> PostOuterSourceObject([FromBody] MediaObject outerSourceObject)
         {
@@ -110,7 +110,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return CreatedAtAction("GetOuterSourceObject", new { id = outerSourceObject.ID }, outerSourceObject);
         }
 
-        // DELETE: api/OuterSourceObjects/5
+        // DELETE: api/MediaObjects/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOuterSourceObject([FromRoute] int id)
         {

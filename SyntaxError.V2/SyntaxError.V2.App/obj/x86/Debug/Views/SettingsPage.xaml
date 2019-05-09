@@ -57,11 +57,11 @@
             </StackPanel>
 
             
-            <StackPanel>
+            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock
                     Text="Configure database"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <Button>DatabaseConfig ConsoleApp</Button>
+                <Button>DatabaseConfig ConsoleApp (under construction)</Button>
             </StackPanel>
 
             <TextBlock

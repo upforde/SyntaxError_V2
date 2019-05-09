@@ -47,16 +47,18 @@ namespace SyntaxError.V2.App.ViewModels
 
         internal async Task LoadGameProfilesFromDBAsync()
         {
-            var gameProfiles = await gameProfilesDataAccess.GetGameProfilesAsync();
-            foreach(GameProfile gameProfile in gameProfiles)
+            if (GameProfiles.Count == 0)
             {
-                GameProfiles.Add(new ListItemMainPage
+                var gameProfiles = await gameProfilesDataAccess.GetGameProfilesAsync();
+                foreach(GameProfile gameProfile in gameProfiles)
                 {
-                    GameProfile = gameProfile,
-                    DeleteCommandGameProfile = DeleteGameProfileCommand
-                });
-            }
-            ChallengeListList = new List<ObservableCollection<ListItemMainPage>>()
+                    GameProfiles.Add(new ListItemMainPage
+                    {
+                        GameProfile = gameProfile,
+                        DeleteCommandGameProfile = DeleteGameProfileCommand
+                    });
+                }
+                ChallengeListList = new List<ObservableCollection<ListItemMainPage>>()
             {
                 AudienceChallenges,
                 CrewChallenges,
@@ -67,6 +69,7 @@ namespace SyntaxError.V2.App.ViewModels
                 SilhouetteChallenges,
                 SologameChallenges
             };
+            }
         }
 
         internal async Task LoadChallengesFromDBAsync()

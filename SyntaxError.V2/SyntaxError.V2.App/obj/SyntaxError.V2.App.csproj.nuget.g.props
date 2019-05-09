@@ -42,6 +42,7 @@
     <Pkgruntime_win10-arm_Microsoft_Net_Native_SharedLibrary Condition=" '$(Pkgruntime_win10-arm_Microsoft_Net_Native_SharedLibrary)' == '' ">C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.native.sharedlibrary\2.2.3</Pkgruntime_win10-arm_Microsoft_Net_Native_SharedLibrary>
     <Pkgruntime_win10-arm_Microsoft_Net_Native_Compiler Condition=" '$(Pkgruntime_win10-arm_Microsoft_Net_Native_Compiler)' == '' ">C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.native.compiler\2.2.3</Pkgruntime_win10-arm_Microsoft_Net_Native_Compiler>
     <PkgMicrosoft_UI_Xaml Condition=" '$(PkgMicrosoft_UI_Xaml)' == '' ">C:\Users\upfor\.nuget\packages\microsoft.ui.xaml\2.0.181018004</PkgMicrosoft_UI_Xaml>
+    <PkgMicrosoft_Toolkit_Uwp_UI_Controls Condition=" '$(PkgMicrosoft_Toolkit_Uwp_UI_Controls)' == '' ">C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp.ui.controls\5.1.1</PkgMicrosoft_Toolkit_Uwp_UI_Controls>
     <PkgMicrosoft_Net_UWPCoreRuntimeSdk Condition=" '$(PkgMicrosoft_Net_UWPCoreRuntimeSdk)' == '' ">C:\Users\upfor\.nuget\packages\microsoft.net.uwpcoreruntimesdk\2.2.8</PkgMicrosoft_Net_UWPCoreRuntimeSdk>
     <PkgMicrosoft_Net_Native_Compiler Condition=" '$(PkgMicrosoft_Net_Native_Compiler)' == '' ">C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\2.2.3</PkgMicrosoft_Net_Native_Compiler>
   </PropertyGroup>

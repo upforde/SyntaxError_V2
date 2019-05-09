@@ -4,40 +4,115 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:models="using:SyntaxError.V2.App.Core.Models"
+    xmlns:challengeobjects="using:SyntaxError.V2.Modell.ChallengeObjects"
     Style="{StaticResource PageStyle}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
 
-    <Grid 
-        x:Name="ContentArea"
-        Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot
-            x:Name="Items">
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        Text="{Binding}"
-                        Style="{ThemeResource SubtitleTextBlockStyle}" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <PivotItem x:Uid="CreateObjects_PivotItem1">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
-
-                </Grid>
-            </PivotItem>
-            
-            <PivotItem x:Uid="CreateObjects_PivotItem2">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
-
-                </Grid>
-            </PivotItem>
-        </Pivot>
-    </Grid>
+    <Pivot x:Name="CreatreObjectsPivot">
+        <PivotItem Header="Games">
+            <Grid x:Name="GamesContentArea">
+                <controls:AdaptiveGridView
+                    ItemsSource="{x:Bind ViewModel.Games, Mode=OneWay}"
+                    Tapped="AdaptiveGridView_Tapped"
+                    StretchContentForSingleRow="False"
+                    SelectionMode="None"
+                    IsItemClickEnabled="True"
+                    Padding="{StaticResource MediumLeftRightMargin}"
+                    animations:Connected.ListItemElementName="itemThumbnail"
+                    animations:Connected.ListItemKey="animationKeyCreateObjects"
+                    DesiredWidth="180"
+                    ItemHeight="160">
+                    <controls:AdaptiveGridView.ItemTemplate>
+                        <DataTemplate x:DataType="challengeobjects:MediaObject">
+                            <Grid
+                                x:Name="itemThumbnail"
+                                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;" />
+                                    <TextBlock
+                                        Margin="{StaticResource XXSmallTopMargin}"
+                                        HorizontalAlignment="Center"
+                                        Text="{x:Bind Name}"
+                                        Style="{ThemeResource BodyTextStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:AdaptiveGridView.ItemTemplate>
+                </controls:AdaptiveGridView>
+            </Grid>
+        </PivotItem>
+        
+        <PivotItem Header="Images">
+            <Grid x:Name="ImagesContentArea">
+                <controls:AdaptiveGridView
+                    ItemsSource="{x:Bind ViewModel.Images, Mode=OneWay}"
+                    Tapped="AdaptiveGridView_Tapped"
+                    StretchContentForSingleRow="False"
+                    SelectionMode="None"
+                    IsItemClickEnabled="True"
+                    Padding="{StaticResource MediumLeftRightMargin}"
+                    animations:Connected.ListItemElementName="itemThumbnail"
+                    animations:Connected.ListItemKey="animationKeyCreateObjects"
+                    DesiredWidth="180"
+                    ItemHeight="160">
+                    <controls:AdaptiveGridView.ItemTemplate>
+                        <DataTemplate x:DataType="challengeobjects:MediaObject">
+                            <Grid
+                                x:Name="itemThumbnail"
+                                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
+                                    <TextBlock
+                                        Margin="{StaticResource XXSmallTopMargin}"
+                                        HorizontalAlignment="Center"
+                                        Text="{x:Bind Name}"
+                                        Style="{ThemeResource BodyTextStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:AdaptiveGridView.ItemTemplate>
+                </controls:AdaptiveGridView>
+            </Grid>
+        </PivotItem>
+        
+        <PivotItem Header="Songs">
+            <Grid x:Name="SongsContentArea">
+                <controls:AdaptiveGridView
+                    ItemsSource="{x:Bind ViewModel.Music, Mode=OneWay}"
+                    Tapped="AdaptiveGridView_Tapped"
+                    StretchContentForSingleRow="False"
+                    SelectionMode="None"
+                    IsItemClickEnabled="True"
+                    Padding="{StaticResource MediumLeftRightMargin}"
+                    animations:Connected.ListItemElementName="itemThumbnail"
+                    animations:Connected.ListItemKey="animationKeyCreateObjects"
+                    DesiredWidth="180"
+                    ItemHeight="160">
+                    <controls:AdaptiveGridView.ItemTemplate>
+                        <DataTemplate x:DataType="challengeobjects:MediaObject">
+                            <Grid
+                                x:Name="itemThumbnail"
+                                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
+                                    <TextBlock
+                                        Margin="{StaticResource XXSmallTopMargin}"
+                                        HorizontalAlignment="Center"
+                                        Text="{x:Bind Name}"
+                                        Style="{ThemeResource BodyTextStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:AdaptiveGridView.ItemTemplate>
+                </controls:AdaptiveGridView>
+            </Grid>
+        </PivotItem>
+    </Pivot>
 </Page>

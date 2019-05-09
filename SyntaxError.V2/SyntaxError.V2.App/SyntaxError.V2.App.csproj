@@ -98,6 +98,12 @@
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>5.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>5.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>5.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.0.181018004</Version>
     </PackageReference>
@@ -112,6 +118,7 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="DataAccess\Challenges.cs" />
     <Compile Include="DataAccess\GameProfiles.cs" />
+    <Compile Include="DataAccess\MediaObjects.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\ListItemMainPage.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
@@ -128,6 +135,7 @@
     <Compile Include="Services\WindowManagerService.cs" />
     <Compile Include="ViewModels\CreateChallengesViewModel.cs" />
     <Compile Include="ViewModels\CreateCrewViewModel.cs" />
+    <Compile Include="ViewModels\CreateObjectsDetailViewModel.cs" />
     <Compile Include="ViewModels\CreateObjectsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -137,6 +145,9 @@
     </Compile>
     <Compile Include="Views\CreateCrewPage.xaml.cs">
       <DependentUpon>CreateCrewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateObjectsDetailPage.xaml.cs">
+      <DependentUpon>CreateObjectsDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateObjectsPage.xaml.cs">
       <DependentUpon>CreateObjectsPage.xaml</DependentUpon>
@@ -183,6 +194,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CreateCrewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CreateObjectsDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
