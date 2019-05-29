@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
@@ -95,17 +96,48 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
         // POST: api/ChallengeBases
         [HttpPost]
-        public async Task<IActionResult> PostChallengeBase([FromBody] ChallengeBase challengeBase)
+        public async Task<IActionResult> PostChallengeBase([FromQuery] string type)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Challenges.Add(challengeBase);
+            
+            ChallengeBase challengeWithType;
+            switch (type)
+            {
+                case "AudienceChallenge":
+                    challengeWithType = new AudienceChallenge();
+                    break;
+                case "CrewChallenge":
+                    challengeWithType = new CrewChallenge();
+                    break;
+                case "MultipleChoiceChallenge":
+                    challengeWithType = new MultipleChoiceChallenge();
+                    break;
+                case "MusicChallenge":
+                    challengeWithType = new MusicChallenge();
+                    break;
+                case "QuizChallenge":
+                    challengeWithType = new QuizChallenge();
+                    break;
+                case "ScreenShotChallenge":
+                    challengeWithType = new ScreenshotChallenge();
+                    break;
+                case "SilhouetteChallenge":
+                    challengeWithType = new SilhouetteChallenge();
+                    break;
+                case "SologameChallenge":
+                    challengeWithType = new SologameChallenge();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            challengeWithType.ChallengeTask = "New Challenge";
+            _context.Challenges.Add(challengeWithType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetChallengeBase", new { id = challengeBase.ChallengeID }, challengeBase);
+            return CreatedAtAction("GetChallengeBase", new { id = challengeWithType.ChallengeID }, challengeWithType);
         }
 
         // DELETE: api/ChallengeBases/5

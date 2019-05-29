@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace SyntaxError.V2.App.Views
 {
@@ -62,7 +64,8 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Updates the edited entry in the Filtered list.</summary>
         private void UpdateList()
         {
-            Filtered.Where(x=>x.CrewMemberID == _storedMember.CrewMemberID).First().CrewTag = _storedMember.CrewTag;
+            var index = Filtered.IndexOf(Filtered.Where(cm => cm.CrewMemberID == _storedMember.CrewMemberID).First());
+            Filtered[index] = _storedMember;
         }
 
         /// <summary>Removes from Filtered list.</summary>
@@ -78,9 +81,14 @@ namespace SyntaxError.V2.App.Views
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void LoadCrewMembersFromDBAsync(object sender, RoutedEventArgs e)
         {
+            LoadingProgressBar.Visibility = Visibility.Visible;
+            CrewGrid.Visibility = Visibility.Collapsed;
+
             await ViewModel.LoadCrewMembersFromDBAsync();
             if(Task.WhenAll(ViewModel.LoadCrewMembersFromDBAsync()).IsCompletedSuccessfully)
             {
+                LoadingProgressBar.Visibility = Visibility.Collapsed;
+                CrewGrid.Visibility = Visibility.Visible;
                 RefreshList();
             }
         }
@@ -182,7 +190,6 @@ namespace SyntaxError.V2.App.Views
             ViewModel.EditCommand.Execute(_storedMember);
 
             var index = ViewModel.CrewMembers.IndexOf(ViewModel.CrewMembers.Where(c => c.CrewMemberID == _storedMember.CrewMemberID).First());
-
             ViewModel.CrewMembers[index] = _storedMember;
 
             BackButton_Click(sender, e);
@@ -218,47 +225,6 @@ namespace SyntaxError.V2.App.Views
         private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             FilterTheList(sender.Text);
-        }
-
-        private async void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker
-            {
-                ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary
-            };
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".jpeg");
-            picker.FileTypeFilter.Add(".png");
-            StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
-            {
-                // Application now has read/write access to the picked file
-                string lol;
-
-                string uri = "";
-                if (await ViewModel.ImagesDataAccess.PostImageAsync(file))
-                    uri = file.Name;
-
-                crewImage.Visibility = Visibility.Visible;
-                //crewImage.Source =
-                var imageBytes = await ViewModel.ImagesDataAccess.GetImageAsync(uri);
-
-                Windows.UI.Xaml.Media.Imaging.BitmapImage bmp = new Windows.UI.Xaml.Media.Imaging.BitmapImage();
-
-                using (var ms = new InMemoryRandomAccessStream(imageBytes))
-                {
-                    bmp.SetSource(ms);
-
-                }
-
-                lol = "123";
-            }
-            else
-            {
-                //this.textBlock.Text = "Operation cancelled.";
-                return;
-            }
         }
     }
 }

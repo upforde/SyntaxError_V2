@@ -14,6 +14,7 @@ namespace SyntaxError.V2.App.DataAccess
         readonly HttpClient _httpClient = new HttpClient();
         static readonly Uri MediaObjectsBaseUri = new Uri("http://localhost:51749/api/MediaObjects");
 
+
         /// <summary>Creates the media object asynchronous.</summary>
         /// <param name="param">The parameter.</param>
         /// <returns></returns>

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace SyntaxError.V2.App.ViewModels
 {
@@ -45,6 +42,8 @@ namespace SyntaxError.V2.App.ViewModels
                                                     }, param => param != null);
         }
 
+        /// <summary>Loads the game profiles from database asynchronous.</summary>
+        /// <returns></returns>
         internal async Task LoadGameProfilesFromDBAsync()
         {
             if (GameProfiles.Count == 0)
@@ -72,12 +71,16 @@ namespace SyntaxError.V2.App.ViewModels
             }
         }
 
+        /// <summary>Loads the challenges from database asynchronous.</summary>
+        /// <returns></returns>
         internal async Task LoadChallengesFromDBAsync()
         {
             var challenges = await challengesDataAccess.GetChallengesAsync();
             foreach (ChallengeBase challenge in challenges) ChallengesFromDB.Add(challenge);
         }
 
+        /// <summary>Puts the challenges in their respective lists.</summary>
+        /// <param name="profile">The profile.</param>
         internal void PutChallengesInLists(GameProfile profile)
         {
             foreach (var list in ChallengeListList)

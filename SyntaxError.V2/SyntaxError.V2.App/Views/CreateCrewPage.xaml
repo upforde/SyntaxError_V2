@@ -17,11 +17,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="15, 15, 15, 0">
+        <Grid x:Name="Title"
+              Grid.Row="0"
+              Padding="15, 15, 15, 0">
             <TextBlock Text="Crew Members" Style="{ThemeResource TitleTextBlockStyle}"/>
         </Grid>
 
-        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Padding="15, 0, 15, 0">
+        <Grid x:Name="ActionBar"
+              HorizontalAlignment="Stretch"
+              Grid.Row="1"
+              Padding="15, 0, 15, 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -42,7 +47,13 @@
                           Click="AddNewCrewMemberButton_Click"
                           HorizontalAlignment="Right"/>
         </Grid>
-                
+
+        <ProgressBar x:Name="LoadingProgressBar"
+                     Grid.Row="2"
+                     VerticalAlignment="Top"
+                     IsIndeterminate="True"
+                     Visibility="Collapsed"/>
+        
         <controls:AdaptiveGridView x:Name="CrewGrid"
                                    ItemsSource="{x:Bind Filtered}"
                                    Grid.Row="2"
@@ -64,7 +75,7 @@
                             <TextBlock
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Center"
-                                Text="{x:Bind CrewTag}"
+                                Text="{x:Bind CrewTag, Mode=OneWay}"
                                 Style="{ThemeResource BodyTextStyle}" />
                         </StackPanel>
                     </Grid>
@@ -72,7 +83,8 @@
             </controls:AdaptiveGridView.ItemTemplate>
         </controls:AdaptiveGridView>
 
-        <Grid x:Name="SmokeGrid" HorizontalAlignment="Stretch"
+        <Grid x:Name="SmokeGrid"
+              HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
               Visibility="Collapsed"
               Grid.Row="2"
@@ -83,52 +95,45 @@
                     
             <Grid HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Width="500" Height="300"
+                    Width="500" Height="Auto"
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                    BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                <StackPanel HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0"
-                                    VerticalAlignment="Center"
-                                    Height="300" Width="200"
-                                    Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
-                                    Tapped="StackPanel_Tapped">
-                            <Image x:Name="crewImage" Visibility="Collapsed"
-                                   Height="Auto"
-                                   Width="Auto"/>
-                            <TextBlock Text="&#xE710;" FontSize="50"
-                                        Padding="0, 125, 0, 0"
-                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                        HorizontalTextAlignment="Center"/>
-                        </Grid>
-                        <TextBox x:Name="SmokeGridText" Grid.Column="1"
-                                 FontSize="35"
-                                 Margin="12" VerticalAlignment="Center"
-                                 HorizontalAlignment="Left" />
-                        <Button Grid.Column="1"
-                                Click="BackButton_Click"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Right"
-                                Height="40"
-                                Width="40"
-                                Margin="5" 
-                                ToolTipService.ToolTip="Close"
-                                AutomationProperties.Name="Close">
-                            <Button.Content>
-                                <SymbolIcon Symbol="Clear" />
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </StackPanel>
+                <TextBox x:Name="SmokeGridText"
+                         Grid.Row="0"
+                         Grid.Column="0" 
+                         FontSize="35"
+                         Margin="12"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left" />
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Click="BackButton_Click"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Height="40"
+                        Width="40"
+                        Margin="5" 
+                        ToolTipService.ToolTip="Close"
+                        AutomationProperties.Name="Close">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Clear" />
+                    </Button.Content>
+                </Button>
                         
-                <StackPanel HorizontalAlignment="Right"
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Orientation="Horizontal">
                     <AppBarButton Label="Save"

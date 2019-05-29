@@ -4,38 +4,677 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:challenges="using:SyntaxError.V2.Modell.Challenges"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
     <Grid 
         x:Name="ContentArea"
         Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot
-            x:Name="Items">
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        Text="{Binding}"
-                        Style="{ThemeResource SubtitleTextBlockStyle}" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <PivotItem x:Uid="CreateChallenges_PivotItem1">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
-
+        <Pivot x:Name="ChallengeList"
+              Grid.Column="1"
+              Grid.RowSpan="3"
+              BorderThickness="5, 0, 0, 0"
+              BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <PivotItem Header="Audience challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.AudienceChallenges}"
+                                               Grid.Row="1"
+                                               StretchContentForSingleRow="False"
+                                               SelectionMode="None"
+                                               Padding="{StaticResource MediumLeftRightMargin}"
+                                               DesiredWidth="180"
+                                               ItemHeight="160"
+                                               animations:ReorderGridAnimation.Duration="300">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="challenges:AudienceChallenge">
+                                <Grid x:Name="connectedElement" 
+                                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+                                        <controls:ImageEx IsCacheEnabled="True"
+                                                          PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                          Source="{x:Bind Game.URI}"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind ChallengeTask}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind Game.Name}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
+                    <TextBlock x:Name="EmptyAudienceChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-            
-            <PivotItem x:Uid="CreateChallenges_PivotItem2">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
+           
+            <PivotItem Header="Crew challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.CrewChallenges}"
+                                               Grid.Row="1"
+                                               StretchContentForSingleRow="False"
+                                               SelectionMode="None"
+                                               Padding="{StaticResource MediumLeftRightMargin}"
+                                               DesiredWidth="180"
+                                               ItemHeight="160"
+                                               animations:ReorderGridAnimation.Duration="300">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="challenges:CrewChallenge">
+                                <Grid x:Name="connectedElement" 
+                                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+                                        <controls:ImageEx IsCacheEnabled="True"
+                                                          PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                          Source="{x:Bind Game.URI}"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind ChallengeTask}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind Game.Name}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind CrewMember.CrewTag}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
+                    <TextBlock x:Name="EmptyCrewChallenges"
+                               Grid.Row="0"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </Grid>
+            </PivotItem>
+           
+            <PivotItem Header="Multiple choice challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <ListView x:Name="MultipleChoiceChallengeList"
+                              Grid.Row="1"
+                              ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
+                              SelectionMode="Single"
+                              IsItemClickEnabled="True">
+                            
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
+                                        x:DataType="challenges:MultipleChoiceChallenge">
+                            <Grid x:Name="challengeItemGrid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                
+                                <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                            
+                </ListView>
+                    <TextBlock x:Name="EmptyMultipleChoiceChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </Grid>
+            </PivotItem>
+           
+            <PivotItem Header="Music challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.MusicChallenges}"
+                                               Grid.Row="1"
+                                               StretchContentForSingleRow="False"
+                                               SelectionMode="None"
+                                               Padding="{StaticResource MediumLeftRightMargin}"
+                                               DesiredWidth="180"
+                                               ItemHeight="160"
+                                               animations:ReorderGridAnimation.Duration="300">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="challenges:MusicChallenge">
+                                <Grid x:Name="connectedElement" 
+                                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+                                        <controls:ImageEx IsCacheEnabled="True"
+                                                          PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                          Source="{x:Bind Song.URI}"/>
+                                        <TextBlock
+                                            Margin="{StaticResource XXSmallTopMargin}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Bottom"
+                                            Text="{x:Bind Song.Name}"
+                                            Style="{ThemeResource BodyTextStyle}" />
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
+                    <TextBlock x:Name="EmptyMusicChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </Grid>
+            </PivotItem>
+           
+            <PivotItem Header="Quiz challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <ListView x:Name="QuizChallengeList"
+                              Grid.Row="1"
+                              ItemsSource="{x:Bind ViewModel.QuizChallenges}"
+                              SelectionMode="Single"
+                              IsItemClickEnabled="True">
+                            
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="QuizChallengeDataTemplate"
+                                        x:DataType="challenges:QuizChallenge">
+                            <Grid x:Name="challengeItemGrid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
+                                <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                            
+                </ListView>
+                    <TextBlock x:Name="EmptyQuizChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </Grid>
+            </PivotItem>
+           
+            <PivotItem Header="Screenshot challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.ScreenshotChallenges}"
+                                               Grid.Row="1"
+                                               StretchContentForSingleRow="False"
+                                               SelectionMode="None"
+                                               Padding="{StaticResource MediumLeftRightMargin}"
+                                               DesiredWidth="180"
+                                               ItemHeight="160"
+                                               animations:ReorderGridAnimation.Duration="300">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="challenges:ScreenshotChallenge">
+                                <Grid x:Name="connectedElement" 
+                                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+                                        <controls:ImageEx IsCacheEnabled="True"
+                                                          PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                          Source="{x:Bind Image.URI}"/>
+                                        <TextBlock
+                                            Margin="{StaticResource XXSmallTopMargin}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Bottom"
+                                            Text="{x:Bind Image.Name}"
+                                            Style="{ThemeResource BodyTextStyle}" />
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
+                    <TextBlock x:Name="EmptyScreenshotChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </Grid>
+            </PivotItem>
+                       
+            <PivotItem Header="Silhouette challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.SilhouetteChallenges}"
+                                               Grid.Row="1"
+                                               StretchContentForSingleRow="False"
+                                               SelectionMode="None"
+                                               Padding="{StaticResource MediumLeftRightMargin}"
+                                               DesiredWidth="180"
+                                               ItemHeight="160"
+                                               animations:ReorderGridAnimation.Duration="300">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="challenges:SilhouetteChallenge">
+                                <Grid x:Name="connectedElement" 
+                                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+                                        <controls:ImageEx IsCacheEnabled="True"
+                                                          PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                          Source="{x:Bind Image.URI}"/>
+                                        <TextBlock
+                                            Margin="{StaticResource XXSmallTopMargin}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Bottom"
+                                            Text="{x:Bind Image.Name}"
+                                            Style="{ThemeResource BodyTextStyle}" />
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
+                    <TextBlock x:Name="EmptySilhouetteChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </Grid>
+            </PivotItem>
+               
+            <PivotItem Header="Sologame challenges">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AutoSuggestBox PlaceholderText="Search" 
+                                            TextChanged="AutoSuggestBox_TextChanged"
+                                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                            QueryIcon="Find"
+                                            Width="300"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"/>
+                            <AppBarButton Label="Selection mode"
+                                          Click="AppBarButton_SelectionMode_Click">
+                                <AppBarButton.Icon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              Glyph="&#xE762;"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Delete Selected"
+                                          Icon="Delete"
+                                          Visibility="Collapsed"
+                                          Click="AppBarButton_DeleteSelected_Click"/>
+                        </StackPanel>
+                        
+                        <AppBarButton Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New Challenge"
+                                  Click="AddNewChallengeButton_Click"
+                                  HorizontalAlignment="Right"/>
+                    </Grid>
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.SologameChallenges}"
+                                               Grid.Row="1"
+                                               StretchContentForSingleRow="False"
+                                               SelectionMode="None"
+                                               Padding="{StaticResource MediumLeftRightMargin}"
+                                               DesiredWidth="180"
+                                               ItemHeight="160"
+                                               animations:ReorderGridAnimation.Duration="300">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="challenges:SologameChallenge">
+                                <Grid x:Name="connectedElement" 
+                                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+                                        <controls:ImageEx IsCacheEnabled="True"
+                                                          PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                          Source="{x:Bind Game.URI}"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind ChallengeTask}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                            <TextBlock
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Text="{x:Bind Game.Name}"
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
+                    <TextBlock x:Name="EmptySologameChallenges"
+                               Grid.Row="1"
+                               Text="No items found"
+                               Visibility="Collapsed"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
         </Pivot>

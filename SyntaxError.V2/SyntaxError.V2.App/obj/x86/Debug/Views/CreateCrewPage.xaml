@@ -17,17 +17,22 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="15, 15, 15, 0">
+        <Grid x:ConnectionId='3' x:Name="Title"
+              Grid.Row="0"
+              Padding="15, 15, 15, 0">
             <TextBlock Text="Crew Members" Style="{ThemeResource TitleTextBlockStyle}"/>
         </Grid>
 
-        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Padding="15, 0, 15, 0">
+        <Grid x:ConnectionId='4' x:Name="ActionBar"
+              HorizontalAlignment="Stretch"
+              Grid.Row="1"
+              Padding="15, 0, 15, 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
                     
-            <AutoSuggestBox x:ConnectionId='13' PlaceholderText="Search"
+            <AutoSuggestBox x:ConnectionId='14' PlaceholderText="Search"
                             Grid.Column="0"
                                                                     
                                                                           
@@ -36,14 +41,20 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"/>
                     
-            <AppBarButton x:ConnectionId='14' Grid.Column="1"
+            <AppBarButton x:ConnectionId='15' Grid.Column="1"
                           Icon="Add"
                           Label="New Crew Member"
                                                               
                           HorizontalAlignment="Right"/>
         </Grid>
-                
-        <controls:AdaptiveGridView x:ConnectionId='3' x:Name="CrewGrid"
+
+        <ProgressBar x:ConnectionId='5' x:Name="LoadingProgressBar"
+                     Grid.Row="2"
+                     VerticalAlignment="Top"
+                     IsIndeterminate="True"
+                     Visibility="Collapsed"/>
+        
+        <controls:AdaptiveGridView x:ConnectionId='6' x:Name="CrewGrid"
                                                                   
                                    Grid.Row="2"
                                    StretchContentForSingleRow="False"
@@ -56,15 +67,15 @@
                                    animations:ReorderGridAnimation.Duration="300">
             <controls:AdaptiveGridView.ItemTemplate>
                 <DataTemplate                                         >
-                    <Grid x:ConnectionId='11' x:Name="connectedElement" 
+                    <Grid x:ConnectionId='12' x:Name="connectedElement" 
                             Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE77B;"/>
-                            <TextBlock x:ConnectionId='12'
+                            <TextBlock x:ConnectionId='13'
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Center"
-                                                       
+                                                                    
                                 Style="{ThemeResource BodyTextStyle}" />
                         </StackPanel>
                     </Grid>
@@ -72,7 +83,8 @@
             </controls:AdaptiveGridView.ItemTemplate>
         </controls:AdaptiveGridView>
 
-        <Grid x:ConnectionId='4' x:Name="SmokeGrid" HorizontalAlignment="Stretch"
+        <Grid x:ConnectionId='7' x:Name="SmokeGrid"
+              HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
               Visibility="Collapsed"
               Grid.Row="2"
@@ -83,58 +95,51 @@
                     
             <Grid HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Width="500" Height="300"
+                    Width="500" Height="Auto"
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                    BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                <StackPanel HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid x:ConnectionId='7' Grid.Column="0"
-                                    VerticalAlignment="Center"
-                                    Height="300" Width="200"
-                                    Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
-                                                              >
-                            <Image x:ConnectionId='10' x:Name="crewImage" Visibility="Collapsed"
-                                   Height="Auto"
-                                   Width="Auto"/>
-                            <TextBlock Text="&#xE710;" FontSize="50"
-                                        Padding="0, 125, 0, 0"
-                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                        HorizontalTextAlignment="Center"/>
-                        </Grid>
-                        <TextBox x:ConnectionId='8' x:Name="SmokeGridText" Grid.Column="1"
-                                 FontSize="35"
-                                 Margin="12" VerticalAlignment="Center"
-                                 HorizontalAlignment="Left" />
-                        <Button x:ConnectionId='9' Grid.Column="1"
-                                                        
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Right"
-                                Height="40"
-                                Width="40"
-                                Margin="5" 
-                                ToolTipService.ToolTip="Close"
-                                AutomationProperties.Name="Close">
-                            <Button.Content>
-                                <SymbolIcon Symbol="Clear" />
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </StackPanel>
+                <TextBox x:ConnectionId='8' x:Name="SmokeGridText"
+                         Grid.Row="0"
+                         Grid.Column="0" 
+                         FontSize="35"
+                         Margin="12"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left" />
+                <Button x:ConnectionId='9' Grid.Row="0"
+                        Grid.Column="1"
+                                                
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Height="40"
+                        Width="40"
+                        Margin="5" 
+                        ToolTipService.ToolTip="Close"
+                        AutomationProperties.Name="Close">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Clear" />
+                    </Button.Content>
+                </Button>
                         
-                <StackPanel HorizontalAlignment="Right"
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Orientation="Horizontal">
-                    <AppBarButton x:ConnectionId='5' Label="Save"
+                    <AppBarButton x:ConnectionId='10' Label="Save"
                                     Icon="Accept"
                                                             />
-                    <AppBarButton x:ConnectionId='6' Label="Cancel"
+                    <AppBarButton x:ConnectionId='11' Label="Cancel"
                                     Icon="Cancel"
                                                             />
                 </StackPanel>

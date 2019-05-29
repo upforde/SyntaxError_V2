@@ -10,6 +10,7 @@ using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using Windows.Foundation.Metadata;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -36,6 +37,7 @@ namespace SyntaxError.V2.App.Views
 
         public UIElementCollection TheGrid;
         public Grid ActionGrid;
+        public ProgressBar LoadingProgressBar;
         public AdaptiveGridView Collection;
         public Grid SmokeGrid;
         public Grid SmokeGridChild;
@@ -109,9 +111,16 @@ namespace SyntaxError.V2.App.Views
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void LoadMediaObjectsFromDBAsync(object sender, RoutedEventArgs e)
         {
+            GetCurrentGrid();
+
+            LoadingProgressBar.Visibility = Visibility.Visible;
+            Collection.Visibility = Visibility.Collapsed;
+
             await ViewModel.LoadObjectsFromDBAsync();
             if(Task.WhenAll(ViewModel.LoadObjectsFromDBAsync()).IsCompletedSuccessfully)
             {
+                LoadingProgressBar.Visibility = Visibility.Collapsed;
+                Collection.Visibility = Visibility.Visible;
                 RefreshList();
             }
         }
@@ -185,7 +194,7 @@ namespace SyntaxError.V2.App.Views
             
             ConnectedAnimation animation = Collection.PrepareConnectedAnimation("forwardAnimation", _storedItem, "connectedElement");
             SmokeGrid.Visibility = Visibility.Visible;
-
+            ((SmokeGridChild.Children[0] as Grid).Children[0] as ImageEx).Source = _storedItem.URI;
             (SmokeGridChild.Children[1] as TextBox).Text = _storedItem.Name;
             animation.TryStart(SmokeGrid.Children[0]);
         }
@@ -256,8 +265,9 @@ namespace SyntaxError.V2.App.Views
         {
             TheGrid = ((CreateObjectsPivot.SelectedItem as PivotItem).Content as Grid).Children;
             ActionGrid = TheGrid[0] as Grid;
-            Collection = TheGrid[1] as AdaptiveGridView;
-            SmokeGrid = TheGrid[2] as Grid;
+            LoadingProgressBar = TheGrid[1] as ProgressBar;
+            Collection = TheGrid[2] as AdaptiveGridView;
+            SmokeGrid = TheGrid[3] as Grid;
             SmokeGridChild = ((SmokeGrid.Children[0] as Grid).Children[0] as StackPanel).Children[0] as Grid;
         }
 
@@ -362,6 +372,26 @@ namespace SyntaxError.V2.App.Views
             {
                 await Task.Run(() => ViewModel.DeleteCommand.Execute(itemToDelete));
                 Filtered.Remove(itemToDelete as MediaObject);
+            }
+        }
+
+        private async void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker
+            {
+                ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
+                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary
+            };
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                // Application now has read/write access to the picked file
+                _storedItem.URI = await ViewModel.ImagesDataAccess.PostImageAsync(file);
+                if (_storedItem.URI != null)
+                    ((SmokeGridChild.Children[0] as Grid).Children[0] as ImageEx).Source = _storedItem.URI;
             }
         }
     }

@@ -7,6 +7,8 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:challengeobjects="using:SyntaxError.V2.Modell.ChallengeObjects"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"  
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
@@ -42,9 +44,9 @@
                             </AppBarButton.Icon>
                         </AppBarButton>
                         
-                        <AppBarButton Visibility="Collapsed"
+                        <AppBarButton Label="Delete Selected"
                                       Icon="Delete"
-                                      Label="Delete Selected"
+                                      Visibility="Collapsed"
                                       Click="AppBarButton_DeleteSelected_Click"/>
                     </StackPanel>
                     
@@ -55,6 +57,11 @@
                                   HorizontalAlignment="Right"/>
                     
                 </Grid>
+
+                <ProgressBar Grid.Row="1"
+                             VerticalAlignment="Top"
+                             IsIndeterminate="True"
+                             Visibility="Collapsed"/>
                 
                 <controls:AdaptiveGridView ItemsSource="{x:Bind Filtered}"
                                            Grid.Row="1"
@@ -70,14 +77,18 @@
                             <Grid x:Name="connectedElement" 
                                   Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                   Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;"/>
+                                <Grid HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch">
+                                    <controls:ImageEx IsCacheEnabled="True"
+                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                      Source="{x:Bind URI}"/>
                                     <TextBlock
                                         Margin="{StaticResource XXSmallTopMargin}"
                                         HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
                                         Text="{x:Bind Name}"
                                         Style="{ThemeResource BodyTextStyle}" />
-                                </StackPanel>
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
@@ -93,7 +104,7 @@
                     
                     <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center"
-                          Width="500" Height="300"
+                          Width="500" Height="200"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
@@ -105,22 +116,23 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0"
+                                <Grid Grid.Column="0"
                                             VerticalAlignment="Center"
-                                            Height="300" Width="200"
-                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
-                                    <Image Visibility="Collapsed"/>
+                                            Height="200" Width="200"
+                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                            Tapped="StackPanel_Tapped">
+                                    <controls:ImageEx IsCacheEnabled="True"
+                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                     <TextBlock Text="&#xE710;" FontSize="50"
-                                               Padding="0, 125, 0, 0"
-                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                               HorizontalTextAlignment="Center"/>
-                                </StackPanel>
+                                                Padding="0, 75, 0, 0"
+                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                HorizontalTextAlignment="Center"/>
+                                </Grid>
                                 <TextBox Grid.Column="1"
                                          FontSize="35"
                                          Margin="12" VerticalAlignment="Center"
                                          HorizontalAlignment="Left" />
-                                <Button 
-                                        Grid.Column="1"
+                                <Button Grid.Column="1"
                                         Click="BackButton_Click"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
@@ -195,12 +207,16 @@
                                   HorizontalAlignment="Right"/>
                     
                 </Grid>
+
+                <ProgressBar Grid.Row="1"
+                             VerticalAlignment="Top"
+                             IsIndeterminate="True"
+                             Visibility="Collapsed"/>
                 
                 <controls:AdaptiveGridView ItemsSource="{x:Bind Filtered}"
                                            Grid.Row="1"
                                            StretchContentForSingleRow="False"
                                            SelectionMode="None"
-                                           IsItemClickEnabled="True"
                                            Tapped="AdaptiveGridView_Tapped"
                                            Padding="{StaticResource MediumLeftRightMargin}"
                                            DesiredWidth="180"
@@ -211,14 +227,18 @@
                             <Grid x:Name="connectedElement" 
                                   Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                   Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;"/>
+                                <Grid HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch">
+                                    <controls:ImageEx IsCacheEnabled="True"
+                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                      Source="{x:Bind URI}"/>
                                     <TextBlock
                                         Margin="{StaticResource XXSmallTopMargin}"
                                         HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
                                         Text="{x:Bind Name}"
                                         Style="{ThemeResource BodyTextStyle}" />
-                                </StackPanel>
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
@@ -234,7 +254,7 @@
                     
                     <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center"
-                          Width="500" Height="300"
+                          Width="500" Height="200"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
@@ -246,22 +266,23 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0"
+                                <Grid Grid.Column="0"
                                             VerticalAlignment="Center"
-                                            Height="300" Width="200"
-                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
-                                    <Image Visibility="Collapsed"/>
+                                            Height="200" Width="200"
+                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                            Tapped="StackPanel_Tapped">
+                                    <controls:ImageEx IsCacheEnabled="True"
+                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                     <TextBlock Text="&#xE710;" FontSize="50"
-                                               Padding="0, 125, 0, 0"
-                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                               HorizontalTextAlignment="Center"/>
-                                </StackPanel>
+                                                Padding="0, 75, 0, 0"
+                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                HorizontalTextAlignment="Center"/>
+                                </Grid>
                                 <TextBox Grid.Column="1"
                                          FontSize="35"
                                          Margin="12" VerticalAlignment="Center"
                                          HorizontalAlignment="Left" />
-                                <Button 
-                                        Grid.Column="1"
+                                <Button Grid.Column="1"
                                         Click="BackButton_Click"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
@@ -336,12 +357,16 @@
                                   HorizontalAlignment="Right"/>
                     
                 </Grid>
+
+                <ProgressBar Grid.Row="1"
+                             VerticalAlignment="Top"
+                             IsIndeterminate="True"
+                             Visibility="Collapsed"/>
                 
                 <controls:AdaptiveGridView ItemsSource="{x:Bind Filtered}"
                                            Grid.Row="1"
                                            StretchContentForSingleRow="False"
                                            SelectionMode="None"
-                                           IsItemClickEnabled="True"
                                            Tapped="AdaptiveGridView_Tapped"
                                            Padding="{StaticResource MediumLeftRightMargin}"
                                            DesiredWidth="180"
@@ -352,14 +377,18 @@
                             <Grid x:Name="connectedElement" 
                                   Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                   Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;"/>
+                                <Grid HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch">
+                                    <controls:ImageEx IsCacheEnabled="True"
+                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                      Source="{x:Bind URI}"/>
                                     <TextBlock
                                         Margin="{StaticResource XXSmallTopMargin}"
                                         HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
                                         Text="{x:Bind Name}"
                                         Style="{ThemeResource BodyTextStyle}" />
-                                </StackPanel>
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
@@ -375,7 +404,7 @@
                     
                     <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center"
-                          Width="500" Height="300"
+                          Width="500" Height="200"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
@@ -387,22 +416,23 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0"
+                                <Grid Grid.Column="0"
                                             VerticalAlignment="Center"
-                                            Height="300" Width="200"
-                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
-                                    <Image Visibility="Collapsed"/>
+                                            Height="200" Width="200"
+                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                            Tapped="StackPanel_Tapped">
+                                    <controls:ImageEx IsCacheEnabled="True"
+                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                     <TextBlock Text="&#xE710;" FontSize="50"
-                                               Padding="0, 125, 0, 0"
-                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                               HorizontalTextAlignment="Center"/>
-                                </StackPanel>
+                                                Padding="0, 75, 0, 0"
+                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                HorizontalTextAlignment="Center"/>
+                                </Grid>
                                 <TextBox Grid.Column="1"
                                          FontSize="35"
                                          Margin="12" VerticalAlignment="Center"
                                          HorizontalAlignment="Left" />
-                                <Button 
-                                        Grid.Column="1"
+                                <Button Grid.Column="1"
                                         Click="BackButton_Click"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"

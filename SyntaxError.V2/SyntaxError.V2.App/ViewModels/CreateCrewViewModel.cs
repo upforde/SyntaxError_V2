@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,10 +18,9 @@ namespace SyntaxError.V2.App.ViewModels
         /// <value>The delete command.</value>
         public ICommand DeleteCommand { get; set; }
         
-        public ObservableCollection<CrewMember> CrewMembers = new ObservableCollection<CrewMember>();
+        public List<CrewMember> CrewMembers = new List<CrewMember>();
         
         public CrewMembers CrewMembersDataAccess = new DataAccess.CrewMembers();
-        public Images ImagesDataAccess = new DataAccess.Images();
 
         public CreateCrewViewModel()
         {

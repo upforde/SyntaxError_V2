@@ -31,6 +31,7 @@ namespace SyntaxError.V2.App.ViewModels
         public List<Music> Music = new List<Music>();
         
         public MediaObjects MediaObjectsDataAccess = new MediaObjects();
+        public Images ImagesDataAccess = new DataAccess.Images();
 
         public CreateObjectsViewModel()
         {

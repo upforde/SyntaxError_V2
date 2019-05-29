@@ -17,7 +17,7 @@ namespace SyntaxError.V2.App.DataAccess
         /// <summary>Uploads the Image asynchronous.</summary>
         /// <param name="param">The parameter.</param>
         /// <returns></returns>
-        public async Task<bool> PostImageAsync(StorageFile file)
+        public async Task<string> PostImageAsync(StorageFile file)
         {
             var randomAccessStream = await file.OpenReadAsync();
             Stream stream = randomAccessStream.AsStreamForRead();
@@ -30,16 +30,8 @@ namespace SyntaxError.V2.App.DataAccess
                 content.Add(streamContent, "file");
                 
                 HttpResponseMessage result = await _httpClient.PostAsync(imageBaseUri, content);
-                return result.IsSuccessStatusCode;
+                return result.Headers.Location.ToString();
             }
-        }
-
-        public async Task<bool> GetImageAsync(string URI)
-        {
-            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(imageBaseUri, "Images/" + URI));
-
-            var file = result.Content;
-            return result.IsSuccessStatusCode;
         }
     }
 }
