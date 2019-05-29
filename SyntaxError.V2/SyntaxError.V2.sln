@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxError.V2.App", "Synta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxError.V2.App.Core", "SyntaxError.V2.App.Core\SyntaxError.V2.App.Core.csproj", "{86CE3FD0-782E-4E96-9F4D-9A1B7378ED9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxError.V2.ImageAPI", "SyntaxError.V2.ImageAPI\SyntaxError.V2.ImageAPI.csproj", "{682DB873-580A-4AF2-9BAF-8035C6D5902D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,22 @@ Global
 		{86CE3FD0-782E-4E96-9F4D-9A1B7378ED9E}.Release|x64.Build.0 = Release|Any CPU
 		{86CE3FD0-782E-4E96-9F4D-9A1B7378ED9E}.Release|x86.ActiveCfg = Release|Any CPU
 		{86CE3FD0-782E-4E96-9F4D-9A1B7378ED9E}.Release|x86.Build.0 = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|x64.Build.0 = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Debug|x86.Build.0 = Debug|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|ARM.Build.0 = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|x64.ActiveCfg = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|x64.Build.0 = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|x86.ActiveCfg = Release|Any CPU
+		{682DB873-580A-4AF2-9BAF-8035C6D5902D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

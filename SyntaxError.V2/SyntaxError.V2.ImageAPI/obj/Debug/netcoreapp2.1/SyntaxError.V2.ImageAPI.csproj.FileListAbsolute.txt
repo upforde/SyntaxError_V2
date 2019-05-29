@@ -1,0 +1,14 @@
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.deps.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.runtimeconfig.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.runtimeconfig.dev.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.dll
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.csprojAssemblyReference.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.csproj.CoreCompileInputs.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.RazorAssemblyInfo.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.RazorAssemblyInfo.cs
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.AssemblyInfoInputs.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.AssemblyInfo.cs
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.RazorTargetAssemblyInfo.cache
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.pdb
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.dll
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.ImageAPI.pdb

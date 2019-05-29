@@ -4,40 +4,143 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:challengeobjects="using:SyntaxError.V2.Modell.ChallengeObjects"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
-    <Grid 
-        x:Name="ContentArea"
-        Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot
-            x:Name="Items">
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        Text="{Binding}"
-                        Style="{ThemeResource SubtitleTextBlockStyle}" />
+    <Grid x:Name="CrewContentArea">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Padding="15, 15, 15, 0">
+            <TextBlock Text="Crew Members" Style="{ThemeResource TitleTextBlockStyle}"/>
+        </Grid>
+
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Padding="15, 0, 15, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+                    
+            <AutoSuggestBox PlaceholderText="Search"
+                            Grid.Column="0"
+                            TextChanged="AutoSuggestBox_TextChanged"
+                            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                            QueryIcon="Find"
+                            Width="300"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"/>
+                    
+            <AppBarButton Grid.Column="1"
+                          Icon="Add"
+                          Label="New Crew Member"
+                          Click="AddNewCrewMemberButton_Click"
+                          HorizontalAlignment="Right"/>
+        </Grid>
+                
+        <controls:AdaptiveGridView x:Name="CrewGrid"
+                                   ItemsSource="{x:Bind Filtered}"
+                                   Grid.Row="2"
+                                   StretchContentForSingleRow="False"
+                                   SelectionMode="None"
+                                   IsItemClickEnabled="True"
+                                   Tapped="AdaptiveGridView_Tapped"
+                                   Padding="{StaticResource MediumLeftRightMargin}"
+                                   DesiredWidth="180"
+                                   ItemHeight="160"
+                                   animations:ReorderGridAnimation.Duration="300">
+            <controls:AdaptiveGridView.ItemTemplate>
+                <DataTemplate x:DataType="challengeobjects:CrewMember">
+                    <Grid x:Name="connectedElement" 
+                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE77B;"/>
+                            <TextBlock
+                                Margin="{StaticResource XXSmallTopMargin}"
+                                HorizontalAlignment="Center"
+                                Text="{x:Bind CrewTag}"
+                                Style="{ThemeResource BodyTextStyle}" />
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <PivotItem x:Uid="CreateCrew_PivotItem1">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
+            </controls:AdaptiveGridView.ItemTemplate>
+        </controls:AdaptiveGridView>
 
-                </Grid>
-            </PivotItem>
-            
-            <PivotItem x:Uid="CreateCrew_PivotItem2">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
+        <Grid x:Name="SmokeGrid" HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Visibility="Collapsed"
+              Grid.Row="2"
+              Padding="15">
+            <Grid.Background>
+                <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+            </Grid.Background>
+                    
+            <Grid HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="500" Height="300"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-                </Grid>
-            </PivotItem>
-        </Pivot>
+                <StackPanel HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    Height="300" Width="200"
+                                    Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                    Tapped="StackPanel_Tapped">
+                            <Image x:Name="crewImage" Visibility="Collapsed"
+                                   Height="Auto"
+                                   Width="Auto"/>
+                            <TextBlock Text="&#xE710;" FontSize="50"
+                                        Padding="0, 125, 0, 0"
+                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                        HorizontalTextAlignment="Center"/>
+                        </Grid>
+                        <TextBox x:Name="SmokeGridText" Grid.Column="1"
+                                 FontSize="35"
+                                 Margin="12" VerticalAlignment="Center"
+                                 HorizontalAlignment="Left" />
+                        <Button Grid.Column="1"
+                                Click="BackButton_Click"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                Height="40"
+                                Width="40"
+                                Margin="5" 
+                                ToolTipService.ToolTip="Close"
+                                AutomationProperties.Name="Close">
+                            <Button.Content>
+                                <SymbolIcon Symbol="Clear" />
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+                        
+                <StackPanel HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                    <AppBarButton Label="Save"
+                                    Icon="Accept"
+                                    Click="SaveButton_Click"/>
+                    <AppBarButton Label="Cancel"
+                                    Icon="Cancel"
+                                    Click="BackButton_Click"/>
+                </StackPanel>
+            </Grid>
+                    
+        </Grid>
     </Grid>
+    
 </Page>

@@ -15,7 +15,6 @@ Styles\TextBlock.xbf
 SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml
 Views\CreateChallengesPage.xbf
 Views\CreateCrewPage.xbf
-Views\CreateObjectsDetailPage.xbf
 Views\CreateObjectsPage.xbf
 Views\MainPage.xbf
 Views\SettingsPage.xbf

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -97,17 +98,48 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
         // POST: api/MediaObjects
         [HttpPost]
-        public async Task<IActionResult> PostOuterSourceObject([FromBody] MediaObject outerSourceObject)
+        public async Task<IActionResult> PostOuterSourceObject([FromQuery] string type, [FromBody] MediaObject outerSourceObject)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Objects.Add(outerSourceObject);
+            MediaObject mediaObjectWithType;
+            switch (type)
+            {
+                case "Game":
+                    mediaObjectWithType = new Game
+                    {
+                        ID=outerSourceObject.ID,
+                        Name=outerSourceObject.Name,
+                        URI=outerSourceObject.URI
+                    };
+                    break;
+                case "Image":
+                    mediaObjectWithType = new Image
+                    {
+                        ID=outerSourceObject.ID,
+                        Name=outerSourceObject.Name,
+                        URI=outerSourceObject.URI
+                    };
+                    break;
+                case "Music":
+                    mediaObjectWithType = new Music
+                    {
+                        ID=outerSourceObject.ID,
+                        Name=outerSourceObject.Name,
+                        URI=outerSourceObject.URI
+                    };
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _context.Objects.Add(mediaObjectWithType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOuterSourceObject", new { id = outerSourceObject.ID }, outerSourceObject);
+            return CreatedAtAction("GetOuterSourceObject", new { id = mediaObjectWithType.ID }, outerSourceObject);
         }
 
         // DELETE: api/MediaObjects/5

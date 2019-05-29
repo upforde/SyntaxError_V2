@@ -145,9 +145,6 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateCrewPage.xbf">
       <PackagePath>Views\CreateCrewPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateObjectsDetailPage.xbf">
-      <PackagePath>Views\CreateObjectsDetailPage.xbf</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateObjectsPage.xbf">
       <PackagePath>Views\CreateObjectsPage.xbf</PackagePath>
     </AppxPackagedFile>

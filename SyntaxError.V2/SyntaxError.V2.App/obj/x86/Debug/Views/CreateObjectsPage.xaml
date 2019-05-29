@@ -4,37 +4,75 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:models="using:SyntaxError.V2.App.Core.Models"
     xmlns:challengeobjects="using:SyntaxError.V2.Modell.ChallengeObjects"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
 
-    <Pivot x:ConnectionId='2' x:Name="CreatreObjectsPivot">
+    <Pivot x:ConnectionId='2' x:Name="CreateObjectsPivot"                                                       >
         <PivotItem Header="Games">
-            <Grid x:ConnectionId='11' x:Name="GamesContentArea">
-                <controls:AdaptiveGridView x:ConnectionId='12'
-                                                                       
-                                                    
-                    StretchContentForSingleRow="False"
-                    SelectionMode="None"
-                    IsItemClickEnabled="True"
-                    Padding="{StaticResource MediumLeftRightMargin}"
-                    animations:Connected.ListItemElementName="itemThumbnail"
-                    animations:Connected.ListItemKey="animationKeyCreateObjects"
-                    DesiredWidth="180"
-                    ItemHeight="160">
+            <Grid x:ConnectionId='25' x:Name="GamesContentArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" Padding="0, 0, 0, 5">
+                        <AutoSuggestBox x:ConnectionId='33' PlaceholderText="Search" 
+                                                                                
+                                                                                      
+                                        QueryIcon="Find"
+                                        Width="300"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+                        
+                        <AppBarButton x:ConnectionId='34' Label="Selection mode"
+                                                                              >
+                            <AppBarButton.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                          Glyph="&#xE762;"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                        
+                        <AppBarButton x:ConnectionId='35' Visibility="Collapsed"
+                                      Icon="Delete"
+                                      Label="Delete Selected"
+                                                                               />
+                    </StackPanel>
+                    
+                    <AppBarButton x:ConnectionId='32' Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New object"
+                                                                  
+                                  HorizontalAlignment="Right"/>
+                    
+                </Grid>
+                
+                <controls:AdaptiveGridView x:ConnectionId='26'                                
+                                           Grid.Row="1"
+                                           StretchContentForSingleRow="False"
+                                           SelectionMode="None"
+                                                                           
+                                           Padding="{StaticResource MediumLeftRightMargin}"
+                                           DesiredWidth="180"
+                                           ItemHeight="160"
+                                           animations:ReorderGridAnimation.Duration="300">
                     <controls:AdaptiveGridView.ItemTemplate>
                         <DataTemplate                                          >
-                            <Grid x:ConnectionId='13'
-                                x:Name="itemThumbnail"
-                                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                            <Grid x:ConnectionId='30' x:Name="connectedElement" 
+                                  Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                  Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;" />
-                                    <TextBlock x:ConnectionId='14'
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;"/>
+                                    <TextBlock x:ConnectionId='31'
                                         Margin="{StaticResource XXSmallTopMargin}"
                                         HorizontalAlignment="Center"
                                                             
@@ -44,31 +82,138 @@
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
                 </controls:AdaptiveGridView>
+
+                <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="300"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Height="300" Width="200"
+                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
+                                    <Image Visibility="Collapsed"/>
+                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                               Padding="0, 125, 0, 0"
+                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                               HorizontalTextAlignment="Center"/>
+                                </StackPanel>
+                                <TextBox Grid.Column="1"
+                                         FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button x:ConnectionId='29' 
+                                        Grid.Column="1"
+                                                                
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton x:ConnectionId='27' Label="Save"
+                                          Icon="Accept"
+                                                                  />
+                            <AppBarButton x:ConnectionId='28' Label="Cancel"
+                                          Icon="Cancel"
+                                                                  />
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
             </Grid>
         </PivotItem>
         
         <PivotItem Header="Images">
-            <Grid x:ConnectionId='7' x:Name="ImagesContentArea">
-                <controls:AdaptiveGridView x:ConnectionId='8'
-                                                                        
-                                                    
-                    StretchContentForSingleRow="False"
-                    SelectionMode="None"
-                    IsItemClickEnabled="True"
-                    Padding="{StaticResource MediumLeftRightMargin}"
-                    animations:Connected.ListItemElementName="itemThumbnail"
-                    animations:Connected.ListItemKey="animationKeyCreateObjects"
-                    DesiredWidth="180"
-                    ItemHeight="160">
+            <Grid x:ConnectionId='14' x:Name="ImagesContentArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" Padding="0, 0, 0, 5">
+                        <AutoSuggestBox x:ConnectionId='22' PlaceholderText="Search" 
+                                                                                
+                                                                                      
+                                        QueryIcon="Find"
+                                        Width="300"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+                        
+                        <AppBarButton x:ConnectionId='23' Label="Selection mode"
+                                                                              >
+                            <AppBarButton.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                          Glyph="&#xE762;"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                        
+                        <AppBarButton x:ConnectionId='24' Visibility="Collapsed"
+                                      Icon="Delete"
+                                      Label="Delete Selected"
+                                                                               />
+                    </StackPanel>
+                    
+                    <AppBarButton x:ConnectionId='21' Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New object"
+                                                                  
+                                  HorizontalAlignment="Right"/>
+                    
+                </Grid>
+                
+                <controls:AdaptiveGridView x:ConnectionId='15'                                
+                                           Grid.Row="1"
+                                           StretchContentForSingleRow="False"
+                                           SelectionMode="None"
+                                           IsItemClickEnabled="True"
+                                                                           
+                                           Padding="{StaticResource MediumLeftRightMargin}"
+                                           DesiredWidth="180"
+                                           ItemHeight="160"
+                                           animations:ReorderGridAnimation.Duration="300">
                     <controls:AdaptiveGridView.ItemTemplate>
                         <DataTemplate                                          >
-                            <Grid x:ConnectionId='9'
-                                x:Name="itemThumbnail"
-                                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                            <Grid x:ConnectionId='19' x:Name="connectedElement" 
+                                  Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                  Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
-                                    <TextBlock x:ConnectionId='10'
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;"/>
+                                    <TextBlock x:ConnectionId='20'
                                         Margin="{StaticResource XXSmallTopMargin}"
                                         HorizontalAlignment="Center"
                                                             
@@ -78,31 +223,138 @@
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
                 </controls:AdaptiveGridView>
+
+                <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="300"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Height="300" Width="200"
+                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
+                                    <Image Visibility="Collapsed"/>
+                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                               Padding="0, 125, 0, 0"
+                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                               HorizontalTextAlignment="Center"/>
+                                </StackPanel>
+                                <TextBox Grid.Column="1"
+                                         FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button x:ConnectionId='18' 
+                                        Grid.Column="1"
+                                                                
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton x:ConnectionId='16' Label="Save"
+                                          Icon="Accept"
+                                                                  />
+                            <AppBarButton x:ConnectionId='17' Label="Cancel"
+                                          Icon="Cancel"
+                                                                  />
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
             </Grid>
         </PivotItem>
         
         <PivotItem Header="Songs">
             <Grid x:ConnectionId='3' x:Name="SongsContentArea">
-                <controls:AdaptiveGridView x:ConnectionId='4'
-                                                                       
-                                                    
-                    StretchContentForSingleRow="False"
-                    SelectionMode="None"
-                    IsItemClickEnabled="True"
-                    Padding="{StaticResource MediumLeftRightMargin}"
-                    animations:Connected.ListItemElementName="itemThumbnail"
-                    animations:Connected.ListItemKey="animationKeyCreateObjects"
-                    DesiredWidth="180"
-                    ItemHeight="160">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" Padding="0, 0, 0, 5">
+                        <AutoSuggestBox x:ConnectionId='11' PlaceholderText="Search" 
+                                                                                
+                                                                                      
+                                        QueryIcon="Find"
+                                        Width="300"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+                        
+                        <AppBarButton x:ConnectionId='12' Label="Selection mode"
+                                                                              >
+                            <AppBarButton.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                          Glyph="&#xE762;"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                        
+                        <AppBarButton x:ConnectionId='13' Visibility="Collapsed"
+                                      Icon="Delete"
+                                      Label="Delete Selected"
+                                                                               />
+                    </StackPanel>
+                    
+                    <AppBarButton x:ConnectionId='10' Grid.Column="1"
+                                  Icon="Add"
+                                  Label="New object"
+                                                                  
+                                  HorizontalAlignment="Right"/>
+                    
+                </Grid>
+                
+                <controls:AdaptiveGridView x:ConnectionId='4'                                
+                                           Grid.Row="1"
+                                           StretchContentForSingleRow="False"
+                                           SelectionMode="None"
+                                           IsItemClickEnabled="True"
+                                                                           
+                                           Padding="{StaticResource MediumLeftRightMargin}"
+                                           DesiredWidth="180"
+                                           ItemHeight="160"
+                                           animations:ReorderGridAnimation.Duration="300">
                     <controls:AdaptiveGridView.ItemTemplate>
                         <DataTemplate                                          >
-                            <Grid x:ConnectionId='5'
-                                x:Name="itemThumbnail"
-                                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                            <Grid x:ConnectionId='8' x:Name="connectedElement" 
+                                  Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                  Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
-                                    <TextBlock x:ConnectionId='6'
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7FC;"/>
+                                    <TextBlock x:ConnectionId='9'
                                         Margin="{StaticResource XXSmallTopMargin}"
                                         HorizontalAlignment="Center"
                                                             
@@ -112,6 +364,73 @@
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
                 </controls:AdaptiveGridView>
+
+                <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="300"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Height="300" Width="200"
+                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
+                                    <Image Visibility="Collapsed"/>
+                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                               Padding="0, 125, 0, 0"
+                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                               HorizontalTextAlignment="Center"/>
+                                </StackPanel>
+                                <TextBox Grid.Column="1"
+                                         FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button x:ConnectionId='7' 
+                                        Grid.Column="1"
+                                                                
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton x:ConnectionId='5' Label="Save"
+                                          Icon="Accept"
+                                                                  />
+                            <AppBarButton x:ConnectionId='6' Label="Cancel"
+                                          Icon="Cancel"
+                                                                  />
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
             </Grid>
         </PivotItem>
     </Pivot>

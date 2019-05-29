@@ -837,11 +837,11 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 case "show games":
                     ShowGameProfiles();
                     break;
-                case "remove game":
-                    RemoveGameProfile();
-                    break;
                 case "play":
                     Play();
+                    break;
+                case "remove game":
+                    RemoveGameProfile();
                     break;
                 case "show challenges":
                     ShowChallenges();
@@ -992,6 +992,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
             {
                 Console.WriteLine("What is the name of the {0}?", type);
                 outerSourceObject.Name = Console.ReadLine();
+                
                 Console.WriteLine("What is the path to the {0} picture?", type);
                 outerSourceObject.URI = Console.ReadLine();
 
@@ -1332,7 +1333,6 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                 return crewMember;
             }
         }
-
         
         /// <summary>Simulates the game.</summary>
         /// <param name="game">The game.</param>

@@ -117,7 +117,9 @@
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="DataAccess\Challenges.cs" />
+    <Compile Include="DataAccess\CrewMembers.cs" />
     <Compile Include="DataAccess\GameProfiles.cs" />
+    <Compile Include="DataAccess\Images.cs" />
     <Compile Include="DataAccess\MediaObjects.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\ListItemMainPage.cs" />
@@ -135,7 +137,6 @@
     <Compile Include="Services\WindowManagerService.cs" />
     <Compile Include="ViewModels\CreateChallengesViewModel.cs" />
     <Compile Include="ViewModels\CreateCrewViewModel.cs" />
-    <Compile Include="ViewModels\CreateObjectsDetailViewModel.cs" />
     <Compile Include="ViewModels\CreateObjectsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -145,9 +146,6 @@
     </Compile>
     <Compile Include="Views\CreateCrewPage.xaml.cs">
       <DependentUpon>CreateCrewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CreateObjectsDetailPage.xaml.cs">
-      <DependentUpon>CreateObjectsDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateObjectsPage.xaml.cs">
       <DependentUpon>CreateObjectsPage.xaml</DependentUpon>
@@ -194,10 +192,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CreateCrewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\CreateObjectsDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
