@@ -5,20 +5,22 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
+using SyntaxError.V2.App.Views;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
+using Windows.UI.Xaml.Controls;
 
 namespace SyntaxError.V2.App.ViewModels
 {
     public class MainViewModel : Observable
     {
-
+        public ICommand AdDGameProfileCommand { get; set; }
         public ICommand DeleteGameProfileCommand { get; set; }
 
         public List<ChallengeBase> ChallengesFromDB = new List<ChallengeBase>();
 
         public ObservableCollection<ListItemMainPage> GameProfiles { get; set; } = new ObservableCollection<ListItemMainPage>();
-        private GameProfiles gameProfilesDataAccess = new GameProfiles();
+        public GameProfiles GameProfilesDataAccess = new GameProfiles();
         
         public ObservableCollection<ListItemMainPage> AudienceChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
         public ObservableCollection<ListItemMainPage> CrewChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
@@ -29,15 +31,21 @@ namespace SyntaxError.V2.App.ViewModels
         public ObservableCollection<ListItemMainPage> SilhouetteChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
         public ObservableCollection<ListItemMainPage> SologameChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
 
-        public Challenges challengesDataAccess = new Challenges();
+        public Challenges ChallengesDataAccess = new Challenges();
 
         public List<ObservableCollection<ListItemMainPage>> ChallengeListList;
 
         public MainViewModel()
         {
+            AdDGameProfileCommand = new RelayCommand<GameProfile>(async param =>
+                                                    {
+                                                        param = await GameProfilesDataAccess.CreateNewGame(param);
+                                                        GameProfiles.Add(new ListItemMainPage{ GameProfile = param });
+                                                    }, param => param != null);
+
             DeleteGameProfileCommand = new RelayCommand<ListItemMainPage>(async param =>
                                                     {
-                                                        if (await gameProfilesDataAccess.DeleteGameProfileAsync(param.GameProfile))
+                                                        if (await GameProfilesDataAccess.DeleteGameProfileAsync(param.GameProfile))
                                                             GameProfiles.Remove(param);
                                                     }, param => param != null);
         }
@@ -48,7 +56,7 @@ namespace SyntaxError.V2.App.ViewModels
         {
             if (GameProfiles.Count == 0)
             {
-                var gameProfiles = await gameProfilesDataAccess.GetGameProfilesAsync();
+                var gameProfiles = await GameProfilesDataAccess.GetGameProfilesAsync();
                 foreach(GameProfile gameProfile in gameProfiles)
                 {
                     GameProfiles.Add(new ListItemMainPage
@@ -75,7 +83,7 @@ namespace SyntaxError.V2.App.ViewModels
         /// <returns></returns>
         internal async Task LoadChallengesFromDBAsync()
         {
-            var challenges = await challengesDataAccess.GetChallengesAsync();
+            var challenges = await ChallengesDataAccess.GetChallengesAsync();
             foreach (ChallengeBase challenge in challenges) ChallengesFromDB.Add(challenge);
         }
 

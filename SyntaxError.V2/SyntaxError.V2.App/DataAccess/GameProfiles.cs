@@ -14,6 +14,18 @@ namespace SyntaxError.V2.App.DataAccess
         readonly HttpClient _httpClient = new HttpClient();
         static readonly Uri gameProfilesBaseUri = new Uri("http://localhost:51749/api/GameProfiles");
 
+        public async Task<GameProfile> CreateNewGame(GameProfile param)
+        {
+            string json = await Task.Run(() => JsonConvert.SerializeObject(param));
+            
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage result = await _httpClient.PostAsync(gameProfilesBaseUri, content);
+
+            param.ID = int.Parse(result.Headers.Location.Segments.Last());
+
+            return param;
+        }
+
         public async Task<GameProfile[]> GetGameProfilesAsync()
         {
             HttpResponseMessage result = await _httpClient.GetAsync(gameProfilesBaseUri);

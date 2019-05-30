@@ -63,6 +63,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChallengeBase([FromRoute] int id, [FromBody] ChallengeBase challengeBase)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -72,7 +73,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             {
                 return BadRequest();
             }
-
+            
             _context.Entry(challengeBase).State = EntityState.Modified;
 
             try
@@ -121,7 +122,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
                 case "QuizChallenge":
                     challengeWithType = new QuizChallenge();
                     break;
-                case "ScreenShotChallenge":
+                case "ScreenshotChallenge":
                     challengeWithType = new ScreenshotChallenge();
                     break;
                 case "SilhouetteChallenge":
@@ -160,27 +161,32 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
                 case "MultipleChoiceChallenge":
                     var multipleChoiceChallenge = (QuestionChallenge) challengeBase;
                     var answers = _context.Answers.Find(multipleChoiceChallenge.AnswersID);
-                    _context.Answers.Remove(answers);
+                    if (answers != null)
+                        _context.Answers.Remove(answers);
                     break;
                 case "MusicChallenge":
                     var musicChallenge = (MusicChallenge) challengeBase;
                     var song = _context.Objects.Find(musicChallenge.SongID);
-                    _context.Objects.Remove(song);
+                    if (song != null)
+                        _context.Objects.Remove(song);
                     break;
                 case "QuizChallenge":
                     var quizChallenge = (QuestionChallenge) challengeBase;
                     var answer = _context.Answers.Find(quizChallenge.AnswersID);
-                    _context.Answers.Remove(answer);
+                    if (answer != null)
+                        _context.Answers.Remove(answer);
                     break;
                 case "ScreenshotChallenge":
                     var screenshotChallenge = (ImageChallenge) challengeBase;
                     var screenshot = _context.Objects.Find(screenshotChallenge.ImageID);
-                    _context.Objects.Remove(screenshot);
+                    if (screenshot != null)
+                        _context.Objects.Remove(screenshot);
                     break;
                 case "SilhouetteChallenge":
                     var silhouetteChallenge = (ImageChallenge) challengeBase;
                     var silhouette = _context.Objects.Find(silhouetteChallenge.ImageID);
-                    _context.Objects.Remove(silhouette);
+                    if (silhouette != null)
+                        _context.Objects.Remove(silhouette);
                     break;
                 default:
                     break;

@@ -31,7 +31,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -64,7 +64,8 @@
                                                Padding="{StaticResource MediumLeftRightMargin}"
                                                DesiredWidth="180"
                                                ItemHeight="160"
-                                               animations:ReorderGridAnimation.Duration="300">
+                                               animations:ReorderGridAnimation.Duration="300"
+                                               Tapped="ChallengeList_Tapped">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate x:DataType="challenges:AudienceChallenge">
                                 <Grid x:Name="connectedElement" 
@@ -94,6 +95,56 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptyAudienceChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -118,7 +169,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -151,7 +202,8 @@
                                                Padding="{StaticResource MediumLeftRightMargin}"
                                                DesiredWidth="180"
                                                ItemHeight="160"
-                                               animations:ReorderGridAnimation.Duration="300">
+                                               animations:ReorderGridAnimation.Duration="300"
+                                               Tapped="ChallengeList_Tapped">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate x:DataType="challenges:CrewChallenge">
                                 <Grid x:Name="connectedElement" 
@@ -187,6 +239,56 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptyCrewChallenges"
                                Grid.Row="0"
                                Text="No items found"
@@ -211,7 +313,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -241,12 +343,13 @@
                               Grid.Row="1"
                               ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
                               SelectionMode="Single"
-                              IsItemClickEnabled="True">
+                              IsItemClickEnabled="True"
+                              Tapped="ChallengeList_Tapped">
                             
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
                                         x:DataType="challenges:MultipleChoiceChallenge">
-                            <Grid x:Name="challengeItemGrid">
+                            <Grid x:Name="connectedElement">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -265,6 +368,56 @@
                     </ListView.ItemTemplate>
                             
                 </ListView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptyMultipleChoiceChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -289,7 +442,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -322,7 +475,8 @@
                                                Padding="{StaticResource MediumLeftRightMargin}"
                                                DesiredWidth="180"
                                                ItemHeight="160"
-                                               animations:ReorderGridAnimation.Duration="300">
+                                               animations:ReorderGridAnimation.Duration="300"
+                                               Tapped="ChallengeList_Tapped">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate x:DataType="challenges:MusicChallenge">
                                 <Grid x:Name="connectedElement" 
@@ -344,6 +498,56 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptyMusicChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -368,7 +572,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -398,12 +602,13 @@
                               Grid.Row="1"
                               ItemsSource="{x:Bind ViewModel.QuizChallenges}"
                               SelectionMode="Single"
-                              IsItemClickEnabled="True">
+                              IsItemClickEnabled="True"
+                              Tapped="ChallengeList_Tapped">
                             
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="QuizChallengeDataTemplate"
                                         x:DataType="challenges:QuizChallenge">
-                            <Grid x:Name="challengeItemGrid">
+                            <Grid x:Name="connectedElement">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -422,6 +627,56 @@
                     </ListView.ItemTemplate>
                             
                 </ListView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptyQuizChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -446,7 +701,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -479,7 +734,8 @@
                                                Padding="{StaticResource MediumLeftRightMargin}"
                                                DesiredWidth="180"
                                                ItemHeight="160"
-                                               animations:ReorderGridAnimation.Duration="300">
+                                               animations:ReorderGridAnimation.Duration="300"
+                                               Tapped="ChallengeList_Tapped">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate x:DataType="challenges:ScreenshotChallenge">
                                 <Grid x:Name="connectedElement" 
@@ -501,6 +757,56 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptyScreenshotChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -525,7 +831,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -558,7 +864,8 @@
                                                Padding="{StaticResource MediumLeftRightMargin}"
                                                DesiredWidth="180"
                                                ItemHeight="160"
-                                               animations:ReorderGridAnimation.Duration="300">
+                                               animations:ReorderGridAnimation.Duration="300"
+                                               Tapped="ChallengeList_Tapped">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate x:DataType="challenges:SilhouetteChallenge">
                                 <Grid x:Name="connectedElement" 
@@ -580,6 +887,56 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptySilhouetteChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -604,7 +961,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -637,7 +994,8 @@
                                                Padding="{StaticResource MediumLeftRightMargin}"
                                                DesiredWidth="180"
                                                ItemHeight="160"
-                                               animations:ReorderGridAnimation.Duration="300">
+                                               animations:ReorderGridAnimation.Duration="300"
+                                               Tapped="ChallengeList_Tapped">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate x:DataType="challenges:SologameChallenge">
                                 <Grid x:Name="connectedElement" 
@@ -667,6 +1025,56 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    <Grid HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Collapsed"
+                      Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                    </Grid.Background>
+                    
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="500" Height="200"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <Grid>
+                                <TextBox FontSize="35"
+                                         Margin="12" VerticalAlignment="Center"
+                                         HorizontalAlignment="Left" />
+                                <Button Grid.Column="1"
+                                        Click="BackButton_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Height="40"
+                                        Width="40"
+                                        Margin="5" 
+                                        ToolTipService.ToolTip="Close"
+                                        AutomationProperties.Name="Close">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Clear" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <AppBarButton Label="Save"
+                                          Icon="Accept"
+                                          Click="SaveButton_Click"/>
+                            <AppBarButton Label="Cancel"
+                                          Icon="Cancel"
+                                          Click="BackButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
                     <TextBlock x:Name="EmptySologameChallenges"
                                Grid.Row="1"
                                Text="No items found"

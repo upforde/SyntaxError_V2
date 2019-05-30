@@ -229,4 +229,12 @@
     <value>New Game</value>
     <comment>Second Pivot item title for Main</comment>
   </data>
+  <data name="Shell_Game.Content" xml:space="preserve">
+    <value>Game</value>
+    <comment>Navigation view item name for Game</comment>
+  </data>
+  <data name="Shell_Admin.Content" xml:space="preserve">
+    <value>Admin</value>
+    <comment>Navigation view item name for Admin</comment>
+  </data>
 </root>

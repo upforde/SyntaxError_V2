@@ -13,471 +13,448 @@
     NavigationCacheMode="Enabled">
     <Grid x:ConnectionId='2' 
         x:Name="ContentArea"
-        Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot x:ConnectionId='3'
-            x:Name="Items">
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        Text="{Binding}"
-                        Style="{ThemeResource SubtitleTextBlockStyle}" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <PivotItem x:Uid="Main_PivotItem1">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        Margin="5, 5, 5, 0"
+        Padding="0, 0, 0, 5"
+        Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="8*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
-                    <!--Top text-->
-                    <StackPanel Grid.Column="0"
-                                Grid.Row="0"
-                                BorderThickness="0, 0, 5, 0"
-                                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                                Padding="15">
-                        <TextBlock Text="Game Profiles" Style="{ThemeResource TitleTextBlockStyle}"/>
-                    </StackPanel>
-                    <!--The GameProfile list-->
-                    <StackPanel Grid.Column="0"
-                                Grid.Row="1"
-                                BorderThickness="0, 0, 5, 0"
-                                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--Top text-->
+        <StackPanel Grid.Column="0"
+                    Grid.Row="0"
+                    BorderThickness="0, 0, 5, 0"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Padding="15">
+            <TextBlock Text="Game Profiles" Style="{ThemeResource TitleTextBlockStyle}"/>
+        </StackPanel>
+        <!--The GameProfile list-->
+        <StackPanel Grid.Column="0"
+                    Grid.Row="1"
+                    BorderThickness="0, 0, 5, 0"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                         
-                        <ProgressBar x:ConnectionId='54' x:Name="listViewProgressBar" IsIndeterminate="True"/>
+            <ProgressBar x:ConnectionId='52' x:Name="listViewProgressBar" IsIndeterminate="True"/>
 
-                        <ListView x:ConnectionId='55' x:Name="GameProfilesList"
-                                                                               
-                                  SelectionMode="Single"
-                                                                                      >
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="SingleLineDataTemplate"
-                                                                                   >
-                                    <StackPanel x:ConnectionId='56'>
-                                        <TextBlock x:ConnectionId='57'                                            
-                                                   Style="{ThemeResource BaseTextBlockStyle}"
-                                                   Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+            <ListView x:ConnectionId='53' x:Name="GameProfilesList"
+                                                                     
+                        SelectionMode="Single"
+                                                                            >
+                <ListView.ItemTemplate>
+                    <DataTemplate x:Name="SingleLineDataTemplate"
+                                                                         >
+                        <StackPanel x:ConnectionId='54'>
+                            <TextBlock x:ConnectionId='55'                                            
+                                        Style="{ThemeResource BaseTextBlockStyle}"
+                                        Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
                                         
-                                        <TextBlock x:ConnectionId='58'                                                                         
-                                                   Style="{ThemeResource BodyTextBlockStyle}"
-                                                   Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Left"/>
-                                    </StackPanel>
+                            <TextBlock x:ConnectionId='56'                                                                         
+                                        Style="{ThemeResource BodyTextBlockStyle}"
+                                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <!--Bottom AppBarButtons-->
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    BorderThickness="0, 0, 5, 0"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Padding="0, 0, 5, 0">
+                <AppBarButton x:ConnectionId='48' x:Name="PlayButton"
+                              IsEnabled="False"
+                              IsTabStop="False"
+                              Icon="Play"
+                              Label="Play"
+                                                            />
+                <AppBarButton x:ConnectionId='49' IsTabStop="False"
+                              Icon="Add"
+                              Label="Add"
+                              Visibility="Visible"
+                                                           />
+                <AppBarButton x:ConnectionId='50' IsEnabled="False" IsTabStop="False"
+                              Icon="Edit"
+                              Label="Edit"
+                              Visibility="Visible"
+                                                                                   
+                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                <AppBarButton x:ConnectionId='51' IsTabStop="False"
+                              Icon="Delete"
+                              Label="Delete"
+                              Visibility="Visible"
+                                                                                   
+                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+            </StackPanel>
+        </StackPanel>
+        <!--The Challenge pivot-->
+        <Pivot x:ConnectionId='3' x:Name="ChallengeList"
+                Grid.Column="1"
+                Grid.RowSpan="3"
+                BorderThickness="5, 0, 0, 0"
+                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <PivotItem Header="Audience challenges">
+                    <Grid Padding="5">
+                        <controls:AdaptiveGridView x:ConnectionId='42'                                                    
+                                                    Grid.Row="1"
+                                                    StretchContentForSingleRow="False"
+                                                    SelectionMode="None"
+                                                    Padding="{StaticResource MediumLeftRightMargin}"
+                                                    DesiredWidth="180"
+                                                    ItemHeight="160"
+                                                    animations:ReorderGridAnimation.Duration="300">
+                            <controls:AdaptiveGridView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='44' x:Name="connectedElement" 
+                                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                        <Grid HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                            <controls:ImageEx x:ConnectionId='45' IsCacheEnabled="True"
+                                                                PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                                                                            />
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock x:ConnectionId='46'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                                   
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                                <TextBlock x:ConnectionId='47'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                               
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+                        <TextBlock x:ConnectionId='43' x:Name="EmptyAudienceChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
+           
+                <PivotItem Header="Crew challenges">
+                    <Grid Padding="5">
+                        <controls:AdaptiveGridView x:ConnectionId='35'                                                
+                                                    Grid.Row="1"
+                                                    StretchContentForSingleRow="False"
+                                                    SelectionMode="None"
+                                                    Padding="{StaticResource MediumLeftRightMargin}"
+                                                    DesiredWidth="180"
+                                                    ItemHeight="160"
+                                                    animations:ReorderGridAnimation.Duration="300">
+                            <controls:AdaptiveGridView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='37' x:Name="connectedElement" 
+                                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                        <Grid HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                            <controls:ImageEx x:ConnectionId='38' IsCacheEnabled="True"
+                                                                PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                                                                        />
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock x:ConnectionId='39'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                               
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                                <TextBlock x:ConnectionId='40'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                           
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                                <TextBlock x:ConnectionId='41'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                                    
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+                        <TextBlock x:ConnectionId='36' x:Name="EmptyCrewChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
+           
+                <PivotItem Header="Multiple choice challenges">
+                    <Grid Padding="5">
+                        <ListView x:ConnectionId='30' x:Name="MultipleChoiceChallengeList"
+                                                                                         
+                                SelectionMode="None"
+                                IsItemClickEnabled="True">
+                            
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
+                                                                                     >
+                                    <Grid x:ConnectionId='32' x:Name="challengeItemGrid">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock x:ConnectionId='33' Grid.Row="0"                                                      
+                                                    HorizontalAlignment="Stretch"
+                                                    Style="{ThemeResource SubheaderTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock x:ConnectionId='34' Grid.Row="1"                                                       
+                                                    HorizontalAlignment="Stretch"
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackPanel>
-                    <!--Bottom AppBarButtons-->
-                    <StackPanel Grid.Column="0"
-                                Grid.Row="2"
-                                BorderThickness="0, 0, 5, 0"
-                                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Center"
+                        <TextBlock x:ConnectionId='31' x:Name="EmptyMultipleChoiceChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
                                     HorizontalAlignment="Center"
-                                    Padding="0, 0, 5, 0">
-                            <AppBarButton x:ConnectionId='50' IsTabStop="False"
-                                          Icon="Play"
-                                          Label="Play"
-                                          Visibility="Visible"
-                                                                                               
-                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                            <AppBarButton x:ConnectionId='51' IsTabStop="False"
-                                          Icon="Add"
-                                          Label="Add"
-                                          Visibility="Visible"
-                                                                                               
-                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                            <AppBarButton x:ConnectionId='52' IsTabStop="False"
-                                          Icon="Edit"
-                                          Label="Edit"
-                                          Visibility="Visible"
-                                                                                               
-                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                            <AppBarButton x:ConnectionId='53' IsTabStop="False"
-                                          Icon="Delete"
-                                          Label="Delete"
-                                          Visibility="Visible"
-                                                                                               
-                                          CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <!--The Challenge pivot-->
-                    <Pivot x:ConnectionId='5' x:Name="ChallengeList"
-                            Grid.Column="1"
-                            Grid.RowSpan="3"
-                            BorderThickness="5, 0, 0, 0"
-                            BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        <PivotItem Header="Audience challenges">
-                            <Grid Padding="5">
-                                <controls:AdaptiveGridView x:ConnectionId='44'                                                    
-                                                            Grid.Row="1"
-                                                            StretchContentForSingleRow="False"
-                                                            SelectionMode="None"
-                                                            Padding="{StaticResource MediumLeftRightMargin}"
-                                                            DesiredWidth="180"
-                                                            ItemHeight="160"
-                                                            animations:ReorderGridAnimation.Duration="300">
-                                    <controls:AdaptiveGridView.ItemTemplate>
-                                        <DataTemplate                                      >
-                                            <Grid x:ConnectionId='46' x:Name="connectedElement" 
-                                                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                                <Grid HorizontalAlignment="Stretch"
-                                                        VerticalAlignment="Stretch">
-                                                    <controls:ImageEx x:ConnectionId='47' IsCacheEnabled="True"
-                                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
-                                                                                                                    />
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock x:ConnectionId='48'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                           
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                        <TextBlock x:ConnectionId='49'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                       
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                    </StackPanel>
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
-                                <TextBlock x:ConnectionId='45' x:Name="EmptyAudienceChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
            
-                        <PivotItem Header="Crew challenges">
-                            <Grid Padding="5">
-                                <controls:AdaptiveGridView x:ConnectionId='37'                                                
-                                                            Grid.Row="1"
-                                                            StretchContentForSingleRow="False"
-                                                            SelectionMode="None"
-                                                            Padding="{StaticResource MediumLeftRightMargin}"
-                                                            DesiredWidth="180"
-                                                            ItemHeight="160"
-                                                            animations:ReorderGridAnimation.Duration="300">
-                                    <controls:AdaptiveGridView.ItemTemplate>
-                                        <DataTemplate                                      >
-                                            <Grid x:ConnectionId='39' x:Name="connectedElement" 
-                                                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                                <Grid HorizontalAlignment="Stretch"
-                                                        VerticalAlignment="Stretch">
-                                                    <controls:ImageEx x:ConnectionId='40' IsCacheEnabled="True"
-                                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
-                                                                                                                />
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock x:ConnectionId='41'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                       
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                        <TextBlock x:ConnectionId='42'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                   
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                        <TextBlock x:ConnectionId='43'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                            
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                    </StackPanel>
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
-                                <TextBlock x:ConnectionId='38' x:Name="EmptyCrewChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
-           
-                        <PivotItem Header="Multiple choice challenges">
-                            <Grid Padding="5">
-                                <ListView x:ConnectionId='32' x:Name="MultipleChoiceChallengeList"
-                                                                                                 
-                                        SelectionMode="Single"
-                                        IsItemClickEnabled="True">
-                            
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
-                                                                                             >
-                                            <Grid x:ConnectionId='34' x:Name="challengeItemGrid">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock x:ConnectionId='35' Grid.Row="0"                                                      
-                                                           HorizontalAlignment="Stretch"
-                                                           Style="{ThemeResource SubheaderTextBlockStyle}"
-                                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                                <TextBlock x:ConnectionId='36' Grid.Row="1"                                                       
-                                                           HorizontalAlignment="Stretch"
-                                                           Style="{ThemeResource BodyTextBlockStyle}"
-                                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                                <TextBlock x:ConnectionId='33' x:Name="EmptyMultipleChoiceChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
-           
-                        <PivotItem Header="Music challenges">
-                            <Grid Padding="5">
-                                <controls:AdaptiveGridView x:ConnectionId='27'                                                 
-                                                           Grid.Row="1"
-                                                           StretchContentForSingleRow="False"
-                                                           SelectionMode="None"
-                                                           Padding="{StaticResource MediumLeftRightMargin}"
-                                                           DesiredWidth="180"
-                                                           ItemHeight="160"
-                                                           animations:ReorderGridAnimation.Duration="300">
-                                    <controls:AdaptiveGridView.ItemTemplate>
-                                        <DataTemplate                                      >
-                                            <Grid x:ConnectionId='29' x:Name="connectedElement" 
-                                                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                                <Grid HorizontalAlignment="Stretch"
-                                                      VerticalAlignment="Stretch">
-                                                    <controls:ImageEx x:ConnectionId='30' IsCacheEnabled="True"
-                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
-                                                                                                               />
-                                                    <TextBlock x:ConnectionId='31'
-                                                        Margin="{StaticResource XXSmallTopMargin}"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Bottom"
-                                                                                                
-                                                        Style="{ThemeResource BodyTextStyle}" />
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
-                                <TextBlock x:ConnectionId='28' x:Name="EmptyMusicChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
-           
-                        <PivotItem Header="Quiz challenges">
-                            <Grid Padding="5">
-                                <ListView x:ConnectionId='22' x:Name="QuizChallengeList"
-                                                                                       
-                                        SelectionMode="Single"
-                                        IsItemClickEnabled="True">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate x:Name="QuizChallengeDataTemplate"
-                                                                                         >
-                                        <Grid x:ConnectionId='24' x:Name="challengeItemGrid">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-                                            <TextBlock x:ConnectionId='25' Grid.Row="0"                                            
-                                                       HorizontalAlignment="Stretch"
-                                                       Style="{ThemeResource SubheaderTextBlockStyle}"
-                                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                            <TextBlock x:ConnectionId='26' Grid.Row="1"                                             
-                                                       HorizontalAlignment="Stretch"
-                                                       Style="{ThemeResource BodyTextBlockStyle}"
-                                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                <PivotItem Header="Music challenges">
+                    <Grid Padding="5">
+                        <controls:AdaptiveGridView x:ConnectionId='25'                                                 
+                                                    Grid.Row="1"
+                                                    StretchContentForSingleRow="False"
+                                                    SelectionMode="None"
+                                                    Padding="{StaticResource MediumLeftRightMargin}"
+                                                    DesiredWidth="180"
+                                                    ItemHeight="160"
+                                                    animations:ReorderGridAnimation.Duration="300">
+                            <controls:AdaptiveGridView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='27' x:Name="connectedElement" 
+                                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                        <Grid HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                            <controls:ImageEx x:ConnectionId='28' IsCacheEnabled="True"
+                                                                PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                                                                         />
+                                            <TextBlock x:ConnectionId='29'
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                                                        
+                                                Style="{ThemeResource BodyTextStyle}" />
                                         </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                                <TextBlock x:ConnectionId='23' x:Name="EmptyQuizChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+                        <TextBlock x:ConnectionId='26' x:Name="EmptyMusicChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
            
-                        <PivotItem Header="Screenshot challenges">
-                            <Grid Padding="5">
-                                <controls:AdaptiveGridView x:ConnectionId='17'                                                      
-                                                            Grid.Row="1"
-                                                            StretchContentForSingleRow="False"
-                                                            SelectionMode="None"
-                                                            Padding="{StaticResource MediumLeftRightMargin}"
-                                                            DesiredWidth="180"
-                                                            ItemHeight="160"
-                                                            animations:ReorderGridAnimation.Duration="300">
-                                    <controls:AdaptiveGridView.ItemTemplate>
-                                        <DataTemplate                                      >
-                                            <Grid x:ConnectionId='19' x:Name="connectedElement" 
-                                                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                                <Grid HorizontalAlignment="Stretch"
-                                                        VerticalAlignment="Stretch">
-                                                    <controls:ImageEx x:ConnectionId='20' IsCacheEnabled="True"
-                                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
-                                                                                                                       />
-                                                    <TextBlock x:ConnectionId='21'
-                                                        Margin="{StaticResource XXSmallTopMargin}"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Bottom"
-                                                                                                      
-                                                        Style="{ThemeResource BodyTextStyle}" />
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
-                                <TextBlock x:ConnectionId='18' x:Name="EmptyScreenshotChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
-                       
-                        <PivotItem Header="Silhouette challenges">
-                            <Grid Padding="5">
-                                <controls:AdaptiveGridView x:ConnectionId='12'                                                      
-                                                            Grid.Row="1"
-                                                            StretchContentForSingleRow="False"
-                                                            SelectionMode="None"
-                                                            Padding="{StaticResource MediumLeftRightMargin}"
-                                                            DesiredWidth="180"
-                                                            ItemHeight="160"
-                                                            animations:ReorderGridAnimation.Duration="300">
-                                    <controls:AdaptiveGridView.ItemTemplate>
-                                        <DataTemplate                                      >
-                                            <Grid x:ConnectionId='14' x:Name="connectedElement" 
-                                                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                                <Grid HorizontalAlignment="Stretch"
-                                                        VerticalAlignment="Stretch">
-                                                    <controls:ImageEx x:ConnectionId='15' IsCacheEnabled="True"
-                                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
-                                                                                                                       />
-                                                    <TextBlock x:ConnectionId='16'
-                                                        Margin="{StaticResource XXSmallTopMargin}"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Bottom"
-                                                                                                      
-                                                        Style="{ThemeResource BodyTextStyle}" />
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
-                                <TextBlock x:ConnectionId='13' x:Name="EmptySilhouetteChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
-               
-                        <PivotItem Header="Sologame challenges">
-                            <Grid Padding="5">
-                                <controls:AdaptiveGridView x:ConnectionId='6'                                                    
-                                                            Grid.Row="1"
-                                                            StretchContentForSingleRow="False"
-                                                            SelectionMode="None"
-                                                            Padding="{StaticResource MediumLeftRightMargin}"
-                                                            DesiredWidth="180"
-                                                            ItemHeight="160"
-                                                            animations:ReorderGridAnimation.Duration="300">
-                                    <controls:AdaptiveGridView.ItemTemplate>
-                                        <DataTemplate                                      >
-                                            <Grid x:ConnectionId='8' x:Name="connectedElement" 
-                                                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                                                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                                                <Grid HorizontalAlignment="Stretch"
-                                                        VerticalAlignment="Stretch">
-                                                    <controls:ImageEx x:ConnectionId='9' IsCacheEnabled="True"
-                                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
-                                                                                                                    />
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock x:ConnectionId='10'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                           
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                        <TextBlock x:ConnectionId='11'
-                                                            Margin="{StaticResource XXSmallTopMargin}"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Bottom"
-                                                                                                       
-                                                            Style="{ThemeResource BodyTextStyle}" />
-                                                    </StackPanel>
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
-                                <TextBlock x:ConnectionId='7' x:Name="EmptySologameChallenges"
-                                            Text="No items found"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </PivotItem>
-                    </Pivot>
-                </Grid>
-            </PivotItem>
-            
-            <PivotItem x:Uid="Main_PivotItem2">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                    The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                    Place your content here.
-                    -->
+                <PivotItem Header="Quiz challenges">
+                    <Grid Padding="5">
+                        <ListView x:ConnectionId='20' x:Name="QuizChallengeList"
+                                                                               
+                                SelectionMode="None"
+                                IsItemClickEnabled="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="QuizChallengeDataTemplate"
+                                                                                 >
+                                <Grid x:ConnectionId='22' x:Name="challengeItemGrid">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
 
-                </Grid>
-            </PivotItem>
+                                    <TextBlock x:ConnectionId='23' Grid.Row="0"                                            
+                                                HorizontalAlignment="Stretch"
+                                                Style="{ThemeResource SubheaderTextBlockStyle}"
+                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    <TextBlock x:ConnectionId='24' Grid.Row="1"                                             
+                                                HorizontalAlignment="Stretch"
+                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                        <TextBlock x:ConnectionId='21' x:Name="EmptyQuizChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
+           
+                <PivotItem Header="Screenshot challenges">
+                    <Grid Padding="5">
+                        <controls:AdaptiveGridView x:ConnectionId='15'                                                      
+                                                    Grid.Row="1"
+                                                    StretchContentForSingleRow="False"
+                                                    SelectionMode="None"
+                                                    Padding="{StaticResource MediumLeftRightMargin}"
+                                                    DesiredWidth="180"
+                                                    ItemHeight="160"
+                                                    animations:ReorderGridAnimation.Duration="300">
+                            <controls:AdaptiveGridView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='17' x:Name="connectedElement" 
+                                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                        <Grid HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                            <controls:ImageEx x:ConnectionId='18' IsCacheEnabled="True"
+                                                                PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                                                                               />
+                                            <TextBlock x:ConnectionId='19'
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                                                              
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+                        <TextBlock x:ConnectionId='16' x:Name="EmptyScreenshotChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
+                       
+                <PivotItem Header="Silhouette challenges">
+                    <Grid Padding="5">
+                        <controls:AdaptiveGridView x:ConnectionId='10'                                                      
+                                                    Grid.Row="1"
+                                                    StretchContentForSingleRow="False"
+                                                    SelectionMode="None"
+                                                    Padding="{StaticResource MediumLeftRightMargin}"
+                                                    DesiredWidth="180"
+                                                    ItemHeight="160"
+                                                    animations:ReorderGridAnimation.Duration="300">
+                            <controls:AdaptiveGridView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='12' x:Name="connectedElement" 
+                                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                        <Grid HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                            <controls:ImageEx x:ConnectionId='13' IsCacheEnabled="True"
+                                                                PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                                                                               />
+                                            <TextBlock x:ConnectionId='14'
+                                                Margin="{StaticResource XXSmallTopMargin}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                                                              
+                                                Style="{ThemeResource BodyTextStyle}" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+                        <TextBlock x:ConnectionId='11' x:Name="EmptySilhouetteChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
+               
+                <PivotItem Header="Sologame challenges">
+                    <Grid Padding="5">
+                        <controls:AdaptiveGridView x:ConnectionId='4'                                                    
+                                                    Grid.Row="1"
+                                                    StretchContentForSingleRow="False"
+                                                    SelectionMode="None"
+                                                    Padding="{StaticResource MediumLeftRightMargin}"
+                                                    DesiredWidth="180"
+                                                    ItemHeight="160"
+                                                    animations:ReorderGridAnimation.Duration="300">
+                            <controls:AdaptiveGridView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='6' x:Name="connectedElement" 
+                                            Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                        <Grid HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                            <controls:ImageEx x:ConnectionId='7' IsCacheEnabled="True"
+                                                                PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
+                                                                                                            />
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock x:ConnectionId='8'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                                   
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                                <TextBlock x:ConnectionId='9'
+                                                    Margin="{StaticResource XXSmallTopMargin}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                                                               
+                                                    Style="{ThemeResource BodyTextStyle}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+                        <TextBlock x:ConnectionId='5' x:Name="EmptySologameChallenges"
+                                    Text="No items found"
+                                    Visibility="Collapsed"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    </Grid>
+                </PivotItem>
         </Pivot>
     </Grid>
 </Page>

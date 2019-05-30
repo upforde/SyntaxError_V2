@@ -3,6 +3,9 @@ using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.Utility;
 using System;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -46,10 +49,13 @@ namespace SyntaxError.V2.App.Views
             {
                 ViewModel.PutChallengesInLists(listItem.GameProfile);
                 ChangeVisibility();
+                PlayButton.IsEnabled = true;
             }
             catch (NullReferenceException)
             {
-                ViewModel.AudienceChallenges.Clear();
+                foreach (var item in ViewModel.ChallengeListList)
+                    item.Clear();
+                ChangeVisibility();
             }
         }
 
@@ -95,6 +101,25 @@ namespace SyntaxError.V2.App.Views
             count = (sologame.Children[0] as AdaptiveGridView).Items.Count;
             (sologame.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (sologame.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
+        }
+        
+        private void AppBarButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var newProfile = new GameProfile
+            {
+                GameProfileName = "New Profile",
+                DateCreated = DateTime.Now,
+                Profile = new Profile(),
+                SaveGame = new SaveGame()
+            };
+            ViewModel.AdDGameProfileCommand.Execute(newProfile);
+        }
+
+        private void AppBarButtonPlay_Click(object sender, RoutedEventArgs e)
+        {
+            var param = (GameProfilesList.SelectedItem as ListItemMainPage).GameProfile;
+
+            Frame.Navigate(typeof(GamePage), param);
         }
     }
 }

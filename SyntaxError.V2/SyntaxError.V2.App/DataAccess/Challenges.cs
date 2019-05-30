@@ -90,6 +90,19 @@ namespace SyntaxError.V2.App.DataAccess
             return challenges;
         }
 
+        /// <summary>Edits the media object asynchronous.</summary>
+        /// <param name="param">The parameter.</param>
+        /// <returns></returns>
+        internal async Task<bool> EditChallengeAsync(ChallengeBase param)
+        {
+            string json = await Task.Run(() => JsonConvert.SerializeObject(param));
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(challengesBaseUri, "ChallengeBases/" + param.ChallengeID.ToString()), content);
+
+            return result.IsSuccessStatusCode;
+        }
+
         internal async Task<bool> DeleteChallengeAsync(ChallengeBase param)
         {
             HttpResponseMessage result = await _httpClient.DeleteAsync(new Uri(challengesBaseUri, "ChallengeBases/" + param.ChallengeID.ToString()));

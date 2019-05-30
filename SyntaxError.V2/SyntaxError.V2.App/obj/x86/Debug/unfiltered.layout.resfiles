@@ -13,9 +13,11 @@ Styles\_Thickness.xbf
 Styles\Page.xbf
 Styles\TextBlock.xbf
 SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml
+Views\AdminPage.xbf
 Views\CreateChallengesPage.xbf
 Views\CreateCrewPage.xbf
 Views\CreateObjectsPage.xbf
+Views\GamePage.xbf
 Views\MainPage.xbf
 Views\SettingsPage.xbf
 Views\ShellPage.xbf
