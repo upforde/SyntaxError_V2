@@ -38,14 +38,16 @@ namespace SyntaxError.V2.App.ViewModels
                                                     }, param => param != null);
         }
 
-        internal async Task LoadCrewMembersFromDBAsync()
+        internal async Task<bool> LoadCrewMembersFromDBAsync()
         {
-            if (CrewMembers.Count == 0)
-            {
-                var crewMembers = await CrewMembersDataAccess.GetCrewMembersAsync();
-                foreach (CrewMember crewMember in crewMembers)
-                    CrewMembers.Add(crewMember);
-            }
+                if (CrewMembers.Count == 0)
+                {
+                    var crewMembers = await CrewMembersDataAccess.GetCrewMembersAsync();
+                    foreach (CrewMember crewMember in crewMembers)
+                        CrewMembers.Add(crewMember);
+                }
+                return true;
+        
         }
     }
 }

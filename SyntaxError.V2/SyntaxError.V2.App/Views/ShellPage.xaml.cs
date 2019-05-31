@@ -1,7 +1,9 @@
 ﻿using System;
-
+using System.Net.NetworkInformation;
+using Microsoft.Toolkit.Uwp.Connectivity;
+using SyntaxError.V2.App.Services;
 using SyntaxError.V2.App.ViewModels;
-
+using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
 namespace SyntaxError.V2.App.Views
@@ -16,6 +18,22 @@ namespace SyntaxError.V2.App.Views
             InitializeComponent();
             DataContext = ViewModel;
             ViewModel.Initialize(shellFrame, navigationView, KeyboardAccelerators);
+            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+            Loaded += ShellPage_Loaded;
+        }
+
+        private async void ShellPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (!NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+            {
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => InAppNotification.Show("No network access", 2000));
+            }
+        }
+
+        private async void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
+        {
+            if(!e.IsAvailable)
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => InAppNotification.Show("No network access", 2000));
         }
     }
 }

@@ -39,15 +39,22 @@ namespace SyntaxError.V2.App.DataAccess
         public async Task<MediaObject[]> GetMediaObjectsOfTypeAsync(string type)
         {
             HttpResponseMessage result = await _httpClient.GetAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/?type=" + type));
+            
             string json = await result.Content.ReadAsStringAsync();
             switch (type)
             {
                 case "Game":
-                    return JsonConvert.DeserializeObject<Game[]>(json);
+                    if (result.IsSuccessStatusCode)
+                        return JsonConvert.DeserializeObject<Game[]>(json);
+                    return new Game[0];
                 case "Image":
-                     return JsonConvert.DeserializeObject<Image[]>(json);
+                    if (result.IsSuccessStatusCode)
+                        return JsonConvert.DeserializeObject<Image[]>(json);
+                    return new Image[0];
                 case "Music":
-                    return JsonConvert.DeserializeObject<Music[]>(json);
+                    if (result.IsSuccessStatusCode)
+                        return JsonConvert.DeserializeObject<Music[]>(json);
+                    return new Music[0];
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -3,14 +3,17 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Uwp.Connectivity;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -51,8 +54,25 @@ namespace SyntaxError.V2.App.Views
                                                     }, param => param != null);
 
             Loaded += LoadCrewMembersFromDBAsync;
+            
+            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChangedAsync;
         }
-        
+
+        private async void NetworkChange_NetworkAvailabilityChangedAsync(object sender, NetworkAvailabilityEventArgs e)
+        {
+            if (!e.IsAvailable)
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => LoadCrewMembersFromDBAsync());
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ChangeButtonsEnabled(e.IsAvailable));
+        }
+
+        private void ChangeButtonsEnabled(bool access)
+        {
+            if (!access)
+                LoadingProgressBar.Visibility = Visibility.Collapsed;
+            AddButton.IsEnabled = access;
+            SearchBar.IsEnabled = access;
+        }
+
         /// <summary>Refreshes the Filtered list.</summary>
         private void RefreshList()
         {
@@ -79,18 +99,24 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Loads the crew members from database asynchronous.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private async void LoadCrewMembersFromDBAsync(object sender, RoutedEventArgs e)
+        private async void LoadCrewMembersFromDBAsync(object sender = null, RoutedEventArgs e = null)
         {
-            LoadingProgressBar.Visibility = Visibility.Visible;
-            CrewGrid.Visibility = Visibility.Collapsed;
-
-            await ViewModel.LoadCrewMembersFromDBAsync();
-            if(Task.WhenAll(ViewModel.LoadCrewMembersFromDBAsync()).IsCompletedSuccessfully)
+            var isInternetAvailable = NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable;
+            if (isInternetAvailable)
             {
-                LoadingProgressBar.Visibility = Visibility.Collapsed;
-                CrewGrid.Visibility = Visibility.Visible;
-                RefreshList();
+                LoadingProgressBar.Visibility = Visibility.Visible;
+                CrewGrid.Visibility = Visibility.Collapsed;
+
+                try{
+                    if (await ViewModel.LoadCrewMembersFromDBAsync())
+                    {
+                        LoadingProgressBar.Visibility = Visibility.Collapsed;
+                        CrewGrid.Visibility = Visibility.Visible;
+                        RefreshList();
+                    }
+                } catch (System.Net.Http.HttpRequestException){}
             }
+            ChangeButtonsEnabled(isInternetAvailable);
         }
 
         /// <summary>Handles the Tapped event of the AdaptiveGridView control.</summary>

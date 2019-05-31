@@ -60,7 +60,7 @@ namespace SyntaxError.V2.App.ViewModels
 
         /// <summary>Loads the objects from database asynchronous.</summary>
         /// <returns></returns>
-        internal async Task LoadObjectsFromDBAsync()
+        internal async Task<bool> LoadObjectsFromDBAsync()
         {
             if (Games.Count == 0)
             {
@@ -80,6 +80,7 @@ namespace SyntaxError.V2.App.ViewModels
                 foreach (Music song in songs)
                     Music.Add(song);
             }
+            return true;
         }
     }
 }

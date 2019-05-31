@@ -25,7 +25,7 @@ namespace SyntaxError.V2.App.Views
 
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            GamePage.AddToOtherList(GamePage.GameProfile.Profile.Challenges.ToList()[3].ChallengeID.ToString());
+            GamePage.AddToOtherList("Button clicked!");
         }
     }
 }

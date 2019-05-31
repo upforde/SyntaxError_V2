@@ -32,7 +32,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
                     
-            <AutoSuggestBox x:ConnectionId='14' PlaceholderText="Search"
+            <AutoSuggestBox x:ConnectionId='14' x:Name="SearchBar"
+                            PlaceholderText="Search"
                             Grid.Column="0"
                                                                     
                                                                           
@@ -41,7 +42,8 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"/>
                     
-            <AppBarButton x:ConnectionId='15' Grid.Column="1"
+            <AppBarButton x:ConnectionId='15' x:Name="AddButton"
+                          Grid.Column="1"
                           Icon="Add"
                           Label="New Crew Member"
                                                               

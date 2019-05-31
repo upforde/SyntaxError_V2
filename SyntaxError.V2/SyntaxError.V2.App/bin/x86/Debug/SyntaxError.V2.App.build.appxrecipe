@@ -43,6 +43,9 @@
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp\5.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp.connectivity\5.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.Connectivity.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.Connectivity.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp.notifications\5.1.1\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
     </AppxPackagedFile>

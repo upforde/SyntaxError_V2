@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Uwp.Connectivity;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
@@ -11,6 +13,7 @@ using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -69,6 +72,25 @@ namespace SyntaxError.V2.App.Views
                                                     }, param => param != null);
 
             Loaded += LoadMediaObjectsFromDBAsync;
+
+            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChangedAsync;
+        }
+
+        private async void NetworkChange_NetworkAvailabilityChangedAsync(object sender, NetworkAvailabilityEventArgs e)
+        {
+            if (!e.IsAvailable)
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => LoadMediaObjectsFromDBAsync());
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ChangeButtonsEnabled(e.IsAvailable));
+        }
+
+        private void ChangeButtonsEnabled(bool access)
+        {
+            GetCurrentGrid();
+            
+            ((ActionGrid.Children[0] as StackPanel).Children[0] as AutoSuggestBox).IsEnabled = access;
+            ((ActionGrid.Children[0] as StackPanel).Children[1] as AppBarButton).IsEnabled = access;
+            ((ActionGrid.Children[0] as StackPanel).Children[2] as AppBarButton).IsEnabled = access;
+            (ActionGrid.Children[1] as AppBarButton).IsEnabled = access;
         }
 
         /// <summary>Refreshes the Filtered list.</summary>
@@ -109,20 +131,24 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Loads the media objects from database asynchronous.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private async void LoadMediaObjectsFromDBAsync(object sender, RoutedEventArgs e)
+        private async void LoadMediaObjectsFromDBAsync(object sender = null, RoutedEventArgs e = null)
         {
-            GetCurrentGrid();
-
-            LoadingProgressBar.Visibility = Visibility.Visible;
-            Collection.Visibility = Visibility.Collapsed;
-
-            await ViewModel.LoadObjectsFromDBAsync();
-            if(Task.WhenAll(ViewModel.LoadObjectsFromDBAsync()).IsCompletedSuccessfully)
+            var isInternetAvailable = NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable;
+            if (isInternetAvailable)
             {
-                LoadingProgressBar.Visibility = Visibility.Collapsed;
-                Collection.Visibility = Visibility.Visible;
-                RefreshList();
+                GetCurrentGrid();
+            
+                LoadingProgressBar.Visibility = Visibility.Visible;
+                Collection.Visibility = Visibility.Collapsed;
+
+                if (await ViewModel.LoadObjectsFromDBAsync())
+                {
+                    LoadingProgressBar.Visibility = Visibility.Collapsed;
+                    Collection.Visibility = Visibility.Visible;
+                    RefreshList();
+                }
             }
+            ChangeButtonsEnabled(isInternetAvailable);
         }
 
         /// <summary>Handles the SelectionChanged event of the CreateObjectsPivot control.</summary>

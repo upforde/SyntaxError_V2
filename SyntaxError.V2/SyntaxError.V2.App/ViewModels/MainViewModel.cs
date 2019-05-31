@@ -66,16 +66,16 @@ namespace SyntaxError.V2.App.ViewModels
                     });
                 }
                 ChallengeListList = new List<ObservableCollection<ListItemMainPage>>()
-            {
-                AudienceChallenges,
-                CrewChallenges,
-                MultipleChoiceChallenges,
-                MusicChallenges,
-                QuizChallenges,
-                ScreenshotChallenges,
-                SilhouetteChallenges,
-                SologameChallenges
-            };
+                {
+                    AudienceChallenges,
+                    CrewChallenges,
+                    MultipleChoiceChallenges,
+                    MusicChallenges,
+                    QuizChallenges,
+                    ScreenshotChallenges,
+                    SilhouetteChallenges,
+                    SologameChallenges
+                };
             }
         }
 

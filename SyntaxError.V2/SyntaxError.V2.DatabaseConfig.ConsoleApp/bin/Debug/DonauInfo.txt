@@ -1,0 +1,5 @@
+Server=Donau.hiof.no;
+Database=danilasm;
+Trusted_Connection=False;
+user id=danilasm;
+pwd=V5STfcd3;

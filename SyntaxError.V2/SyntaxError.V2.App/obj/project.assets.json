@@ -261,6 +261,18 @@
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        }
+      },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
         "type": "package",
         "dependencies": {
@@ -808,6 +820,18 @@
         },
         "runtime": {
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
         }
       },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
@@ -1491,6 +1515,18 @@
         },
         "runtime": {
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
         }
       },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
@@ -2177,6 +2213,18 @@
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        }
+      },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
         "type": "package",
         "dependencies": {
@@ -2851,6 +2899,18 @@
         },
         "runtime": {
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
         }
       },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
@@ -3534,6 +3594,18 @@
         },
         "runtime": {
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
         }
       },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
@@ -4220,6 +4292,18 @@
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        }
+      },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
         "type": "package",
         "dependencies": {
@@ -4903,6 +4987,18 @@
           "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
+      "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "5.1.1"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll": {}
+        }
+      },
       "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
         "type": "package",
         "dependencies": {
@@ -5356,7 +5452,7 @@
       ]
     },
     "Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "OrwLaq/R6v8c31p+tkkRqI40fxL12vTcgGWkiXX6oOGKRr/1ybc+UYJztDt52D/5Iwfl/zdyvj/Q3b8YsRujIA==",
+      "sha512": "gY/ksTbfZCB00oBIGXyY9+vcfpNMvOmbSw0lmalj0ew6Yjw4kRn3bOyZ7jvTY0n43yopWxxBaWesGTQcAusntg==",
       "type": "package",
       "path": "microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -5777,6 +5873,21 @@
         "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.xml",
         "microsoft.toolkit.uwp.5.1.1.nupkg.sha512",
         "microsoft.toolkit.uwp.nuspec"
+      ]
+    },
+    "Microsoft.Toolkit.Uwp.Connectivity/5.1.1": {
+      "sha512": "n8PvxAd7QqkRnc/IcR97PkUov3giEnR4h57p4UGZb0Nofh8/nrjDirdkiksd5gFgjFxTFB07exafSGeXI/BtUw==",
+      "type": "package",
+      "path": "microsoft.toolkit.uwp.connectivity/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.dll",
+        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.pdb",
+        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.pri",
+        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.Connectivity.xml",
+        "microsoft.toolkit.uwp.connectivity.5.1.1.nupkg.sha512",
+        "microsoft.toolkit.uwp.connectivity.nuspec"
       ]
     },
     "Microsoft.Toolkit.Uwp.Notifications/5.1.1": {
@@ -6306,7 +6417,7 @@
       ]
     },
     "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "1ECYkxOPA07MiN2u7r6ITv38sdrJdlTbxPPhGwG5c+n7UyTn+zjBYMreO/fa508vDaHovc8nl1skVQXxkMCmSg==",
+      "sha512": "26bk91kdrCRu2AyVr89JLcChYVlmjVhzDkdfgjzGvcxMfP7R2YgUYwChAOr83LK3uymw0GIGUL2X1M76mrPX2A==",
       "type": "package",
       "path": "runtime.win10-arm.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -6605,7 +6716,7 @@
       ]
     },
     "runtime.win10-arm.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "UWIOoaSAUQa50m0WILzNudXTXPpt/WF/yjvmAuA/1iKSR02As2aMGBYwi2stxXa0RE6YiVaT2+wbxug1lgx33w==",
+      "sha512": "uOFR+/pJt7Umh26bHklerwIOGUXbNaIrBfe/TIqdl+Fm13LiX58vhc2cJeDIIp821hqyZ6DkciIGFpRhJ8CPmA==",
       "type": "package",
       "path": "runtime.win10-arm.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -7369,7 +7480,7 @@
       ]
     },
     "runtime.win10-arm64.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "pRBvWThWu2rs8sZI1LeAGoKu/F2Ntf/WHKotINJzetWATDqjDKaUA/9XzrFFOGeOwATuv5Q3k0CuKQA35OSEtw==",
+      "sha512": "VPlKZvbNbdX/oWIQxh7U3y+w4k7eMBj8eqYL+BF1AdcXbisNyLeEOtBwDpZZrwwJZztiQ0WLSzbkLEuZGoTbAA==",
       "type": "package",
       "path": "runtime.win10-arm64.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -7547,7 +7658,7 @@
       ]
     },
     "runtime.win10-arm64.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "M1s/KnxEPV+8GkCAumHyrWzXN2i1pSMXvnULeZB07MCw2W26b7nidRD6phM02iamNh/NvzkTUK9LKQCeIwq6uA==",
+      "sha512": "nLt0gIS43aEDxDW2mS+rrxORNukr2MjaEi5F1lrhZqK/v1Y17H6ML+vZoy9f61aHIEJ3a+TrBS2HBREa0JmWjA==",
       "type": "package",
       "path": "runtime.win10-arm64.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -8110,7 +8221,7 @@
       ]
     },
     "runtime.win10-x64.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "n6rDsZEJFL+Ivmt2bKr/WoxcaNljvHXsShqU/YweLsXy5MXQGI79qkuBzVw5kzC93/r8ZlFhkmmJbIxz5TlSQA==",
+      "sha512": "Q2fug+oB2XouUS3px0gTj3FMRNqH/phKpsleF4r0XxIvkgVb2uwKGEQuJxNK7reGOkoHLTywmOhEzK3T1vHWpA==",
       "type": "package",
       "path": "runtime.win10-x64.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -8403,7 +8514,7 @@
       ]
     },
     "runtime.win10-x64.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "YCdb9g+ZeSOnjJV3LTMO3L3PMDO1qI1QV+XgN0DHFNgRuXAtDHqcJY2UszChHtAizYRDT/jQDZdXW+Fot6B7XA==",
+      "sha512": "fMh4rdxMCEn231IrJcGw1efdvbqgZDHof/QUMZk18sMyXRfbYOv3thHeDVUqm7BVv++j2dN+9tahf9QV38aQZw==",
       "type": "package",
       "path": "runtime.win10-x64.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -9167,7 +9278,7 @@
       ]
     },
     "runtime.win10-x86.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "JJjs5zZjcERJdGTCCKjpNO5UoAB+BtrY+gyD+8mt15Nqr0Gkxh7not6UL7g3LbzH8J84D28HC/aKB0HuTPV0EQ==",
+      "sha512": "LEqVUkB5JKPUatE73OB2epKNscsG7aqvpxr8rVSV8slsm3VW8DvHE/aXVXpl2AoOTzA16W3o4yB/mnalylKDeQ==",
       "type": "package",
       "path": "runtime.win10-x86.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -9460,7 +9571,7 @@
       ]
     },
     "runtime.win10-x86.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "pt9b6ygovbiRmJi7bx0mY3oSNPqyf7iu7dKWBJgzjCl7taZac8NapKT5V7zFSek36/Myjy0+b39MfpYbx5Zp5w==",
+      "sha512": "dYO/1+ZP+/i66Al4AaatEv4Ll5xgj6mdkRcZ+vEJkMbpabEzTvCRgnO850YHNFhP7WESzzy2R3kyGz4FCOcd7g==",
       "type": "package",
       "path": "runtime.win10-x86.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -10114,6 +10225,7 @@
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.17134": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.8",
+      "Microsoft.Toolkit.Uwp.Connectivity >= 5.1.1",
       "Microsoft.Toolkit.Uwp.Notifications >= 5.1.1",
       "Microsoft.Toolkit.Uwp.UI.Animations >= 5.1.1",
       "Microsoft.Toolkit.Uwp.UI.Controls >= 5.1.1",
@@ -10171,6 +10283,10 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.8, )"
+          },
+          "Microsoft.Toolkit.Uwp.Connectivity": {
+            "target": "Package",
+            "version": "[5.1.1, )"
           },
           "Microsoft.Toolkit.Uwp.Notifications": {
             "target": "Package",

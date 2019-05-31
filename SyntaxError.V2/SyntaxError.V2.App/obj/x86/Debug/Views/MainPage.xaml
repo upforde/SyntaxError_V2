@@ -80,18 +80,22 @@
                               Icon="Play"
                               Label="Play"
                                                             />
-                <AppBarButton x:ConnectionId='49' IsTabStop="False"
+                <AppBarButton x:ConnectionId='49' x:Name="AddButton"
+                              IsTabStop="False"
                               Icon="Add"
                               Label="Add"
                               Visibility="Visible"
                                                            />
-                <AppBarButton x:ConnectionId='50' IsEnabled="False" IsTabStop="False"
+                <AppBarButton x:ConnectionId='50' x:Name="EditButton"
+                              IsEnabled="False"
+                              IsTabStop="False"
                               Icon="Edit"
                               Label="Edit"
                               Visibility="Visible"
                                                                                    
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                <AppBarButton x:ConnectionId='51' IsTabStop="False"
+                <AppBarButton x:ConnectionId='51' x:Name="DeleteButton"
+                              IsTabStop="False"
                               Icon="Delete"
                               Label="Delete"
                               Visibility="Visible"

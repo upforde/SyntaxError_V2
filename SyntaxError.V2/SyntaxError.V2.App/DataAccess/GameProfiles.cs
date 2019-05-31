@@ -30,9 +30,9 @@ namespace SyntaxError.V2.App.DataAccess
         {
             HttpResponseMessage result = await _httpClient.GetAsync(gameProfilesBaseUri);
             string json = await result.Content.ReadAsStringAsync();
-            GameProfile[] gameProfiles = JsonConvert.DeserializeObject<GameProfile[]>(json);
-
-            return gameProfiles;
+            if (result.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<GameProfile[]>(json);
+            return new GameProfile[0];
         }
 
         internal async Task<bool> DeleteGameProfileAsync(GameProfile param)

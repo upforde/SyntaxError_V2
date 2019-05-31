@@ -54,36 +54,36 @@ namespace SyntaxError.V2.App.DataAccess
                 switch (type)
                 {
                     case "AudienceChallenge":
-                        var AC = JsonConvert.DeserializeObject<AudienceChallenge[]>(json);
-                        challenges.AddRange(AC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<AudienceChallenge[]>(json));
                         break;
                     case "CrewChallenge":
-                        var CC = JsonConvert.DeserializeObject<CrewChallenge[]>(json);
-                        challenges.AddRange(CC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<CrewChallenge[]>(json));
                         break;
                     case "MultipleChoiceChallenge":
-                        var MCC = JsonConvert.DeserializeObject<MultipleChoiceChallenge[]>(json);
-                        challenges.AddRange(MCC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<MultipleChoiceChallenge[]>(json));
                         break;
                     case "MusicChallenge":
-                        var MC = JsonConvert.DeserializeObject<MusicChallenge[]>(json);
-                        challenges.AddRange(MC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<MusicChallenge[]>(json));
                         break;
                     case "QuizChallenge":
-                        var QC = JsonConvert.DeserializeObject<QuizChallenge[]>(json);
-                        challenges.AddRange(QC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<QuizChallenge[]>(json));
                         break;
                     case "ScreenshotChallenge":
-                        var SC = JsonConvert.DeserializeObject<ScreenshotChallenge[]>(json);
-                        challenges.AddRange(SC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<ScreenshotChallenge[]>(json));
                         break;
                     case "SilhouetteChallenge":
-                        var SLC = JsonConvert.DeserializeObject<SilhouetteChallenge[]>(json);
-                        challenges.AddRange(SLC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<SilhouetteChallenge[]>(json));
                         break;
                     case "SologameChallenge":
-                        var SGC = JsonConvert.DeserializeObject<SologameChallenge[]>(json);
-                        challenges.AddRange(SGC);
+                        if (result.IsSuccessStatusCode)
+                            challenges.AddRange(JsonConvert.DeserializeObject<SologameChallenge[]>(json));
                         break;
                 }
             }

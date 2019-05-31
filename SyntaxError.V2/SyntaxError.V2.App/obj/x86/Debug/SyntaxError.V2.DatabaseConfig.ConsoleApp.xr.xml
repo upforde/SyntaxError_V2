@@ -252,6 +252,14 @@
       <RootMethod Name="SetNavigateTo" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification">
+      <RootProperty Name="Content" />
+      <RootProperty Name="ShowDismissButton" />
+      <RootProperty Name="AnimationDuration" />
+      <RootProperty Name="VerticalOffset" />
+      <RootProperty Name="HorizontalOffset" />
+      <RootProperty Name="StackMode" />
+    </RootType>
     <RootType FullName="SyntaxError.V2.App.Views.ShellPage" />
   </Roots.RootTypes>
 </Roots>

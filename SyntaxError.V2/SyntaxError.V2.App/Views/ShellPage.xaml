@@ -9,6 +9,7 @@
     xmlns:views="using:SyntaxError.V2.App.Views"
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
     <i:Interaction.Behaviors>
@@ -44,6 +45,14 @@
         </i:Interaction.Behaviors>
         <Grid>
             <Frame x:Name="shellFrame" />
+
+            <controls:InAppNotification x:Name="InAppNotification"
+                                    Content="This is a test message."
+                                    ShowDismissButton="True"
+                                    AnimationDuration="00:00:00.1000000"
+                                    VerticalOffset="100"
+                                    HorizontalOffset="0"
+                                    StackMode="Replace" />
         </Grid>
     </winui:NavigationView>
 </Page>
