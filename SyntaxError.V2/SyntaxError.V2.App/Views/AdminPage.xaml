@@ -11,9 +11,43 @@
         Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
-            <Button Click="Button_Click">Click</Button>
+            <Button Click="Button_Click" Visibility="Collapsed">Click</Button>
+            
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Toggle On" />
+            
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <Button Click="Button_Click_Audience">Audience</Button>
+                <Button Click="Button_Click_Crew">Crew</Button>
+                <Button Click="Button_Click_Multiple">Multiple Choice</Button>
+                <Button Click="Button_Click_Music">Music</Button>
+                <Button Click="Button_Click_Quiz">Quiz</Button>
+                <Button Click="Button_Click_Screenshot">Screenshot</Button>
+                <Button Click="Button_Click_Silhouette">Silhouette</Button>
+                <Button Click="Button_Click_Sologame">Sologame</Button>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="Toggle Off" />
+            
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Button Click="Button_Click_Audience">Audience</Button>
+                <Button Click="Button_Click_Crew">Crew</Button>
+                <Button Click="Button_Click_Multiple">Multiple Choice</Button>
+                <Button Click="Button_Click_Music">Music</Button>
+                <Button Click="Button_Click_Quiz">Quiz</Button>
+                <Button Click="Button_Click_Screenshot">Screenshot</Button>
+                <Button Click="Button_Click_Silhouette">Silhouette</Button>
+                <Button Click="Button_Click_Sologame">Sologame</Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

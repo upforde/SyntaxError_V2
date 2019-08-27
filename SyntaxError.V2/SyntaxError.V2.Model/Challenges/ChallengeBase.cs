@@ -8,7 +8,7 @@ using SyntaxError.V2.Modell.Utility;
 namespace SyntaxError.V2.Modell.Challenges
 {
     [Table("Challenges")]
-    public abstract class ChallengeBase
+    public class ChallengeBase
     {
         [Key]
         public int ChallengeID { get; set; }

@@ -2,8 +2,10 @@
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
+using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
@@ -150,14 +152,40 @@ namespace SyntaxError.V2.App.Views
                 Profile = new Profile(),
                 SaveGame = new SaveGame()
             };
-            ViewModel.AdDGameProfileCommand.Execute(newProfile);
+            ViewModel.AddGameProfileCommand.Execute(newProfile);
         }
 
-        private void AppBarButtonPlay_Click(object sender, RoutedEventArgs e)
+        private async void AppBarButtonPlay_Click(object sender, RoutedEventArgs e)
         {
-            var param = (GameProfilesList.SelectedItem as ListItemMainPage).GameProfile;
-            if (param != null)
-                Frame.Navigate(typeof(GamePage), param);
+            var gameProfileWithObjects = new GameObjectForSending
+            {
+                GameProfile = (GameProfilesList.SelectedItem as ListItemMainPage).GameProfile,
+                Challenges = new List<ListItemMainPage>()
+            };
+
+            if (ViewModel.AudienceChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.AudienceChallenges);
+            if (ViewModel.CrewChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.CrewChallenges);
+            if (ViewModel.MultipleChoiceChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.MultipleChoiceChallenges);
+            if (ViewModel.MusicChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.MusicChallenges);
+            if (ViewModel.QuizChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.QuizChallenges);
+            if (ViewModel.ScreenshotChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.ScreenshotChallenges);
+            if (ViewModel.SilhouetteChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.SilhouetteChallenges);
+            if (ViewModel.SologameChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.SologameChallenges);
+
+            try{
+                CoreApplicationView newView = CoreApplication.CreateNewView();
+                int newViewId = 0;
+                await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    Frame frame = new Frame();
+                    frame.Navigate(typeof(GamePage), gameProfileWithObjects);
+                    Window.Current.Content = frame;
+                    Window.Current.Activate();
+
+                    newViewId = ApplicationView.GetForCurrentView().Id;
+                });
+                bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+            } catch (NullReferenceException){}
         }
     }
 }

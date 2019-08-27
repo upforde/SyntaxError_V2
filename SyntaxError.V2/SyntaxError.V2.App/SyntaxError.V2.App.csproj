@@ -125,6 +125,7 @@
     <Compile Include="DataAccess\Images.cs" />
     <Compile Include="DataAccess\MediaObjects.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
+    <Compile Include="Helpers\GameObjectForSending.cs" />
     <Compile Include="Helpers\ListItemMainPage.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\Observable.cs" />
@@ -240,6 +241,15 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\audience_challenge_thumbnail.jpg" />
+    <Content Include="Assets\crew_challenge_thumbnail.jpg" />
+    <Content Include="Assets\multiply_choice_challenge_thumbnail.jpg" />
+    <Content Include="Assets\music_challenge_thumbnail.jpg" />
+    <Content Include="Assets\quiz_challenge_thumbnail.jpg" />
+    <Content Include="Assets\screenshot_challenge_thumbnail.jpg" />
+    <Content Include="Assets\silhouette_challenge_thumbnail.jpg" />
+    <Content Include="Assets\sologame_challenge_thumbnail.jpg" />
+    <Content Include="Assets\SyntaxError_Logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

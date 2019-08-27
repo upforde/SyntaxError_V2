@@ -336,12 +336,32 @@ namespace SyntaxError.V2.App.Views
             var smokeGridChild = smokeGrid.Children[0] as Grid;
 
             _storedChallenge.ChallengeTask = (((smokeGridChild.Children[0] as StackPanel).Children[0] as Grid).Children[0] as TextBox).Text;
-
             
             var lol = _storedChallenge;
 
             ViewModel.EditCommand.Execute(_storedChallenge);
-            
+
+            switch (ChallengeList.SelectedIndex)
+            {
+                case 0:
+                    var audienceIndex = ViewModel.AudienceChallenges.IndexOf(ViewModel.AudienceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    ViewModel.AudienceChallenges[audienceIndex] = _storedChallenge as AudienceChallenge;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+            }
 
             BackButton_Click(sender, e);
         }

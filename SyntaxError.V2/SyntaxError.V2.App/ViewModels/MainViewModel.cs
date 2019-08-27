@@ -14,7 +14,7 @@ namespace SyntaxError.V2.App.ViewModels
 {
     public class MainViewModel : Observable
     {
-        public ICommand AdDGameProfileCommand { get; set; }
+        public ICommand AddGameProfileCommand { get; set; }
         public ICommand DeleteGameProfileCommand { get; set; }
 
         public List<ChallengeBase> ChallengesFromDB = new List<ChallengeBase>();
@@ -37,7 +37,7 @@ namespace SyntaxError.V2.App.ViewModels
 
         public MainViewModel()
         {
-            AdDGameProfileCommand = new RelayCommand<GameProfile>(async param =>
+            AddGameProfileCommand = new RelayCommand<GameProfile>(async param =>
                                                     {
                                                         param = await GameProfilesDataAccess.CreateNewGame(param);
                                                         GameProfiles.Add(new ListItemMainPage{ GameProfile = param });

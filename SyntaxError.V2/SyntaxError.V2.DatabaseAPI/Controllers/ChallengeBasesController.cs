@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using Newtonsoft.Json;
 using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.Challenges;
 
@@ -58,17 +58,67 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
             return Ok(challengeBase);
         }
-
-        // PUT: api/ChallengeBases/5
+        
+        // PUT: api/ChallengeBases/5/
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChallengeBase([FromRoute] int id, [FromBody] ChallengeBase challengeBase)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            
+            if (id != challengeBase.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            string type = Request.Headers["Type"];
+            ChallengeBase challengeWithType;
+            switch (type)
+            {
+                case "AudienceChallenge":
+                    challengeWithType = challengeBase as AudienceChallenge;
+                    break;
+                case "CrewChallenge":
+                    challengeWithType = challengeBase as CrewChallenge;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _context.Entry(challengeWithType).State = EntityState.Modified;
 
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        
+        /*
+
+        // PUT: api/ChallengeBases/5/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutMultipleChoiceChallenge([FromRoute] int id, [FromBody] MultipleChoiceChallenge challengeBase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
             if (id != challengeBase.ChallengeID)
             {
                 return BadRequest();
@@ -94,6 +144,183 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
             return NoContent();
         }
+        
+        // PUT: api/ChallengeBases/5/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutMusicChallenge([FromRoute] int id, [FromBody] MusicChallenge challengeBase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challengeBase.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challengeBase).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        
+        // PUT: api/ChallengeBases/5/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutQuizChallenge([FromRoute] int id, [FromBody] QuizChallenge challengeBase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challengeBase.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challengeBase).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        
+        // PUT: api/ChallengeBases/5/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutScreenshotChallenge([FromRoute] int id, [FromBody] ScreenshotChallenge challengeBase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challengeBase.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challengeBase).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        
+        // PUT: api/ChallengeBases/5/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutSilhouetteChallenge([FromRoute] int id, [FromBody] SilhouetteChallenge challengeBase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challengeBase.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challengeBase).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/ChallengeBases/5/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutSologameChallenge([FromRoute] int id, [FromBody] SologameChallenge challengeBase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challengeBase.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challengeBase).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        
+        */
 
         // POST: api/ChallengeBases
         [HttpPost]

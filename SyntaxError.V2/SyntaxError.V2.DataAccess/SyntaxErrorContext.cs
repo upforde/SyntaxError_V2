@@ -10,7 +10,7 @@ namespace SyntaxError.V2.DataAccess
 {
     public class SyntaxErrorContext: DbContext
     {
-        readonly string path = @"..\DonauInfo.txt";
+        readonly string path = @"..\LocalInfo.txt";
 
         public DbSet<ChallengeBase> Challenges { get; set; }
         public DbSet<GameChallenge> GameChallenges { get; set; }

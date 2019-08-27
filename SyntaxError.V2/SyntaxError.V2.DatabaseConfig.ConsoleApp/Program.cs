@@ -209,7 +209,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                     {
                         if (IsDuplicateAbsent(dbChallenges, challenge)) db.UsingChallenges.Add(challenge);
                     }
-
+                    
                     db.SaveChanges();
                 }
                 
