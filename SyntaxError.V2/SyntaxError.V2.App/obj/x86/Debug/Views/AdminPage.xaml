@@ -11,18 +11,42 @@
         Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
             <Button x:ConnectionId='3'                      Visibility="Collapsed">Click</Button>
-            <StackPanel>
-                <Button x:ConnectionId='4'                              >Audience</Button>
-                <Button x:ConnectionId='5'                          >Crew</Button>
-                <Button x:ConnectionId='6'                              >Multiple Choice</Button>
-                <Button x:ConnectionId='7'                           >Music</Button>
-                <Button x:ConnectionId='8'                          >Quiz</Button>
-                <Button x:ConnectionId='9'                                >Screenshot</Button>
-                <Button x:ConnectionId='10'                                >Silhouette</Button>
-                <Button x:ConnectionId='11'                              >Sologame</Button>
+            
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Toggle On" />
+            
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <Button x:ConnectionId='12'                              >Audience</Button>
+                <Button x:ConnectionId='13'                          >Crew</Button>
+                <Button x:ConnectionId='14'                              >Multiple Choice</Button>
+                <Button x:ConnectionId='15'                           >Music</Button>
+                <Button x:ConnectionId='16'                          >Quiz</Button>
+                <Button x:ConnectionId='17'                                >Screenshot</Button>
+                <Button x:ConnectionId='18'                                >Silhouette</Button>
+                <Button x:ConnectionId='19'                              >Sologame</Button>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="Toggle Off" />
+            
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Button x:ConnectionId='4'                                  >Audience</Button>
+                <Button x:ConnectionId='5'                              >Crew</Button>
+                <Button x:ConnectionId='6'                                  >Multiple Choice</Button>
+                <Button x:ConnectionId='7'                               >Music</Button>
+                <Button x:ConnectionId='8'                              >Quiz</Button>
+                <Button x:ConnectionId='9'                                    >Screenshot</Button>
+                <Button x:ConnectionId='10'                                    >Silhouette</Button>
+                <Button x:ConnectionId='11'                                  >Sologame</Button>
             </StackPanel>
         </Grid>
     </Grid>

@@ -39,14 +39,14 @@
             <TextBlock Grid.Column="1" Grid.Row="0" Text="Toggle Off" />
             
             <StackPanel Grid.Column="1" Grid.Row="1">
-                <Button Click="Button_Click_Audience">Audience</Button>
-                <Button Click="Button_Click_Crew">Crew</Button>
-                <Button Click="Button_Click_Multiple">Multiple Choice</Button>
-                <Button Click="Button_Click_Music">Music</Button>
-                <Button Click="Button_Click_Quiz">Quiz</Button>
-                <Button Click="Button_Click_Screenshot">Screenshot</Button>
-                <Button Click="Button_Click_Silhouette">Silhouette</Button>
-                <Button Click="Button_Click_Sologame">Sologame</Button>
+                <Button Click="Button_Click_Audience_off">Audience</Button>
+                <Button Click="Button_Click_Crew_off">Crew</Button>
+                <Button Click="Button_Click_Multiple_off">Multiple Choice</Button>
+                <Button Click="Button_Click_Music_off">Music</Button>
+                <Button Click="Button_Click_Quiz_off">Quiz</Button>
+                <Button Click="Button_Click_Screenshot_off">Screenshot</Button>
+                <Button Click="Button_Click_Silhouette_off">Silhouette</Button>
+                <Button Click="Button_Click_Sologame_off">Sologame</Button>
             </StackPanel>
         </Grid>
     </Grid>

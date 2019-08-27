@@ -238,40 +238,72 @@ namespace SyntaxError.V2.App.Views
         {
             GamePage.ToggleAudienceChallenge();
         }
+        private void Button_Click_Audience_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleAudienceChallengeOff();
+        }
 
         private void Button_Click_Crew(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleCrewChallenge();
+        }
+        private void Button_Click_Crew_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleCrewChallengeOff();
         }
 
         private void Button_Click_Multiple(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMultipleChoiceChallenge();
         }
+        private void Button_Click_Multiple_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleMultipleChoiceChallengeOff();
+        }
 
         private void Button_Click_Music(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMusicChallenge();
+        }
+        private void Button_Click_Music_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleMusicChallengeOff();
         }
 
         private void Button_Click_Quiz(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleQuizChallenge();
         }
+        private void Button_Click_Quiz_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleQuizChallengeOff();
+        }
 
         private void Button_Click_Screenshot(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleScreenshotChallenge();
+        }
+        private void Button_Click_Screenshot_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleScreenshotChallengeOff();
         }
 
         private void Button_Click_Silhouette(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSilhouetteChallenge();
         }
+        private void Button_Click_Silhouette_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleSilhouetteChallengeOff();
+        }
 
         private void Button_Click_Sologame(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSologameChallenge();
+        }
+        private void Button_Click_Sologame_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleSologameChallengeOff();
         }
     }
 }
