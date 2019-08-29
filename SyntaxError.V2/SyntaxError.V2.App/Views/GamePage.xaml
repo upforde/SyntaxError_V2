@@ -9,10 +9,130 @@
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
-    <Grid
-        x:Name="ContentArea"
-        Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid Background="#111111"
+    <Page.Resources>
+        <!--PlayButtonArea-->
+        <Storyboard x:Name="PlayButtonAreaOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="PlayButtonArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="PlayButtonAreaOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="PlayButtonArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Audience-->
+        <Storyboard x:Name="AudienceOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="AudienceChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="AudienceOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="AudienceChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Crew-->
+        <Storyboard x:Name="CrewOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="CrewChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="CrewOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="CrewChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--MultipleChoice-->
+        <Storyboard x:Name="MultipleChoiceOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="MultipleChoiceChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="MultipleChoiceOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="MultipleChoiceChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Music-->
+        <Storyboard x:Name="MusicOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="MusicChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="MusicOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="MusicChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Quiz-->
+        <Storyboard x:Name="QuizOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="QuizChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="QuizOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="QuizChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Screenshot-->
+        <Storyboard x:Name="ScreenshotOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="ScreenshotChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="ScreenshotOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="ScreenshotChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Silhouette-->
+        <Storyboard x:Name="SilhouetteOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="SilhouetteChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="SilhouetteOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="SilhouetteChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+        <!--Sologame-->
+        <Storyboard x:Name="SologameOpacityDown">
+            <DoubleAnimation
+                Storyboard.TargetName="SologameChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="1.0" To="0.0" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Name="SologameOpacityUp">
+            <DoubleAnimation
+                Storyboard.TargetName="SologameChallengeArea"
+                Storyboard.TargetProperty="Opacity"
+                From="0.0" To="1.0" Duration="0:0:1"/>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea"
+          Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid x:Name="PlayButtonArea"
+              Background="#111111"
               Padding="5">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -46,7 +166,8 @@
                                               HorizontalAlignment="Center">
                         <Image x:Name="audienceChallenge"
                                Source="/Assets/audience_challenge_thumbnail.jpg"
-                               Margin="10, 0, 5, 5">
+                               Margin="10, 0, 5, 5"
+                               animations:Connected.Key="audience">
                                <animations:Implicit.ShowAnimations>
                                     <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
                                     <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
@@ -217,12 +338,31 @@
                     </controls:DropShadowPanel>
                 </Grid>
             </Grid>
-
-            <ListView Visibility="Collapsed" ItemsSource="{x:Bind ViewModel.List}">
-                <DataTemplate>
-                    <TextBlock Text="{Binding}"/>
-                </DataTemplate>
-            </ListView>
+        </Grid>
+        <Grid x:Name="AudienceChallengeArea"
+              Visibility="Collapsed">
+            <Rectangle Width="100" Height="100" Fill="DarkRed" HorizontalAlignment="Center" />
+        </Grid>
+        <Grid x:Name="CrewChallengeArea"
+              Visibility="Collapsed">
+        </Grid>
+        <Grid x:Name="MultipleChoiceChallengeArea"
+              Visibility="Collapsed">
+        </Grid>
+        <Grid x:Name="MusicChallengeArea"
+              Visibility="Collapsed">
+        </Grid>
+        <Grid x:Name="QuizChallengeArea"
+              Visibility="Collapsed">
+        </Grid>
+        <Grid x:Name="ScreenshotChallengeArea"
+              Visibility="Collapsed">
+        </Grid>
+        <Grid x:Name="SilhouetteChallengeArea"
+              Visibility="Collapsed">
+        </Grid>
+        <Grid x:Name="SologameChallengeArea"
+              Visibility="Collapsed">
         </Grid>
     </Grid>
 </Page>

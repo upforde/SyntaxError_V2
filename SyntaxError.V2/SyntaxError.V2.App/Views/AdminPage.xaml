@@ -15,17 +15,8 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
-            <Button Click="Button_Click" Visibility="Collapsed">Click</Button>
             
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Toggle On" />
-            
-            <StackPanel Grid.Column="0" Grid.Row="1">
+            <StackPanel Grid.Column="0">
                 <Button Click="Button_Click_Audience">Audience</Button>
                 <Button Click="Button_Click_Crew">Crew</Button>
                 <Button Click="Button_Click_Multiple">Multiple Choice</Button>
@@ -36,17 +27,10 @@
                 <Button Click="Button_Click_Sologame">Sologame</Button>
             </StackPanel>
 
-            <TextBlock Grid.Column="1" Grid.Row="0" Text="Toggle Off" />
-            
-            <StackPanel Grid.Column="1" Grid.Row="1">
-                <Button Click="Button_Click_Audience_off">Audience</Button>
-                <Button Click="Button_Click_Crew_off">Crew</Button>
-                <Button Click="Button_Click_Multiple_off">Multiple Choice</Button>
-                <Button Click="Button_Click_Music_off">Music</Button>
-                <Button Click="Button_Click_Quiz_off">Quiz</Button>
-                <Button Click="Button_Click_Screenshot_off">Screenshot</Button>
-                <Button Click="Button_Click_Silhouette_off">Silhouette</Button>
-                <Button Click="Button_Click_Sologame_off">Sologame</Button>
+            <StackPanel Grid.Column="1">
+                <Button Click="Button_Click_Play">Play</Button>
+                <Button Click="Button_Click_Done">Done</Button>
+                <Button Click="Button_Click_Deselect">Deselect</Button>
             </StackPanel>
         </Grid>
     </Grid>

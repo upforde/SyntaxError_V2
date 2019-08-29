@@ -162,148 +162,60 @@ namespace SyntaxError.V2.App.Views
             }
             return null;
         }
-
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            string text = "";
-            int rndNum = GamePage.RandomNumber(0, 7);
-
-            switch (rndNum)
-            {
-                case 0:
-                    if(AudienceChallenges.Count > 0)
-                    {
-                        AudienceChallenge rnd = AudienceChallenges[GamePage.RandomNumber(0, AudienceChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No AudienceChallenges";
-                    break;
-                case 1:
-                    if(CrewChallenges.Count > 0)
-                    {
-                        CrewChallenge rnd = CrewChallenges[GamePage.RandomNumber(0, CrewChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No CrewChallenges";
-                    break;
-                case 2:
-                    if (MultipleChoiceChallenges.Count > 0)
-                    {
-                        MultipleChoiceChallenge rnd = MultipleChoiceChallenges[GamePage.RandomNumber(0, MultipleChoiceChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No MultipleChoiceChallenges";
-                    break;
-                case 3:
-                    if (MusicChallenges.Count > 0)
-                    {
-                        MusicChallenge rnd = MusicChallenges[GamePage.RandomNumber(0, MusicChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No MusicChallenges";
-                    break;
-                case 4:
-                    if (QuizChallenges.Count > 0)
-                    {
-                        QuizChallenge rnd = QuizChallenges[GamePage.RandomNumber(0, QuizChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No QuizChallenges";
-                    break;
-                case 5:
-                    if (ScreenshotChallenges.Count > 0)
-                    {
-                        ScreenshotChallenge rnd = ScreenshotChallenges[GamePage.RandomNumber(0, ScreenshotChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No ScreenshotChallenges";
-                    break;
-                case 6:
-                    if (SilhouetteChallenges.Count > 0)
-                    {
-                        SilhouetteChallenge rnd = SilhouetteChallenges[GamePage.RandomNumber(0, SilhouetteChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No SilhouetteChallenges";
-                    break;
-                case 7:
-                    if (SologameChallenges.Count > 0)
-                    {
-                        SologameChallenge rnd = SologameChallenges[GamePage.RandomNumber(0, SologameChallenges.Count-1)];
-                        text = rnd.GetDiscriminator() + ": " + rnd.ChallengeTask;
-                    } else text = "No SologameChallenges";
-                    break;
-                default:
-                    text = rndNum.ToString();
-                    break;
-            }
-
-            GamePage.AddToOtherList(text);
-        }
         
         private void Button_Click_Audience(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleAudienceChallenge();
-        }
-        private void Button_Click_Audience_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleAudienceChallengeOff();
         }
 
         private void Button_Click_Crew(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleCrewChallenge();
         }
-        private void Button_Click_Crew_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleCrewChallengeOff();
-        }
 
         private void Button_Click_Multiple(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMultipleChoiceChallenge();
-        }
-        private void Button_Click_Multiple_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleMultipleChoiceChallengeOff();
         }
 
         private void Button_Click_Music(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMusicChallenge();
         }
-        private void Button_Click_Music_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleMusicChallengeOff();
-        }
 
         private void Button_Click_Quiz(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleQuizChallenge();
-        }
-        private void Button_Click_Quiz_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleQuizChallengeOff();
         }
 
         private void Button_Click_Screenshot(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleScreenshotChallenge();
         }
-        private void Button_Click_Screenshot_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleScreenshotChallengeOff();
-        }
 
         private void Button_Click_Silhouette(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSilhouetteChallenge();
-        }
-        private void Button_Click_Silhouette_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleSilhouetteChallengeOff();
         }
 
         private void Button_Click_Sologame(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSologameChallenge();
         }
-        private void Button_Click_Sologame_off(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        
+        private void Button_Click_Play(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            GamePage.ToggleSologameChallengeOff();
+            GamePage.TogglePlayScreen();
+        }
+
+        private void Button_Click_Done(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleMainScreen();
+        }
+
+        private void Button_Click_Deselect(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GamePage.ToggleDeselect();
         }
     }
 }
