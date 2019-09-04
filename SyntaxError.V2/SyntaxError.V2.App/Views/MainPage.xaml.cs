@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Windows.ApplicationModel.Core;
+using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;

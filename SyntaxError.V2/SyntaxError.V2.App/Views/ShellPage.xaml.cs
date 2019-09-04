@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 using Microsoft.Toolkit.Uwp.Connectivity;
-using SyntaxError.V2.App.Services;
 using SyntaxError.V2.App.ViewModels;
+using Windows.Foundation;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 
 namespace SyntaxError.V2.App.Views
@@ -19,6 +20,8 @@ namespace SyntaxError.V2.App.Views
             DataContext = ViewModel;
             ViewModel.Initialize(shellFrame, navigationView, KeyboardAccelerators);
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+            ApplicationView.PreferredLaunchViewSize = new Size(840, 600);
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             Loaded += ShellPage_Loaded;
         }
 

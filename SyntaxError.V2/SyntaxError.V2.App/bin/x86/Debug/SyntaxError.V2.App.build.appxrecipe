@@ -91,29 +91,29 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\audience_challenge_thumbnail.jpg">
-      <PackagePath>Assets\audience_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\AudienceBorder.png">
+      <PackagePath>Assets\AudienceBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\crew_challenge_thumbnail.jpg">
-      <PackagePath>Assets\crew_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\CrewBorder.png">
+      <PackagePath>Assets\CrewBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\multiply_choice_challenge_thumbnail.jpg">
-      <PackagePath>Assets\multiply_choice_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoiceBorder.png">
+      <PackagePath>Assets\MultipleChoiceBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\music_challenge_thumbnail.jpg">
-      <PackagePath>Assets\music_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MusicBorder.png">
+      <PackagePath>Assets\MusicBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\quiz_challenge_thumbnail.jpg">
-      <PackagePath>Assets\quiz_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\QuizBorder.png">
+      <PackagePath>Assets\QuizBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\screenshot_challenge_thumbnail.jpg">
-      <PackagePath>Assets\screenshot_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\ScreenshotBorder.png">
+      <PackagePath>Assets\ScreenshotBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\silhouette_challenge_thumbnail.jpg">
-      <PackagePath>Assets\silhouette_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SilhouetteChallenge.png">
+      <PackagePath>Assets\SilhouetteChallenge.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\sologame_challenge_thumbnail.jpg">
-      <PackagePath>Assets\sologame_challenge_thumbnail.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SologameBorder.png">
+      <PackagePath>Assets\SologameBorder.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SyntaxError_Logo.png">
       <PackagePath>Assets\SyntaxError_Logo.png</PackagePath>
@@ -144,6 +144,30 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\audience_challenge_thumbnail.jpg">
+      <PackagePath>Assets\audience_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\crew_challenge_thumbnail.jpg">
+      <PackagePath>Assets\crew_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\multiply_choice_challenge_thumbnail.jpg">
+      <PackagePath>Assets\multiply_choice_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\music_challenge_thumbnail.jpg">
+      <PackagePath>Assets\music_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\quiz_challenge_thumbnail.jpg">
+      <PackagePath>Assets\quiz_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\screenshot_challenge_thumbnail.jpg">
+      <PackagePath>Assets\screenshot_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\silhouette_challenge_thumbnail.jpg">
+      <PackagePath>Assets\silhouette_challenge_thumbnail.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\sologame_challenge_thumbnail.jpg">
+      <PackagePath>Assets\sologame_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>

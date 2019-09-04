@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
+    <Compile Include="DataAccess\Answers.cs" />
     <Compile Include="DataAccess\Challenges.cs" />
     <Compile Include="DataAccess\CrewMembers.cs" />
     <Compile Include="DataAccess\GameProfiles.cs" />
@@ -241,13 +242,21 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AudienceBorder.png" />
     <Content Include="Assets\audience_challenge_thumbnail.jpg" />
+    <Content Include="Assets\CrewBorder.png" />
     <Content Include="Assets\crew_challenge_thumbnail.jpg" />
+    <Content Include="Assets\MultipleChoiceBorder.png" />
     <Content Include="Assets\multiply_choice_challenge_thumbnail.jpg" />
+    <Content Include="Assets\MusicBorder.png" />
     <Content Include="Assets\music_challenge_thumbnail.jpg" />
+    <Content Include="Assets\QuizBorder.png" />
     <Content Include="Assets\quiz_challenge_thumbnail.jpg" />
+    <Content Include="Assets\ScreenshotBorder.png" />
     <Content Include="Assets\screenshot_challenge_thumbnail.jpg" />
+    <Content Include="Assets\SilhouetteChallenge.png" />
     <Content Include="Assets\silhouette_challenge_thumbnail.jpg" />
+    <Content Include="Assets\SologameBorder.png" />
     <Content Include="Assets\sologame_challenge_thumbnail.jpg" />
     <Content Include="Assets\SyntaxError_Logo.png" />
     <Content Include="Properties\Default.rd.xml" />

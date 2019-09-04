@@ -127,13 +127,31 @@
                 Storyboard.TargetProperty="Opacity"
                 From="0.0" To="1.0" Duration="0:0:1"/>
         </Storyboard>
+        <!--ImgMove-->
+        <Storyboard x:Name="ImgMove">
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                             Duration="0:0:20"
+                             RepeatBehavior="Forever"
+                             From="0"/>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                             Duration="0:0:20"
+                             RepeatBehavior="Forever"
+                             To="0"/>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                             Duration="0:0:20"
+                             RepeatBehavior="Forever"
+                             To="0"/>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                             Duration="0:0:20"
+                             RepeatBehavior="Forever"
+                             From="0"/>
+        </Storyboard>
     </Page.Resources>
 
     <Grid x:Name="ContentArea"
           Margin="{StaticResource MediumLeftRightMargin}">
         <Grid x:Name="PlayButtonArea"
-              Background="#111111"
-              Padding="5">
+              Background="#111111">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -149,6 +167,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -156,6 +175,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    
                     <controls:DropShadowPanel x:Name="AudienceGlow"
                                               Grid.Column="0"
                                               OffsetX="10"
@@ -168,13 +188,13 @@
                                Source="/Assets/audience_challenge_thumbnail.jpg"
                                Margin="10, 0, 5, 5"
                                animations:Connected.Key="audience">
-                               <animations:Implicit.ShowAnimations>
-                                    <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                    <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                                </animations:Implicit.ShowAnimations>
-                               <Image.RenderTransform>
-                                   <CompositeTransform x:Name="AudienceHighLight" />
-                               </Image.RenderTransform>
+                            <animations:Implicit.ShowAnimations>
+                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                            </animations:Implicit.ShowAnimations>
+                            <Image.RenderTransform>
+                                <CompositeTransform x:Name="AudienceHighLight" />
+                            </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
@@ -218,7 +238,7 @@
                                 <CompositeTransform x:Name="MultipleChoiceChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
-                    </controls:DropShadowPanel> 
+                    </controls:DropShadowPanel>
 
                     <controls:DropShadowPanel x:Name="MusicGlow"
                                               Grid.Column="3"
@@ -241,7 +261,7 @@
                         </Image>
                     </controls:DropShadowPanel>
                 </Grid>
-                
+
                 <Grid Grid.Row="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -267,7 +287,7 @@
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
                                 <CompositeTransform x:Name="QuizChallengeHighLight" />
-                            </Image.RenderTransform> 
+                            </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
@@ -313,7 +333,7 @@
                                 <CompositeTransform x:Name="SilhouetteChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
-                    </controls:DropShadowPanel> 
+                    </controls:DropShadowPanel>
 
                     <controls:DropShadowPanel x:Name="SologameGlow"
                                               Grid.Column="3"
@@ -341,28 +361,491 @@
         </Grid>
         <Grid x:Name="AudienceChallengeArea"
               Visibility="Collapsed">
-            <Rectangle Width="100" Height="100" Fill="DarkRed" HorizontalAlignment="Center" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideAudienceTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/AudienceBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontAudienceTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/AudienceBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideAudienceBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/AudienceBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontAudienceBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/AudienceBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="CrewChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideCrewTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/CrewBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontCrewTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/CrewBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideCrewBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/CrewBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontCrewBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/CrewBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="MultipleChoiceChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideMultipleChoiceTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MultipleChoiceBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontMultipleChoiceTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MultipleChoiceBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideMultipleChoiceBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MultipleChoiceBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontMultipleChoiceBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MultipleChoiceBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="MusicChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideMusicTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MusicBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontMusicTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MusicBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideMusicBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MusicBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontMusicBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/MusicBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="QuizChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideQuizTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/QuizBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontQuizTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/QuizBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideQuizBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/QuizBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontQuizBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/QuizBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="ScreenshotChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideScreenshotTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/ScreenshotBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontScreenshotTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/ScreenshotBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideScreenshotBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/ScreenshotBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontScreenshotBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/ScreenshotBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="SilhouetteChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideSilhouetteTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SilhouetteBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontSilhouetteTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SilhouetteBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideSilhouetteBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SilhouetteBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontSilhouetteBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SilhouetteBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
         <Grid x:Name="SologameChallengeArea"
               Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            
+            <Image x:Name="sideSologameTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SologameBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="frontSologameTopImg"
+                   Grid.Row="0"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SologameBorder.png"
+                   Margin="0,-5,0,0"
+                   VerticalAlignment="Top"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+
+            <Image x:Name="sideSologameBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SologameBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+            
+            <Image x:Name="frontSologameBottomImg"
+                   Grid.Row="2"
+                   MaxHeight="150"
+                   MaxWidth="1920"
+                   Source="/Assets/SologameBorder.png"
+                   Margin="0, 0, 0, -5"
+                   VerticalAlignment="Bottom"
+                   Opacity="0.2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
     </Grid>
 </Page>

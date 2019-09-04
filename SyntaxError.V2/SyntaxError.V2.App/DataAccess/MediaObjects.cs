@@ -32,6 +32,27 @@ namespace SyntaxError.V2.App.DataAccess
             return param;
         }
 
+        public async Task<MediaObject> GetMediaObjectAsync(int? id, string type)
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/" + id));
+
+            string json = await result.Content.ReadAsStringAsync();
+            if (result.IsSuccessStatusCode)
+            {
+                switch (type)
+                {
+                    case "Game":
+                        return JsonConvert.DeserializeObject<Game>(json);
+                    case "Image":
+                        return JsonConvert.DeserializeObject<Image>(json);
+                    case "Music":
+                        return JsonConvert.DeserializeObject<Music>(json);
+                    default:
+                        throw new ArgumentException();
+                }
+            } return null;
+        }
+
         /// <summary>Gets the media objects of a specific type asynchronous.</summary>
         /// <param name="type">The type.</param>
         /// <returns></returns>

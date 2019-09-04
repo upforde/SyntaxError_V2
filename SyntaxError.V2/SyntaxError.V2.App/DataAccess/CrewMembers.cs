@@ -29,6 +29,14 @@ namespace SyntaxError.V2.App.DataAccess
             return param;
         }
 
+        public async Task<CrewMember> GetCrewMemberAsync(int? id)
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(crewBaseUri + "" + id));
+            string json = await result.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<CrewMember>(json);
+        }
+
         /// <summary>Gets the crew members asynchronous.</summary>
         /// <returns></returns>
         public async Task<CrewMember[]> GetCrewMembersAsync()

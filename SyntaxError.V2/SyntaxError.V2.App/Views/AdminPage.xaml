@@ -4,34 +4,339 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-    <Grid
-        x:Name="ContentArea"
-        Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+    <Grid x:Name="ContentArea"
+          Margin="{StaticResource MediumLeftRightMargin}"
+          Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <Grid x:Name="ControllPanel">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <StackPanel Grid.Column="0">
-                <Button Click="Button_Click_Audience">Audience</Button>
-                <Button Click="Button_Click_Crew">Crew</Button>
-                <Button Click="Button_Click_Multiple">Multiple Choice</Button>
-                <Button Click="Button_Click_Music">Music</Button>
-                <Button Click="Button_Click_Quiz">Quiz</Button>
-                <Button Click="Button_Click_Screenshot">Screenshot</Button>
-                <Button Click="Button_Click_Silhouette">Silhouette</Button>
-                <Button Click="Button_Click_Sologame">Sologame</Button>
-            </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Column="1">
-                <Button Click="Button_Click_Play">Play</Button>
-                <Button Click="Button_Click_Done">Done</Button>
-                <Button Click="Button_Click_Deselect">Deselect</Button>
+            <Image Grid.Row="0"
+                   Grid.ColumnSpan="4"
+                   Source="/Assets/SyntaxError_Logo.png"
+                   Margin="0, 0, 0, 25"/>
+            
+            <StackPanel x:Name="AudienceButtonArea"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Button Click="Button_Click_Audience"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Audience</Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                          ShadowOpacity="1"
+                                          OffsetX="2"
+                                          OffsetY="2"
+                                          Color="#004FFC">
+                    <TextBlock Text="Next game:"
+                               Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                                  ShadowOpacity="1"
+                                                  OffsetX="2"
+                                                  OffsetY="2"
+                                                  Color="#004FFC">
+                        <TextBlock x:Name="AudienceNextGame"
+                                   Text="{x:Bind CurrentAudienceChallenge.Game.Name}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
             </StackPanel>
+            <Grid x:Name="CrewButtonArea"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="0, 0, 0, 5"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Click="Button_Click_Crew"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Crew</Button>
+                <StackPanel Grid.Row="1"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock Text="Next game:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock x:Name="CrewNextGame"
+                                   Text="{x:Bind CurrentCrewChallenge.CrewMember.CrewTag}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="2"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock Text="Next crew:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock x:Name="CrewNextCrew"
+                                   Text="{x:Bind CurrentCrewChallenge.Game.Name}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="MultipleChoiceButtonArea"
+                  Grid.Row="1"
+                  Grid.Column="2"
+                  Margin="0, 0, 0, 5"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Click="Button_Click_Multiple"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Multiple Choice</Button>
+                <StackPanel Grid.Row="1">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock Text="Question:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock x:Name="MultipleChoiceQuiestion"
+                                   Text="{x:Bind CurrentMultipleChoiceChallenge.ChallengeTask}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock Text="Answer:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock x:Name="MultipleChoiceAnswer"
+                                   Text="{x:Bind CurrentMultipleChoiceChallenge.Answers.Answer}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
+            <StackPanel x:Name="MusicButtonArea"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Button Click="Button_Click_Music"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Music</Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#F2FF00">
+                        <TextBlock Text="Next song:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#F2FF00">
+                    <TextBlock x:Name="MusicNextSong"
+                               Text="{x:Bind CurrentMusicChallenge.Song.Name}"
+                               Padding="10, 0, 0, 2"/>
+                </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="QuizButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Button Click="Button_Click_Quiz"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Quiz</Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock Text="Question:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock x:Name="QuizQuiestion"
+                                   Text="{x:Bind CurrentQuizChallenge.ChallengeTask}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock Text="Answer:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock x:Name="QuizAnswer"
+                                   Text="{x:Bind CurrentQuizChallenge.Answers.Answer}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="ScreenshotButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Button Click="Button_Click_Screenshot"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Screenshot</Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                          ShadowOpacity="1"
+                                          OffsetX="2"
+                                          OffsetY="2"
+                                          Color="#00C132">
+                    <TextBlock Text="Next screenshot:"
+                               Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                                  ShadowOpacity="1"
+                                                  OffsetX="2"
+                                                  OffsetY="2"
+                                                  Color="#00C132">
+                        <TextBlock x:Name="ScreenshotNextScreenshot"
+                                   Text="{x:Bind CurrentScreenshotChallenge.Image.Name}"
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="SilhouetteButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Button Click="Button_Click_Silhouette"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Silhouette</Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#00FFFB">
+                        <TextBlock Text="Next silhouette:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#00FFFB">
+                    <TextBlock x:Name="SilhouetteNextSilhouette"
+                               Text="{x:Bind CurrentSilhouetteChallenge.Image.Name}"
+                               Padding="10, 0, 0, 2"/>
+                </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="SologameButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Button Click="Button_Click_Sologame"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">Sologame</Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock Text="Next game:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                    <TextBlock x:Name="SologameNextGame"
+                               Text="{x:Bind CurrentSologameChallenge.Game.Name}"
+                               Padding="10, 0, 0, 2"/>
+                </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            
+            <Grid x:Name="ActionButtonArea"
+                  Grid.ColumnSpan="4"
+                  Grid.Row="3"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name="PlayButton" Grid.Column="0" Click="Button_Click_Play">Play</Button>
+                <Button x:Name="DeselectButton" Grid.Column="1" Click="Button_Click_Deselect">Deselect</Button>
+                <Button x:Name="AnswerButton" Grid.Column="2" Click="Button_Click_Done">Answer</Button>
+                <Button x:Name="DoneButton" Grid.Column="3" Click="Button_Click_Done">Done</Button>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

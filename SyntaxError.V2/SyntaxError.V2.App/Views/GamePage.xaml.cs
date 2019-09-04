@@ -6,6 +6,7 @@ using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using Windows.ApplicationModel.Core;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -34,6 +35,7 @@ namespace SyntaxError.V2.App.Views
         public GamePage()
         {
             InitializeComponent();
+
             CurrentChallenge = null;
             PlayButtonAreaOpacityUp.Completed += OpacityCompleted;
             AudienceOpacityDown.Completed += CollapseChallengeWindows;
@@ -82,13 +84,14 @@ namespace SyntaxError.V2.App.Views
         private void OpacityCompleted(object sender, object e)
         {
             ToggleShadowOpacity(0.5);
+            ImgMove.Stop();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             GameProfile = (e.Parameter as GameObjectForSending).GameProfile;
             
-            foreach (ListItemMainPage challenge in (e.Parameter as GameObjectForSending).Challenges)
+            foreach (ListItemMainPage challenge in ((GameObjectForSending)e.Parameter).Challenges)
             {
                 if(challenge.AudienceChallenge != null) AudienceChallenges.Add(challenge.AudienceChallenge);
                 else if(challenge.CrewChallenge != null) CrewChallenges.Add(challenge.CrewChallenge);
@@ -121,6 +124,7 @@ namespace SyntaxError.V2.App.Views
                                 if (CurrentChallenge != null)
                                 {
                                     ToggleShadowOpacity(0);
+                                    ToggleImgMove();
                                     PlayButtonAreaOpacityDown.Begin();
                                 }
                                 
@@ -199,6 +203,72 @@ namespace SyntaxError.V2.App.Views
                                         break;
                                 }
                                 DeselectChallenge();
+                            });
+        }
+
+        public async void ToggleImgMove()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                switch (CurrentChallenge)
+                                {
+                                    case 0:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontAudienceTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideAudienceTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontAudienceBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideAudienceBottomImg");
+                                        break;
+                                    case 1:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontCrewTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideCrewTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontCrewBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideCrewBottomImg");
+                                        break;
+                                    case 2:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontMultipleChoiceTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideMultipleChoiceTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontMultipleChoiceBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideMultipleChoiceBottomImg");
+                                        break;
+                                    case 3:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontMusicTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideMusicTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontMusicBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideMusicBottomImg");
+                                        break;
+                                    case 4:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontQuizTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideQuizTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontQuizBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideQuizBottomImg");
+                                        break;
+                                    case 5:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontScreenshotTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideScreenshotTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontScreenshotBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideScreenshotBottomImg");
+                                        break;
+                                    case 6:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontSilhouetteTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideSilhouetteTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontSilhouetteBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideSilhouetteBottomImg");
+                                        break;
+                                    case 7:
+                                        ImgMove.Children[0].SetValue(Storyboard.TargetNameProperty, "frontSologameTopImg");
+                                        ImgMove.Children[1].SetValue(Storyboard.TargetNameProperty, "sideSologameTopImg");
+                                        ImgMove.Children[2].SetValue(Storyboard.TargetNameProperty, "frontSologameBottomImg");
+                                        ImgMove.Children[3].SetValue(Storyboard.TargetNameProperty, "sideSologameBottomImg");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                var imageWidth = PlayButtonArea.ActualWidth * 0.975;
+                                ImgMove.Children[0].SetValue(DoubleAnimation.ToProperty, -imageWidth);
+                                ImgMove.Children[1].SetValue(DoubleAnimation.FromProperty, imageWidth);
+                                ImgMove.Children[2].SetValue(DoubleAnimation.FromProperty, -imageWidth);
+                                ImgMove.Children[3].SetValue(DoubleAnimation.ToProperty, imageWidth);
+                                ImgMove.Begin();
                             });
         }
 
@@ -499,6 +569,8 @@ namespace SyntaxError.V2.App.Views
                 case 7:
                     DeHighlightSologame();
                     break;
+                default:
+                    break;
             }
             CurrentChallenge = null;
         }
@@ -513,7 +585,7 @@ namespace SyntaxError.V2.App.Views
             SilhouetteGlow.ShadowOpacity = level;
             SologameGlow.ShadowOpacity = level;
         }
-        
+
         public int RandomNumber(int min, int max)
         {
             Random random = new Random();
