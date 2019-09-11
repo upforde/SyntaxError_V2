@@ -254,8 +254,9 @@
     <Content Include="Assets\quiz_challenge_thumbnail.jpg" />
     <Content Include="Assets\ScreenshotBorder.png" />
     <Content Include="Assets\screenshot_challenge_thumbnail.jpg" />
-    <Content Include="Assets\SilhouetteChallenge.png" />
+    <Content Include="Assets\SilhouetteBorder.png" />
     <Content Include="Assets\silhouette_challenge_thumbnail.jpg" />
+    <Content Include="Assets\Silhouette_Logo.png" />
     <Content Include="Assets\SologameBorder.png" />
     <Content Include="Assets\sologame_challenge_thumbnail.jpg" />
     <Content Include="Assets\SyntaxError_Logo.png" />

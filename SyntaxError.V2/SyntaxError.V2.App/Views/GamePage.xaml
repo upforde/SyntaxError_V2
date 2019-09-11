@@ -6,8 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     Style="{StaticResource PageStyle}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="#111111">
 
     <Page.Resources>
         <!--PlayButtonArea-->
@@ -758,7 +760,36 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Image Source="/Assets/Silhouette_Logo.png"
+                           VerticalAlignment="Top"
+                           Margin="0, 25, 0, 50"/>
+                    <controls:DropShadowPanel HorizontalAlignment="Center"
+                                              BlurRadius="5"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#00FFFB">
+                        <TextBlock x:Name="SilhouetteAnswer"
+                                   Text="Who's that character?"
+                                   Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <Grid x:Name="SilhouetteActionArea"
+                      Grid.Column="1"
+                      Visibility="Collapsed">
+                    <Image x:Name="Img"></Image>
+                    <Border x:Name="Silhouette">
+                        <Border.Background>
+                            <media:ImageBlendBrush x:Name="SilhouetteBlendBrush" Stretch="Uniform"  Mode="Subtract"/>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </Grid>
 
             <Image x:Name="sideSilhouetteBottomImg"
                    Grid.Row="2"
@@ -772,7 +803,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontSilhouetteBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"

@@ -109,8 +109,11 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\ScreenshotBorder.png">
       <PackagePath>Assets\ScreenshotBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SilhouetteChallenge.png">
-      <PackagePath>Assets\SilhouetteChallenge.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SilhouetteBorder.png">
+      <PackagePath>Assets\SilhouetteBorder.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Silhouette_Logo.png">
+      <PackagePath>Assets\Silhouette_Logo.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SologameBorder.png">
       <PackagePath>Assets\SologameBorder.png</PackagePath>

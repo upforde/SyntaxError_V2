@@ -20,6 +20,8 @@ namespace SyntaxError.V2.App.Views
 {
     public sealed partial class AdminPage : Page
     {
+        private bool IsInPlayState = false;
+
         public AdminViewModel ViewModel { get; } = new AdminViewModel();
         public GamePage GamePage;
         public List<AudienceChallenge> AudienceChallenges = new List<AudienceChallenge>();
@@ -67,49 +69,176 @@ namespace SyntaxError.V2.App.Views
         private void Button_Click_Audience(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleAudienceChallenge();
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Crew(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleCrewChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         private void Button_Click_Multiple(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMultipleChoiceChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         private void Button_Click_Music(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMusicChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         private void Button_Click_Quiz(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleQuizChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         private void Button_Click_Screenshot(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleScreenshotChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         private void Button_Click_Silhouette(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSilhouetteChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         private void Button_Click_Sologame(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSologameChallenge();
+            if (!IsInPlayState) PlayButton.IsEnabled = true;
         }
         
         private void Button_Click_Play(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            IsInPlayState = true;
+            
+            PlayButton.IsEnabled = false;
+            DeselectButton.IsEnabled = false;
+
+            switch (GamePage.CurrentChallenge)
+            {
+                case 0:
+                    DoneButton.IsEnabled = true;
+                    break;
+                case 1:
+                    DoneButton.IsEnabled = true;
+                    break;
+                case 2:
+                    AnswerButton.IsEnabled = true;
+                    break;
+                case 3:
+                    AnswerButton.IsEnabled = true;
+                    break;
+                case 4:
+                    AnswerButton.IsEnabled = true;
+                    break;
+                case 5:
+                    AnswerButton.IsEnabled = true;
+                    break;
+                case 6:
+                    GamePage.ActuateSilhouetteChallenge(CurrentSilhouetteChallenge);
+                    AnswerButton.IsEnabled = true;
+                    break;
+                case 7:
+                    DoneButton.IsEnabled = true;
+                    break;
+                default:
+                    break;
+            }
             GamePage.TogglePlayScreen();
-        }
-        private void Button_Click_Done(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            GamePage.ToggleMainScreen();
         }
         private void Button_Click_Deselect(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            PlayButton.IsEnabled = false;
+            DeselectButton.IsEnabled = false;
+
             GamePage.ToggleDeselect();
         }
-        
+        private void Button_Click_Answer(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            AnswerButton.IsEnabled = false;
+            DoneButton.IsEnabled = true;
+
+            switch (GamePage.CurrentChallenge)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    GamePage.AnswerSilhouetteChallenge(CurrentSilhouetteChallenge);
+                    break;
+                case 7:
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void Button_Click_Done(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            DoneButton.IsEnabled = false;
+
+            switch (GamePage.CurrentChallenge)
+            {
+                case 0:
+                    UsedAudienceChallenges.Add(CurrentAudienceChallenge);
+                    CurrentAudienceChallenge = RollForAudienceChallengeRecursive();
+                    GetAudienceChallengeGameFromDBAsync();
+                    break;
+                case 1:
+                    UsedCrewChallenges.Add(CurrentCrewChallenge);
+                    CurrentCrewChallenge = RollForCrewChallengeRecursive();
+                    GetCrewChallengeGameAndMemberFromDBAsync();
+                    break;
+                case 2:
+                    UsedMultipleChoiceChallenges.Add(CurrentMultipleChoiceChallenge);
+                    CurrentMultipleChoiceChallenge = RollForMultipleChoiceChallengeRecursive();
+                    GetMultipleChoiceAnswersFromDBAsync();
+                    break;
+                case 3:
+                    UsedMusicChallenges.Add(CurrentMusicChallenge);
+                    CurrentMusicChallenge = RollForMusicChallengeRecursive();
+                    GetMusicChallengeSongFromDBAsync();
+                    break;
+                case 4:
+                    UsedQuizChallenges.Add(CurrentQuizChallenge);
+                    CurrentQuizChallenge = RollForQuizChallengeRecursive();
+                    GetQuizChallengeAnswerFromDBAsync();
+                    break;
+                case 5:
+                    UsedScreenshotChallenges.Add(CurrentScreenshotChallenge);
+                    CurrentScreenshotChallenge = RollForScreenshotChallengeRecursive();
+                    GetScreenshotChallengeScreenshotFromDBAsync();
+                    break;
+                case 6:
+                    UsedSilhouetteChallenges.Add(CurrentSilhouetteChallenge);
+                    CurrentSilhouetteChallenge = RollForSilhouetteChallengeRecursive();
+                    GetSilhouetteChallengeSilhouetteFromDBAsync();
+                    break;
+                case 7:
+                    UsedSologameChallenges.Add(CurrentSologameChallenge);
+                    CurrentSologameChallenge = RollForSoloGameChallengeRecursive();
+                    GetSologameChallengeGameFromDBAsync();
+                    break;
+                default:
+                    break;
+            }
+            GamePage.ToggleMainScreen();
+            
+            IsInPlayState = false;
+        }
+
         private AudienceChallenge RollForAudienceChallengeRecursive()
         {
             if (AudienceChallenges.Count != 0)
@@ -242,11 +371,17 @@ namespace SyntaxError.V2.App.Views
         private async void GetAudienceChallengeGameFromDBAsync()
         {
             if (CurrentAudienceChallenge != null)
+            {
                 if (CurrentAudienceChallenge.GameID != null)
                 {
                     CurrentAudienceChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentAudienceChallenge.GameID, "Game") as Game;
                     AudienceNextGame.Text = CurrentAudienceChallenge.Game.Name;
                 }
+            } else
+            {
+                AudienceNextGame.Text = "No more challenges ;(";
+                AudienceButton.IsEnabled = false;
+            }
         }
         private async void GetCrewChallengeGameAndMemberFromDBAsync()
         {
@@ -262,17 +397,28 @@ namespace SyntaxError.V2.App.Views
                     CurrentCrewChallenge.CrewMember = await ViewModel.LoadCrewMemberFromDBAsync(CurrentCrewChallenge.CrewMemberID);
                     CrewNextCrew.Text = CurrentCrewChallenge.CrewMember.CrewTag;
                 }
+            } else
+            {
+                CrewNextGame.Text = "No more challenges ;(";
+                CrewNextCrew.Text = "";
+                CrewButton.IsEnabled = false;
             }
             
         }
         private async void GetMultipleChoiceAnswersFromDBAsync()
         {
             if (CurrentMultipleChoiceChallenge != null)
+            {
                 if (CurrentMultipleChoiceChallenge.AnswersID != null)
                 {
                     CurrentMultipleChoiceChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentMultipleChoiceChallenge.AnswersID);
                     MultipleChoiceAnswer.Text = CurrentMultipleChoiceChallenge.Answers.Answer;
                 }
+            } else
+            {
+                MultipleChoiceAnswer.Text = "No more challenges ;(";
+                MultipleChoiceButton.IsEnabled = false;
+            }
         }
         private async void GetMusicChallengeSongFromDBAsync()
         {
@@ -283,43 +429,71 @@ namespace SyntaxError.V2.App.Views
                     CurrentMusicChallenge.Song = await ViewModel.LoadObjectFromDBAsync(CurrentMusicChallenge.SongID, "Music") as Music;
                     MusicNextSong.Text = CurrentMusicChallenge.Song.Name;
                 }
+            } else
+            {
+                MusicNextSong.Text = "No more challenges ;(";
+                MusicButton.IsEnabled = false;
             }
         }
         private async void GetQuizChallengeAnswerFromDBAsync()
         {
             if (CurrentQuizChallenge != null)
+            {
                 if (CurrentQuizChallenge.AnswersID != null)
                 {
                     CurrentQuizChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentQuizChallenge.AnswersID);
                     QuizAnswer.Text = CurrentQuizChallenge.Answers.Answer;
                 }
+            } else
+            {
+                QuizAnswer.Text = "No more challenges ;(";
+                QuizButton.IsEnabled = false;
+            }
         }
         private async void GetScreenshotChallengeScreenshotFromDBAsync()
         {
             if (CurrentScreenshotChallenge != null)
+            {
                 if (CurrentScreenshotChallenge.ImageID != null)
                 {
                     CurrentScreenshotChallenge.Image = await ViewModel.LoadObjectFromDBAsync(CurrentScreenshotChallenge.ImageID, "Image") as Modell.ChallengeObjects.Image;
                     ScreenshotNextScreenshot.Text = CurrentScreenshotChallenge.Image.Name;
                 }
+            } else
+            {
+                ScreenshotNextScreenshot.Text = "No more challenges ;(";
+                ScreenshotButton.IsEnabled = false;
+            }
         }
         private async void GetSilhouetteChallengeSilhouetteFromDBAsync()
         {
             if (CurrentSilhouetteChallenge != null)
+            {
                 if (CurrentSilhouetteChallenge.ImageID != null)
                 {
                     CurrentSilhouetteChallenge.Image = await ViewModel.LoadObjectFromDBAsync(CurrentSilhouetteChallenge.ImageID, "Image") as Modell.ChallengeObjects.Image;
                     SilhouetteNextSilhouette.Text = CurrentSilhouetteChallenge.Image.Name;
                 }
+            } else
+            {
+                SilhouetteNextSilhouette.Text = "No more challenges ;(";
+                SilhouetteButton.IsEnabled = false;
+            }
         }
         private async void GetSologameChallengeGameFromDBAsync()
         {
             if (CurrentSologameChallenge != null)
+            {
                 if (CurrentSologameChallenge.GameID != null)
                 {
                     CurrentSologameChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentSologameChallenge.GameID, "Game") as Game;
                     SologameNextGame.Text = CurrentSologameChallenge.Game.Name;
                 }
+            } else
+            {
+                SologameNextGame.Text = "No more challenges ;(";
+                SologameButton.IsEnabled = false;
+            }
         }
 
         private void UpdateAllTextFields()

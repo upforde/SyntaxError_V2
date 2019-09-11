@@ -34,7 +34,8 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='34'                              
+                <Button x:ConnectionId='34' x:Name="AudienceButton"
+                                                     
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Audience</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -67,7 +68,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:ConnectionId='31'                          
+                <Button x:ConnectionId='31' x:Name="CrewButton"
+                                                 
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Crew</Button>
                 <StackPanel Grid.Row="1"
@@ -121,7 +123,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:ConnectionId='28'                              
+                <Button x:ConnectionId='28' x:Name="MultipleChoiceButton"
+                                                     
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Multiple Choice</Button>
                 <StackPanel Grid.Row="1">
@@ -168,7 +171,8 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='26'                           
+                <Button x:ConnectionId='26' x:Name="MusicButton"
+                                                  
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Music</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -196,7 +200,8 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='23'                          
+                <Button x:ConnectionId='23' x:Name="QuizButton"
+                                                 
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Quiz</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -241,7 +246,8 @@
                         Grid.Column="1"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='21'                                
+                <Button x:ConnectionId='21' x:Name="ScreenshotButton"
+                                                       
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Screenshot</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -269,7 +275,8 @@
                         Grid.Column="2"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='19'                                
+                <Button x:ConnectionId='19' x:Name="SilhouetteButton"
+                                                       
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Silhouette</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -297,7 +304,7 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='17'                              
+                <Button x:ConnectionId='17' x:Name="SologameButton"                              
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Sologame</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -332,10 +339,30 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
-                <Button x:ConnectionId='13' x:Name="PlayButton" Grid.Column="0"                          >Play</Button>
-                <Button x:ConnectionId='14' x:Name="DeselectButton" Grid.Column="1"                              >Deselect</Button>
-                <Button x:ConnectionId='15' x:Name="AnswerButton" Grid.Column="2"                          >Answer</Button>
-                <Button x:ConnectionId='16' x:Name="DoneButton" Grid.Column="3"                          >Done</Button>
+                <Button x:ConnectionId='13' x:Name="PlayButton"
+                        Grid.Column="0"
+                                                 
+                        IsEnabled="False">
+                    Play
+                </Button>
+                <Button x:ConnectionId='14' x:Name="DeselectButton"
+                        Grid.Column="1"
+                                                     
+                        IsEnabled="False">
+                    Deselect
+                </Button>
+                <Button x:ConnectionId='15' x:Name="AnswerButton"
+                        Grid.Column="2"
+                                                   
+                        IsEnabled="False">
+                    Answer
+                </Button>
+                <Button x:ConnectionId='16' x:Name="DoneButton"
+                        Grid.Column="3"
+                                                 
+                        IsEnabled="False">
+                    Done
+                </Button>
             </Grid>
         </Grid>
     </Grid>

@@ -12,6 +12,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 namespace SyntaxError.V2.App.Views
@@ -22,6 +23,8 @@ namespace SyntaxError.V2.App.Views
 
         public GameViewModel ViewModel { get; } = new GameViewModel();
         public GameProfile GameProfile { get; set; }
+
+        public BitmapImage bitmapImage;
 
         public List<AudienceChallenge> AudienceChallenges = new List<AudienceChallenge>();
         public List<CrewChallenge> CrewChallenges = new List<CrewChallenge>();
@@ -35,7 +38,7 @@ namespace SyntaxError.V2.App.Views
         public GamePage()
         {
             InitializeComponent();
-
+            
             CurrentChallenge = null;
             PlayButtonAreaOpacityUp.Completed += OpacityCompleted;
             AudienceOpacityDown.Completed += CollapseChallengeWindows;
@@ -44,6 +47,7 @@ namespace SyntaxError.V2.App.Views
             MusicOpacityDown.Completed += CollapseChallengeWindows;
             QuizOpacityDown.Completed += CollapseChallengeWindows;
             ScreenshotOpacityDown.Completed += CollapseChallengeWindows;
+            SilhouetteOpacityUp.Completed += SilhouetteOpacityUp_Completed;
             SilhouetteOpacityDown.Completed += CollapseChallengeWindows;
             SologameOpacityDown.Completed += CollapseChallengeWindows;
         }
@@ -71,6 +75,9 @@ namespace SyntaxError.V2.App.Views
                     ScreenshotChallengeArea.Visibility = Visibility.Collapsed;
                     break;
                 case 6:
+                    Silhouette.Visibility = Visibility.Visible;
+                    SilhouetteAnswer.Text = "Who's that character?";
+                    SilhouetteActionArea.Visibility = Visibility.Collapsed;
                     SilhouetteChallengeArea.Visibility = Visibility.Collapsed;
                     break;
                 case 7:
@@ -79,6 +86,12 @@ namespace SyntaxError.V2.App.Views
                 default:
                     break;
             }
+            DeselectChallenge();
+        }
+        
+        private void SilhouetteOpacityUp_Completed(object sender, object e)
+        {
+            SilhouetteActionArea.Visibility = Visibility.Visible;
         }
 
         private void OpacityCompleted(object sender, object e)
@@ -202,7 +215,6 @@ namespace SyntaxError.V2.App.Views
                                     default:
                                         break;
                                 }
-                                DeselectChallenge();
                             });
         }
 
@@ -269,6 +281,57 @@ namespace SyntaxError.V2.App.Views
                                 ImgMove.Children[2].SetValue(DoubleAnimation.FromProperty, -imageWidth);
                                 ImgMove.Children[3].SetValue(DoubleAnimation.ToProperty, imageWidth);
                                 ImgMove.Begin();
+                            });
+        }
+
+        public async void ActuateAudienceChallenge(AudienceChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+        public async void ActuateCrewChallenge(CrewChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+        public async void ActuateMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+        public async void ActuateMusicChallenge(MusicChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+        public async void ActuateQuizChallenge(QuizChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+        public async void ActuateScreenshotChallenge(ScreenshotChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+        public async void ActuateSilhouetteChallenge(SilhouetteChallenge challenge)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                bitmapImage = new BitmapImage
+                                {
+                                    UriSource = new Uri(challenge.Image.URI)
+                                };
+                                Img.Source = bitmapImage;
+                                SilhouetteBlendBrush.Source = bitmapImage;
+                            });
+            
+        }
+        public async void ActuateSologameChallenge(SologameChallenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async void AnswerSilhouetteChallenge(SilhouetteChallenge challenge)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                Silhouette.Visibility = Visibility.Collapsed;
+                                SilhouetteAnswer.Text = challenge.Image.Name;
                             });
         }
 
@@ -533,12 +596,12 @@ namespace SyntaxError.V2.App.Views
         private async void DeHighlightSologame()
         {
             for (int i = 0; i < 20; i++)
-                {
-                    SologameChallengeHighLight.TranslateY = -20+i;
-                    SologameGlow.BlurRadius = 20-i;
-                    SologameGlow.OffsetY = -15+i;
-                    await Task.Delay(1);
-                }
+            {
+                SologameChallengeHighLight.TranslateY = -20+i;
+                SologameGlow.BlurRadius = 20-i;
+                SologameGlow.OffsetY = -15+i;
+                await Task.Delay(1);
+            }
         }
         
         public void DeselectChallenge()

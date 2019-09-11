@@ -34,7 +34,8 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button Click="Button_Click_Audience"
+                <Button x:Name="AudienceButton"
+                        Click="Button_Click_Audience"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Audience</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -67,7 +68,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Click="Button_Click_Crew"
+                <Button x:Name="CrewButton"
+                        Click="Button_Click_Crew"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Crew</Button>
                 <StackPanel Grid.Row="1"
@@ -121,7 +123,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Click="Button_Click_Multiple"
+                <Button x:Name="MultipleChoiceButton"
+                        Click="Button_Click_Multiple"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Multiple Choice</Button>
                 <StackPanel Grid.Row="1">
@@ -168,7 +171,8 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button Click="Button_Click_Music"
+                <Button x:Name="MusicButton"
+                        Click="Button_Click_Music"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Music</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -196,7 +200,8 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button Click="Button_Click_Quiz"
+                <Button x:Name="QuizButton"
+                        Click="Button_Click_Quiz"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Quiz</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -241,7 +246,8 @@
                         Grid.Column="1"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button Click="Button_Click_Screenshot"
+                <Button x:Name="ScreenshotButton"
+                        Click="Button_Click_Screenshot"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Screenshot</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -269,7 +275,8 @@
                         Grid.Column="2"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button Click="Button_Click_Silhouette"
+                <Button x:Name="SilhouetteButton"
+                        Click="Button_Click_Silhouette"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Silhouette</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -297,7 +304,7 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button Click="Button_Click_Sologame"
+                <Button x:Name="SologameButton" Click="Button_Click_Sologame"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">Sologame</Button>
                 <StackPanel HorizontalAlignment="Center">
@@ -332,10 +339,30 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
-                <Button x:Name="PlayButton" Grid.Column="0" Click="Button_Click_Play">Play</Button>
-                <Button x:Name="DeselectButton" Grid.Column="1" Click="Button_Click_Deselect">Deselect</Button>
-                <Button x:Name="AnswerButton" Grid.Column="2" Click="Button_Click_Done">Answer</Button>
-                <Button x:Name="DoneButton" Grid.Column="3" Click="Button_Click_Done">Done</Button>
+                <Button x:Name="PlayButton"
+                        Grid.Column="0"
+                        Click="Button_Click_Play"
+                        IsEnabled="False">
+                    Play
+                </Button>
+                <Button x:Name="DeselectButton"
+                        Grid.Column="1"
+                        Click="Button_Click_Deselect"
+                        IsEnabled="False">
+                    Deselect
+                </Button>
+                <Button x:Name="AnswerButton"
+                        Grid.Column="2"
+                        Click="Button_Click_Answer"
+                        IsEnabled="False">
+                    Answer
+                </Button>
+                <Button x:Name="DoneButton"
+                        Grid.Column="3"
+                        Click="Button_Click_Done"
+                        IsEnabled="False">
+                    Done
+                </Button>
             </Grid>
         </Grid>
     </Grid>
