@@ -286,11 +286,30 @@ namespace SyntaxError.V2.App.Views
 
         public async void ActuateAudienceChallenge(AudienceChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                bitmapImage = new BitmapImage
+                                {
+                                    UriSource = new Uri(challenge.Game.URI)
+                                };
+                                AudienceGameImg.Source = bitmapImage;
+                                AudienceGameText.Text = challenge.Game.Name;
+                                AudienceTaskText.Text = challenge.ChallengeTask;
+                            });
         }
         public async void ActuateCrewChallenge(CrewChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                bitmapImage = new BitmapImage
+                                {
+                                    UriSource = new Uri(challenge.Game.URI)
+                                };
+                                CrewGameImg.Source = bitmapImage;
+                                CrewGameName.Text = challenge.Game.Name;
+                                CrewTask.Text = challenge.ChallengeTask;
+                                CrewCrewMember.Text = challenge.CrewMember.CrewTag;
+                            });
         }
         public async void ActuateMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
         {

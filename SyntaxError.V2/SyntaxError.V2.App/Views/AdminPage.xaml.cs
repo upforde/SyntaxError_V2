@@ -113,42 +113,47 @@ namespace SyntaxError.V2.App.Views
         
         private void Button_Click_Play(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            IsInPlayState = true;
-            
-            PlayButton.IsEnabled = false;
-            DeselectButton.IsEnabled = false;
-
-            switch (GamePage.CurrentChallenge)
+            if (GamePage.CurrentChallenge != null)
             {
-                case 0:
-                    DoneButton.IsEnabled = true;
-                    break;
-                case 1:
-                    DoneButton.IsEnabled = true;
-                    break;
-                case 2:
-                    AnswerButton.IsEnabled = true;
-                    break;
-                case 3:
-                    AnswerButton.IsEnabled = true;
-                    break;
-                case 4:
-                    AnswerButton.IsEnabled = true;
-                    break;
-                case 5:
-                    AnswerButton.IsEnabled = true;
-                    break;
-                case 6:
-                    GamePage.ActuateSilhouetteChallenge(CurrentSilhouetteChallenge);
-                    AnswerButton.IsEnabled = true;
-                    break;
-                case 7:
-                    DoneButton.IsEnabled = true;
-                    break;
-                default:
-                    break;
+                IsInPlayState = true;
+            
+                PlayButton.IsEnabled = false;
+                DeselectButton.IsEnabled = false;
+
+                switch (GamePage.CurrentChallenge)
+                {
+                    case 0:
+                        GamePage.ActuateAudienceChallenge(CurrentAudienceChallenge);
+                        DoneButton.IsEnabled = true;
+                        break;
+                    case 1:
+                        GamePage.ActuateCrewChallenge(CurrentCrewChallenge);
+                        DoneButton.IsEnabled = true;
+                        break;
+                    case 2:
+                        AnswerButton.IsEnabled = true;
+                        break;
+                    case 3:
+                        AnswerButton.IsEnabled = true;
+                        break;
+                    case 4:
+                        AnswerButton.IsEnabled = true;
+                        break;
+                    case 5:
+                        AnswerButton.IsEnabled = true;
+                        break;
+                    case 6:
+                        GamePage.ActuateSilhouetteChallenge(CurrentSilhouetteChallenge);
+                        AnswerButton.IsEnabled = true;
+                        break;
+                    case 7:
+                        DoneButton.IsEnabled = true;
+                        break;
+                    default:
+                        break;
+                }
+                GamePage.TogglePlayScreen();
             }
-            GamePage.TogglePlayScreen();
         }
         private void Button_Click_Deselect(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {

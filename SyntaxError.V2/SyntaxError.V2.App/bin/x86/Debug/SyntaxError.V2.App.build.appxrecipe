@@ -94,8 +94,14 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\AudienceBorder.png">
       <PackagePath>Assets\AudienceBorder.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Audience_Logo.png">
+      <PackagePath>Assets\Audience_Logo.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\CrewBorder.png">
       <PackagePath>Assets\CrewBorder.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Crew_Logo.png">
+      <PackagePath>Assets\Crew_Logo.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoiceBorder.png">
       <PackagePath>Assets\MultipleChoiceBorder.png</PackagePath>

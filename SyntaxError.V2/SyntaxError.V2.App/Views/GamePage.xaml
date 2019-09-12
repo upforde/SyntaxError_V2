@@ -394,7 +394,58 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Grid.ColumnSpan="2"
+                       Source="/Assets/Audience_Logo.png"
+                       VerticalAlignment="Top"/>
+                
+                <Image x:Name="AudienceGameImg"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"/>
+                
+                <StackPanel Grid.Row="1" Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#004FFC"
+                                              Margin="15, 0, 0, 15">
+                        <TextBlock Text="The game:"
+                                   Style="{StaticResource TitleTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#004FFC"
+                                              Margin="30, 0, 0, 15">
+                    <TextBlock x:Name="AudienceGameText"
+                               Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#004FFC"
+                                              Margin="15, 0, 0, 15">
+                        <TextBlock Text="The task:"
+                                   Style="{StaticResource TitleTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#004FFC"
+                                              Margin="30, 0, 0, 15">
+                        <TextBlock x:Name="AudienceTaskText"
+                                   Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
 
             <Image x:Name="sideAudienceBottomImg"
                    Grid.Row="2"
@@ -408,7 +459,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontAudienceBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -455,7 +505,70 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Grid.Column="0"
+                       Source="/Assets/Crew_Logo.png"
+                       VerticalAlignment="Top"
+                       Margin="0, 0, 0, 25"/>
+                
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"
+                                HorizontalAlignment="Right">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#BA00DF">
+                            <TextBlock Text="The challenger" Style="{StaticResource TitleTextBlockStyle}" />
+                        </controls:DropShadowPanel>
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#BA00DF">
+                            <TextBlock x:Name="CrewCrewMember" Style="{StaticResource SubheaderTextBlockStyle}" />
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                Margin="0, 0, 25, 0">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#BA00DF">
+                            <TextBlock Text="The game:" Style="{StaticResource TitleTextBlockStyle}" />
+                        </controls:DropShadowPanel>
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#BA00DF">
+                            <TextBlock x:Name="CrewGameName" Style="{StaticResource SubheaderTextBlockStyle}" />
+                        </controls:DropShadowPanel>
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#BA00DF">
+                            <TextBlock Text="The task:" Style="{StaticResource TitleTextBlockStyle}" />
+                        </controls:DropShadowPanel>
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#BA00DF">
+                            <TextBlock x:Name="CrewTask" Style="{StaticResource SubheaderTextBlockStyle}" />
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                </Grid>
+                
+                <Image x:Name="CrewGameImg"
+                       Grid.RowSpan="2"
+                       Grid.Column="1"/>
+            </Grid>
 
             <Image x:Name="sideCrewBottomImg"
                    Grid.Row="2"
@@ -469,7 +582,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontCrewBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -530,7 +642,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontMultipleChoiceBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -591,7 +702,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontMusicBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -652,7 +762,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontQuizBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -713,7 +822,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontScreenshotBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -863,7 +971,6 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            
             <Image x:Name="frontSologameBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
