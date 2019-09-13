@@ -135,12 +135,15 @@ namespace SyntaxError.V2.App.Views
                         AnswerButton.IsEnabled = true;
                         break;
                     case 3:
+                        GamePage.ActuateMusicChallenge(CurrentMusicChallenge);
                         AnswerButton.IsEnabled = true;
                         break;
                     case 4:
+                        GamePage.ActuateQuizChallenge(CurrentQuizChallenge);
                         AnswerButton.IsEnabled = true;
                         break;
                     case 5:
+                        GamePage.ActuateScreenshotChallenge(CurrentScreenshotChallenge);
                         AnswerButton.IsEnabled = true;
                         break;
                     case 6:
@@ -148,6 +151,7 @@ namespace SyntaxError.V2.App.Views
                         AnswerButton.IsEnabled = true;
                         break;
                     case 7:
+                        GamePage.ActuateSologameChallenge(CurrentSologameChallenge);
                         DoneButton.IsEnabled = true;
                         break;
                     default:
@@ -174,10 +178,13 @@ namespace SyntaxError.V2.App.Views
                     GamePage.AnswerMultipleChoiceChallenge(CurrentMultipleChoiceChallenge);
                     break;
                 case 3:
+                    GamePage.AnswerMusicChallenge(CurrentMusicChallenge);
                     break;
                 case 4:
+                    GamePage.AnswerQuizChallenge(CurrentQuizChallenge);
                     break;
                 case 5:
+                    GamePage.AnswerScreenshotChallenge(CurrentScreenshotChallenge);
                     break;
                 case 6:
                     GamePage.AnswerSilhouetteChallenge(CurrentSilhouetteChallenge);
@@ -449,6 +456,7 @@ namespace SyntaxError.V2.App.Views
             {
                 QuizAnswer.Text = "No more challenges ;(";
                 QuizButton.IsEnabled = false;
+                GamePage.ToggleSaturationQuiz();
             }
         }
         private async void GetScreenshotChallengeScreenshotFromDBAsync()

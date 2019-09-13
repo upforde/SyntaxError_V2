@@ -271,28 +271,35 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <controls:DropShadowPanel x:Name="QuizGlow"
-                                              Grid.Column="0"
-                                              OffsetX="10"
-                                              OffsetY="5"
-                                              ShadowOpacity="0.5"
-                                              BlurRadius="0"
-                                              Color="#12A5D8"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                        <Image x:Name="quizChallenge"
-                               Source="/Assets/quiz_challenge_thumbnail.jpg"
-                               Margin="10, 5, 5, 0">
-                            <animations:Implicit.ShowAnimations>
-                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                            </animations:Implicit.ShowAnimations>
-                            <Image.RenderTransform>
-                                <CompositeTransform x:Name="QuizChallengeHighLight" />
-                            </Image.RenderTransform>
-                        </Image>
-                    </controls:DropShadowPanel>
-
+                    
+                    <Border>
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="QuizSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                        <controls:DropShadowPanel x:Name="QuizGlow"
+                                                  Grid.Column="0"
+                                                  OffsetX="10"
+                                                  OffsetY="5"
+                                                  ShadowOpacity="0.5"
+                                                  BlurRadius="0"
+                                                  Color="#12A5D8"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center">
+                        
+                            <Image x:Name="quizChallenge"
+                                    Source="/Assets/quiz_challenge_thumbnail.jpg"
+                                    Margin="10, 5, 5, 0">
+                                <animations:Implicit.ShowAnimations>
+                                    <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                    <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                                </animations:Implicit.ShowAnimations>
+                                <Image.RenderTransform>
+                                    <CompositeTransform x:Name="QuizChallengeHighLight" />
+                                </Image.RenderTransform>
+                            </Image>
+                        </controls:DropShadowPanel>
+                    </Border>
+                    
                     <controls:DropShadowPanel x:Name="ScreenshotGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
@@ -790,7 +797,46 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="/Assets/Music_Logo.png"
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Top"/>
+                <StackPanel Grid.Row="1" Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#F2FF00">
+                        <TextBlock Text="What song is this?" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <Grid x:Name="MusicAnswerArea"
+                      Visibility="Collapsed"
+                      Grid.RowSpan="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#F2FF00"
+                                                  HorizontalAlignment="Center">
+                        <TextBlock x:Name="MusicAnswer" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    </StackPanel>
+                    <Image x:Name="MusicImg" Grid.Row="1" />
+                </Grid>
+            </Grid>
 
             <Image x:Name="sideMusicBottomImg"
                    Grid.Row="2"
@@ -850,8 +896,42 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
+                <Image Grid.Row="0"
+                       Source="/Assets/Quiz_Logo.png"
+                       VerticalAlignment="Top"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0"
+                                HorizontalAlignment="Center">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#12A5D8">
+                            <TextBlock x:Name="QuizTask"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                    <StackPanel x:Name="QuizAnswerPlane" Grid.Row="1" Visibility="Collapsed"
+                                HorizontalAlignment="Center">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#12A5D8">
+                            <TextBlock x:Name="QuizAnswer"
+                                        Style="{StaticResource HeaderTextBlockStyle}"/>
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            
             <Image x:Name="sideQuizBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
@@ -910,7 +990,45 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="/Assets/Screenshot_Logo.png"
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Top"/>
+                <StackPanel Grid.Row="1" Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#00C132">
+                        <TextBlock Text="What game is this?" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <Grid Grid.RowSpan="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" x:Name="ScreenshotAnswerArea" Visibility="Collapsed">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#00C132"
+                                                  HorizontalAlignment="Center">
+                        <TextBlock x:Name="ScreenshotAnswer" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    </StackPanel>
+                    <Image x:Name="ScreenshotImg" Grid.Row="1" />
+                </Grid>
+            </Grid>
 
             <Image x:Name="sideScreenshotBottomImg"
                    Grid.Row="2"
@@ -1059,7 +1177,56 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Grid.ColumnSpan="2"
+                       Source="/Assets/Sologame_Logo.png"
+                       VerticalAlignment="Top"/>
+                <Image x:Name="SologameGameImg"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"/>
+                <StackPanel Grid.Row="1" Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="15, 0, 0, 15">
+                        <TextBlock Text="The game:"
+                                   Style="{StaticResource TitleTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="30, 0, 0, 15">
+                    <TextBlock x:Name="SologameGameText"
+                               Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="15, 0, 0, 15">
+                        <TextBlock Text="The task:"
+                                   Style="{StaticResource TitleTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="30, 0, 0, 15">
+                        <TextBlock x:Name="SologameTaskText"
+                                   Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
 
             <Image x:Name="sideSologameBottomImg"
                    Grid.Row="2"

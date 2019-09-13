@@ -178,7 +178,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     
-                    <controls:DropShadowPanel x:ConnectionId='96' x:Name="AudienceGlow"
+                    <controls:DropShadowPanel x:ConnectionId='109' x:Name="AudienceGlow"
                                               Grid.Column="0"
                                               OffsetX="10"
                                               ShadowOpacity="0.5"
@@ -186,7 +186,7 @@
                                               Color="#004FFC"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='106' x:Name="audienceChallenge"
+                        <Image x:ConnectionId='119' x:Name="audienceChallenge"
                                Source="/Assets/audience_challenge_thumbnail.jpg"
                                Margin="10, 0, 5, 5"
                                animations:Connected.Key="audience">
@@ -195,12 +195,12 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='107' x:Name="AudienceHighLight" />
+                                <CompositeTransform x:ConnectionId='120' x:Name="AudienceHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
-                    <controls:DropShadowPanel x:ConnectionId='97' x:Name="CrewGlow"
+                    <controls:DropShadowPanel x:ConnectionId='110' x:Name="CrewGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
                                               ShadowOpacity="0.5"
@@ -208,7 +208,7 @@
                                               Color="#BA00DF"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='104' x:Name="crewChallenge"
+                        <Image x:ConnectionId='117' x:Name="crewChallenge"
                                Source="/Assets/crew_challenge_thumbnail.jpg"
                                Margin="5, 0, 5, 5">
                             <animations:Implicit.ShowAnimations>
@@ -216,12 +216,12 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='105' x:Name="CrewChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='118' x:Name="CrewChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
-                    <controls:DropShadowPanel x:ConnectionId='98' x:Name="MultipleChoiceGlow"
+                    <controls:DropShadowPanel x:ConnectionId='111' x:Name="MultipleChoiceGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
                                               ShadowOpacity="0.5"
@@ -229,7 +229,7 @@
                                               Color="#FE0000"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='102' x:Name="multipleChoiceChallenge"
+                        <Image x:ConnectionId='115' x:Name="multipleChoiceChallenge"
                                Source="/Assets/multiply_choice_challenge_thumbnail.jpg"
                                Margin="5, 0, 5, 5">
                             <animations:Implicit.ShowAnimations>
@@ -237,12 +237,12 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='103' x:Name="MultipleChoiceChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='116' x:Name="MultipleChoiceChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
-                    <controls:DropShadowPanel x:ConnectionId='99' x:Name="MusicGlow"
+                    <controls:DropShadowPanel x:ConnectionId='112' x:Name="MusicGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
                                               ShadowOpacity="0.5"
@@ -250,7 +250,7 @@
                                               Color="#F2FF00"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='100' x:Name="musicChallenge"
+                        <Image x:ConnectionId='113' x:Name="musicChallenge"
                                Source="/Assets/music_challenge_thumbnail.jpg"
                                Margin="5, 0, 10, 5">
                             <animations:Implicit.ShowAnimations>
@@ -258,7 +258,7 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='101' x:Name="MusicChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='114' x:Name="MusicChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
@@ -271,29 +271,36 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <controls:DropShadowPanel x:ConnectionId='84' x:Name="QuizGlow"
-                                              Grid.Column="0"
-                                              OffsetX="10"
-                                              OffsetY="5"
-                                              ShadowOpacity="0.5"
-                                              BlurRadius="0"
-                                              Color="#12A5D8"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                        <Image x:ConnectionId='94' x:Name="quizChallenge"
-                               Source="/Assets/quiz_challenge_thumbnail.jpg"
-                               Margin="10, 5, 5, 0">
-                            <animations:Implicit.ShowAnimations>
-                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                            </animations:Implicit.ShowAnimations>
-                            <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='95' x:Name="QuizChallengeHighLight" />
-                            </Image.RenderTransform>
-                        </Image>
-                    </controls:DropShadowPanel>
-
-                    <controls:DropShadowPanel x:ConnectionId='85' x:Name="ScreenshotGlow"
+                    
+                    <Border>
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='105' x:Name="QuizSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                        <controls:DropShadowPanel x:ConnectionId='106' x:Name="QuizGlow"
+                                                  Grid.Column="0"
+                                                  OffsetX="10"
+                                                  OffsetY="5"
+                                                  ShadowOpacity="0.5"
+                                                  BlurRadius="0"
+                                                  Color="#12A5D8"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center">
+                        
+                            <Image x:ConnectionId='107' x:Name="quizChallenge"
+                                    Source="/Assets/quiz_challenge_thumbnail.jpg"
+                                    Margin="10, 5, 5, 0">
+                                <animations:Implicit.ShowAnimations>
+                                    <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                    <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                                </animations:Implicit.ShowAnimations>
+                                <Image.RenderTransform>
+                                    <CompositeTransform x:ConnectionId='108' x:Name="QuizChallengeHighLight" />
+                                </Image.RenderTransform>
+                            </Image>
+                        </controls:DropShadowPanel>
+                    </Border>
+                    
+                    <controls:DropShadowPanel x:ConnectionId='96' x:Name="ScreenshotGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
                                               OffsetY="5"
@@ -302,7 +309,7 @@
                                               Color="#00C132"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='92' x:Name="screenshotChallenge"
+                        <Image x:ConnectionId='103' x:Name="screenshotChallenge"
                                Source="/Assets/screenshot_challenge_thumbnail.jpg"
                                Margin="5, 5, 5, 0">
                             <animations:Implicit.ShowAnimations>
@@ -310,12 +317,12 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='93' x:Name="ScreenshotChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='104' x:Name="ScreenshotChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
-                    <controls:DropShadowPanel x:ConnectionId='86' x:Name="SilhouetteGlow"
+                    <controls:DropShadowPanel x:ConnectionId='97' x:Name="SilhouetteGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
                                               OffsetY="5"
@@ -324,7 +331,7 @@
                                               Color="#00FFFB"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='90' x:Name="silhouetteChallenge"
+                        <Image x:ConnectionId='101' x:Name="silhouetteChallenge"
                                Source="/Assets/silhouette_challenge_thumbnail.jpg"
                                Margin="5, 5, 5, 0">
                             <animations:Implicit.ShowAnimations>
@@ -332,12 +339,12 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='91' x:Name="SilhouetteChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='102' x:Name="SilhouetteChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
 
-                    <controls:DropShadowPanel x:ConnectionId='87' x:Name="SologameGlow"
+                    <controls:DropShadowPanel x:ConnectionId='98' x:Name="SologameGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
                                               OffsetY="5"
@@ -346,7 +353,7 @@
                                               Color="#FE0000"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='88' x:Name="sologameChallenge"
+                        <Image x:ConnectionId='99' x:Name="sologameChallenge"
                                Source="/Assets/sologame_challenge_thumbnail.jpg"
                                Margin="5, 5, 10, 0">
                             <animations:Implicit.ShowAnimations>
@@ -354,7 +361,7 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='89' x:Name="SologameChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='100' x:Name="SologameChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
@@ -369,7 +376,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='77' x:Name="sideAudienceTopImg"
+            <Image x:ConnectionId='89' x:Name="sideAudienceTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -381,7 +388,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='78' x:Name="frontAudienceTopImg"
+            <Image x:ConnectionId='90' x:Name="frontAudienceTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -407,7 +414,7 @@
                 <Image Grid.Row="0" Grid.ColumnSpan="2"
                        Source="/Assets/Audience_Logo.png"
                        VerticalAlignment="Top"/>
-                <Image x:ConnectionId='81' x:Name="AudienceGameImg"
+                <Image x:ConnectionId='93' x:Name="AudienceGameImg"
                        Grid.Row="1" Grid.Column="0"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right"/>
@@ -425,7 +432,7 @@
                                               OffsetY="5"
                                               Color="#004FFC"
                                               Margin="30, 0, 0, 15">
-                    <TextBlock x:ConnectionId='83' x:Name="AudienceGameText"
+                    <TextBlock x:ConnectionId='95' x:Name="AudienceGameText"
                                Style="{StaticResource SubheaderTextBlockStyle}"/>
                     </controls:DropShadowPanel>
                     <controls:DropShadowPanel OffsetX="5"
@@ -439,13 +446,13 @@
                                               OffsetY="5"
                                               Color="#004FFC"
                                               Margin="30, 0, 0, 15">
-                        <TextBlock x:ConnectionId='82' x:Name="AudienceTaskText"
+                        <TextBlock x:ConnectionId='94' x:Name="AudienceTaskText"
                                    Style="{StaticResource SubheaderTextBlockStyle}"/>
                     </controls:DropShadowPanel>
                 </StackPanel>
             </Grid>
 
-            <Image x:ConnectionId='79' x:Name="sideAudienceBottomImg"
+            <Image x:ConnectionId='91' x:Name="sideAudienceBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -457,7 +464,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='80' x:Name="frontAudienceBottomImg"
+            <Image x:ConnectionId='92' x:Name="frontAudienceBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -478,7 +485,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='69' x:Name="sideCrewTopImg"
+            <Image x:ConnectionId='81' x:Name="sideCrewTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -490,7 +497,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='70' x:Name="frontCrewTopImg"
+            <Image x:ConnectionId='82' x:Name="frontCrewTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -533,7 +540,7 @@
                         <controls:DropShadowPanel OffsetX="5"
                                                   OffsetY="5"
                                                   Color="#BA00DF">
-                            <TextBlock x:ConnectionId='76' x:Name="CrewCrewMember" Style="{StaticResource SubheaderTextBlockStyle}" />
+                            <TextBlock x:ConnectionId='88' x:Name="CrewCrewMember" Style="{StaticResource SubheaderTextBlockStyle}" />
                         </controls:DropShadowPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1"
@@ -547,7 +554,7 @@
                         <controls:DropShadowPanel OffsetX="5"
                                                   OffsetY="5"
                                                   Color="#BA00DF">
-                            <TextBlock x:ConnectionId='75' x:Name="CrewGameName" Style="{StaticResource SubheaderTextBlockStyle}" />
+                            <TextBlock x:ConnectionId='87' x:Name="CrewGameName" Style="{StaticResource SubheaderTextBlockStyle}" />
                         </controls:DropShadowPanel>
                         <controls:DropShadowPanel OffsetX="5"
                                                   OffsetY="5"
@@ -557,16 +564,16 @@
                         <controls:DropShadowPanel OffsetX="5"
                                                   OffsetY="5"
                                                   Color="#BA00DF">
-                            <TextBlock x:ConnectionId='74' x:Name="CrewTask" Style="{StaticResource SubheaderTextBlockStyle}" />
+                            <TextBlock x:ConnectionId='86' x:Name="CrewTask" Style="{StaticResource SubheaderTextBlockStyle}" />
                         </controls:DropShadowPanel>
                     </StackPanel>
                 </Grid>
-                <Image x:ConnectionId='73' x:Name="CrewGameImg"
+                <Image x:ConnectionId='85' x:Name="CrewGameImg"
                        Grid.RowSpan="2"
                        Grid.Column="1"/>
             </Grid>
 
-            <Image x:ConnectionId='71' x:Name="sideCrewBottomImg"
+            <Image x:ConnectionId='83' x:Name="sideCrewBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -578,7 +585,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='72' x:Name="frontCrewBottomImg"
+            <Image x:ConnectionId='84' x:Name="frontCrewBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -599,7 +606,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='56' x:Name="sideMultipleChoiceTopImg"
+            <Image x:ConnectionId='68' x:Name="sideMultipleChoiceTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -611,7 +618,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='57' x:Name="frontMultipleChoiceTopImg"
+            <Image x:ConnectionId='69' x:Name="frontMultipleChoiceTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -649,7 +656,7 @@
                         <controls:DropShadowPanel OffsetX="5"
                                                     OffsetY="5"
                                                     Color="#FE0000">
-                            <TextBlock x:ConnectionId='68' x:Name="MultipleChoiceTask"
+                            <TextBlock x:ConnectionId='80' x:Name="MultipleChoiceTask"
                                         Style="{StaticResource HeaderTextBlockStyle}"/>
                         </controls:DropShadowPanel>
                     </StackPanel>
@@ -657,7 +664,7 @@
                           HorizontalAlignment="Right"
                           Margin="0, 0, 35, 0">
                         <StackPanel HorizontalAlignment="Center">
-                            <Border x:ConnectionId='66' x:Name="MultipleChoiceTopLeftBorder"
+                            <Border x:ConnectionId='78' x:Name="MultipleChoiceTopLeftBorder"
                                     BorderBrush="#77FE0000"
                                     BorderThickness="2"
                                     CornerRadius="8">
@@ -665,7 +672,7 @@
                                                           OffsetY="5"
                                                           Color="#FE0000"
                                                           Margin="45, 20, 45, 20">
-                                    <TextBlock x:ConnectionId='67' Width="500" 
+                                    <TextBlock x:ConnectionId='79' Width="500" 
                                                x:Name="MultipleChoiceTopLeft"
                                                Style="{StaticResource TitleTextBlockStyle}"/>
                                 </controls:DropShadowPanel>
@@ -676,7 +683,7 @@
                           HorizontalAlignment="Left"
                           Margin="35, 0, 0, 0">
                         <StackPanel HorizontalAlignment="Center">
-                            <Border x:ConnectionId='64' x:Name="MultipleChoiceTopRightBorder"
+                            <Border x:ConnectionId='76' x:Name="MultipleChoiceTopRightBorder"
                                     BorderBrush="#77FE0000"
                                     BorderThickness="2"
                                     CornerRadius="8">
@@ -684,7 +691,7 @@
                                                           OffsetY="5"
                                                           Color="#FE0000"
                                                           Margin="45, 20, 45, 20">
-                                    <TextBlock x:ConnectionId='65' Width="500" 
+                                    <TextBlock x:ConnectionId='77' Width="500" 
                                                x:Name="MultipleChoiceTopRight"
                                                Style="{StaticResource TitleTextBlockStyle}"/>
                                 </controls:DropShadowPanel>
@@ -695,7 +702,7 @@
                           HorizontalAlignment="Right"
                           Margin="0, 0, 35, 0">
                         <StackPanel HorizontalAlignment="Center">
-                            <Border x:ConnectionId='62' x:Name="MultipleChoiceBottomLeftBorder"
+                            <Border x:ConnectionId='74' x:Name="MultipleChoiceBottomLeftBorder"
                                     BorderBrush="#77FE0000"
                                     BorderThickness="2"
                                     CornerRadius="8">
@@ -703,7 +710,7 @@
                                                           OffsetY="5"
                                                           Color="#FE0000"
                                                           Margin="45, 20, 45, 20">
-                                    <TextBlock x:ConnectionId='63' Width="500" 
+                                    <TextBlock x:ConnectionId='75' Width="500" 
                                                x:Name="MultipleChoiceBottomLeft"
                                                Style="{StaticResource TitleTextBlockStyle}"/>
                                 </controls:DropShadowPanel>
@@ -714,7 +721,7 @@
                           HorizontalAlignment="Left"
                           Margin="35, 0, 0, 0">
                         <StackPanel HorizontalAlignment="Center"> 
-                            <Border x:ConnectionId='60' x:Name="MultipleChoiceBottomRightBorder"
+                            <Border x:ConnectionId='72' x:Name="MultipleChoiceBottomRightBorder"
                                     BorderBrush="#77FE0000"
                                     BorderThickness="2"
                                     CornerRadius="8">
@@ -722,7 +729,7 @@
                                                           OffsetY="5"
                                                           Color="#FE0000"
                                                           Margin="45, 20, 45, 20">
-                                    <TextBlock x:ConnectionId='61' Width="500"
+                                    <TextBlock x:ConnectionId='73' Width="500"
                                                x:Name="MultipleChoiceBottomRight"
                                                Style="{StaticResource TitleTextBlockStyle}"/>
                                 </controls:DropShadowPanel>
@@ -732,7 +739,7 @@
                 </Grid>
             </Grid>
 
-            <Image x:ConnectionId='58' x:Name="sideMultipleChoiceBottomImg"
+            <Image x:ConnectionId='70' x:Name="sideMultipleChoiceBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -744,7 +751,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='59' x:Name="frontMultipleChoiceBottomImg"
+            <Image x:ConnectionId='71' x:Name="frontMultipleChoiceBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -765,7 +772,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='52' x:Name="sideMusicTopImg"
+            <Image x:ConnectionId='61' x:Name="sideMusicTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -777,7 +784,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='53' x:Name="frontMusicTopImg"
+            <Image x:ConnectionId='62' x:Name="frontMusicTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -790,9 +797,48 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="/Assets/Music_Logo.png"
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Top"/>
+                <StackPanel Grid.Row="1" Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#F2FF00">
+                        <TextBlock Text="What song is this?" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <Grid x:ConnectionId='65' x:Name="MusicAnswerArea"
+                      Visibility="Collapsed"
+                      Grid.RowSpan="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#F2FF00"
+                                                  HorizontalAlignment="Center">
+                        <TextBlock x:ConnectionId='67' x:Name="MusicAnswer" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    </StackPanel>
+                    <Image x:ConnectionId='66' x:Name="MusicImg" Grid.Row="1" />
+                </Grid>
+            </Grid>
 
-            <Image x:ConnectionId='54' x:Name="sideMusicBottomImg"
+            <Image x:ConnectionId='63' x:Name="sideMusicBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -804,7 +850,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='55' x:Name="frontMusicBottomImg"
+            <Image x:ConnectionId='64' x:Name="frontMusicBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -825,7 +871,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='48' x:Name="sideQuizTopImg"
+            <Image x:ConnectionId='54' x:Name="sideQuizTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -837,7 +883,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='49' x:Name="frontQuizTopImg"
+            <Image x:ConnectionId='55' x:Name="frontQuizTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -850,9 +896,43 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <Image x:ConnectionId='50' x:Name="sideQuizBottomImg"
+                <Image Grid.Row="0"
+                       Source="/Assets/Quiz_Logo.png"
+                       VerticalAlignment="Top"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0"
+                                HorizontalAlignment="Center">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#12A5D8">
+                            <TextBlock x:ConnectionId='60' x:Name="QuizTask"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                    <StackPanel x:ConnectionId='58' x:Name="QuizAnswerPlane" Grid.Row="1" Visibility="Collapsed"
+                                HorizontalAlignment="Center">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#12A5D8">
+                            <TextBlock x:ConnectionId='59' x:Name="QuizAnswer"
+                                        Style="{StaticResource HeaderTextBlockStyle}"/>
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            
+            <Image x:ConnectionId='56' x:Name="sideQuizBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -864,7 +944,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='51' x:Name="frontQuizBottomImg"
+            <Image x:ConnectionId='57' x:Name="frontQuizBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -885,7 +965,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='44' x:Name="sideScreenshotTopImg"
+            <Image x:ConnectionId='47' x:Name="sideScreenshotTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -897,7 +977,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='45' x:Name="frontScreenshotTopImg"
+            <Image x:ConnectionId='48' x:Name="frontScreenshotTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -910,9 +990,47 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="/Assets/Screenshot_Logo.png"
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Top"/>
+                <StackPanel Grid.Row="1" Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#00C132">
+                        <TextBlock Text="What game is this?" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <Grid Grid.RowSpan="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel x:ConnectionId='51' Grid.Row="0" x:Name="ScreenshotAnswerArea" Visibility="Collapsed">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                  OffsetY="5"
+                                                  Color="#00C132"
+                                                  HorizontalAlignment="Center">
+                        <TextBlock x:ConnectionId='53' x:Name="ScreenshotAnswer" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    </StackPanel>
+                    <Image x:ConnectionId='52' x:Name="ScreenshotImg" Grid.Row="1" />
+                </Grid>
+            </Grid>
 
-            <Image x:ConnectionId='46' x:Name="sideScreenshotBottomImg"
+            <Image x:ConnectionId='49' x:Name="sideScreenshotBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -924,7 +1042,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='47' x:Name="frontScreenshotBottomImg"
+            <Image x:ConnectionId='50' x:Name="frontScreenshotBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -945,7 +1063,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             
-            <Image x:ConnectionId='35' x:Name="sideSilhouetteTopImg"
+            <Image x:ConnectionId='38' x:Name="sideSilhouetteTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -957,7 +1075,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='36' x:Name="frontSilhouetteTopImg"
+            <Image x:ConnectionId='39' x:Name="frontSilhouetteTopImg"
                    Grid.Row="0"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -984,24 +1102,24 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#00FFFB">
-                        <TextBlock x:ConnectionId='43' x:Name="SilhouetteAnswer"
+                        <TextBlock x:ConnectionId='46' x:Name="SilhouetteAnswer"
                                    Text="Who's that character?"
                                    Style="{StaticResource SubheaderTextBlockStyle}"/>
                     </controls:DropShadowPanel>
                 </StackPanel>
-                <Grid x:ConnectionId='39' x:Name="SilhouetteActionArea"
+                <Grid x:ConnectionId='42' x:Name="SilhouetteActionArea"
                       Grid.Column="1"
                       Visibility="Collapsed">
-                    <Image x:ConnectionId='40' x:Name="Img"></Image>
-                    <Border x:ConnectionId='41' x:Name="Silhouette">
+                    <Image x:ConnectionId='43' x:Name="Img"></Image>
+                    <Border x:ConnectionId='44' x:Name="Silhouette">
                         <Border.Background>
-                            <media:ImageBlendBrush x:ConnectionId='42' x:Name="SilhouetteBlendBrush" Stretch="Uniform"  Mode="Subtract"/>
+                            <media:ImageBlendBrush x:ConnectionId='45' x:Name="SilhouetteBlendBrush" Stretch="Uniform"  Mode="Subtract"/>
                         </Border.Background>
                     </Border>
                 </Grid>
             </Grid>
 
-            <Image x:ConnectionId='37' x:Name="sideSilhouetteBottomImg"
+            <Image x:ConnectionId='40' x:Name="sideSilhouetteBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -1013,7 +1131,7 @@
                     <CompositeTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Image x:ConnectionId='38' x:Name="frontSilhouetteBottomImg"
+            <Image x:ConnectionId='41' x:Name="frontSilhouetteBottomImg"
                    Grid.Row="2"
                    MaxHeight="150"
                    MaxWidth="1920"
@@ -1059,7 +1177,56 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Grid.ColumnSpan="2"
+                       Source="/Assets/Sologame_Logo.png"
+                       VerticalAlignment="Top"/>
+                <Image x:ConnectionId='35' x:Name="SologameGameImg"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"/>
+                <StackPanel Grid.Row="1" Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="15, 0, 0, 15">
+                        <TextBlock Text="The game:"
+                                   Style="{StaticResource TitleTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="30, 0, 0, 15">
+                    <TextBlock x:ConnectionId='37' x:Name="SologameGameText"
+                               Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="15, 0, 0, 15">
+                        <TextBlock Text="The task:"
+                                   Style="{StaticResource TitleTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel OffsetX="5"
+                                              OffsetY="5"
+                                              Color="#FE0000"
+                                              Margin="30, 0, 0, 15">
+                        <TextBlock x:ConnectionId='36' x:Name="SologameTaskText"
+                                   Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
 
             <Image x:ConnectionId='33' x:Name="sideSologameBottomImg"
                    Grid.Row="2"

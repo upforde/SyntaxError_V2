@@ -112,11 +112,20 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MusicBorder.png">
       <PackagePath>Assets\MusicBorder.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Music_Logo.png">
+      <PackagePath>Assets\Music_Logo.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\QuizBorder.png">
       <PackagePath>Assets\QuizBorder.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Quiz_Logo.png">
+      <PackagePath>Assets\Quiz_Logo.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\ScreenshotBorder.png">
       <PackagePath>Assets\ScreenshotBorder.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Screenshot_Logo.png">
+      <PackagePath>Assets\Screenshot_Logo.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SilhouetteBorder.png">
       <PackagePath>Assets\SilhouetteBorder.png</PackagePath>
@@ -126,6 +135,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SologameBorder.png">
       <PackagePath>Assets\SologameBorder.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Sologame_Logo.png">
+      <PackagePath>Assets\Sologame_Logo.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SyntaxError_Logo.png">
       <PackagePath>Assets\SyntaxError_Logo.png</PackagePath>

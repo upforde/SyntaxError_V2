@@ -45,14 +45,17 @@ namespace SyntaxError.V2.App.Views
             AudienceOpacityDown.Completed += CollapseChallengeWindows;
             CrewOpacityDown.Completed += CollapseChallengeWindows;
             MultipleChoiceOpacityDown.Completed += CollapseChallengeWindows;
+            MusicOpacityUp.Completed += MusicOpacityUp_Completed;
             MusicOpacityDown.Completed += CollapseChallengeWindows;
+            QuizOpacityUp.Completed += QuizOpacityUp_Completed;
             QuizOpacityDown.Completed += CollapseChallengeWindows;
+            ScreenshotOpacityUp.Completed += ScreenshotOpacityUp_Completed;
             ScreenshotOpacityDown.Completed += CollapseChallengeWindows;
             SilhouetteOpacityUp.Completed += SilhouetteOpacityUp_Completed;
             SilhouetteOpacityDown.Completed += CollapseChallengeWindows;
             SologameOpacityDown.Completed += CollapseChallengeWindows;
         }
-
+        
         private void CollapseChallengeWindows(object sender, object e)
         {
             switch (CurrentChallenge)
@@ -90,6 +93,18 @@ namespace SyntaxError.V2.App.Views
             DeselectChallenge();
         }
         
+        private void MusicOpacityUp_Completed(object sender, object e)
+        {
+            MusicAnswerArea.Visibility = Visibility.Collapsed;
+        }
+        private void QuizOpacityUp_Completed(object sender, object e)
+        {
+            QuizAnswerPlane.Visibility = Visibility.Collapsed;
+        }
+        private void ScreenshotOpacityUp_Completed(object sender, object e)
+        {
+            ScreenshotAnswerArea.Visibility = Visibility.Collapsed;
+        }
         private void SilhouetteOpacityUp_Completed(object sender, object e)
         {
             SilhouetteActionArea.Visibility = Visibility.Visible;
@@ -326,15 +341,35 @@ namespace SyntaxError.V2.App.Views
         }
         public async void ActuateMusicChallenge(MusicChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                bitmapImage = new BitmapImage
+                                {
+                                    UriSource = new Uri(challenge.Song.URI)
+                                };
+                                MusicImg.Source = bitmapImage;
+                                MusicAnswer.Text = challenge.Song.Name;
+                            });
         }
         public async void ActuateQuizChallenge(QuizChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                QuizTask.Text = challenge.ChallengeTask;
+                                QuizAnswer.Text = challenge.Answers.Answer;
+                            });
         }
         public async void ActuateScreenshotChallenge(ScreenshotChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                bitmapImage = new BitmapImage
+                                {
+                                    UriSource = new Uri(challenge.Image.URI)
+                                };
+                                ScreenshotImg.Source = bitmapImage;
+                                ScreenshotAnswer.Text = challenge.Image.Name;
+                            });
         }
         public async void ActuateSilhouetteChallenge(SilhouetteChallenge challenge)
         {
@@ -351,7 +386,16 @@ namespace SyntaxError.V2.App.Views
         }
         public async void ActuateSologameChallenge(SologameChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                bitmapImage = new BitmapImage
+                                {
+                                    UriSource = new Uri(challenge.Game.URI)
+                                };
+                                SologameGameImg.Source = bitmapImage;
+                                SologameGameText.Text = challenge.Game.Name;
+                                SologameTaskText.Text = challenge.ChallengeTask;
+                            });
         }
 
         public async void AnswerMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
@@ -453,6 +497,27 @@ namespace SyntaxError.V2.App.Views
                                         }
                                         break;
                                 }
+                            });
+        }
+        public async void AnswerMusicChallenge(MusicChallenge challenge)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                MusicAnswerArea.Visibility = Visibility.Visible;
+                            });
+        }
+        public async void AnswerQuizChallenge(QuizChallenge challenge)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                QuizAnswerPlane.Visibility = Visibility.Visible;
+                            });
+        }
+        public async void AnswerScreenshotChallenge(ScreenshotChallenge challenge)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                ScreenshotAnswerArea.Visibility = Visibility.Visible;
                             });
         }
         public async void AnswerSilhouetteChallenge(SilhouetteChallenge challenge)
@@ -563,6 +628,18 @@ namespace SyntaxError.V2.App.Views
         public async void ToggleDeselect()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => DeselectChallenge());
+        }
+
+        public async void ToggleSaturationQuiz()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                for (double i = 1; i >= 0; i -= 0.1)
+                                {
+                                    QuizSaturationBrush.Saturation = i;
+                                    await Task.Delay(1);
+                                }
+                            });
         }
 
         private async void HighlightAudience()

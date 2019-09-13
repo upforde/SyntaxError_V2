@@ -108,6 +108,7 @@
       <RootProperty Name="Background" />
       <RootProperty Name="Orientation" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
     </RootType>
@@ -128,8 +129,8 @@
       <RootProperty Name="OffsetY" />
       <RootProperty Name="Color" />
       <RootProperty Name="Content" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
@@ -242,12 +243,6 @@
       <RootProperty Name="From" />
       <RootProperty Name="To" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Fill" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform" />
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
@@ -273,6 +268,9 @@
       <RootProperty Name="Duration" />
       <RootProperty Name="From" />
       <RootProperty Name="To" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush">
+      <RootProperty Name="Saturation" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Connected">
       <RootMethod Name="GetKey" />
