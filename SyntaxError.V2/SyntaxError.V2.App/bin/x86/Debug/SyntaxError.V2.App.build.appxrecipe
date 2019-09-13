@@ -106,6 +106,9 @@
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoiceBorder.png">
       <PackagePath>Assets\MultipleChoiceBorder.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoice_Logo.png">
+      <PackagePath>Assets\MultipleChoice_Logo.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MusicBorder.png">
       <PackagePath>Assets\MusicBorder.png</PackagePath>
     </AppxPackagedFile>

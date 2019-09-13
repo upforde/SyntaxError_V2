@@ -407,12 +407,10 @@
                 <Image Grid.Row="0" Grid.ColumnSpan="2"
                        Source="/Assets/Audience_Logo.png"
                        VerticalAlignment="Top"/>
-                
                 <Image x:Name="AudienceGameImg"
                        Grid.Row="1" Grid.Column="0"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right"/>
-                
                 <StackPanel Grid.Row="1" Grid.Column="1"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left">
@@ -519,7 +517,6 @@
                        Source="/Assets/Crew_Logo.png"
                        VerticalAlignment="Top"
                        Margin="0, 0, 0, 25"/>
-                
                 <Grid Grid.Row="1" Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -564,7 +561,6 @@
                         </controls:DropShadowPanel>
                     </StackPanel>
                 </Grid>
-                
                 <Image x:Name="CrewGameImg"
                        Grid.RowSpan="2"
                        Grid.Column="1"/>
@@ -628,7 +624,113 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Rectangle Grid.Row="1" Width="100" Height="100" Fill="PaleVioletRed" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0"
+                       Source="/Assets/MultipleChoice_Logo.png"
+                       VerticalAlignment="Top"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="2"
+                                HorizontalAlignment="Center">
+                        <controls:DropShadowPanel OffsetX="5"
+                                                    OffsetY="5"
+                                                    Color="#FE0000">
+                            <TextBlock x:Name="MultipleChoiceTask"
+                                        Style="{StaticResource HeaderTextBlockStyle}"/>
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                    <Grid Grid.Row="1" Grid.Column="0"
+                          HorizontalAlignment="Right"
+                          Margin="0, 0, 35, 0">
+                        <StackPanel HorizontalAlignment="Center">
+                            <Border x:Name="MultipleChoiceTopLeftBorder"
+                                    BorderBrush="#77FE0000"
+                                    BorderThickness="2"
+                                    CornerRadius="8">
+                                <controls:DropShadowPanel OffsetX="5"
+                                                          OffsetY="5"
+                                                          Color="#FE0000"
+                                                          Margin="45, 20, 45, 20">
+                                    <TextBlock Width="500" 
+                                               x:Name="MultipleChoiceTopLeft"
+                                               Style="{StaticResource TitleTextBlockStyle}"/>
+                                </controls:DropShadowPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1"
+                          HorizontalAlignment="Left"
+                          Margin="35, 0, 0, 0">
+                        <StackPanel HorizontalAlignment="Center">
+                            <Border x:Name="MultipleChoiceTopRightBorder"
+                                    BorderBrush="#77FE0000"
+                                    BorderThickness="2"
+                                    CornerRadius="8">
+                                <controls:DropShadowPanel OffsetX="5"
+                                                          OffsetY="5"
+                                                          Color="#FE0000"
+                                                          Margin="45, 20, 45, 20">
+                                    <TextBlock Width="500" 
+                                               x:Name="MultipleChoiceTopRight"
+                                               Style="{StaticResource TitleTextBlockStyle}"/>
+                                </controls:DropShadowPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="0"
+                          HorizontalAlignment="Right"
+                          Margin="0, 0, 35, 0">
+                        <StackPanel HorizontalAlignment="Center">
+                            <Border x:Name="MultipleChoiceBottomLeftBorder"
+                                    BorderBrush="#77FE0000"
+                                    BorderThickness="2"
+                                    CornerRadius="8">
+                                <controls:DropShadowPanel OffsetX="5"
+                                                          OffsetY="5"
+                                                          Color="#FE0000"
+                                                          Margin="45, 20, 45, 20">
+                                    <TextBlock Width="500" 
+                                               x:Name="MultipleChoiceBottomLeft"
+                                               Style="{StaticResource TitleTextBlockStyle}"/>
+                                </controls:DropShadowPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1"
+                          HorizontalAlignment="Left"
+                          Margin="35, 0, 0, 0">
+                        <StackPanel HorizontalAlignment="Center"> 
+                            <Border x:Name="MultipleChoiceBottomRightBorder"
+                                    BorderBrush="#77FE0000"
+                                    BorderThickness="2"
+                                    CornerRadius="8">
+                                <controls:DropShadowPanel OffsetX="5"
+                                                          OffsetY="5"
+                                                          Color="#FE0000"
+                                                          Margin="45, 20, 45, 20">
+                                    <TextBlock Width="500"
+                                               x:Name="MultipleChoiceBottomRight"
+                                               Style="{StaticResource TitleTextBlockStyle}"/>
+                                </controls:DropShadowPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
 
             <Image x:Name="sideMultipleChoiceBottomImg"
                    Grid.Row="2"

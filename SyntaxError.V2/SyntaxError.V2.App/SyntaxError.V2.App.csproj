@@ -249,6 +249,7 @@
     <Content Include="Assets\crew_challenge_thumbnail.jpg" />
     <Content Include="Assets\Crew_Logo.png" />
     <Content Include="Assets\MultipleChoiceBorder.png" />
+    <Content Include="Assets\MultipleChoice_Logo.png" />
     <Content Include="Assets\multiply_choice_challenge_thumbnail.jpg" />
     <Content Include="Assets\MusicBorder.png" />
     <Content Include="Assets\music_challenge_thumbnail.jpg" />

@@ -131,6 +131,7 @@ namespace SyntaxError.V2.App.Views
                         DoneButton.IsEnabled = true;
                         break;
                     case 2:
+                        GamePage.ActuateMultipleChoiceChallenge(CurrentMultipleChoiceChallenge);
                         AnswerButton.IsEnabled = true;
                         break;
                     case 3:
@@ -169,11 +170,8 @@ namespace SyntaxError.V2.App.Views
 
             switch (GamePage.CurrentChallenge)
             {
-                case 0:
-                    break;
-                case 1:
-                    break;
                 case 2:
+                    GamePage.AnswerMultipleChoiceChallenge(CurrentMultipleChoiceChallenge);
                     break;
                 case 3:
                     break;
@@ -183,8 +181,6 @@ namespace SyntaxError.V2.App.Views
                     break;
                 case 6:
                     GamePage.AnswerSilhouetteChallenge(CurrentSilhouetteChallenge);
-                    break;
-                case 7:
                     break;
                 default:
                     break;

@@ -11,6 +11,7 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -313,7 +314,15 @@ namespace SyntaxError.V2.App.Views
         }
         public async void ActuateMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                var answers = challenge.Answers.GetAll();
+                                MultipleChoiceTask.Text = challenge.ChallengeTask;
+                                MultipleChoiceTopLeft.Text = answers[0];
+                                MultipleChoiceTopRight.Text = answers[1];
+                                MultipleChoiceBottomLeft.Text = answers[2];
+                                MultipleChoiceBottomRight.Text = answers[3];
+                            });
         }
         public async void ActuateMusicChallenge(MusicChallenge challenge)
         {
@@ -345,6 +354,107 @@ namespace SyntaxError.V2.App.Views
             throw new NotImplementedException();
         }
 
+        public async void AnswerMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                string answer = challenge.Answers.Answer;
+                                int[] queue = {0, 1, 2, 3};
+                                int queueAnswer = -1;
+                                queue.Shuffle();
+
+                                for (var i = 0; i <= 3; i++)
+                                {
+                                    switch (queue[i])
+                                    {
+                                        case 0:
+                                            if (MultipleChoiceTopLeft.Text != answer)
+                                            {
+                                                for (byte c = 0; c <= 254; c++)
+                                                {
+                                                    MultipleChoiceTopLeftBorder.Background = new SolidColorBrush(Color.FromArgb(c, 255, 0, 0));
+                                                    await Task.Delay(3);
+                                                }
+                                                MultipleChoiceTopLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                            } else queueAnswer = i;
+                                            break;
+                                        case 1:
+                                            if (MultipleChoiceTopRight.Text != answer)
+                                            {
+                                                for (byte c = 0; c <= 254; c++)
+                                                {
+                                                    MultipleChoiceTopRightBorder.Background = new SolidColorBrush(Color.FromArgb(c, 255, 0, 0));
+                                                    await Task.Delay(3);
+                                                }
+                                                MultipleChoiceTopRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                            } else queueAnswer = i;
+                                            break;
+                                        case 2:
+                                            if (MultipleChoiceBottomLeft.Text != answer)
+                                            {
+                                                for (byte c = 0; c <= 254; c++)
+                                                {
+                                                    MultipleChoiceBottomLeftBorder.Background = new SolidColorBrush(Color.FromArgb(c, 255, 0, 0));
+                                                    await Task.Delay(3);
+                                                }
+                                                MultipleChoiceBottomLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                            } else queueAnswer = i;
+                                            break;
+                                        case 3:
+                                            if (MultipleChoiceBottomRight.Text != answer)
+                                            {
+                                                for (byte c = 0; c <= 254; c++)
+                                                {
+                                                    MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(c, 255, 0, 0));
+                                                    await Task.Delay(3);
+                                                }
+                                                MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                            } else queueAnswer = i;
+                                            break;
+                                    }
+                                    await Task.Delay(235);
+                                }
+                                switch (queue[queueAnswer])
+                                {
+                                    case 0:
+                                        for(int i = 0; i <= 50; i++)
+                                        {
+                                            if (i % 2 == 0) MultipleChoiceTopLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+                                            else MultipleChoiceTopLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+
+                                            await Task.Delay(333);
+                                        }
+                                        break;
+                                    case 1:
+                                        for(int i = 0; i <= 50; i++)
+                                        {
+                                            if (i % 2 == 0) MultipleChoiceTopRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+                                            else MultipleChoiceTopRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+
+                                            await Task.Delay(333);
+                                        }
+                                        break;
+                                    case 2:
+                                        for(int i = 0; i <= 50; i++)
+                                        {
+                                            if (i % 2 == 0) MultipleChoiceBottomLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+                                            else MultipleChoiceBottomLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+
+                                            await Task.Delay(333);
+                                        }
+                                        break;
+                                    case 3:
+                                        for(int i = 0; i <= 50; i++)
+                                        {
+                                            if (i % 2 == 0) MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+                                            else MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+
+                                            await Task.Delay(333);
+                                        }
+                                        break;
+                                }
+                            });
+        }
         public async void AnswerSilhouetteChallenge(SilhouetteChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
