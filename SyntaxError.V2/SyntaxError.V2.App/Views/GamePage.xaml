@@ -199,7 +199,12 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
+                    <Border Grid.Column="0">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="AudienceSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
                     <controls:DropShadowPanel x:Name="CrewGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
@@ -220,7 +225,12 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
+                    <Border Grid.Column="1">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="CrewSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
                     <controls:DropShadowPanel x:Name="MultipleChoiceGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
@@ -241,7 +251,12 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
+                    <Border Grid.Column="2">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="MultipleChoiceSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
                     <controls:DropShadowPanel x:Name="MusicGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
@@ -262,6 +277,11 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
+                    <Border Grid.Column="3">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="MusicSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
                 </Grid>
 
                 <Grid Grid.Row="1" >
@@ -272,11 +292,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     
-                    <Border>
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="QuizSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                        <controls:DropShadowPanel x:Name="QuizGlow"
+                    <controls:DropShadowPanel x:Name="QuizGlow"
                                                   Grid.Column="0"
                                                   OffsetX="10"
                                                   OffsetY="5"
@@ -298,6 +314,10 @@
                                 </Image.RenderTransform>
                             </Image>
                         </controls:DropShadowPanel>
+                    <Border Grid.Column="0">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="QuizSaturationBrush" Saturation="1"/>
+                            </Border.Background>
                     </Border>
                     
                     <controls:DropShadowPanel x:Name="ScreenshotGlow"
@@ -321,7 +341,12 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
+                    <Border Grid.Column="1">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="ScreenshotSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
                     <controls:DropShadowPanel x:Name="SilhouetteGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
@@ -343,7 +368,12 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
+                    <Border Grid.Column="2">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="SilhouetteSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
                     <controls:DropShadowPanel x:Name="SologameGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
@@ -365,6 +395,11 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
+                    <Border Grid.Column="3">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:Name="SologameSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
                 </Grid>
             </Grid>
         </Grid>

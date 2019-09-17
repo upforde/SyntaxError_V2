@@ -38,7 +38,7 @@ namespace SyntaxError.V2.App.DataAccess
         public async Task<bool> EditGameProfileAsync(GameProfile param)
         {
             string json = await Task.Run(() => JsonConvert.SerializeObject(param));
-
+            
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage result = await _httpClient.PutAsync(new Uri(gameProfilesBaseUri, param.ID.ToString()), content);
 

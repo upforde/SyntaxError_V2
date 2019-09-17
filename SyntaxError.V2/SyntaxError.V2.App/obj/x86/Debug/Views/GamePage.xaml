@@ -178,7 +178,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     
-                    <controls:DropShadowPanel x:ConnectionId='109' x:Name="AudienceGlow"
+                    <controls:DropShadowPanel x:ConnectionId='112' x:Name="AudienceGlow"
                                               Grid.Column="0"
                                               OffsetX="10"
                                               ShadowOpacity="0.5"
@@ -186,7 +186,7 @@
                                               Color="#004FFC"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='119' x:Name="audienceChallenge"
+                        <Image x:ConnectionId='126' x:Name="audienceChallenge"
                                Source="/Assets/audience_challenge_thumbnail.jpg"
                                Margin="10, 0, 5, 5"
                                animations:Connected.Key="audience">
@@ -195,12 +195,17 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='120' x:Name="AudienceHighLight" />
+                                <CompositeTransform x:ConnectionId='127' x:Name="AudienceHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
-                    <controls:DropShadowPanel x:ConnectionId='110' x:Name="CrewGlow"
+                    <Border Grid.Column="0">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='125' x:Name="AudienceSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
+                    <controls:DropShadowPanel x:ConnectionId='113' x:Name="CrewGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
                                               ShadowOpacity="0.5"
@@ -208,7 +213,7 @@
                                               Color="#BA00DF"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='117' x:Name="crewChallenge"
+                        <Image x:ConnectionId='123' x:Name="crewChallenge"
                                Source="/Assets/crew_challenge_thumbnail.jpg"
                                Margin="5, 0, 5, 5">
                             <animations:Implicit.ShowAnimations>
@@ -216,12 +221,17 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='118' x:Name="CrewChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='124' x:Name="CrewChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
-                    <controls:DropShadowPanel x:ConnectionId='111' x:Name="MultipleChoiceGlow"
+                    <Border Grid.Column="1">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='122' x:Name="CrewSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
+                    <controls:DropShadowPanel x:ConnectionId='114' x:Name="MultipleChoiceGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
                                               ShadowOpacity="0.5"
@@ -229,7 +239,7 @@
                                               Color="#FE0000"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='115' x:Name="multipleChoiceChallenge"
+                        <Image x:ConnectionId='120' x:Name="multipleChoiceChallenge"
                                Source="/Assets/multiply_choice_challenge_thumbnail.jpg"
                                Margin="5, 0, 5, 5">
                             <animations:Implicit.ShowAnimations>
@@ -237,12 +247,17 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='116' x:Name="MultipleChoiceChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='121' x:Name="MultipleChoiceChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
-                    <controls:DropShadowPanel x:ConnectionId='112' x:Name="MusicGlow"
+                    <Border Grid.Column="2">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='119' x:Name="MultipleChoiceSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
+                    <controls:DropShadowPanel x:ConnectionId='115' x:Name="MusicGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
                                               ShadowOpacity="0.5"
@@ -250,7 +265,7 @@
                                               Color="#F2FF00"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='113' x:Name="musicChallenge"
+                        <Image x:ConnectionId='117' x:Name="musicChallenge"
                                Source="/Assets/music_challenge_thumbnail.jpg"
                                Margin="5, 0, 10, 5">
                             <animations:Implicit.ShowAnimations>
@@ -258,10 +273,15 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='114' x:Name="MusicChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='118' x:Name="MusicChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
+                    <Border Grid.Column="3">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='116' x:Name="MusicSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
                 </Grid>
 
                 <Grid Grid.Row="1" >
@@ -272,11 +292,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     
-                    <Border>
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:ConnectionId='105' x:Name="QuizSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                        <controls:DropShadowPanel x:ConnectionId='106' x:Name="QuizGlow"
+                    <controls:DropShadowPanel x:ConnectionId='96' x:Name="QuizGlow"
                                                   Grid.Column="0"
                                                   OffsetX="10"
                                                   OffsetY="5"
@@ -286,7 +302,7 @@
                                                   VerticalAlignment="Center"
                                                   HorizontalAlignment="Center">
                         
-                            <Image x:ConnectionId='107' x:Name="quizChallenge"
+                            <Image x:ConnectionId='110' x:Name="quizChallenge"
                                     Source="/Assets/quiz_challenge_thumbnail.jpg"
                                     Margin="10, 5, 5, 0">
                                 <animations:Implicit.ShowAnimations>
@@ -294,13 +310,17 @@
                                     <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                                 </animations:Implicit.ShowAnimations>
                                 <Image.RenderTransform>
-                                    <CompositeTransform x:ConnectionId='108' x:Name="QuizChallengeHighLight" />
+                                    <CompositeTransform x:ConnectionId='111' x:Name="QuizChallengeHighLight" />
                                 </Image.RenderTransform>
                             </Image>
                         </controls:DropShadowPanel>
+                    <Border Grid.Column="0">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='109' x:Name="QuizSaturationBrush" Saturation="1"/>
+                            </Border.Background>
                     </Border>
                     
-                    <controls:DropShadowPanel x:ConnectionId='96' x:Name="ScreenshotGlow"
+                    <controls:DropShadowPanel x:ConnectionId='97' x:Name="ScreenshotGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
                                               OffsetY="5"
@@ -309,7 +329,7 @@
                                               Color="#00C132"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='103' x:Name="screenshotChallenge"
+                        <Image x:ConnectionId='107' x:Name="screenshotChallenge"
                                Source="/Assets/screenshot_challenge_thumbnail.jpg"
                                Margin="5, 5, 5, 0">
                             <animations:Implicit.ShowAnimations>
@@ -317,12 +337,17 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='104' x:Name="ScreenshotChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='108' x:Name="ScreenshotChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
-                    <controls:DropShadowPanel x:ConnectionId='97' x:Name="SilhouetteGlow"
+                    <Border Grid.Column="1">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='106' x:Name="ScreenshotSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
+                    <controls:DropShadowPanel x:ConnectionId='98' x:Name="SilhouetteGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
                                               OffsetY="5"
@@ -331,7 +356,7 @@
                                               Color="#00FFFB"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='101' x:Name="silhouetteChallenge"
+                        <Image x:ConnectionId='104' x:Name="silhouetteChallenge"
                                Source="/Assets/silhouette_challenge_thumbnail.jpg"
                                Margin="5, 5, 5, 0">
                             <animations:Implicit.ShowAnimations>
@@ -339,12 +364,17 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='102' x:Name="SilhouetteChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='105' x:Name="SilhouetteChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-
-                    <controls:DropShadowPanel x:ConnectionId='98' x:Name="SologameGlow"
+                    <Border Grid.Column="2">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='103' x:Name="SilhouetteSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
+                    
+                    <controls:DropShadowPanel x:ConnectionId='99' x:Name="SologameGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
                                               OffsetY="5"
@@ -353,7 +383,7 @@
                                               Color="#FE0000"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                        <Image x:ConnectionId='99' x:Name="sologameChallenge"
+                        <Image x:ConnectionId='101' x:Name="sologameChallenge"
                                Source="/Assets/sologame_challenge_thumbnail.jpg"
                                Margin="5, 5, 10, 0">
                             <animations:Implicit.ShowAnimations>
@@ -361,10 +391,15 @@
                                 <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
                             </animations:Implicit.ShowAnimations>
                             <Image.RenderTransform>
-                                <CompositeTransform x:ConnectionId='100' x:Name="SologameChallengeHighLight" />
+                                <CompositeTransform x:ConnectionId='102' x:Name="SologameChallengeHighLight" />
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
+                    <Border Grid.Column="3">
+                            <Border.Background>
+                                <media:BackdropSaturationBrush x:ConnectionId='100' x:Name="SologameSaturationBrush" Saturation="1"/>
+                            </Border.Background>
+                    </Border>
                 </Grid>
             </Grid>
         </Grid>

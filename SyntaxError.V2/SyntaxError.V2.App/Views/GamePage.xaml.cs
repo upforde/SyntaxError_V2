@@ -630,15 +630,60 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => DeselectChallenge());
         }
 
-        public async void ToggleSaturationQuiz()
+        public async void ToggleAudienceSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                             {
-                                for (double i = 1; i >= 0; i -= 0.1)
-                                {
-                                    QuizSaturationBrush.Saturation = i;
-                                    await Task.Delay(1);
-                                }
+                                AudienceSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleCrewSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                CrewSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleMultipleChoiceSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                MultipleChoiceSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleMusicSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                MusicSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleQuizSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                QuizSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleScreenshotSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                ScreenshotSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleSilhouetteSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                SilhouetteSaturationBrush.Saturation = 0;
+                            });
+        }
+        public async void ToggleSologameSaturation()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                SologameSaturationBrush.Saturation = 0;
                             });
         }
 

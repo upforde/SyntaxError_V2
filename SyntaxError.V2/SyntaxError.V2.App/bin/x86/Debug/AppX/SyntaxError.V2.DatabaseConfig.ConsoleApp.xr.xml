@@ -75,10 +75,10 @@
       <RootEvent Name="Tapped" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
-      <RootMethod Name="GetColumnSpan" />
-      <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetColumnSpan" />
+      <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetRowSpan" />
       <RootMethod Name="SetRowSpan" />
     </RootType>
@@ -255,6 +255,9 @@
       <RootProperty Name="Stretch" />
       <RootProperty Name="Mode" />
     </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush">
+      <RootProperty Name="Saturation" />
+    </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Implicit">
       <RootMethod Name="GetShowAnimations" />
       <RootMethod Name="SetShowAnimations" />
@@ -268,9 +271,6 @@
       <RootProperty Name="Duration" />
       <RootProperty Name="From" />
       <RootProperty Name="To" />
-    </RootType>
-    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush">
-      <RootProperty Name="Saturation" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Connected">
       <RootMethod Name="GetKey" />
