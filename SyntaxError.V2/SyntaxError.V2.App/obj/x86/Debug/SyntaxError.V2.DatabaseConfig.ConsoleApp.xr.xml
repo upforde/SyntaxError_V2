@@ -17,10 +17,10 @@
     <RootType FullName="Microsoft.UI.Xaml.Controls.XamlControlsResources" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Style" />
+      <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootProperty Name="NavigationCacheMode" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="Background" />
@@ -58,6 +58,22 @@
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetTargetName" />
+      <RootMethod Name="SetTargetName" />
+      <RootMethod Name="GetTargetProperty" />
+      <RootMethod Name="SetTargetProperty" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.DoubleAnimationUsingKeyFrames">
+      <RootProperty Name="Duration" />
+      <RootProperty Name="RepeatBehavior" />
+      <RootProperty Name="KeyFrames" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.LinearDoubleKeyFrame">
+      <RootProperty Name="Value" />
+      <RootProperty Name="KeyTime" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Margin" />
       <RootProperty Name="Background" />
@@ -92,12 +108,16 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Source" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootProperty Name="RenderTransform" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="MaxWidth" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Opacity" />
-      <RootProperty Name="RenderTransform" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
@@ -139,6 +159,7 @@
       <RootProperty Name="Converter" />
       <RootProperty Name="ConverterParameter" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.RotateTransform" />
     <RootType FullName="SyntaxError.V2.App.Views.AdminPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Pivot">
       <RootProperty Name="BorderThickness" />
@@ -231,13 +252,6 @@
     </RootType>
     <RootType FullName="SyntaxError.V2.App.Views.CreateCrewPage" />
     <RootType FullName="SyntaxError.V2.App.Views.CreateObjectsPage" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
-      <RootProperty Name="Children" />
-      <RootMethod Name="GetTargetName" />
-      <RootMethod Name="SetTargetName" />
-      <RootMethod Name="GetTargetProperty" />
-      <RootMethod Name="SetTargetProperty" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.DoubleAnimation">
       <RootProperty Name="Duration" />
       <RootProperty Name="RepeatBehavior" />

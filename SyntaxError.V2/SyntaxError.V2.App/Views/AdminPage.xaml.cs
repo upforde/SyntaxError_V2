@@ -580,7 +580,10 @@ namespace SyntaxError.V2.App.Views
             IsInPlayState = false;
 
             if(IsNextSyntaxError)
+            {
+                SyntaxErrorShakeImage.Visibility = Visibility.Collapsed;
                 CauseSyntaxError();
+            }
             else RollForNextSyntaxError();
         }
         private void Button_Click_Random(object sender, RoutedEventArgs e)
@@ -596,9 +599,13 @@ namespace SyntaxError.V2.App.Views
         private void RollForNextSyntaxError()
         {
             var test = SyntaxErrorCounter;
-            int rnd = GamePage.RandomNumber(0, SyntaxErrorCounter);
+            int rnd = GamePage.RandomNumber(1, SyntaxErrorCounter+1);
             if (rnd == SyntaxErrorCounter)
+            {
                 IsNextSyntaxError = true;
+                SyntaxErrorShakeImage.Visibility = Visibility.Visible;
+                ForeverRotAnim.Begin();
+            }
             else SyntaxErrorCounter--;
         }
 

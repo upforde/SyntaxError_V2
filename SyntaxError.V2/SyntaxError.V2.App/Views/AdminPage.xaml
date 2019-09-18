@@ -5,8 +5,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations" 
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="ForeverRotAnim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SyntaxErrorShakeImage"
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                           Duration="0:0:2" RepeatBehavior="Forever">
+                <LinearDoubleKeyFrame Value="30" KeyTime="0:0:0.5" />
+                <LinearDoubleKeyFrame Value="0" KeyTime="0:0:1" />
+                <LinearDoubleKeyFrame Value="-30" KeyTime="0:0:1.5" />
+                <LinearDoubleKeyFrame Value="0" KeyTime="0:0:1.99" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
     <Grid x:Name="ContentArea"
           Margin="{StaticResource MediumLeftRightMargin}"
           Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
@@ -35,8 +49,19 @@
                     Click="Button_Click_FixSyntaxError"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">Fix SyntaxError</Button>
-            
-            
+            <Image x:Name="SyntaxErrorShakeImage"
+                   Source="/Assets/SyntaxError_Logo.png"
+                   Height="150" Width="150"
+                   Grid.Row="0" Grid.Column="3"
+                   Visibility="Collapsed"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   RenderTransformOrigin=".5,.5">
+                <Image.RenderTransform>
+                    <RotateTransform/>
+                </Image.RenderTransform>
+            </Image>
+
             <StackPanel x:Name="AudienceButtonArea"
                         Grid.Row="1"
                         Grid.Column="0"
@@ -335,7 +360,6 @@
                 </controls:DropShadowPanel>
                 </StackPanel>
             </StackPanel>
-            
             <Grid x:Name="ActionButtonArea"
                   Grid.ColumnSpan="4"
                   Grid.Row="3"

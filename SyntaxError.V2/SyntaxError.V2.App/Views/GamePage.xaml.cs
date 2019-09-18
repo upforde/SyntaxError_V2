@@ -399,7 +399,7 @@ namespace SyntaxError.V2.App.Views
         {
             SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorLogo.Begin();
         }
         private async void AnimateSyntaxErrorAudienceChallenge()
@@ -457,13 +457,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorAudience.Begin();
         }
-        private async void FixSyntaxErrorAudience()
+        private void FixSyntaxErrorAudience()
         {
             SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorAudience.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorCrewChallenge()
         {
@@ -520,13 +519,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorCrew.Begin();
         }
-        private async void FixSyntaxErrorCrew()
+        private void FixSyntaxErrorCrew()
         {
             SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorCrew.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorMultipleChoiceChallenge()
         {
@@ -583,13 +581,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorMultipleChoice.Begin();
         }
-        private async void FixSyntaxErrorMultipleChoice()
+        private void FixSyntaxErrorMultipleChoice()
         {
             SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorMultipleChoice.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorMusicChallenge()
         {
@@ -646,13 +643,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorMusic.Begin();
         }
-        private async void FixSyntaxErrorMusic()
+        private void FixSyntaxErrorMusic()
         {
             SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorMusic.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorQuizChallenge()
         {
@@ -709,13 +705,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorQuiz.Begin();
         }
-        private async void FixSyntaxErrorQuiz()
+        private void FixSyntaxErrorQuiz()
         {
             SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorQuiz.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorScreenshotChallenge()
         {
@@ -772,13 +767,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorScreenshot.Begin();
         }
-        private async void FixSyntaxErrorScreenshot()
+        private void FixSyntaxErrorScreenshot()
         {
             SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorScreenshot.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorSilhouetteChallenge()
         {
@@ -835,13 +829,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorSilhouette.Begin();
         }
-        private async void FixSyntaxErrorSilhouette()
+        private void FixSyntaxErrorSilhouette()
         {
             SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorSilhouette.Begin();
-            await Task.Delay(200);
         }
         private async void AnimateSyntaxErrorSologameChallenge()
         {
@@ -898,13 +891,12 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorSologame.Begin();
         }
-        private async void FixSyntaxErrorSologame()
+        private void FixSyntaxErrorSologame()
         {
             SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
             SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
-            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(300)));
             SyntaxErrorSologame.Begin();
-            await Task.Delay(200);
         }
         
         public async void ActuateAudienceChallenge(AudienceChallenge challenge)
