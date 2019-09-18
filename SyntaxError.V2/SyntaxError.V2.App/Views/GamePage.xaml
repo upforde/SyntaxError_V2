@@ -7,8 +7,6 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     Background="#111111">
