@@ -29,9 +29,13 @@
                    Grid.ColumnSpan="2"
                    Source="/Assets/SyntaxError_Logo.png"
                    Margin="0, 0, 0, 25"/>
-            <Button Grid.Row="0" Grid.Column="3"
+            <Button x:Name="SyntaxErrorFixButton"
+                    Grid.Row="0" Grid.Column="3"
                     Visibility="Collapsed"
-                    Click="Button_Click_FixSyntaxError">Test</Button>
+                    Click="Button_Click_FixSyntaxError"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">Fix SyntaxError</Button>
+            
             
             <StackPanel x:Name="AudienceButtonArea"
                         Grid.Row="1"
@@ -341,6 +345,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
                 <Button x:Name="PlayButton"
@@ -367,6 +372,10 @@
                         IsEnabled="False">
                     Done
                 </Button>
+                <Button x:Name="RandomButton"
+                        Grid.Column="4"
+                        Click="Button_Click_Random"
+                        IsEnabled="True">Random</Button>
             </Grid>
         </Grid>
     </Grid>

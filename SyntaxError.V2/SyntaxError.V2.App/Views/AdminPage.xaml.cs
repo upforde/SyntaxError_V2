@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.UI;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -22,7 +14,7 @@ namespace SyntaxError.V2.App.Views
     {
         private bool IsInPlayState = false;
         private bool IsNextSyntaxError = false;
-        const int SyntaxErrorMaxVal = 7;
+        const int SyntaxErrorMaxVal = 1;
         private int SyntaxErrorCounter = SyntaxErrorMaxVal;
 
         public AdminViewModel ViewModel { get; } = new AdminViewModel();
@@ -375,6 +367,8 @@ namespace SyntaxError.V2.App.Views
         {
             SyntaxErrorCounter = SyntaxErrorMaxVal;
             IsNextSyntaxError = false;
+            SyntaxErrorFixButton.Visibility = Visibility.Collapsed;
+            GamePage.ToggleSyntaxErrorFix();
         }
 
         private void Button_Click_Audience(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -389,37 +383,65 @@ namespace SyntaxError.V2.App.Views
         private void Button_Click_Crew(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleCrewChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Multiple(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMultipleChoiceChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Music(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMusicChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Quiz(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleQuizChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Screenshot(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleScreenshotChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Silhouette(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSilhouetteChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         private void Button_Click_Sologame(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSologameChallenge();
-            if (!IsInPlayState) PlayButton.IsEnabled = true;
+            if (!IsInPlayState)
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            }
         }
         
         private void Button_Click_Play(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -561,12 +583,16 @@ namespace SyntaxError.V2.App.Views
                 CauseSyntaxError();
             else RollForNextSyntaxError();
         }
+        private void Button_Click_Random(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void CauseSyntaxError()
         {
-            throw new NotImplementedException();
+            SyntaxErrorFixButton.Visibility = Visibility.Visible;
+            GamePage.ToggleSyntaxError();
         }
-
         private void RollForNextSyntaxError()
         {
             var test = SyntaxErrorCounter;
@@ -601,6 +627,5 @@ namespace SyntaxError.V2.App.Views
             
             ViewModel.EditCommand.Execute(profile);
         }
-
     }
 }

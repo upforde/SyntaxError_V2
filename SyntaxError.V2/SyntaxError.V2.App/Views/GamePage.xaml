@@ -7,6 +7,8 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     Background="#111111">
@@ -148,6 +150,61 @@
                              RepeatBehavior="Forever"
                              From="0"/>
         </Storyboard>
+        <!--SyntaxError-->
+        <Storyboard x:Name="SyntaxErrorLogo">
+            <DoubleAnimation Storyboard.TargetName="SyntaxErrorLogoImg"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="SyntaxErrorLogoImg"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorAudience">
+            <DoubleAnimation Storyboard.TargetName="audienceChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="audienceChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorCrew">
+            <DoubleAnimation Storyboard.TargetName="crewChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="crewChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorMultipleChoice">
+            <DoubleAnimation Storyboard.TargetName="multipleChoiceChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="multipleChoiceChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorMusic">
+            <DoubleAnimation Storyboard.TargetName="musicChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="musicChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorQuiz">
+            <DoubleAnimation Storyboard.TargetName="quizChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="quizChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorScreenshot">
+            <DoubleAnimation Storyboard.TargetName="screenshotChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="screenshotChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorSilhouette">
+            <DoubleAnimation Storyboard.TargetName="silhouetteChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="silhouetteChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
+        <Storyboard x:Name="SyntaxErrorSologame">
+            <DoubleAnimation Storyboard.TargetName="sologameChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" />
+            <DoubleAnimation Storyboard.TargetName="sologameChallenge"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" />
+        </Storyboard>
     </Page.Resources>
 
     <Grid x:Name="ContentArea"
@@ -158,10 +215,15 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Image Grid.Row="0"
+            
+            <Image x:Name="SyntaxErrorLogoImg"
+                   Grid.Row="0"
                    Stretch="Uniform"
-                   Source="/Assets/SyntaxError_Logo.png" />
-
+                   Source="/Assets/SyntaxError_Logo.png">
+                <Image.RenderTransform>
+                    <CompositeTransform />
+                </Image.RenderTransform>
+            </Image>
             <Grid Grid.Row="1"
                   HorizontalAlignment="Center"
                   Margin="0, 0, 0, 20">
@@ -181,7 +243,7 @@
                     <controls:DropShadowPanel x:Name="AudienceGlow"
                                               Grid.Column="0"
                                               OffsetX="10"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#004FFC"
                                               VerticalAlignment="Center"
@@ -199,16 +261,10 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="0">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="AudienceSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
-                    
                     <controls:DropShadowPanel x:Name="CrewGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#BA00DF"
                                               VerticalAlignment="Center"
@@ -225,16 +281,10 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="1">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="CrewSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
-                    
                     <controls:DropShadowPanel x:Name="MultipleChoiceGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#FE0000"
                                               VerticalAlignment="Center"
@@ -251,16 +301,10 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="2">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="MultipleChoiceSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
-                    
                     <controls:DropShadowPanel x:Name="MusicGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#F2FF00"
                                               VerticalAlignment="Center"
@@ -277,13 +321,7 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="3">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="MusicSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
                 </Grid>
-
                 <Grid Grid.Row="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -296,7 +334,7 @@
                                                   Grid.Column="0"
                                                   OffsetX="10"
                                                   OffsetY="5"
-                                                  ShadowOpacity="0.5"
+                                                  ShadowOpacity="0"
                                                   BlurRadius="0"
                                                   Color="#12A5D8"
                                                   VerticalAlignment="Center"
@@ -314,17 +352,11 @@
                                 </Image.RenderTransform>
                             </Image>
                         </controls:DropShadowPanel>
-                    <Border Grid.Column="0">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="QuizSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
-                    
                     <controls:DropShadowPanel x:Name="ScreenshotGlow"
                                               Grid.Column="1"
                                               OffsetX="5"
                                               OffsetY="5"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#00C132"
                                               VerticalAlignment="Center"
@@ -341,17 +373,11 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="1">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="ScreenshotSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
-                    
                     <controls:DropShadowPanel x:Name="SilhouetteGlow"
                                               Grid.Column="2"
                                               OffsetX="5"
                                               OffsetY="5"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#00FFFB"
                                               VerticalAlignment="Center"
@@ -368,17 +394,11 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="2">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="SilhouetteSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
-                    
                     <controls:DropShadowPanel x:Name="SologameGlow"
                                               Grid.Column="3"
                                               OffsetX="5"
                                               OffsetY="5"
-                                              ShadowOpacity="0.5"
+                                              ShadowOpacity="0"
                                               BlurRadius="0"
                                               Color="#FE0000"
                                               VerticalAlignment="Center"
@@ -395,11 +415,6 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <Border Grid.Column="3">
-                            <Border.Background>
-                                <media:BackdropSaturationBrush x:Name="SologameSaturationBrush" Saturation="1"/>
-                            </Border.Background>
-                    </Border>
                 </Grid>
             </Grid>
         </Grid>

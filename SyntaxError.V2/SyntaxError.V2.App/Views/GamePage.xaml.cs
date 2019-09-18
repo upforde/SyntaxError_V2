@@ -15,13 +15,15 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Toolkit.Uwp.UI.Animations;
+using Windows.Foundation;
 
 namespace SyntaxError.V2.App.Views
 {
     public sealed partial class GamePage : Page
     {
         public int? CurrentChallenge;
-
+        
         public GameViewModel ViewModel { get; } = new GameViewModel();
         public GameProfile GameProfile { get; set; }
 
@@ -112,7 +114,6 @@ namespace SyntaxError.V2.App.Views
 
         private void OpacityCompleted(object sender, object e)
         {
-            ToggleShadowOpacity(0.5);
             ImgMove.Stop();
         }
 
@@ -300,6 +301,612 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        public async void ToggleSyntaxError()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                await Task.Delay(3000);
+                                AnimateSyntaxErrorQuizChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorScreenshotChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorSilhouetteChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorSologameChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorAudienceChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorCrewChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorMultipleChoiceChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorMusicChallenge();
+                                await Task.Delay(RandomNumber(1, 10));
+                                AnimateSyntaxErrorLogo();
+                            });
+        }
+        public async void ToggleSyntaxErrorFix()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                FixSyntaxErrorAudience();
+                                FixSyntaxErrorCrew();
+                                FixSyntaxErrorMultipleChoice();
+                                FixSyntaxErrorMusic();
+                                FixSyntaxErrorQuiz();
+                                FixSyntaxErrorScreenshot();
+                                FixSyntaxErrorSilhouette();
+                                FixSyntaxErrorSologame();
+                                FixSyntaxErrorLogo();
+                            });
+        }
+
+        private async void AnimateSyntaxErrorLogo()
+        {
+            var ttv = SyntaxErrorLogoImg.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - SyntaxErrorLogoImg.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorLogo.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorLogo.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorLogo.Begin();
+            await Task.Delay(68);
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorLogo.Begin();
+        }
+        private void FixSyntaxErrorLogo()
+        {
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorLogo.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorLogo.Begin();
+        }
+        private async void AnimateSyntaxErrorAudienceChallenge()
+        {
+            AudienceGlow.ShadowOpacity = 0;
+            var ttv = audienceChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - audienceChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorAudience.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorAudience.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorAudience.Begin();
+            await Task.Delay(68);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorAudience.Begin();
+        }
+        private async void FixSyntaxErrorAudience()
+        {
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorAudience.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorCrewChallenge()
+        {
+            CrewGlow.ShadowOpacity = 0;
+            var ttv = crewChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - crewChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorCrew.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorCrew.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorCrew.Begin();
+            await Task.Delay(68);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorCrew.Begin();
+        }
+        private async void FixSyntaxErrorCrew()
+        {
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorCrew.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorMultipleChoiceChallenge()
+        {
+            MultipleChoiceGlow.ShadowOpacity = 0;
+            var ttv = multipleChoiceChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - multipleChoiceChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorMultipleChoice.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorMultipleChoice.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorMultipleChoice.Begin();
+            await Task.Delay(68);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorMultipleChoice.Begin();
+        }
+        private async void FixSyntaxErrorMultipleChoice()
+        {
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMultipleChoice.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorMusicChallenge()
+        {
+            MusicGlow.ShadowOpacity = 0;
+            var ttv = musicChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - musicChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorMusic.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorMusic.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorMusic.Begin();
+            await Task.Delay(68);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorMusic.Begin();
+        }
+        private async void FixSyntaxErrorMusic()
+        {
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMusic.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorQuizChallenge()
+        {
+            QuizGlow.ShadowOpacity = 0;
+            var ttv = quizChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - quizChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorQuiz.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorQuiz.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorQuiz.Begin();
+            await Task.Delay(68);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorQuiz.Begin();
+        }
+        private async void FixSyntaxErrorQuiz()
+        {
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorQuiz.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorScreenshotChallenge()
+        {
+            ScreenshotGlow.ShadowOpacity = 0;
+            var ttv = screenshotChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - screenshotChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorScreenshot.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorScreenshot.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorScreenshot.Begin();
+            await Task.Delay(68);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorScreenshot.Begin();
+        }
+        private async void FixSyntaxErrorScreenshot()
+        {
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorScreenshot.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorSilhouetteChallenge()
+        {
+            SilhouetteGlow.ShadowOpacity = 0;
+            var ttv = silhouetteChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - silhouetteChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorSilhouette.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorSilhouette.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorSilhouette.Begin();
+            await Task.Delay(68);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorSilhouette.Begin();
+        }
+        private async void FixSyntaxErrorSilhouette()
+        {
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSilhouette.Begin();
+            await Task.Delay(200);
+        }
+        private async void AnimateSyntaxErrorSologameChallenge()
+        {
+            SologameGlow.ShadowOpacity = 0;
+            var ttv = sologameChallenge.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            var actualHeight = Window.Current.Bounds.Height;
+            var absoluteHeight = actualHeight-screenCoords.Y - sologameChallenge.ActualHeight;
+            
+            double start = 0;
+            double slutt = 100;
+            double startX = 0;
+            double sluttX = -40;
+            double itteratingFactor = -5;
+            var rnd = RandomNumber(1,100);
+            if(rnd % 2 == 0){ sluttX = 40; itteratingFactor = 5; }
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(80)));
+            SyntaxErrorSologame.Begin();
+            start = slutt;
+            slutt = slutt * 1.27;
+            startX = sluttX;
+            sluttX+=itteratingFactor;
+            await Task.Delay(80);
+            while(slutt < absoluteHeight)
+            {
+                SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, start);
+                SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+                SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.FromProperty, startX);
+                SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX);
+                SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(10)));
+                SyntaxErrorSologame.Begin();
+                start = slutt;
+                slutt = (slutt*1.18 >= absoluteHeight)?absoluteHeight:slutt * 1.18;
+                startX = sluttX;
+                sluttX+=itteratingFactor;
+                await Task.Delay(10);
+            }
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, slutt);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, slutt-13);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor*2));
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorSologame.Begin();
+            await Task.Delay(68);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, slutt-13);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, slutt);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.FromProperty, startX + itteratingFactor);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, sluttX + (itteratingFactor * 2));
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
+            SyntaxErrorSologame.Begin();
+        }
+        private async void FixSyntaxErrorSologame()
+        {
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSologame.Begin();
+            await Task.Delay(200);
+        }
+        
         public async void ActuateAudienceChallenge(AudienceChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -632,66 +1239,72 @@ namespace SyntaxError.V2.App.Views
 
         public async void ToggleAudienceSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                AudienceSaturationBrush.Saturation = 0;
+                                await audienceChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleCrewSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                CrewSaturationBrush.Saturation = 0;
+                                await crewChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleMultipleChoiceSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                MultipleChoiceSaturationBrush.Saturation = 0;
+                                await multipleChoiceChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleMusicSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                MusicSaturationBrush.Saturation = 0;
+                                await musicChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleQuizSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                QuizSaturationBrush.Saturation = 0;
+                                await quizChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleScreenshotSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                ScreenshotSaturationBrush.Saturation = 0;
+                                await screenshotChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleSilhouetteSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                SilhouetteSaturationBrush.Saturation = 0;
+                                await silhouetteChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
         public async void ToggleSologameSaturation()
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                SologameSaturationBrush.Saturation = 0;
+                                await sologameChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
                             });
         }
 
         private async void HighlightAudience()
         {
+            AudienceGlow.ShadowOpacity = 0.5;
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorAudience.Begin();
             for (int i = 0; i < 20; i++)
             {
-                AudienceHighLight.TranslateY = -i;
                 AudienceGlow.BlurRadius = i;
                 AudienceGlow.OffsetY = -i;
                 await Task.Delay(1);
@@ -699,20 +1312,32 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightAudience()
         {
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorAudience.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(120)));
+            SyntaxErrorAudience.Begin();
             for (int i = 0; i < 20; i++)
             {
-                AudienceHighLight.TranslateY = -20+i;
                 AudienceGlow.BlurRadius = 20-i;
                 AudienceGlow.OffsetY = -20+i;
                 await Task.Delay(1);
             }
+            AudienceGlow.ShadowOpacity = 0;
         }
         
         private async void HighlightCrew()
         {
+            CrewGlow.ShadowOpacity = 0.5;
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorCrew.Begin();
             for (int i = 0; i < 20; i++)
             {
-                CrewChallengeHighLight.TranslateY = -i;
                 CrewGlow.BlurRadius = i;
                 CrewGlow.OffsetY = -i;
                 await Task.Delay(1);
@@ -720,6 +1345,12 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightCrew()
         {
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorCrew.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorCrew.Begin();
             for (int i = 0; i < 20; i++)
             {
                 CrewChallengeHighLight.TranslateY = -20+i;
@@ -727,13 +1358,20 @@ namespace SyntaxError.V2.App.Views
                 CrewGlow.OffsetY = -20+i;
                 await Task.Delay(1);
             }
+            CrewGlow.ShadowOpacity = 0;
         }
 
         private async void HighlightMultipleChoice()
         {
+            MultipleChoiceGlow.ShadowOpacity = 0.5;
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMultipleChoice.Begin();
             for (int i = 0; i < 20; i++)
             {
-                MultipleChoiceChallengeHighLight.TranslateY = -i;
                 MultipleChoiceGlow.BlurRadius = i;
                 MultipleChoiceGlow.OffsetY = -i;
                 await Task.Delay(1);
@@ -741,20 +1379,32 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightMultipleChoice()
         {
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorMultipleChoice.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMultipleChoice.Begin();
             for (int i = 0; i < 20; i++)
             {
-                MultipleChoiceChallengeHighLight.TranslateY = -20+i;
                 MultipleChoiceGlow.BlurRadius = 20-i;
                 MultipleChoiceGlow.OffsetY = -20+i;
                 await Task.Delay(1);
             }
+            MultipleChoiceGlow.ShadowOpacity = 0;
         }
         
         private async void HighlightMusic()
         {
+            MusicGlow.ShadowOpacity = 0.5;
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMusic.Begin();
             for (int i = 0; i < 20; i++)
             {
-                MusicChallengeHighLight.TranslateY = -i;
                 MusicGlow.BlurRadius = i;
                 MusicGlow.OffsetY = -i;
                 await Task.Delay(1);
@@ -762,20 +1412,32 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightMusic()
         {
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorMusic.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorMusic.Begin();
             for (int i = 0; i < 20; i++)
             {
-                MusicChallengeHighLight.TranslateY = -20+i;
                 MusicGlow.BlurRadius = 20-i;
                 MusicGlow.OffsetY = -20+i;
                 await Task.Delay(1);
             }
+            MusicGlow.ShadowOpacity = 0;
         }
 
         private async void HighlightQuiz()
         {
+            QuizGlow.ShadowOpacity = 0.5;
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorQuiz.Begin();
             for (int i = 0; i < 20; i++)
             {
-                QuizChallengeHighLight.TranslateY = -i;
                 QuizGlow.BlurRadius = i;
                 QuizGlow.OffsetY = -i+5;
                 await Task.Delay(1);
@@ -783,20 +1445,32 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightQuiz()
         {
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorQuiz.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorQuiz.Begin();
             for (int i = 0; i < 20; i++)
             {
-                QuizChallengeHighLight.TranslateY = -20+i;
                 QuizGlow.BlurRadius = 20-i;
                 QuizGlow.OffsetY = -15+i;
                 await Task.Delay(1);
             }
+            QuizGlow.ShadowOpacity = 0;
         }
         
         private async void HighlightScreenshot()
         {
+            ScreenshotGlow.ShadowOpacity = 0.5;
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorScreenshot.Begin();
             for (int i = 0; i < 20; i++)
             {
-                ScreenshotChallengeHighLight.TranslateY = -i;
                 ScreenshotGlow.BlurRadius = i;
                 ScreenshotGlow.OffsetY = -i+5;
                 await Task.Delay(1);
@@ -804,20 +1478,32 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightScreenshot()
         {
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorScreenshot.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorScreenshot.Begin();
             for (int i = 0; i < 20; i++)
             {
-                ScreenshotChallengeHighLight.TranslateY = -20+i;
                 ScreenshotGlow.BlurRadius = 20-i;
                 ScreenshotGlow.OffsetY = -15+i;
                 await Task.Delay(1);
             }
+            ScreenshotGlow.ShadowOpacity = 0;
         }
         
         private async void HighlightSilhouette()
         {
+            SilhouetteGlow.ShadowOpacity = 0.5;
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSilhouette.Begin();
             for (int i = 0; i < 20; i++)
             {
-                SilhouetteChallengeHighLight.TranslateY = -i;
                 SilhouetteGlow.BlurRadius = i;
                 SilhouetteGlow.OffsetY = -i+5;
                 await Task.Delay(1);
@@ -825,20 +1511,32 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightSilhouette()
         {
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorSilhouette.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSilhouette.Begin();
             for (int i = 0; i < 20; i++)
             {
-                SilhouetteChallengeHighLight.TranslateY = -20+i;
                 SilhouetteGlow.BlurRadius = 20-i;
                 SilhouetteGlow.OffsetY = -15+i;
                 await Task.Delay(1);
             }
+            SilhouetteGlow.ShadowOpacity = 0;
         }
         
         private async void HighlightSologame()
         {
+            SologameGlow.ShadowOpacity = 0.5;
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, -20);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSologame.Begin();
             for (int i = 0; i < 20; i++)
             {
-                SologameChallengeHighLight.TranslateY = -i;
                 SologameGlow.BlurRadius = i;
                 SologameGlow.OffsetY = -i+5;
                 await Task.Delay(1);
@@ -846,13 +1544,19 @@ namespace SyntaxError.V2.App.Views
         }
         private async void DeHighlightSologame()
         {
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.FromProperty, 0);
+            SyntaxErrorSologame.Children[1].SetValue(DoubleAnimation.ToProperty, 0);
+            SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(200)));
+            SyntaxErrorSologame.Begin();
             for (int i = 0; i < 20; i++)
             {
-                SologameChallengeHighLight.TranslateY = -20+i;
                 SologameGlow.BlurRadius = 20-i;
                 SologameGlow.OffsetY = -15+i;
                 await Task.Delay(1);
             }
+            SologameGlow.ShadowOpacity = 0;
         }
         
         public void DeselectChallenge()

@@ -100,6 +100,17 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Stretch" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootEvent Name="Click" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
@@ -111,16 +122,6 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="IsEnabled" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel">
       <RootProperty Name="BlurRadius" />
@@ -232,10 +233,10 @@
     <RootType FullName="SyntaxError.V2.App.Views.CreateObjectsPage" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
       <RootProperty Name="Children" />
-      <RootMethod Name="GetTargetProperty" />
-      <RootMethod Name="SetTargetProperty" />
       <RootMethod Name="GetTargetName" />
       <RootMethod Name="SetTargetName" />
+      <RootMethod Name="GetTargetProperty" />
+      <RootMethod Name="SetTargetProperty" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.DoubleAnimation">
       <RootProperty Name="Duration" />
@@ -254,9 +255,6 @@
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush">
       <RootProperty Name="Stretch" />
       <RootProperty Name="Mode" />
-    </RootType>
-    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush">
-      <RootProperty Name="Saturation" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Implicit">
       <RootMethod Name="GetShowAnimations" />
