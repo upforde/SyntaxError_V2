@@ -1286,6 +1286,14 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        public async void ToggleRandomSelection()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                RandomSelectChallenge();
+                            });
+        }
+
         private async void HighlightAudience()
         {
             AudienceGlow.ShadowOpacity = 0.5;
@@ -1550,7 +1558,63 @@ namespace SyntaxError.V2.App.Views
             }
             SologameGlow.ShadowOpacity = 0;
         }
-        
+
+        private async void RandomSelectChallenge()
+        {
+            int rnd = RandomNumber(16, 33);
+            int delay = 200;
+            DeselectChallenge();
+            HighlightAudience();
+            CurrentChallenge = 0;
+            await Task.Delay(delay);
+            for (int i = 0; i < rnd; i++)
+            {
+                switch (i % 8)
+                {
+                    case 0:
+                        DeHighlightAudience();
+                        HighlightCrew();
+                        CurrentChallenge = 1;
+                        break;
+                    case 1:
+                        DeHighlightCrew();
+                        HighlightMultipleChoice();
+                        CurrentChallenge = 2;
+                        break;
+                    case 2:
+                        DeHighlightMultipleChoice();
+                        HighlightMusic();
+                        CurrentChallenge = 3;
+                        break;
+                    case 3:
+                        DeHighlightMusic();
+                        HighlightQuiz();
+                        CurrentChallenge = 4;
+                        break;
+                    case 4:
+                        DeHighlightQuiz();
+                        HighlightScreenshot();
+                        CurrentChallenge = 5;
+                        break;
+                    case 5:
+                        DeHighlightScreenshot();
+                        HighlightSilhouette();
+                        CurrentChallenge = 6;
+                        break;
+                    case 6:
+                        DeHighlightSilhouette();
+                        HighlightSologame();
+                        CurrentChallenge = 7;
+                        break;
+                    case 7:
+                        DeHighlightSologame();
+                        HighlightAudience();
+                        CurrentChallenge = 0;
+                        break;
+                }
+                await Task.Delay((i<33 && i>16)?delay+100+i*10:(i<=16 && i>8)?delay+100:delay);
+            }
+        }
         public void DeselectChallenge()
         {
             switch (CurrentChallenge)

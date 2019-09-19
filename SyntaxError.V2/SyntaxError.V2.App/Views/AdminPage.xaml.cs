@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
@@ -375,6 +376,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleAudienceChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -384,6 +386,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleCrewChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -393,6 +396,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleMultipleChoiceChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -402,6 +406,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleMusicChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -411,6 +416,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleQuizChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -420,6 +426,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleScreenshotChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -429,6 +436,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleSilhouetteChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -438,6 +446,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleSologameChallenge();
             if (!IsInPlayState)
             {
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
@@ -449,6 +458,7 @@ namespace SyntaxError.V2.App.Views
             {
                 IsInPlayState = true;
             
+                RandomButton.IsEnabled = false;
                 PlayButton.IsEnabled = false;
                 DeselectButton.IsEnabled = false;
 
@@ -496,6 +506,7 @@ namespace SyntaxError.V2.App.Views
         {
             PlayButton.IsEnabled = false;
             DeselectButton.IsEnabled = false;
+            RandomButton.IsEnabled = true;
 
             GamePage.ToggleDeselect();
         }
@@ -577,6 +588,7 @@ namespace SyntaxError.V2.App.Views
             GamePage.ToggleMainScreen();
             
             IsInPlayState = false;
+            RandomButton.IsEnabled = true;
 
             if(IsNextSyntaxError)
             {
@@ -585,8 +597,15 @@ namespace SyntaxError.V2.App.Views
             }
             else RollForNextSyntaxError();
         }
-        private void Button_Click_Random(object sender, RoutedEventArgs e)
+        private async void Button_Click_Random(object sender, RoutedEventArgs e)
         {
+            PlayButton.IsEnabled = false;
+            DeselectButton.IsEnabled = false;
+            RandomButton.IsEnabled = false;
+            GamePage.ToggleRandomSelection();
+            await Task.Delay(6000);
+            PlayButton.IsEnabled = true;
+            DeselectButton.IsEnabled = true;
 
         }
 
