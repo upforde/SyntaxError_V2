@@ -250,12 +250,12 @@ namespace SyntaxError.V2.App.Views
                 {
                     CurrentCrewChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentCrewChallenge.GameID, "Game") as Game;
                     CrewNextGame.Text = CurrentCrewChallenge.Game.Name;
-                }
+                } else CrewNextGame.Text = "";
                 if (CurrentCrewChallenge.CrewMemberID != null)
                 {
                     CurrentCrewChallenge.CrewMember = await ViewModel.LoadCrewMemberFromDBAsync(CurrentCrewChallenge.CrewMemberID);
                     CrewNextCrew.Text = CurrentCrewChallenge.CrewMember.CrewTag;
-                }
+                } else CrewNextCrew.Text = "";
             } else
             {
                 CrewNextGame.Text = "No more challenges ;(";
