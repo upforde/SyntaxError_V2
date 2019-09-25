@@ -14,7 +14,7 @@ namespace SyntaxError.V2.App.Views
     {
         private bool IsInPlayState = false;
         private bool IsNextSyntaxError = false;
-        const int SyntaxErrorMaxVal = 1;
+        const int SyntaxErrorMaxVal = 10;
         private int SyntaxErrorCounter = SyntaxErrorMaxVal;
 
         public AdminViewModel ViewModel { get; } = new AdminViewModel();
