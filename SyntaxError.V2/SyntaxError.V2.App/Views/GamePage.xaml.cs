@@ -57,7 +57,7 @@ namespace SyntaxError.V2.App.Views
             SilhouetteOpacityDown.Completed += CollapseChallengeWindows;
             SologameOpacityDown.Completed += CollapseChallengeWindows;
         }
-        
+
         private void CollapseChallengeWindows(object sender, object e)
         {
             switch (CurrentChallenge)

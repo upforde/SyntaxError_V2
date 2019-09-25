@@ -272,6 +272,7 @@ namespace SyntaxError.V2.App.Views
                 if (CurrentMultipleChoiceChallenge.AnswersID != null)
                 {
                     CurrentMultipleChoiceChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentMultipleChoiceChallenge.AnswersID);
+                    MultipleChoiceQuiestion.Text = CurrentMultipleChoiceChallenge.ChallengeTask;
                     MultipleChoiceAnswer.Text = CurrentMultipleChoiceChallenge.Answers.Answer;
                 }
             } else
@@ -305,10 +306,12 @@ namespace SyntaxError.V2.App.Views
                 if (CurrentQuizChallenge.AnswersID != null)
                 {
                     CurrentQuizChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentQuizChallenge.AnswersID);
+                    QuizQuiestion.Text = CurrentQuizChallenge.ChallengeTask;
                     QuizAnswer.Text = CurrentQuizChallenge.Answers.Answer;
                 }
             } else
             {
+                QuizQuiestion.Text = "";
                 QuizAnswer.Text = "No more challenges ;(";
                 QuizButton.IsEnabled = false;
                 GamePage.ToggleQuizSaturation();
