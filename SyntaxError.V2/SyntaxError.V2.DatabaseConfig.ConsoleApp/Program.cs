@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
-
+using Newtonsoft.Json;
 using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
@@ -367,6 +368,65 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
 
                 db.Challenges.Add(newChallenge);
                 db.SaveChanges();
+            }
+            Console.WriteLine(DONE);
+        }
+
+        private static void AddManyMultipleChoiceChallenges()
+        {
+            Console.WriteLine("What is the path to the JSON file?");
+            var path = Console.ReadLine();
+            
+            dynamic json = JsonConvert.DeserializeObject(File.ReadAllText(path));
+
+            foreach (var data in json)
+            {
+                using(var db = new SyntaxErrorContext())
+                {
+                    Answers multipleChoiceAnswers = new Answers() 
+                    { 
+                        Answer = data.First.answer,
+                        DummyAnswer1 = data.First.dummy1,
+                        DummyAnswer2 = data.First.dummy2,
+                        DummyAnswer3 = data.First.dummy3
+                    };
+
+                    MultipleChoiceChallenge newChallenge = new MultipleChoiceChallenge()
+                    {
+                        Answers = multipleChoiceAnswers,
+                        ChallengeTask = data.First.question
+                    };
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
+            }
+            Console.WriteLine(DONE);
+        }
+        private static void AddManyMusicChallenges()
+        {
+            Console.WriteLine("What is the path to the JSON file?");
+            var path = Console.ReadLine();
+            
+            dynamic json = JsonConvert.DeserializeObject(File.ReadAllText(path));
+
+            foreach (var data in json)
+            {
+                using(var db = new SyntaxErrorContext())
+                {
+                    string name = data.First.name;
+                    MusicChallenge newChallenge = new MusicChallenge()
+                    {
+                        ChallengeTask = "Guess the song",
+                        Song = new Music
+                        {
+                            Name = (name).Split(".")[0]
+                        }
+                    };
+
+                    db.Challenges.Add(newChallenge);
+                    db.SaveChanges();
+                }
             }
             Console.WriteLine(DONE);
         }
