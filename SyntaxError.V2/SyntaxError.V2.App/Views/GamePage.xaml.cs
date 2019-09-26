@@ -73,12 +73,15 @@ namespace SyntaxError.V2.App.Views
                     break;
                 case 3:
                     MusicChallengeArea.Visibility = Visibility.Collapsed;
+                    MusicAnswerArea.Visibility = Visibility.Collapsed;
                     break;
                 case 4:
                     QuizChallengeArea.Visibility = Visibility.Collapsed;
+                    QuizAnswerPlane.Visibility = Visibility.Collapsed;
                     break;
                 case 5:
                     ScreenshotChallengeArea.Visibility = Visibility.Collapsed;
+                    ScreenshotAnswerArea.Visibility = Visibility.Collapsed;
                     break;
                 case 6:
                     Silhouette.Visibility = Visibility.Visible;
@@ -923,7 +926,7 @@ namespace SyntaxError.V2.App.Views
                                 CrewGameImg.Source = bitmapImage;
                                 CrewGameName.Text = challenge.Game.Name;
                                 CrewTask.Text = challenge.ChallengeTask;
-                                CrewCrewMember.Text = challenge.CrewMember.CrewTag;
+                                //CrewCrewMember.Text = challenge.CrewMember.CrewTag;
                             });
         }
         public async void ActuateMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
