@@ -871,10 +871,11 @@
                       Visibility="Collapsed"
                       Grid.RowSpan="2" Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition MaxHeight="300"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <controls:DropShadowPanel OffsetX="5"
                                                   OffsetY="5"
                                                   Color="#F2FF00"
@@ -1062,11 +1063,15 @@
                 </StackPanel>
                 <Grid Grid.RowSpan="2" Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition MaxHeight="300"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     
-                    <StackPanel x:ConnectionId='60' Grid.Row="0" x:Name="ScreenshotAnswerArea" Visibility="Collapsed">
+                    <StackPanel x:ConnectionId='60' x:Name="ScreenshotAnswerArea"
+                                Grid.Row="0"
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
                         <controls:DropShadowPanel OffsetX="5"
                                                   OffsetY="5"
                                                   Color="#00C132"
