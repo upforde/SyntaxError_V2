@@ -324,7 +324,7 @@ namespace SyntaxError.V2.DatabaseConfig.ConsoleApp
                     CrewChallenge newChallenge = new CrewChallenge() { ChallengeTask = task };
 
                     if (isAddTrueCrew) newChallenge.CrewMember = crewMember;
-                    else newChallenge.CrewMemberID = crewMember.CrewMemberID;
+                    else newChallenge.CrewMemberID = null;
 
                     if (isAddTrueGame) newChallenge.Game = game;
                     else newChallenge.GameID = game.ID;
