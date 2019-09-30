@@ -939,6 +939,11 @@ namespace SyntaxError.V2.App.Views
                                 MultipleChoiceTopRight.Text = answers[1];
                                 MultipleChoiceBottomLeft.Text = answers[2];
                                 MultipleChoiceBottomRight.Text = answers[3];
+
+                                MultipleChoiceTopLeftBorder.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                                MultipleChoiceTopRightBorder.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                                MultipleChoiceBottomLeftBorder.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                                MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                             });
         }
         public async void ActuateMusicChallenge(MusicChallenge challenge)
