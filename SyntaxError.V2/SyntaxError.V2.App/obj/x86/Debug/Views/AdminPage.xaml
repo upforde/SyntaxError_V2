@@ -66,10 +66,22 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='38' x:Name="AudienceButton"
-                                                     
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Audience</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='46' x:Name="AudienceButton"
+                                                         
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Audience</Button>
+                        <Button x:ConnectionId='47' x:Name="NewAudienceButton"
+                                                               
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                                Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                           ShadowOpacity="1"
@@ -84,7 +96,7 @@
                                                   OffsetX="2"
                                                   OffsetY="2"
                                                   Color="#004FFC">
-                        <TextBlock x:ConnectionId='39' x:Name="AudienceNextGame"
+                        <TextBlock x:ConnectionId='45' x:Name="AudienceNextGame"
                                                                                      
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -100,10 +112,22 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:ConnectionId='35' x:Name="CrewButton"
-                                                 
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Crew</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='43' x:Name="CrewButton"
+                                                     
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Crew</Button>
+                    <Button x:ConnectionId='44' x:Name="NewCrewButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel Grid.Row="1"
                             HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
@@ -119,7 +143,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#BA00DF">
-                        <TextBlock x:ConnectionId='37' x:Name="CrewNextGame"
+                        <TextBlock x:ConnectionId='42' x:Name="CrewNextGame"
                                                                                           
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -139,7 +163,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#BA00DF">
-                        <TextBlock x:ConnectionId='36' x:Name="CrewNextCrew"
+                        <TextBlock x:ConnectionId='41' x:Name="CrewNextCrew"
                                                                                  
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -155,10 +179,22 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:ConnectionId='32' x:Name="MultipleChoiceButton"
-                                                     
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Multiple Choice</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='39' x:Name="MultipleChoiceButton"
+                                                         
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Multiple Choice</Button>
+                    <Button x:ConnectionId='40' x:Name="NewMultipleChoiceButton"
+                                                               
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel Grid.Row="1">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -173,7 +209,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#FE0000">
-                        <TextBlock x:ConnectionId='34' x:Name="MultipleChoiceQuiestion"
+                        <TextBlock x:ConnectionId='38' x:Name="MultipleChoiceQuiestion"
                                                                                                
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -192,7 +228,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#FE0000">
-                        <TextBlock x:ConnectionId='33' x:Name="MultipleChoiceAnswer"
+                        <TextBlock x:ConnectionId='37' x:Name="MultipleChoiceAnswer"
                                                                                                 
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -203,10 +239,22 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='30' x:Name="MusicButton"
-                                                  
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Music</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='35' x:Name="MusicButton"
+                                                      
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Music</Button>
+                    <Button x:ConnectionId='36' x:Name="NewMusicButton"
+                                                            
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -221,7 +269,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#F2FF00">
-                    <TextBlock x:ConnectionId='31' x:Name="MusicNextSong"
+                    <TextBlock x:ConnectionId='34' x:Name="MusicNextSong"
                                                                               
                                Padding="10, 0, 0, 2"/>
                 </controls:DropShadowPanel>
@@ -232,10 +280,22 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='27' x:Name="QuizButton"
-                                                 
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Quiz</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='32' x:Name="QuizButton"
+                                                     
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Quiz</Button>
+                    <Button x:ConnectionId='33' x:Name="NewQuizButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -250,7 +310,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#12A5D8">
-                        <TextBlock x:ConnectionId='29' x:Name="QuizQuiestion"
+                        <TextBlock x:ConnectionId='31' x:Name="QuizQuiestion"
                                                                                      
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -267,7 +327,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#12A5D8">
-                        <TextBlock x:ConnectionId='28' x:Name="QuizAnswer"
+                        <TextBlock x:ConnectionId='30' x:Name="QuizAnswer"
                                                                                       
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -278,10 +338,22 @@
                         Grid.Column="1"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='25' x:Name="ScreenshotButton"
-                                                       
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Screenshot</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='28' x:Name="ScreenshotButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Screenshot</Button>
+                    <Button x:ConnectionId='29' x:Name="NewScreenshotButton"
+                                                                 
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                           ShadowOpacity="1"
@@ -296,7 +368,7 @@
                                                   OffsetX="2"
                                                   OffsetY="2"
                                                   Color="#00C132">
-                        <TextBlock x:ConnectionId='26' x:Name="ScreenshotNextScreenshot"
+                        <TextBlock x:ConnectionId='27' x:Name="ScreenshotNextScreenshot"
                                                                                         
                                    Padding="10, 0, 0, 2"/>
                     </controls:DropShadowPanel>
@@ -307,10 +379,22 @@
                         Grid.Column="2"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='23' x:Name="SilhouetteButton"
-                                                       
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Silhouette</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='25' x:Name="SilhouetteButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Silhouette</Button>
+                        <Button x:ConnectionId='26' x:Name="NewSilhouetteButton"
+                                                                     
+                                Margin="0, 0, 0, 5"
+                                HorizontalAlignment="Center"
+                                Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -336,9 +420,22 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:ConnectionId='21' x:Name="SologameButton"                              
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Sologame</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='22' x:Name="SologameButton"
+                                                         
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Sologame</Button>
+                    <Button x:ConnectionId='23' x:Name="NewSologameButton"
+                                                               
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -353,7 +450,7 @@
                                               OffsetX="2"
                                               OffsetY="2"
                                               Color="#FE0000">
-                    <TextBlock x:ConnectionId='22' x:Name="SologameNextGame"
+                    <TextBlock x:ConnectionId='21' x:Name="SologameNextGame"
                                                                                  
                                Padding="10, 0, 0, 2"/>
                 </controls:DropShadowPanel>

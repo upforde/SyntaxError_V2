@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:challenges="using:SyntaxError.V2.Modell.Challenges"
+    xmlns:mediaObjects ="using:SyntaxError.V2.Modell.ChallengeObjects"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     Style="{StaticResource PageStyle}"
@@ -96,55 +97,132 @@
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
                     <Grid HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch"
-                      Visibility="Collapsed"
-                      Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                          VerticalAlignment="Stretch"
+                          Visibility="Collapsed"
+                          Grid.Row="1">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="650" Height="350"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBox FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"
+                                             Text=""
+                                             Grid.Row="0"/>
+                                    <Button Grid.Column="1"
+                                            Grid.Row="0"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                      Tapped="StackPanel_Tapped">
+                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button Grid.Column="1"
+                                                        Click="BackButton_Click"
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        
+                                        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200" SelectionChanged="GameComboBox_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="mediaObjects:Game">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{x:Bind Name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
                         
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                    
-                </Grid>
                     <TextBlock x:Name="EmptyAudienceChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -243,52 +321,130 @@
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
                       Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
-                    
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                         
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="650" Height="350"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBox FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"
+                                             Text=""
+                                             Grid.Row="0"/>
+                                    <Button Grid.Column="1"
+                                            Grid.Row="0"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                      Tapped="StackPanel_Tapped">
+                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button Grid.Column="1"
+                                                        Click="BackButton_Click"
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        
+                                        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200" SelectionChanged="GameComboBox_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="mediaObjects:Game">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{x:Bind Name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                     
-                </Grid>
                     <TextBlock x:Name="EmptyCrewChallenges"
                                Grid.Row="0"
                                Text="No items found"
@@ -546,7 +702,6 @@
                                           Click="BackButton_Click"/>
                         </StackPanel>
                     </Grid>
-                    
                 </Grid>
                     <TextBlock x:Name="EmptyMusicChallenges"
                                Grid.Row="1"
@@ -631,52 +786,52 @@
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
                       Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="500" Height="200"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <TextBox FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+                                    <Button Grid.Column="1"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
                         
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
-                    </Grid>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     
-                </Grid>
+                    </Grid>
                     <TextBlock x:Name="EmptyQuizChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -761,52 +916,52 @@
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
                       Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="500" Height="200"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <TextBox FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+                                    <Button Grid.Column="1"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
                         
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
-                    </Grid>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     
-                </Grid>
+                    </Grid>
                     <TextBlock x:Name="EmptyScreenshotChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -888,55 +1043,54 @@
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
                     <Grid HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch"
-                      Visibility="Collapsed"
-                      Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                          VerticalAlignment="Stretch"
+                          Visibility="Collapsed"
+                          Grid.Row="1">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="500" Height="200"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <TextBox FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+                                    <Button Grid.Column="1"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
                         
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                    
-                </Grid>
                     <TextBlock x:Name="EmptySilhouetteChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -1025,56 +1179,134 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
+                    
                     <Grid HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
                       Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="650" Height="350"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBox FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"
+                                             Text=""
+                                             Grid.Row="0"/>
+                                    <Button Grid.Column="1"
+                                            Grid.Row="0"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                      Tapped="StackPanel_Tapped">
+                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button Grid.Column="1"
+                                                        Click="BackButton_Click"
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        
+                                        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200" SelectionChanged="GameComboBox_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="mediaObjects:Game">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{x:Bind Name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
                         
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                    
-                </Grid>
                     <TextBlock x:Name="EmptySologameChallenges"
                                Grid.Row="1"
                                Text="No items found"

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.Challenges;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SyntaxError.V2.DatabaseAPI.Controllers
 {
@@ -59,35 +57,91 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(challengeBase);
         }
         
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutChallengeBase([FromRoute] int id, [FromBody] ChallengeBase challengeBase)
+        // PUT: api/ChallengeBases/AudienceChallenge/5/
+        [HttpPut("AudienceChallenge/{id}")]
+        public async Task<IActionResult> PutAudienceChallenge([FromRoute] int id, [FromBody] AudienceChallenge challenge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            if (id != challengeBase.ChallengeID)
+            if (id != challenge.ChallengeID)
             {
                 return BadRequest();
             }
             
-            string type = Request.Headers["Type"];
-            ChallengeBase challengeWithType;
-            switch (type)
+            _context.Entry(challenge).State = EntityState.Modified;
+
+            try
             {
-                case "AudienceChallenge":
-                    challengeWithType = challengeBase as AudienceChallenge;
-                    break;
-                case "CrewChallenge":
-                    challengeWithType = challengeBase as CrewChallenge;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/ChallengeBases/CrewChallenge/5/
+        [HttpPut("CrewChallenge/{id}")]
+        public async Task<IActionResult> PutCrewChallenge([FromRoute] int id, [FromBody] CrewChallenge challenge)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
             
-            _context.Entry(challengeWithType).State = EntityState.Modified;
+            if (id != challenge.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challenge).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/ChallengeBases/MultipleChoiceChallenge/5/
+        [HttpPut("MultipleChoiceChallenge/{id}")]
+        public async Task<IActionResult> PutMultipleChoiceChallenge([FromRoute] int id, [FromBody] MultipleChoiceChallenge challenge)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challenge.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challenge).State = EntityState.Modified;
 
             try
             {
@@ -108,23 +162,21 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return NoContent();
         }
         
-        /*
-
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMultipleChoiceChallenge([FromRoute] int id, [FromBody] MultipleChoiceChallenge challengeBase)
+        // PUT: api/ChallengeBases/MusicChallenge/5/
+        [HttpPut("MusicChallenge/{id}")]
+        public async Task<IActionResult> PutMusicChallenge([FromRoute] int id, [FromBody] MusicChallenge challenge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            if (id != challengeBase.ChallengeID)
+            if (id != challenge.ChallengeID)
             {
                 return BadRequest();
             }
             
-            _context.Entry(challengeBase).State = EntityState.Modified;
+            _context.Entry(challenge).State = EntityState.Modified;
 
             try
             {
@@ -145,21 +197,21 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return NoContent();
         }
         
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMusicChallenge([FromRoute] int id, [FromBody] MusicChallenge challengeBase)
+        // PUT: api/ChallengeBases/QuizChallenge/5/
+        [HttpPut("QuizChallenge/{id}")]
+        public async Task<IActionResult> PutQuizChallenge([FromRoute] int id, [FromBody] QuizChallenge challenge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            if (id != challengeBase.ChallengeID)
+            if (id != challenge.ChallengeID)
             {
                 return BadRequest();
             }
             
-            _context.Entry(challengeBase).State = EntityState.Modified;
+            _context.Entry(challenge).State = EntityState.Modified;
 
             try
             {
@@ -180,21 +232,21 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return NoContent();
         }
         
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutQuizChallenge([FromRoute] int id, [FromBody] QuizChallenge challengeBase)
+        // PUT: api/ChallengeBases/ScreenshotChallenge/5/
+        [HttpPut("SchreenshotChallenge/{id}")]
+        public async Task<IActionResult> PutScreenshotChallenge([FromRoute] int id, [FromBody] ScreenshotChallenge challenge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            if (id != challengeBase.ChallengeID)
+            if (id != challenge.ChallengeID)
             {
                 return BadRequest();
             }
             
-            _context.Entry(challengeBase).State = EntityState.Modified;
+            _context.Entry(challenge).State = EntityState.Modified;
 
             try
             {
@@ -215,21 +267,56 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return NoContent();
         }
         
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutScreenshotChallenge([FromRoute] int id, [FromBody] ScreenshotChallenge challengeBase)
+        // PUT: api/ChallengeBases/SilhouetteChallenge/5/
+        [HttpPut("SilhouetteChallenge{id}")]
+        public async Task<IActionResult> PutSilhouetteChallenge([FromRoute] int id, [FromBody] SilhouetteChallenge challenge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            if (id != challengeBase.ChallengeID)
+            if (id != challenge.ChallengeID)
             {
                 return BadRequest();
             }
             
-            _context.Entry(challengeBase).State = EntityState.Modified;
+            _context.Entry(challenge).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChallengeBaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/ChallengeBases/SologameChallenge/5/
+        [HttpPut("SologameChallenge/{id}")]
+        public async Task<IActionResult> PutSologameChallenge([FromRoute] int id, [FromBody] SologameChallenge challenge)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            if (id != challenge.ChallengeID)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(challenge).State = EntityState.Modified;
 
             try
             {
@@ -250,78 +337,6 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return NoContent();
         }
         
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSilhouetteChallenge([FromRoute] int id, [FromBody] SilhouetteChallenge challengeBase)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            
-            if (id != challengeBase.ChallengeID)
-            {
-                return BadRequest();
-            }
-            
-            _context.Entry(challengeBase).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChallengeBaseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // PUT: api/ChallengeBases/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSologameChallenge([FromRoute] int id, [FromBody] SologameChallenge challengeBase)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            
-            if (id != challengeBase.ChallengeID)
-            {
-                return BadRequest();
-            }
-            
-            _context.Entry(challengeBase).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChallengeBaseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-        
-        */
-
         // POST: api/ChallengeBases
         [HttpPost]
         public async Task<IActionResult> PostChallengeBase([FromQuery] string type)

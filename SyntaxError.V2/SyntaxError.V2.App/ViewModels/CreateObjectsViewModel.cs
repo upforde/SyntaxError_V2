@@ -68,17 +68,32 @@ namespace SyntaxError.V2.App.ViewModels
                 foreach (Game game in games)
                     Games.Add(game);
             }
+            else
+            {
+                var games = await MediaObjectsDataAccess.UpdateGameListAsync(Games);
+                foreach (Game game in games) Games.Add(game);
+            } 
             if (Images.Count == 0)
             {
                 var images = await MediaObjectsDataAccess.GetMediaObjectsOfTypeAsync("Image");
                 foreach (Image image in images)
                     Images.Add(image);
             }
+            else
+            {
+                var images = await MediaObjectsDataAccess.UpdateImageListAsync(Images);
+                foreach (Image image in images) Images.Add(image);
+            }
             if (Music.Count == 0)
             {
                 var songs = await MediaObjectsDataAccess.GetMediaObjectsOfTypeAsync("Music");
                 foreach (Music song in songs)
                     Music.Add(song);
+            }
+            else
+            {
+                var music = await MediaObjectsDataAccess.UpdateMusicListAsync(Music);
+                foreach (Music song in music) Music.Add(song);
             }
             return true;
         }

@@ -66,10 +66,22 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:Name="AudienceButton"
-                        Click="Button_Click_Audience"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Audience</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="AudienceButton"
+                            Click="Button_Click_Audience"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Audience</Button>
+                        <Button x:Name="NewAudienceButton"
+                            Click="Button_Click_RerollAudience"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                                Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                           ShadowOpacity="1"
@@ -100,10 +112,22 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="CrewButton"
-                        Click="Button_Click_Crew"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Crew</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="CrewButton"
+                            Click="Button_Click_Crew"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Crew</Button>
+                    <Button x:Name="NewCrewButton"
+                            Click="Button_Click_RerollCrew"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel Grid.Row="1"
                             HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
@@ -155,10 +179,22 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="MultipleChoiceButton"
-                        Click="Button_Click_Multiple"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Multiple Choice</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="MultipleChoiceButton"
+                            Click="Button_Click_Multiple"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Multiple Choice</Button>
+                    <Button x:Name="NewMultipleChoiceButton"
+                            Click="Button_Click_RerollMultiple"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel Grid.Row="1">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -203,10 +239,22 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:Name="MusicButton"
-                        Click="Button_Click_Music"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Music</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="MusicButton"
+                            Click="Button_Click_Music"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Music</Button>
+                    <Button x:Name="NewMusicButton"
+                            Click="Button_Click_RerollMusic"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -232,10 +280,22 @@
                         Grid.Column="0"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:Name="QuizButton"
-                        Click="Button_Click_Quiz"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Quiz</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="QuizButton"
+                            Click="Button_Click_Quiz"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Quiz</Button>
+                    <Button x:Name="NewQuizButton"
+                            Click="Button_Click_RerollQuiz"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -278,10 +338,22 @@
                         Grid.Column="1"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:Name="ScreenshotButton"
-                        Click="Button_Click_Screenshot"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Screenshot</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="ScreenshotButton"
+                            Click="Button_Click_Screenshot"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Screenshot</Button>
+                    <Button x:Name="NewScreenshotButton"
+                            Click="Button_Click_RerollScreenshot"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                           ShadowOpacity="1"
@@ -307,10 +379,22 @@
                         Grid.Column="2"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:Name="SilhouetteButton"
-                        Click="Button_Click_Silhouette"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Silhouette</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="SilhouetteButton"
+                            Click="Button_Click_Silhouette"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Silhouette</Button>
+                        <Button x:Name="NewSilhouetteButton"
+                                Click="Button_Click_RerollSilhouette"
+                                Margin="0, 0, 0, 5"
+                                HorizontalAlignment="Center"
+                                Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"
@@ -336,9 +420,22 @@
                         Grid.Column="3"
                         Margin="0, 0, 0, 5"
                         HorizontalAlignment="Center">
-                <Button x:Name="SologameButton" Click="Button_Click_Sologame"
-                        Margin="0, 0, 0, 5"
-                        HorizontalAlignment="Center">Sologame</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="SologameButton"
+                            Click="Button_Click_Sologame"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Sologame</Button>
+                    <Button x:Name="NewSologameButton"
+                            Click="Button_Click_RerollSologame"
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
                 <StackPanel HorizontalAlignment="Center">
                     <controls:DropShadowPanel BlurRadius="8"
                                               ShadowOpacity="1"

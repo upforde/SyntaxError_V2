@@ -96,11 +96,12 @@ namespace SyntaxError.V2.App.DataAccess
         internal async Task<bool> EditChallengeAsync(ChallengeBase param)
         {
             string json = await Task.Run(() => JsonConvert.SerializeObject(param));
-
+            
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
             content.Headers.Add("Type", param.GetDiscriminator());
-            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(challengesBaseUri, "ChallengeBases/" + param.ChallengeID.ToString()), content);
-            
+            HttpResponseMessage result = await _httpClient.PutAsync(
+                new Uri(challengesBaseUri, "ChallengeBases/" + param.GetDiscriminator() + "/" + param.ChallengeID.ToString()), content
+                );
 
             return result.IsSuccessStatusCode;
         }

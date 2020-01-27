@@ -117,12 +117,12 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid x:ConnectionId='33' Grid.Column="0"
-                                            VerticalAlignment="Center"
-                                            Height="200" Width="200"
-                                            Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
-                                                                      >
+                                      VerticalAlignment="Center"
+                                      Height="200" Width="200"
+                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                                >
                                     <controls:ImageEx IsCacheEnabled="True"
-                                                        PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                     <TextBlock Text="&#xE710;" FontSize="50"
                                                 Padding="0, 75, 0, 0"
                                                 FontFamily="{StaticResource SymbolThemeFontFamily}"

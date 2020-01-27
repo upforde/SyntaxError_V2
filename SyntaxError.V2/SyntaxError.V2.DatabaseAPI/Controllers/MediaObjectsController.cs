@@ -41,7 +41,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
             return Ok(outerSourceObjects);
         }
-
+        
         // GET: api/MediaObjects/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOuterSourceObject([FromRoute] int id)
@@ -95,8 +95,8 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
             return NoContent();
         }
-
-        // POST: api/MediaObjects
+        
+        // POST: api/MediaObjects/?type=Type
         [HttpPost]
         public async Task<IActionResult> PostOuterSourceObject([FromQuery] string type, [FromBody] MediaObject outerSourceObject)
         {
@@ -140,6 +140,25 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOuterSourceObject", new { id = mediaObjectWithType.ID }, outerSourceObject);
+        }
+
+        // PUT: api/MediaObjects/update
+        [HttpPut("update")]
+        public async Task<IActionResult> GetUpdatedGameListOfType([FromBody]List<MediaObject> objectList, [FromQuery]string type)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var outerSourceObjects = await _context.Objects.Where(o => !objectList.Contains(o) && o.GetType().Name == type).ToListAsync();
+
+            if (outerSourceObjects == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(outerSourceObjects);
         }
 
         // DELETE: api/MediaObjects/5

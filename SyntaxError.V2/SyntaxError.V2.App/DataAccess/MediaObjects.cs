@@ -94,6 +94,51 @@ namespace SyntaxError.V2.App.DataAccess
             return result.IsSuccessStatusCode;
         }
 
+        internal async Task<Game[]> UpdateGameListAsync(List<Game> param)
+        {
+            var type = param.First().GetType().Name;
+            string json = await Task.Run(() => JsonConvert.SerializeObject(param));
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/update/?type=" + type), content);
+
+            string resultJson = await result.Content.ReadAsStringAsync();
+            
+            if (result.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<Game[]>(resultJson);
+            return new Game[0];
+        }
+
+        internal async Task<Image[]> UpdateImageListAsync(List<Image> param)
+        {
+            var type = param.First().GetType().Name;
+            string json = await Task.Run(() => JsonConvert.SerializeObject(param));
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/update/?type=" + type), content);
+
+            string resultJson = await result.Content.ReadAsStringAsync();
+            
+            if (result.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<Image[]>(resultJson);
+            return new Image[0];
+        }
+
+        internal async Task<Music[]> UpdateMusicListAsync(List<Music> param)
+        {
+            var type = param.First().GetType().Name;
+            string json = await Task.Run(() => JsonConvert.SerializeObject(param));
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/update/?type=" + type), content);
+
+            string resultJson = await result.Content.ReadAsStringAsync();
+            
+            if (result.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<Music[]>(resultJson);
+            return new Music[0];
+        }
+
         /// <summary>Deletes the media object asynchronous.</summary>
         /// <param name="param">The parameter.</param>
         /// <returns></returns>

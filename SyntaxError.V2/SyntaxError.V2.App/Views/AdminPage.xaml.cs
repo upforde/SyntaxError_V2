@@ -14,7 +14,7 @@ namespace SyntaxError.V2.App.Views
     {
         private bool IsInPlayState = false;
         private bool IsNextSyntaxError = false;
-        const int SyntaxErrorMaxVal = 10;
+        const int SyntaxErrorMaxVal = 25;
         private int SyntaxErrorCounter = SyntaxErrorMaxVal;
 
         public AdminViewModel ViewModel { get; } = new AdminViewModel();
@@ -271,6 +271,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentMultipleChoiceChallenge.AnswersID != null)
                 {
+
                     CurrentMultipleChoiceChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentMultipleChoiceChallenge.AnswersID);
                     MultipleChoiceQuiestion.Text = CurrentMultipleChoiceChallenge.ChallengeTask;
                     MultipleChoiceAnswer.Text = CurrentMultipleChoiceChallenge.Answers.Answer;
@@ -384,6 +385,11 @@ namespace SyntaxError.V2.App.Views
                 DeselectButton.IsEnabled = true;
             }
         }
+        private void Button_Click_RerollAudience(object sender, RoutedEventArgs e)
+        {
+            CurrentAudienceChallenge = RollForAudienceChallengeRecursive();
+            GetAudienceChallengeGameFromDBAsync();
+        }
         private void Button_Click_Crew(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleCrewChallenge();
@@ -393,6 +399,11 @@ namespace SyntaxError.V2.App.Views
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
+        }
+        private void Button_Click_RerollCrew(object sender, RoutedEventArgs e)
+        {
+            CurrentCrewChallenge = RollForCrewChallengeRecursive();
+            GetCrewChallengeGameAndMemberFromDBAsync();
         }
         private void Button_Click_Multiple(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
@@ -404,6 +415,11 @@ namespace SyntaxError.V2.App.Views
                 DeselectButton.IsEnabled = true;
             }
         }
+        private void Button_Click_RerollMultiple(object sender, RoutedEventArgs e)
+        {
+            CurrentMultipleChoiceChallenge = RollForMultipleChoiceChallengeRecursive();
+            GetMultipleChoiceAnswersFromDBAsync();
+        }
         private void Button_Click_Music(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleMusicChallenge();
@@ -413,6 +429,11 @@ namespace SyntaxError.V2.App.Views
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
+        }
+        private void Button_Click_RerollMusic(object sender, RoutedEventArgs e)
+        {
+            CurrentMusicChallenge = RollForMusicChallengeRecursive();
+            GetMusicChallengeSongFromDBAsync();
         }
         private void Button_Click_Quiz(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
@@ -424,6 +445,11 @@ namespace SyntaxError.V2.App.Views
                 DeselectButton.IsEnabled = true;
             }
         }
+        private void Button_Click_RerollQuiz(object sender, RoutedEventArgs e)
+        {
+            CurrentQuizChallenge = RollForQuizChallengeRecursive();
+            GetQuizChallengeAnswerFromDBAsync();
+        }
         private void Button_Click_Screenshot(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleScreenshotChallenge();
@@ -433,6 +459,11 @@ namespace SyntaxError.V2.App.Views
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
+        }
+        private void Button_Click_RerollScreenshot(object sender, RoutedEventArgs e)
+        {
+            CurrentScreenshotChallenge = RollForScreenshotChallengeRecursive();
+            GetScreenshotChallengeScreenshotFromDBAsync();
         }
         private void Button_Click_Silhouette(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
@@ -444,6 +475,11 @@ namespace SyntaxError.V2.App.Views
                 DeselectButton.IsEnabled = true;
             }
         }
+        private void Button_Click_RerollSilhouette(object sender, RoutedEventArgs e)
+        {
+            CurrentSilhouetteChallenge = RollForSilhouetteChallengeRecursive();
+            GetSilhouetteChallengeSilhouetteFromDBAsync();
+        }
         private void Button_Click_Sologame(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             GamePage.ToggleSologameChallenge();
@@ -453,6 +489,11 @@ namespace SyntaxError.V2.App.Views
                 PlayButton.IsEnabled = true;
                 DeselectButton.IsEnabled = true;
             }
+        }
+        private void Button_Click_RerollSologame(object sender, RoutedEventArgs e)
+        {
+            CurrentSologameChallenge = RollForSoloGameChallengeRecursive();
+            GetSologameChallengeGameFromDBAsync();
         }
         
         private void Button_Click_Play(object sender, Windows.UI.Xaml.RoutedEventArgs e)
