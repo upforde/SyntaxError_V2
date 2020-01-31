@@ -26,9 +26,9 @@ namespace SyntaxError.V2.App.ViewModels
         /// <value>The delete command.</value>
         public ICommand DeleteCommand { get; set; }
 
-        public List<Game> Games = new List<Game>();
-        public List<Image> Images = new List<Image>();
-        public List<Music> Music = new List<Music>();
+        public static List<Game> Games = new List<Game>();
+        public static List<Image> Images = new List<Image>();
+        public static List<Music> Music = new List<Music>();
         
         public MediaObjects MediaObjectsDataAccess = new MediaObjects();
         public Images ImagesDataAccess = new DataAccess.Images();

@@ -57,15 +57,15 @@ namespace SyntaxError.V2.App.Views
                                                         switch (param.GetType().Name)
                                                         {
                                                             case "Game":
-                                                                ViewModel.Games.Add(param as Game);
+                                                                CreateObjectsViewModel.Games.Add(param as Game);
                                                                 Filtered.Add(param);
                                                                 break;
                                                             case "Image":
-                                                                ViewModel.Images.Add(param as Modell.ChallengeObjects.Image);
+                                                                CreateObjectsViewModel.Images.Add(param as Modell.ChallengeObjects.Image);
                                                                 Filtered.Add(param);
                                                                 break;
                                                             case "Music":
-                                                                ViewModel.Music.Add(param as Music);
+                                                                CreateObjectsViewModel.Music.Add(param as Music);
                                                                 Filtered.Add(param);
                                                                 break;
                                                         }
@@ -100,15 +100,15 @@ namespace SyntaxError.V2.App.Views
             switch (CreateObjectsPivot.SelectedIndex)
             {
                 case 0:
-                    foreach (var item in ViewModel.Games)
+                    foreach (var item in CreateObjectsViewModel.Games)
                         Filtered.Add(item);
                     break;
                 case 1:
-                    foreach (var item in ViewModel.Images)
+                    foreach (var item in CreateObjectsViewModel.Images)
                         Filtered.Add(item);
                     break;
                 case 2:
-                    foreach (var item in ViewModel.Music)
+                    foreach (var item in CreateObjectsViewModel.Music)
                         Filtered.Add(item);
                     break;
             }
@@ -208,13 +208,13 @@ namespace SyntaxError.V2.App.Views
             switch (_storedItem.GetType().Name)
             {
                 case "Game":
-                    _storedItemIndex = ViewModel.Games.IndexOf(clickedItem as Game);
+                    _storedItemIndex = CreateObjectsViewModel.Games.IndexOf(clickedItem as Game);
                     break;
                 case "Image":
-                    _storedItemIndex = ViewModel.Images.IndexOf(clickedItem as Modell.ChallengeObjects.Image);
+                    _storedItemIndex = CreateObjectsViewModel.Images.IndexOf(clickedItem as Modell.ChallengeObjects.Image);
                     break;
                 case "Music":
-                    _storedItemIndex = ViewModel.Music.IndexOf(clickedItem as Music);
+                    _storedItemIndex = CreateObjectsViewModel.Music.IndexOf(clickedItem as Music);
                     break;
             }
             
@@ -237,20 +237,20 @@ namespace SyntaxError.V2.App.Views
             switch (_storedItem.GetType().Name)
             {
                 case "Game":
-                    var gameIndex = ViewModel.Games.IndexOf(ViewModel.Games.Where(obj => obj.ID == _storedItem.ID).First());
-                    ViewModel.Games[gameIndex] = _storedItem as Game;
+                    var gameIndex = CreateObjectsViewModel.Games.IndexOf(CreateObjectsViewModel.Games.Where(obj => obj.ID == _storedItem.ID).First());
+                    CreateObjectsViewModel.Games[gameIndex] = _storedItem as Game;
                     if (Filtered.Count != 0)
                         Filtered[Filtered.IndexOf(Filtered.Where(obj => obj.ID == _storedItem.ID).First())] = _storedItem as Game;
                     break;
                 case "Image":
-                    var imgIndex = ViewModel.Images.IndexOf(ViewModel.Images.Where(obj => obj.ID == _storedItem.ID).First());
-                    ViewModel.Images[imgIndex] = _storedItem as Modell.ChallengeObjects.Image;
+                    var imgIndex = CreateObjectsViewModel.Images.IndexOf(CreateObjectsViewModel.Images.Where(obj => obj.ID == _storedItem.ID).First());
+                    CreateObjectsViewModel.Images[imgIndex] = _storedItem as Modell.ChallengeObjects.Image;
                     if (Filtered.Count != 0)
                         Filtered[Filtered.IndexOf(Filtered.Where(obj => obj.ID == _storedItem.ID).First())] = _storedItem as Modell.ChallengeObjects.Image;
                     break;
                 case "Music":
-                    var musicIndex = ViewModel.Music.IndexOf(ViewModel.Music.Where(obj => obj.ID == _storedItem.ID).First());
-                    ViewModel.Music[musicIndex] = _storedItem as Music;
+                    var musicIndex = CreateObjectsViewModel.Music.IndexOf(CreateObjectsViewModel.Music.Where(obj => obj.ID == _storedItem.ID).First());
+                    CreateObjectsViewModel.Music[musicIndex] = _storedItem as Music;
                     if (Filtered.Count != 0)
                         Filtered[Filtered.IndexOf(Filtered.Where(obj => obj.ID == _storedItem.ID).First())] = _storedItem as Music;
                     break;
@@ -337,15 +337,15 @@ namespace SyntaxError.V2.App.Views
                 switch (CreateObjectsPivot.SelectedIndex)
                 {
                     case 0:
-                        foreach (var filtered in ViewModel.Games.Where(mo => mo.Name.ToLower().StartsWith(filterText)).ToList())
+                        foreach (var filtered in CreateObjectsViewModel.Games.Where(mo => mo.Name.ToLower().StartsWith(filterText)).ToList())
                             Filtered.Add(filtered);
                         break;
                     case 1:
-                        foreach (var filtered in ViewModel.Images.Where(mo => mo.Name.ToLower().StartsWith(filterText)).ToList())
+                        foreach (var filtered in CreateObjectsViewModel.Images.Where(mo => mo.Name.ToLower().StartsWith(filterText)).ToList())
                             Filtered.Add(filtered);
                         break;
                     case 2:
-                        foreach (var filtered in ViewModel.Music.Where(mo => mo.Name.ToLower().StartsWith(filterText)).ToList())
+                        foreach (var filtered in CreateObjectsViewModel.Music.Where(mo => mo.Name.ToLower().StartsWith(filterText)).ToList())
                             Filtered.Add(filtered);
                         break;
                 }

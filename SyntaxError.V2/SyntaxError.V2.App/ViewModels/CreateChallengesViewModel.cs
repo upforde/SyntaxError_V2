@@ -122,9 +122,9 @@ namespace SyntaxError.V2.App.ViewModels
             var challenges = await ChallengesDataAccess.GetChallengesAsync();
             
             await ObjectsViewModel.LoadObjectsFromDBAsync();
-            foreach (Game game in ObjectsViewModel.Games) Games.Add(game);
-            foreach (Image image in ObjectsViewModel.Images) Images.Add(image);
-            foreach (Music music in ObjectsViewModel.Music) Music.Add(music);
+            foreach (Game game in CreateObjectsViewModel.Games) Games.Add(game);
+            foreach (Image image in CreateObjectsViewModel.Images) Images.Add(image);
+            foreach (Music music in CreateObjectsViewModel.Music) Music.Add(music);
 
             foreach (ChallengeBase challenge in challenges)
             {
