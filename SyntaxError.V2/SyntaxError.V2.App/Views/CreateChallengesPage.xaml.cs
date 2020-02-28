@@ -392,7 +392,7 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Handles the Click event of the SaveButton control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             var collection = (ChallengeList.SelectedItem as PivotItem).Content as Grid;
             var smokeGrid = collection.Children[2] as Grid;
@@ -408,6 +408,11 @@ namespace SyntaxError.V2.App.Views
                 case 1:
                 case 7:
                     (_storedChallenge as GameChallenge).Game.Name = (childGrid[2] as TextBox).Text;
+                    if(((childGrid[1] as ComboBox).SelectedItem as Game).ID == 0){
+                        var newGame = await ViewModel.ObjectsViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync((_storedChallenge as GameChallenge).Game);
+                        (_storedChallenge as GameChallenge).GameID = newGame.ID;
+                    }
+                    else (_storedChallenge as GameChallenge).GameID = (_storedChallenge as GameChallenge).Game.ID;
                     break;
                 case 2:
                     break;

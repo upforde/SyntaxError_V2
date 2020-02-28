@@ -50,27 +50,6 @@ namespace SyntaxError.V2.App.Views
         {
             InitializeComponent();
 
-            AddNewObjectCommand = new RelayCommand<MediaObject>(async param =>
-                                                    {
-                                                        param = await ViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync(param);
-
-                                                        switch (param.GetType().Name)
-                                                        {
-                                                            case "Game":
-                                                                CreateObjectsViewModel.Games.Add(param as Game);
-                                                                Filtered.Add(param);
-                                                                break;
-                                                            case "Image":
-                                                                CreateObjectsViewModel.Images.Add(param as Modell.ChallengeObjects.Image);
-                                                                Filtered.Add(param);
-                                                                break;
-                                                            case "Music":
-                                                                CreateObjectsViewModel.Music.Add(param as Music);
-                                                                Filtered.Add(param);
-                                                                break;
-                                                        }
-                                                    }, param => param != null);
-
             Loaded += LoadMediaObjectsFromDBAsync;
 
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChangedAsync;
@@ -319,7 +298,8 @@ namespace SyntaxError.V2.App.Views
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            AddNewObjectCommand.Execute(newObject);
+            ViewModel.AddNewObjectCommand.Execute(newObject);
+            Filtered.Add(newObject);
         }
 
         /// <summary>Filters the list.</summary>

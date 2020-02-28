@@ -26,6 +26,8 @@ namespace SyntaxError.V2.App.ViewModels
         /// <value>The delete command.</value>
         public ICommand DeleteCommand { get; set; }
 
+        public ICommand AddNewObjectCommand { get; set; }
+
         public static List<Game> Games = new List<Game>();
         public static List<Image> Images = new List<Image>();
         public static List<Music> Music = new List<Music>();
@@ -35,6 +37,24 @@ namespace SyntaxError.V2.App.ViewModels
 
         public CreateObjectsViewModel()
         {
+            AddNewObjectCommand = new RelayCommand<MediaObject>(async param =>
+                                                    {
+                                                        param = await MediaObjectsDataAccess.CreateMediaObjectAsync(param);
+
+                                                        switch (param.GetType().Name)
+                                                        {
+                                                            case "Game":
+                                                                Games.Add(param as Game);
+                                                                break;
+                                                            case "Image":
+                                                                Images.Add(param as Image);
+                                                                break;
+                                                            case "Music":
+                                                                Music.Add(param as Music);
+                                                                break;
+                                                        }
+                                                    }, param => param != null);
+
             EditCommand = new RelayCommand<MediaObject>(async param =>
                                                     {
                                                         await MediaObjectsDataAccess.EditMediaObjectAsync(param);
@@ -96,6 +116,19 @@ namespace SyntaxError.V2.App.ViewModels
                 foreach (Music song in music) Music.Add(song);
             }
             return true;
+        }
+
+        public List<Game> GetGames()
+        {
+            return Games;
+        }
+        public List<Image> GetImages()
+        {
+            return Images;
+        }
+        public List<Music> GetMusics()
+        {
+            return Music;
         }
     }
 }
