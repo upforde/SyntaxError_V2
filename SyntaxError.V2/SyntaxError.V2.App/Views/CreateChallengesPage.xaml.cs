@@ -239,7 +239,7 @@ namespace SyntaxError.V2.App.Views
 
         /// <summary>Edits the command item clicked.</summary>
         /// <param name="clickedItem">The clicked item.</param>
-        private void EditCommand_ItemClicked(ChallengeBase clickedItem)
+        private async void EditCommand_ItemClicked(ChallengeBase clickedItem)
         {
             ConnectedAnimation animation;
 
@@ -247,12 +247,25 @@ namespace SyntaxError.V2.App.Views
             var smokeGrid = (collection.Children[2] as Grid);
             var children = ((smokeGrid.Children[0] as Grid).Children[0] as StackPanel).Children[0] as Grid;
             
-            bool isList = (ChallengeList.SelectedIndex == 2 || ChallengeList.SelectedIndex == 4)?true:false;
+            bool isList = (ChallengeList.SelectedIndex == 2 || ChallengeList.SelectedIndex == 4);
+            bool isGame = (ChallengeList.SelectedIndex == 0 || ChallengeList.SelectedIndex == 1 || ChallengeList.SelectedIndex == 7);
+            bool isImage = (ChallengeList.SelectedIndex == 5 || ChallengeList.SelectedIndex == 6);
 
             (children.Children[0] as TextBox).Text = _storedChallenge.ChallengeTask;
             
             if (isList)
             {
+                var answerID = (_storedChallenge as QuestionChallenge).AnswersID;
+                if(answerID != null){
+                    (_storedChallenge as QuestionChallenge).Answers = await ViewModel.AnswersDataAccess.GetAnswersAsync(answerID);
+                    if(ChallengeList.SelectedIndex == 2){
+                        MultipleChoiceAnswer.Text = (_storedChallenge as QuestionChallenge).Answers.Answer;
+                        MultipleChoiceDummy1.Text = (_storedChallenge as QuestionChallenge).Answers.DummyAnswer1;
+                        MultipleChoiceDummy2.Text = (_storedChallenge as QuestionChallenge).Answers.DummyAnswer2;
+                        MultipleChoiceDummy3.Text = (_storedChallenge as QuestionChallenge).Answers.DummyAnswer3;
+                    }
+                    else QuizAnswer.Text = (_storedChallenge as QuestionChallenge).Answers.Answer;
+                }
                 animation = (collection.Children[1] as ListView).PrepareConnectedAnimation("forwardAnimation", _storedChallenge, "connectedElement");
             }
             else
@@ -260,23 +273,24 @@ namespace SyntaxError.V2.App.Views
                 animation = (collection.Children[1] as AdaptiveGridView).PrepareConnectedAnimation("forwardAnimation", _storedChallenge, "connectedElement");
                 var childGrid = (children.Children[2] as Grid).Children;
                 
-                if (ChallengeList.SelectedIndex == 0 || ChallengeList.SelectedIndex == 1 || ChallengeList.SelectedIndex == 7)
+                if (isGame)
                 {
+                    var gameImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
                     if ((_storedChallenge as GameChallenge).Game != null)
                     {
-                        ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx).Source = (_storedChallenge as GameChallenge).Game.URI;
+                        gameImage.Source = (_storedChallenge as GameChallenge).Game.URI;
                         (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Games.IndexOf((_storedChallenge as GameChallenge).Game);
                         (childGrid[2] as TextBox).Text = (_storedChallenge as GameChallenge).Game.Name;
                     }
                     else
                     {
                         (_storedChallenge as GameChallenge).Game = ViewModel.Games[ViewModel.Games.Count-1];
-                        ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx).Source = null;
+                        gameImage.Source = null;
                         (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Games.Count-1;
                         (childGrid[2] as TextBox).Text = "";
                     }
                 }
-                else if (ChallengeList.SelectedIndex == 5 || ChallengeList.SelectedIndex == 6)
+                else if (isImage)
                 {
                     (childGrid[0] as ImageEx).Source = (_storedChallenge as ImageChallenge).Image.URI;
                     (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Images.IndexOf((_storedChallenge as ImageChallenge).Image);
@@ -415,13 +429,35 @@ namespace SyntaxError.V2.App.Views
                     else (_storedChallenge as GameChallenge).GameID = (_storedChallenge as GameChallenge).Game.ID;
                     break;
                 case 2:
+                case 4:
+                    if((_storedChallenge as QuestionChallenge).Answers == null){
+                        Answers newAnswer;
+                        if(ChallengeList.SelectedIndex == 2) newAnswer = new Answers{ Answer = MultipleChoiceAnswer.Text,
+                                                                                       DummyAnswer1 = MultipleChoiceDummy1.Text,
+                                                                                       DummyAnswer2 = MultipleChoiceDummy2.Text,
+                                                                                       DummyAnswer3 = MultipleChoiceDummy3.Text };
+                        else newAnswer = new Answers{Answer = ""};
+                        (_storedChallenge as QuestionChallenge).Answers = newAnswer;
+                        (_storedChallenge as QuestionChallenge).AnswersID = (await ViewModel.AnswersDataAccess.CreateAnswersAsync(newAnswer)).AnswersID;
+                    }
+                    else {
+                        if(ChallengeList.SelectedIndex == 2) (_storedChallenge as QuestionChallenge).Answers = new Answers
+                        {
+                            Answer = MultipleChoiceAnswer.Text,
+                            AnswersID = (int.TryParse((_storedChallenge as QuestionChallenge).AnswersID.ToString(), out int result))?result:0,
+                            DummyAnswer1 = MultipleChoiceDummy1.Text,
+                            DummyAnswer2 = MultipleChoiceDummy2.Text,
+                            DummyAnswer3 = MultipleChoiceDummy3.Text
+                        };
+                        else (_storedChallenge as QuestionChallenge).Answers = new Answers
+                        {
+                            Answer = MultipleChoiceAnswer.Text,
+                            AnswersID = (int.TryParse((_storedChallenge as QuestionChallenge).AnswersID.ToString(), out int result))?result:0
+                        };
+                    }
                     break;
                 case 3:
-                    break;
-                case 4:
-                    break;
                 case 5:
-                    break;
                 case 6:
                     break;
             }
@@ -478,7 +514,9 @@ namespace SyntaxError.V2.App.Views
             var children = ((smokeGrid.Children[0] as Grid).Children[0] as StackPanel).Children[0] as Grid;
 
             var childGrid = (children.Children[2] as Grid).Children;
-            ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx).Source = (_storedChallenge as GameChallenge).Game.URI;
+            var gameImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+
+            gameImage.Source = (_storedChallenge as GameChallenge).Game.URI;
             (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Games.IndexOf((_storedChallenge as GameChallenge).Game);
             (childGrid[2] as TextBox).Text = (_storedChallenge as GameChallenge).Game.Name;
         }
@@ -507,7 +545,8 @@ namespace SyntaxError.V2.App.Views
                     case 1:
                     case 7:
                         (_storedChallenge as GameChallenge).Game.URI = await ViewModel.ObjectsViewModel.ImagesDataAccess.PostImageAsync(file);
-                        ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx).Source = (_storedChallenge as GameChallenge).Game.URI;
+                        var gameImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+                        gameImage.Source = (_storedChallenge as GameChallenge).Game.URI;
                         break;
                     case 2:
                         break;

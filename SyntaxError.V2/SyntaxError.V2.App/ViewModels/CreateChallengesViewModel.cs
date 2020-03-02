@@ -29,6 +29,7 @@ namespace SyntaxError.V2.App.ViewModels
         public ObservableCollection<SologameChallenge> SologameChallenges { get; set; } = new ObservableCollection<SologameChallenge>();
 
         public Challenges ChallengesDataAccess = new Challenges();
+        public DataAccess.Answers AnswersDataAccess = new DataAccess.Answers();
         
         public List<ChallengeBase> ChallengesFromDB = new List<ChallengeBase>();
 
@@ -45,38 +46,17 @@ namespace SyntaxError.V2.App.ViewModels
                                                         switch (param.GetDiscriminator())
                                                         {
                                                             case "AudienceChallenge":
-                                                                if ((param as AudienceChallenge).GameID == null)
-                                                                {
-                                                                    (param as AudienceChallenge).GameID = (await ObjectsViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync(new Game{ Name = "New Game" })).ID;
-                                                                    if(int.TryParse((param as AudienceChallenge).GameID.ToString(), out int result)) (param as AudienceChallenge).Game.ID = result;
-                                                                }
-                                                                ObjectsViewModel.EditCommand.Execute((param as AudienceChallenge).Game);
-                                                                break;
                                                             case "CrewChallenge":
-                                                                if ((param as CrewChallenge).Game.ID == 0)
-                                                                {
-                                                                    (param as CrewChallenge).GameID = (await ObjectsViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync(new Game{ Name = "New Game" })).ID;
-                                                                    if(int.TryParse((param as CrewChallenge).GameID.ToString(), out int result)) (param as CrewChallenge).Game.ID = result;
-                                                                }
-                                                                ObjectsViewModel.EditCommand.Execute((param as CrewChallenge).Game);
+                                                            case "SologameChallenge":
+                                                                ObjectsViewModel.EditCommand.Execute((param as GameChallenge).Game);
                                                                 break;
                                                             case "MultipleChoiceChallenge":
+                                                            case "QuizChallenge":
+                                                                await AnswersDataAccess.EditAnswersAsync((param as QuestionChallenge).Answers);
                                                                 break;
                                                             case "MusicChallenge":
-                                                                break;
-                                                            case "QuizChallenge":
-                                                                break;
                                                             case "ScreenshotChallenge":
-                                                                break;
                                                             case "SilhouetteChallenge":
-                                                                break;
-                                                            case "SologameChallenge":
-                                                                if ((param as SologameChallenge).Game.ID == 0)
-                                                                {
-                                                                    (param as SologameChallenge).GameID = (await ObjectsViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync(new Game{ Name = "New Game" })).ID;
-                                                                    if(int.TryParse((param as SologameChallenge).GameID.ToString(), out int result)) (param as SologameChallenge).Game.ID = result;
-                                                                }
-                                                                ObjectsViewModel.EditCommand.Execute((param as SologameChallenge).Game);
                                                                 break;
                                                         }
                                                         await ChallengesDataAccess.EditChallengeAsync(param);

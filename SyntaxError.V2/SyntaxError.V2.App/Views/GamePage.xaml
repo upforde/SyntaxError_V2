@@ -236,119 +236,6 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <controls:DropShadowPanel x:Name="MultipleChoiceGlow"
-                                              Grid.Column="0"
-                                              OffsetX="5"
-                                              ShadowOpacity="0"
-                                              BlurRadius="0"
-                                              Color="#FE0000"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                        <Image x:Name="multipleChoiceChallenge"
-                               Source="/Assets/multiply_choice_challenge_thumbnail.jpg"
-                               Margin="5, 0, 5, 5">
-                            <animations:Implicit.ShowAnimations>
-                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                            </animations:Implicit.ShowAnimations>
-                            <Image.RenderTransform>
-                                <CompositeTransform x:Name="MultipleChoiceChallengeHighLight" />
-                            </Image.RenderTransform>
-                        </Image>
-                    </controls:DropShadowPanel>
-                    <controls:DropShadowPanel x:Name="MusicGlow"
-                                              Grid.Column="1"
-                                              OffsetX="5"
-                                              ShadowOpacity="0"
-                                              BlurRadius="0"
-                                              Color="#F2FF00"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                        <Image x:Name="musicChallenge"
-                               Source="/Assets/music_challenge_thumbnail.jpg"
-                               Margin="5, 0, 10, 5">
-                            <animations:Implicit.ShowAnimations>
-                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                            </animations:Implicit.ShowAnimations>
-                            <Image.RenderTransform>
-                                <CompositeTransform x:Name="MusicChallengeHighLight" />
-                            </Image.RenderTransform>
-                        </Image>
-                    </controls:DropShadowPanel>
-                    <controls:DropShadowPanel x:Name="QuizGlow"
-                                                  Grid.Column="2"
-                                                  OffsetX="10"
-                                                  OffsetY="5"
-                                                  ShadowOpacity="0"
-                                                  BlurRadius="0"
-                                                  Color="#12A5D8"
-                                                  VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center">
-                        
-                            <Image x:Name="quizChallenge"
-                                    Source="/Assets/quiz_challenge_thumbnail.jpg"
-                                    Margin="10, 5, 5, 0">
-                                <animations:Implicit.ShowAnimations>
-                                    <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                    <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                                </animations:Implicit.ShowAnimations>
-                                <Image.RenderTransform>
-                                    <CompositeTransform x:Name="QuizChallengeHighLight" />
-                                </Image.RenderTransform>
-                            </Image>
-                        </controls:DropShadowPanel>
-                    <controls:DropShadowPanel x:Name="ScreenshotGlow"
-                                              Grid.Column="3"
-                                              OffsetX="5"
-                                              OffsetY="5"
-                                              ShadowOpacity="0"
-                                              BlurRadius="0"
-                                              Color="#00C132"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                        <Image x:Name="screenshotChallenge"
-                               Source="/Assets/screenshot_challenge_thumbnail.jpg"
-                               Margin="5, 5, 5, 0">
-                            <animations:Implicit.ShowAnimations>
-                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                            </animations:Implicit.ShowAnimations>
-                            <Image.RenderTransform>
-                                <CompositeTransform x:Name="ScreenshotChallengeHighLight" />
-                            </Image.RenderTransform>
-                        </Image>
-                    </controls:DropShadowPanel>
-                    <controls:DropShadowPanel x:Name="SilhouetteGlow"
-                                              Grid.Column="4"
-                                              OffsetX="5"
-                                              OffsetY="5"
-                                              ShadowOpacity="0"
-                                              BlurRadius="0"
-                                              Color="#00FFFB"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                        <Image x:Name="silhouetteChallenge"
-                               Source="/Assets/silhouette_challenge_thumbnail.jpg"
-                               Margin="5, 5, 5, 0">
-                            <animations:Implicit.ShowAnimations>
-                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
-                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
-                            </animations:Implicit.ShowAnimations>
-                            <Image.RenderTransform>
-                                <CompositeTransform x:Name="SilhouetteChallengeHighLight" />
-                            </Image.RenderTransform>
-                        </Image>
-                    </controls:DropShadowPanel>
-                </Grid>
-                <Grid Grid.Row="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     
                     <controls:DropShadowPanel x:Name="AudienceGlow"
@@ -392,8 +279,121 @@
                             </Image.RenderTransform>
                         </Image>
                     </controls:DropShadowPanel>
-                    <controls:DropShadowPanel x:Name="SologameGlow"
+                    <controls:DropShadowPanel x:Name="MultipleChoiceGlow"
                                               Grid.Column="2"
+                                              OffsetX="5"
+                                              ShadowOpacity="0"
+                                              BlurRadius="0"
+                                              Color="#FE0000"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+                        <Image x:Name="multipleChoiceChallenge"
+                               Source="/Assets/multiply_choice_challenge_thumbnail.jpg"
+                               Margin="5, 0, 5, 5">
+                            <animations:Implicit.ShowAnimations>
+                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                            </animations:Implicit.ShowAnimations>
+                            <Image.RenderTransform>
+                                <CompositeTransform x:Name="MultipleChoiceChallengeHighLight" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel x:Name="MusicGlow"
+                                              Grid.Column="3"
+                                              OffsetX="5"
+                                              ShadowOpacity="0"
+                                              BlurRadius="0"
+                                              Color="#F2FF00"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+                        <Image x:Name="musicChallenge"
+                               Source="/Assets/music_challenge_thumbnail.jpg"
+                               Margin="5, 0, 10, 5">
+                            <animations:Implicit.ShowAnimations>
+                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                            </animations:Implicit.ShowAnimations>
+                            <Image.RenderTransform>
+                                <CompositeTransform x:Name="MusicChallengeHighLight" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </controls:DropShadowPanel>
+                </Grid>
+                <Grid Grid.Row="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <controls:DropShadowPanel x:Name="QuizGlow"
+                                                  Grid.Column="0"
+                                                  OffsetX="10"
+                                                  OffsetY="5"
+                                                  ShadowOpacity="0"
+                                                  BlurRadius="0"
+                                                  Color="#12A5D8"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center">
+                        
+                            <Image x:Name="quizChallenge"
+                                    Source="/Assets/quiz_challenge_thumbnail.jpg"
+                                    Margin="10, 5, 5, 0">
+                                <animations:Implicit.ShowAnimations>
+                                    <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                    <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                                </animations:Implicit.ShowAnimations>
+                                <Image.RenderTransform>
+                                    <CompositeTransform x:Name="QuizChallengeHighLight" />
+                                </Image.RenderTransform>
+                            </Image>
+                        </controls:DropShadowPanel>
+                    <controls:DropShadowPanel x:Name="ScreenshotGlow"
+                                              Grid.Column="1"
+                                              OffsetX="5"
+                                              OffsetY="5"
+                                              ShadowOpacity="0"
+                                              BlurRadius="0"
+                                              Color="#00C132"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+                        <Image x:Name="screenshotChallenge"
+                               Source="/Assets/screenshot_challenge_thumbnail.jpg"
+                               Margin="5, 5, 5, 0">
+                            <animations:Implicit.ShowAnimations>
+                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                            </animations:Implicit.ShowAnimations>
+                            <Image.RenderTransform>
+                                <CompositeTransform x:Name="ScreenshotChallengeHighLight" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel x:Name="SilhouetteGlow"
+                                              Grid.Column="2"
+                                              OffsetX="5"
+                                              OffsetY="5"
+                                              ShadowOpacity="0"
+                                              BlurRadius="0"
+                                              Color="#00FFFB"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+                        <Image x:Name="silhouetteChallenge"
+                               Source="/Assets/silhouette_challenge_thumbnail.jpg"
+                               Margin="5, 5, 5, 0">
+                            <animations:Implicit.ShowAnimations>
+                                <animations:TranslationAnimation Duration="0:0:1" From="0, -200, 0" To="0" ></animations:TranslationAnimation>
+                                <animations:OpacityAnimation Duration="0:0:1" From="0" To="1.0"></animations:OpacityAnimation>
+                            </animations:Implicit.ShowAnimations>
+                            <Image.RenderTransform>
+                                <CompositeTransform x:Name="SilhouetteChallengeHighLight" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel x:Name="SologameGlow"
+                                              Grid.Column="3"
                                               OffsetX="5"
                                               OffsetY="5"
                                               ShadowOpacity="0"

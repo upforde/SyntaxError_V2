@@ -25,6 +25,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -51,7 +52,6 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
@@ -109,7 +109,6 @@
                               Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
@@ -118,6 +117,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+                                    
                                     <TextBox FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"
@@ -160,6 +160,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
+                                                
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -192,7 +193,6 @@
                                                 </Button>
                                             </Grid>
                                         </StackPanel>
-                                        
                                         <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
                                                   Width="200" SelectionChanged="GameComboBox_SelectionChanged">
@@ -210,7 +210,6 @@
                                     </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
@@ -240,6 +239,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -266,7 +266,6 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
@@ -330,7 +329,6 @@
                               Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
@@ -339,6 +337,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+                                    
                                     <TextBox FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"
@@ -413,7 +412,6 @@
                                                 </Button>
                                             </Grid>
                                         </StackPanel>
-                                        
                                         <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
                                                   Width="200" SelectionChanged="GameComboBox_SelectionChanged">
@@ -431,7 +429,6 @@
                                     </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
@@ -444,7 +441,6 @@
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    
                     <TextBlock x:Name="EmptyCrewChallenges"
                                Grid.Row="0"
                                Text="No items found"
@@ -462,6 +458,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -488,7 +485,6 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
@@ -501,87 +497,133 @@
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
                               Tapped="ChallengeList_Tapped">
-                            
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
-                                        x:DataType="challenges:MultipleChoiceChallenge">
-                            <Grid x:Name="connectedElement">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
+                                            x:DataType="challenges:MultipleChoiceChallenge">
+                                <Grid x:Name="connectedElement">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
                                 
-                                <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
-                                            HorizontalAlignment="Stretch"
-                                            Style="{ThemeResource SubtitleTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
-                                            HorizontalAlignment="Stretch"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                            
-                </ListView>
+                                    <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
+                                                HorizontalAlignment="Stretch"
+                                                Style="{ThemeResource SubtitleTextBlockStyle}"
+                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
+                                                HorizontalAlignment="Stretch"
+                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     <Grid HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch"
-                      Visibility="Collapsed"
-                      Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                          VerticalAlignment="Stretch"
+                          Visibility="Collapsed"
+                          Grid.Row="1">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="550" Height="300"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="200"/>
+                                    </Grid.RowDefinitions>
+                                
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                                    <Button Grid.Row="0"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Grid Grid.Row="1"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-                        
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
+                                        <controls:DropShadowPanel Grid.Row="0" Grid.Column="0"
+                                                                  Margin="20"
+                                                                  BlurRadius="15"
+                                                                  ShadowOpacity="1"
+                                                                  Color="#77DD77">
+                                            <TextBox Name="MultipleChoiceAnswer"
+                                                     Width="200" MaxWidth="250"/>
+                                        </controls:DropShadowPanel>
+                                        <controls:DropShadowPanel Grid.Row="0" Grid.Column="1"
+                                                                  Margin="20"
+                                                                  BlurRadius="15"
+                                                                  ShadowOpacity="1"
+                                                                  Color="#FF6961">
+                                            <TextBox Name="MultipleChoiceDummy1"
+                                                     Width="200" MaxWidth="250"/>
+                                        </controls:DropShadowPanel>
+                                        <controls:DropShadowPanel Grid.Row="1" Grid.Column="0"
+                                                                  Margin="20"
+                                                                  BlurRadius="15"
+                                                                  ShadowOpacity="1"
+                                                                  Color="#FF6961">
+                                            <TextBox Name="MultipleChoiceDummy2"
+                                                     Width="200" MaxWidth="250"/>
+                                        </controls:DropShadowPanel>
+                                        <controls:DropShadowPanel Grid.Row="1" Grid.Column="1"
+                                                                  Margin="20"
+                                                                  BlurRadius="15"
+                                                                  ShadowOpacity="1"
+                                                                  Color="#FF6961">
+                                            <TextBox Name="MultipleChoiceDummy3"
+                                                     Width="200" MaxWidth="250"/>
+                                        </controls:DropShadowPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                    
-                </Grid>
                     <TextBlock x:Name="EmptyMultipleChoiceChallenges"
-                               Grid.Row="1"
-                               Text="No items found"
-                               Visibility="Collapsed"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Style="{ThemeResource BodyTextBlockStyle}"
-                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                Grid.Row="1"
+                                Text="No items found"
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Style="{ThemeResource BodyTextBlockStyle}"
+                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
            
@@ -720,6 +762,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -746,7 +789,6 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
@@ -759,29 +801,27 @@
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
                               Tapped="ChallengeList_Tapped">
-                            
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:Name="QuizChallengeDataTemplate"
-                                        x:DataType="challenges:QuizChallenge">
-                            <Grid x:Name="connectedElement">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="QuizChallengeDataTemplate"
+                                            x:DataType="challenges:QuizChallenge">
+                                <Grid x:Name="connectedElement">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
-                                            HorizontalAlignment="Stretch"
-                                            Style="{ThemeResource SubtitleTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
-                                            HorizontalAlignment="Stretch"
-                                            Style="{ThemeResource BodyTextBlockStyle}"
-                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                            
-                </ListView>
+                                    <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
+                                                HorizontalAlignment="Stretch"
+                                                Style="{ThemeResource SubtitleTextBlockStyle}"
+                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
+                                                HorizontalAlignment="Stretch"
+                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     <Grid HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
@@ -795,7 +835,6 @@
                               Width="500" Height="200"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
@@ -816,9 +855,9 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
+                                    <TextBox Name="QuizAnswer"/>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
@@ -830,7 +869,6 @@
                                               Click="BackButton_Click"/>
                             </StackPanel>
                         </Grid>
-                    
                     </Grid>
                     <TextBlock x:Name="EmptyQuizChallenges"
                                Grid.Row="1"
@@ -1108,6 +1146,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -1134,7 +1173,6 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
@@ -1179,7 +1217,6 @@
                             </DataTemplate>
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
-                    
                     <Grid HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
@@ -1193,7 +1230,6 @@
                               Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
@@ -1202,6 +1238,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+                                    
                                     <TextBox FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"
@@ -1244,6 +1281,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
+                                                
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -1294,7 +1332,6 @@
                                     </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
