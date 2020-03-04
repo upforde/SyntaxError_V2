@@ -233,7 +233,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
         }
         
         // PUT: api/ChallengeBases/ScreenshotChallenge/5/
-        [HttpPut("SchreenshotChallenge/{id}")]
+        [HttpPut("ScreenshotChallenge/{id}")]
         public async Task<IActionResult> PutScreenshotChallenge([FromRoute] int id, [FromBody] ScreenshotChallenge challenge)
         {
             if (!ModelState.IsValid)
@@ -268,7 +268,7 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
         }
         
         // PUT: api/ChallengeBases/SilhouetteChallenge/5/
-        [HttpPut("SilhouetteChallenge{id}")]
+        [HttpPut("SilhouetteChallenge/{id}")]
         public async Task<IActionResult> PutSilhouetteChallenge([FromRoute] int id, [FromBody] SilhouetteChallenge challenge)
         {
             if (!ModelState.IsValid)

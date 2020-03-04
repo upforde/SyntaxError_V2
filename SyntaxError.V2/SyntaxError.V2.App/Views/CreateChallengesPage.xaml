@@ -15,10 +15,11 @@
         x:Name="ContentArea"
         Margin="{StaticResource SmallLeftRightMargin}">
         <Pivot x:Name="ChallengeList"
-              Grid.Column="1"
-              Grid.RowSpan="3"
-              BorderThickness="5, 0, 0, 0"
-              BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+               Grid.Column="1"
+               Grid.RowSpan="3"
+               BorderThickness="5, 0, 0, 0"
+               BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+               SelectionChanged="ChallengeList_SelectionChanged">
             <PivotItem Header="Audience challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -33,7 +34,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -58,7 +59,7 @@
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.AudienceChallenges}"
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.FilteredAudience}"
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -74,7 +75,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx IsCacheEnabled="True"
+                                        <controls:ImageEx IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                           Source="{x:Bind Game.URI}"/>
                                         <StackPanel Orientation="Vertical">
@@ -83,12 +84,6 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Bottom"
                                                 Text="{x:Bind ChallengeTask}"
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                Text="{x:Bind Game.Name}"
                                                 Style="{ThemeResource BodyTextStyle}" />
                                         </StackPanel>
                                     </Grid>
@@ -166,7 +161,7 @@
                                                       Height="200" Width="200"
                                                       Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
                                                       Tapped="StackPanel_Tapped">
-                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                    <controls:ImageEx IsCacheEnabled="False"
                                                                       Height="200" Width="200"
                                                                       PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                                     <TextBlock Text="&#xE710;" FontSize="50"
@@ -195,7 +190,7 @@
                                         </StackPanel>
                                         <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
-                                                  Width="200" SelectionChanged="GameComboBox_SelectionChanged">
+                                                  Width="200" SelectionChanged="ComboBox_SelectionChanged">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="mediaObjects:Game">
                                                     <StackPanel>
@@ -232,7 +227,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Crew challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -247,7 +241,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -272,7 +266,7 @@
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.CrewChallenges}"
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.FilteredCrew}"
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -288,7 +282,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx IsCacheEnabled="True"
+                                        <controls:ImageEx IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                           Source="{x:Bind Game.URI}"/>
                                         <StackPanel Orientation="Vertical">
@@ -297,18 +291,6 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Bottom"
                                                 Text="{x:Bind ChallengeTask}"
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                Text="{x:Bind Game.Name}"
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                Text="{x:Bind CrewMember.CrewTag}"
                                                 Style="{ThemeResource BodyTextStyle}" />
                                         </StackPanel>
                                     </Grid>
@@ -385,7 +367,7 @@
                                                       Height="200" Width="200"
                                                       Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
                                                       Tapped="StackPanel_Tapped">
-                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                    <controls:ImageEx IsCacheEnabled="False"
                                                                       Height="200" Width="200"
                                                                       PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                                     <TextBlock Text="&#xE710;" FontSize="50"
@@ -414,7 +396,7 @@
                                         </StackPanel>
                                         <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
-                                                  Width="200" SelectionChanged="GameComboBox_SelectionChanged">
+                                                  Width="200" SelectionChanged="ComboBox_SelectionChanged">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="mediaObjects:Game">
                                                     <StackPanel>
@@ -451,7 +433,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Multiple choice challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -466,7 +447,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -491,9 +472,9 @@
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <ListView x:Name="MultipleChoiceChallengeList"
+                    <ListView ItemsSource="{x:Bind ViewModel.FilteredMulti}"
+                              x:Name="MultipleChoiceChallengeList"
                               Grid.Row="1"
-                              ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
                               Tapped="ChallengeList_Tapped">
@@ -509,10 +490,6 @@
                                     <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
                                                 HorizontalAlignment="Stretch"
                                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                    <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
-                                                HorizontalAlignment="Stretch"
-                                                Style="{ThemeResource BodyTextBlockStyle}"
                                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                                 </Grid>
                             </DataTemplate>
@@ -626,13 +603,13 @@
                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Music challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -640,7 +617,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -659,14 +636,13 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.MusicChallenges}"
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.FilteredMusic}"
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -682,7 +658,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx IsCacheEnabled="True"
+                                        <controls:ImageEx IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                           Source="{x:Bind Song.URI}"/>
                                         <TextBlock
@@ -697,54 +673,130 @@
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
                     <Grid HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch"
-                      Visibility="Collapsed"
-                      Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                          VerticalAlignment="Stretch"
+                          Visibility="Collapsed"
+                          Grid.Row="1">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="650" Height="350"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+                                    <Button Grid.Row="0"
+                                            Grid.Column="1"
+                                            Click="BackButton_Click"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button Grid.Column="1"
-                                        Click="BackButton_Click"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-                        
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton Label="Save"
-                                          Icon="Accept"
-                                          Click="SaveButton_Click"/>
-                            <AppBarButton Label="Cancel"
-                                          Icon="Cancel"
-                                          Click="BackButton_Click"/>
-                        </StackPanel>
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                      Tapped="StackPanel_Tapped">
+                                                    <controls:ImageEx IsCacheEnabled="False"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button Grid.Column="1"
+                                                        Click="BackButton_Click"
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Music}"
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="mediaObjects:Music">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{x:Bind Name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton Label="Save"
+                                              Icon="Accept"
+                                              Click="SaveButton_Click"/>
+                                <AppBarButton Label="Cancel"
+                                              Icon="Cancel"
+                                              Click="BackButton_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                </Grid>
                     <TextBlock x:Name="EmptyMusicChallenges"
                                Grid.Row="1"
                                Text="No items found"
@@ -755,7 +807,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Quiz challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -770,7 +821,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -795,9 +846,9 @@
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <ListView x:Name="QuizChallengeList"
+                    <ListView ItemsSource="{x:Bind ViewModel.FilteredQuiz}"
+                              x:Name="QuizChallengeList"
                               Grid.Row="1"
-                              ItemsSource="{x:Bind ViewModel.QuizChallenges}"
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
                               Tapped="ChallengeList_Tapped">
@@ -805,18 +856,9 @@
                             <DataTemplate x:Name="QuizChallengeDataTemplate"
                                             x:DataType="challenges:QuizChallenge">
                                 <Grid x:Name="connectedElement">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-
                                     <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
                                                 HorizontalAlignment="Stretch"
                                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                    <TextBlock Grid.Row="1" Text="{x:Bind Answers.Answer}"
-                                                HorizontalAlignment="Stretch"
-                                                Style="{ThemeResource BodyTextBlockStyle}"
                                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                                 </Grid>
                             </DataTemplate>
@@ -832,17 +874,23 @@
                     
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Width="500" Height="200"
+                              Width="600" Height="250"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                                 <Grid>
-                                    <TextBox FontSize="35"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
-                                    <Button Grid.Column="1"
+                                    <Button Grid.Row="0" Grid.Column="1"
                                             Click="BackButton_Click"
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -855,7 +903,18 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
-                                    <TextBox Name="QuizAnswer"/>
+                                    <Grid Grid.Row="1"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center">
+                                        <controls:DropShadowPanel Margin="20"
+                                                                  BlurRadius="15"
+                                                                  ShadowOpacity="1"
+                                                                  Color="#77DD77">
+                                                <TextBox Name="QuizAnswer"
+                                                         FontSize="35"
+                                                         PlaceholderText="Correct answer"/>
+                                        </controls:DropShadowPanel>
+                                    </Grid>
                                 </Grid>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Right"
@@ -880,13 +939,13 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Screenshot challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -894,7 +953,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -913,14 +972,13 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.ScreenshotChallenges}"
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.FilteredScreen}"
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -936,7 +994,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx IsCacheEnabled="True"
+                                        <controls:ImageEx IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                           Source="{x:Bind Image.URI}"/>
                                         <TextBlock
@@ -960,18 +1018,24 @@
                     
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Width="500" Height="200"
+                              Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                                 <Grid>
-                                    <TextBox FontSize="35"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
-                                    <Button Grid.Column="1"
+                                    <Button Grid.Row="0"
+                                            Grid.Column="1"
                                             Click="BackButton_Click"
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -984,9 +1048,79 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                      Tapped="StackPanel_Tapped">
+                                                    <controls:ImageEx IsCacheEnabled="False"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button Grid.Column="1"
+                                                        Click="BackButton_Click"
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Images}"
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="mediaObjects:Image">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{x:Bind Name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
@@ -998,7 +1132,6 @@
                                               Click="BackButton_Click"/>
                             </StackPanel>
                         </Grid>
-                    
                     </Grid>
                     <TextBlock x:Name="EmptyScreenshotChallenges"
                                Grid.Row="1"
@@ -1010,13 +1143,13 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-                       
             <PivotItem Header="Silhouette challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -1024,7 +1157,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -1043,14 +1176,13 @@
                                           Visibility="Collapsed"
                                           Click="AppBarButton_DeleteSelected_Click"/>
                         </StackPanel>
-                        
                         <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.SilhouetteChallenges}"
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.FilteredSilhu}"
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -1066,7 +1198,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx IsCacheEnabled="True"
+                                        <controls:ImageEx IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                           Source="{x:Bind Image.URI}"/>
                                         <TextBlock
@@ -1090,18 +1222,24 @@
                     
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Width="500" Height="200"
+                              Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                                 <Grid>
-                                    <TextBox FontSize="35"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
-                                    <Button Grid.Column="1"
+                                    <Button Grid.Row="0"
+                                            Grid.Column="1"
                                             Click="BackButton_Click"
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -1114,9 +1252,79 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                      Tapped="StackPanel_Tapped">
+                                                    <controls:ImageEx IsCacheEnabled="False"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button Grid.Column="1"
+                                                        Click="BackButton_Click"
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Images}"
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="mediaObjects:Image">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{x:Bind Name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
@@ -1139,7 +1347,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-               
             <PivotItem Header="Sologame challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -1154,7 +1361,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
                                             QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                             QueryIcon="Find"
@@ -1179,7 +1386,7 @@
                                   Click="AddNewChallengeButton_Click"
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.SologameChallenges}"
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.FilteredSolo}"
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -1195,7 +1402,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx IsCacheEnabled="True"
+                                        <controls:ImageEx IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                           Source="{x:Bind Game.URI}"/>
                                         <StackPanel Orientation="Vertical">
@@ -1204,12 +1411,6 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Bottom"
                                                 Text="{x:Bind ChallengeTask}"
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                Text="{x:Bind Game.Name}"
                                                 Style="{ThemeResource BodyTextStyle}" />
                                         </StackPanel>
                                     </Grid>
@@ -1287,7 +1488,7 @@
                                                       Height="200" Width="200"
                                                       Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
                                                       Tapped="StackPanel_Tapped">
-                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                    <controls:ImageEx IsCacheEnabled="False"
                                                                       Height="200" Width="200"
                                                                       PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                                     <TextBlock Text="&#xE710;" FontSize="50"
@@ -1317,7 +1518,7 @@
                                         
                                         <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
-                                                  Width="200" SelectionChanged="GameComboBox_SelectionChanged">
+                                                  Width="200" SelectionChanged="ComboBox_SelectionChanged">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="mediaObjects:Game">
                                                     <StackPanel>

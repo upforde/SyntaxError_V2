@@ -310,8 +310,7 @@ namespace SyntaxError.V2.App.Views
             GetCurrentGrid();
             
             var filterText = theText.ToLower();
-            if (filterText == null || filterText == "")
-                RefreshList();
+            if (filterText == null || filterText == "") RefreshList();
             else
             {
                 switch (CreateObjectsPivot.SelectedIndex)

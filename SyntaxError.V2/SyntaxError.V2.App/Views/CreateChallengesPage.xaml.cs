@@ -49,28 +49,36 @@ namespace SyntaxError.V2.App.Views
                                                         switch (param.GetDiscriminator())
                                                         {
                                                             case "AudienceChallenge":
-                                                                ViewModel.AudienceChallenges.Add(param as AudienceChallenge);
+                                                                ViewModel.AudienceChallenges.Insert(0, param as AudienceChallenge);
+                                                                ViewModel.FilteredAudience.Insert(0, param as AudienceChallenge);
                                                                 break;
                                                             case "CrewChallenge":
-                                                                ViewModel.CrewChallenges.Add(param as CrewChallenge);
+                                                                ViewModel.CrewChallenges.Insert(0, param as CrewChallenge);
+                                                                ViewModel.FilteredCrew.Insert(0, param as CrewChallenge);
                                                                 break;
                                                             case "MultipleChoiceChallenge":
-                                                                ViewModel.MultipleChoiceChallenges.Add(param as MultipleChoiceChallenge);
+                                                                ViewModel.MultipleChoiceChallenges.Insert(0, param as MultipleChoiceChallenge);
+                                                                ViewModel.FilteredMulti.Insert(0, param as MultipleChoiceChallenge);
                                                                 break;
                                                             case "MusicChallenge":
-                                                                ViewModel.MusicChallenges.Add(param as MusicChallenge);
+                                                                ViewModel.MusicChallenges.Insert(0, param as MusicChallenge);
+                                                                ViewModel.FilteredMusic.Insert(0, param as MusicChallenge);
                                                                 break;
                                                             case "QuizChallenge":
-                                                                ViewModel.QuizChallenges.Add(param as QuizChallenge);
+                                                                ViewModel.QuizChallenges.Insert(0, param as QuizChallenge);
+                                                                ViewModel.FilteredQuiz.Insert(0, param as QuizChallenge);
                                                                 break;
                                                             case "ScreenshotChallenge":
-                                                                ViewModel.ScreenshotChallenges.Add(param as ScreenshotChallenge);
+                                                                ViewModel.ScreenshotChallenges.Insert(0, param as ScreenshotChallenge);
+                                                                ViewModel.FilteredScreen.Insert(0, param as ScreenshotChallenge);
                                                                 break;
                                                             case "SilhouetteChallenge":
-                                                                ViewModel.SilhouetteChallenges.Add(param as SilhouetteChallenge);
+                                                                ViewModel.SilhouetteChallenges.Insert(0, param as SilhouetteChallenge);
+                                                                ViewModel.FilteredSilhu.Insert(0, param as SilhouetteChallenge);
                                                                 break;
                                                             case "SologameChallenge":
-                                                                ViewModel.SologameChallenges.Add(param as SologameChallenge);
+                                                                ViewModel.SologameChallenges.Insert(0, param as SologameChallenge);
+                                                                ViewModel.FilteredSolo.Insert(0, param as SologameChallenge);
                                                                 break;
                                                         }
                                                     }, param => param != null);
@@ -101,56 +109,15 @@ namespace SyntaxError.V2.App.Views
             (actionGrid.Children[1] as AppBarButton).IsEnabled = access;
         }
 
-        //private void RefreshList()
-        //{
-        //    Filtered.Clear();
-
-        //        switch (ChallengeList.SelectedIndex)
-        //        {
-        //            case 0:
-        //                foreach(var item in ViewModel.AudienceChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 1:
-        //                foreach(var item in ViewModel.CrewChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 2:
-        //                foreach(var item in ViewModel.MultipleChoiceChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 3:
-        //                foreach(var item in ViewModel.MusicChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 4:
-        //                foreach(var item in ViewModel.QuizChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 5:
-        //                foreach(var item in ViewModel.ScreenshotChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 6:
-        //                foreach(var item in ViewModel.SilhouetteChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //            case 7:
-        //                foreach(var item in ViewModel.SologameChallenges)
-        //                    Filtered.Add(item as ChallengeBase);
-        //                break;
-        //        }
-        //}
-
         /// <summary>Handles the Loaded event of the CreateChallengesPage control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void CreateChallengesPage_Loaded(object sender = null, RoutedEventArgs e = null)
         {
             var isInternetAvailable = NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable;
-            if(isInternetAvailable)
-                await ViewModel.LoadChallengesFromDBAsync();
+            if(isInternetAvailable) await ViewModel.LoadChallengesFromDBAsync();
             ChangeButtonsEnabled(isInternetAvailable);
+            ViewModel.RefreshList("", ChallengeList.SelectedIndex);
         }
 
         /// <summary>Handles the Click event of the AppBarButton_SelectionMode control.</summary>
@@ -167,15 +134,26 @@ namespace SyntaxError.V2.App.Views
             if(deleteButton.Visibility == Visibility.Visible)
             {
                 if (isList)
+                {
                     (collection.Children[1] as ListView).SelectionMode = ListViewSelectionMode.None;
-                else (collection.Children[1] as AdaptiveGridView).SelectionMode = ListViewSelectionMode.None;
+                    (collection.Children[1] as ListView).Tapped += ChallengeList_Tapped;
+                } else
+                {
+                    (collection.Children[1] as AdaptiveGridView).SelectionMode = ListViewSelectionMode.None;
+                    (collection.Children[1] as AdaptiveGridView).Tapped += ChallengeList_Tapped;
+                }
                 deleteButton.Visibility = Visibility.Collapsed;
                 return;
             }
 
             if (isList)
+            {
                 (collection.Children[1] as ListView).SelectionMode = ListViewSelectionMode.Multiple;
-            else (collection.Children[1] as AdaptiveGridView).SelectionMode = ListViewSelectionMode.Multiple;
+                (collection.Children[1] as ListView).Tapped -= ChallengeList_Tapped;
+            } else {
+                (collection.Children[1] as AdaptiveGridView).SelectionMode = ListViewSelectionMode.Multiple;
+                (collection.Children[1] as AdaptiveGridView).Tapped -= ChallengeList_Tapped;
+            }
             deleteButton.Visibility = Visibility.Visible;
         }
 
@@ -195,6 +173,11 @@ namespace SyntaxError.V2.App.Views
             {
                 ViewModel.DeleteCommand.Execute(item as ChallengeBase);
             }
+
+            ViewModel.RefreshList((((((ChallengeList.SelectedItem as PivotItem)
+                .Content as Grid).Children[0] as Grid).Children[0] as StackPanel)
+                .Children[0] as AutoSuggestBox).Text.ToLower(),
+                ChallengeList.SelectedIndex);
         }
 
         /// <summary> Creates a new Challenge in the database.</summary>
@@ -207,33 +190,32 @@ namespace SyntaxError.V2.App.Views
             switch (ChallengeList.SelectedIndex)
             {
                 case 0:
-                    newChallenge = new AudienceChallenge();
+                    newChallenge = new AudienceChallenge{ ChallengeTask = "New challenge" };
                     break;
                 case 1:
-                    newChallenge = new CrewChallenge();
+                    newChallenge = new CrewChallenge{ ChallengeTask = "New challenge" };
                     break;
                 case 2:
-                    newChallenge = new MultipleChoiceChallenge();
+                    newChallenge = new MultipleChoiceChallenge{ ChallengeTask = "New challenge" };
                     break;
                 case 3:
-                    newChallenge = new MusicChallenge();
+                    newChallenge = new MusicChallenge{ ChallengeTask = "Guess the song" };
                     break;
                 case 4:
-                    newChallenge = new QuizChallenge();
+                    newChallenge = new QuizChallenge{ ChallengeTask = "New challenge" };
                     break;
                 case 5:
-                    newChallenge = new ScreenshotChallenge();
+                    newChallenge = new ScreenshotChallenge{ ChallengeTask = "What game is this screenshot from?" };
                     break;
                 case 6:
-                    newChallenge = new SilhouetteChallenge();
+                    newChallenge = new SilhouetteChallenge{ ChallengeTask = "What character is this?" };
                     break;
                 case 7:
-                    newChallenge = new SologameChallenge();
+                    newChallenge = new SologameChallenge{ ChallengeTask = "New challenge" };
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            newChallenge.ChallengeTask = "New Challenge";
             AddNewChallengeCommand.Execute(newChallenge);
         }
 
@@ -292,15 +274,37 @@ namespace SyntaxError.V2.App.Views
                 }
                 else if (isImage)
                 {
-                    (childGrid[0] as ImageEx).Source = (_storedChallenge as ImageChallenge).Image.URI;
-                    (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Images.IndexOf((_storedChallenge as ImageChallenge).Image);
-                    (childGrid[2] as TextBox).Text = (_storedChallenge as ImageChallenge).Image.Name;
+                    var image = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+                    if ((_storedChallenge as ImageChallenge).Image != null)
+                    {
+                        image.Source = (_storedChallenge as ImageChallenge).Image.URI;
+                        (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Images.IndexOf((_storedChallenge as ImageChallenge).Image);
+                        (childGrid[2] as TextBox).Text = (_storedChallenge as ImageChallenge).Image.Name;
+                    }
+                    else
+                    {
+                        (_storedChallenge as ImageChallenge).Image = ViewModel.Images[ViewModel.Images.Count-1];
+                        image.Source = null;
+                        (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Images.Count-1;
+                        (childGrid[2] as TextBox).Text = "";
+                    }
                 }
                 else
                 {
-                    (childGrid[0] as ImageEx).Source = (_storedChallenge as MusicChallenge).Song.URI;
-                    (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Music.IndexOf((_storedChallenge as MusicChallenge).Song);
-                    (childGrid[2] as TextBox).Text = (_storedChallenge as MusicChallenge).Song.Name;
+                    var musicImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+                    if ((_storedChallenge as MusicChallenge).Song != null)
+                    {
+                        musicImage.Source = (_storedChallenge as MusicChallenge).Song.URI;
+                        (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Music.IndexOf((_storedChallenge as MusicChallenge).Song);
+                        (childGrid[2] as TextBox).Text = (_storedChallenge as MusicChallenge).Song.Name;
+                    }
+                    else
+                    {
+                        (_storedChallenge as MusicChallenge).Song = ViewModel.Music[ViewModel.Music.Count-1];
+                        musicImage.Source = null;
+                        (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Music.Count-1;
+                        (childGrid[2] as TextBox).Text = "";
+                    }
                 }
             }
 
@@ -308,14 +312,20 @@ namespace SyntaxError.V2.App.Views
             animation.TryStart(smokeGrid.Children[0]);
         }
 
+        /// <summary>  Handles the suggest box text changed event.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="AutoSuggestBoxTextChangedEventArgs"/> instance containing the event data.</param>
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            throw new NotImplementedException();
+            ViewModel.RefreshList(sender.Text.ToLower(), ChallengeList.SelectedIndex);
         }
 
+        /// <summary>  Handles the suggest box query submitted event.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="AutoSuggestBoxQuerySubmittedEventArgs"/> instance containing the event data.</param>
         private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            throw new NotImplementedException();
+            ViewModel.RefreshList(sender.Text.ToLower(), ChallengeList.SelectedIndex);
         }
 
         /// <summary>Handles the Tapped event of the ChallengeList control.</summary>
@@ -436,7 +446,7 @@ namespace SyntaxError.V2.App.Views
                                                                                        DummyAnswer1 = MultipleChoiceDummy1.Text,
                                                                                        DummyAnswer2 = MultipleChoiceDummy2.Text,
                                                                                        DummyAnswer3 = MultipleChoiceDummy3.Text };
-                        else newAnswer = new Answers{Answer = ""};
+                        else newAnswer = new Answers{Answer = QuizAnswer.Text};
                         (_storedChallenge as QuestionChallenge).Answers = newAnswer;
                         (_storedChallenge as QuestionChallenge).AnswersID = (await ViewModel.AnswersDataAccess.CreateAnswersAsync(newAnswer)).AnswersID;
                     }
@@ -451,14 +461,27 @@ namespace SyntaxError.V2.App.Views
                         };
                         else (_storedChallenge as QuestionChallenge).Answers = new Answers
                         {
-                            Answer = MultipleChoiceAnswer.Text,
+                            Answer = QuizAnswer.Text,
                             AnswersID = (int.TryParse((_storedChallenge as QuestionChallenge).AnswersID.ToString(), out int result))?result:0
                         };
                     }
                     break;
                 case 3:
+                    (_storedChallenge as MusicChallenge).Song.Name = (childGrid[2] as TextBox).Text;
+                    if(((childGrid[1] as ComboBox).SelectedItem as Music).ID == 0){
+                        var newSong = await ViewModel.ObjectsViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync((_storedChallenge as MusicChallenge).Song);
+                        (_storedChallenge as MusicChallenge).SongID = newSong.ID;
+                    }
+                    else (_storedChallenge as MusicChallenge).SongID = (_storedChallenge as MusicChallenge).Song.ID;
+                    break;
                 case 5:
                 case 6:
+                    (_storedChallenge as ImageChallenge).Image.Name = (childGrid[2] as TextBox).Text;
+                    if(((childGrid[1] as ComboBox).SelectedItem as Modell.ChallengeObjects.Image).ID == 0){
+                        var newImage = await ViewModel.ObjectsViewModel.MediaObjectsDataAccess.CreateMediaObjectAsync((_storedChallenge as ImageChallenge).Image);
+                        (_storedChallenge as ImageChallenge).ImageID = newImage.ID;
+                    }
+                    else (_storedChallenge as ImageChallenge).ImageID = (_storedChallenge as ImageChallenge).Image.ID;
                     break;
             }
             
@@ -469,58 +492,102 @@ namespace SyntaxError.V2.App.Views
                 case 0:
                     var audienceIndex = ViewModel.AudienceChallenges.IndexOf(ViewModel.AudienceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.AudienceChallenges[audienceIndex] = _storedChallenge as AudienceChallenge;
+                    ViewModel.FilteredAudience[audienceIndex] = _storedChallenge as AudienceChallenge;
                     break;
                 case 1:
                     var crewIndex = ViewModel.CrewChallenges.IndexOf(ViewModel.CrewChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.CrewChallenges[crewIndex] = _storedChallenge as CrewChallenge;
+                    ViewModel.FilteredCrew[crewIndex] = _storedChallenge as CrewChallenge;
                     break;
                 case 2:
                     var multipleChoiceIndex = ViewModel.MultipleChoiceChallenges.IndexOf(ViewModel.MultipleChoiceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.MultipleChoiceChallenges[multipleChoiceIndex] = _storedChallenge as MultipleChoiceChallenge;
+                    ViewModel.FilteredMulti[multipleChoiceIndex] = _storedChallenge as MultipleChoiceChallenge;
                     break;
                 case 3:
                     var musicIndex = ViewModel.MusicChallenges.IndexOf(ViewModel.MusicChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.MusicChallenges[musicIndex] = _storedChallenge as MusicChallenge;
+                    ViewModel.FilteredMusic[musicIndex] = _storedChallenge as MusicChallenge;
                     break;
                 case 4:
                     var quizIndex = ViewModel.QuizChallenges.IndexOf(ViewModel.QuizChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.QuizChallenges[quizIndex] = _storedChallenge as QuizChallenge;
+                    ViewModel.FilteredQuiz[quizIndex] = _storedChallenge as QuizChallenge;
                     break;
                 case 5:
                     var screenshotIndex = ViewModel.ScreenshotChallenges.IndexOf(ViewModel.ScreenshotChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.ScreenshotChallenges[screenshotIndex] = _storedChallenge as ScreenshotChallenge;
+                    ViewModel.FilteredScreen[screenshotIndex] = _storedChallenge as ScreenshotChallenge;
                     break;
                 case 6:
                     var silhouetteIndex = ViewModel.SilhouetteChallenges.IndexOf(ViewModel.SilhouetteChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.SilhouetteChallenges[silhouetteIndex] = _storedChallenge as SilhouetteChallenge;
+                    ViewModel.FilteredSilhu[silhouetteIndex] = _storedChallenge as SilhouetteChallenge;
                     break;
                 case 7:
                     var sologameIndex = ViewModel.SologameChallenges.IndexOf(ViewModel.SologameChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
                     ViewModel.SologameChallenges[sologameIndex] = _storedChallenge as SologameChallenge;
+                    ViewModel.FilteredSolo[sologameIndex] = _storedChallenge as SologameChallenge;
                     break;
             }
 
             ViewModel.CreateNewObjectPlaceholder();
-            
+
             BackButton_Click(sender, e);
         }
 
-        private void GameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>Handles the SelectionChanged event of the ChallengeList control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
+        private void ChallengeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            (_storedChallenge as GameChallenge).Game = ViewModel.Games[(sender as ComboBox).SelectedIndex];
+            ViewModel.RefreshList((((((ChallengeList.SelectedItem as PivotItem)
+                .Content as Grid).Children[0] as Grid).Children[0] as StackPanel)
+                .Children[0] as AutoSuggestBox).Text.ToLower(),
+                ChallengeList.SelectedIndex);
+        }
 
+        /// <summary>Handles the SelectionChanged event of the ComboBox control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             var collection = (ChallengeList.SelectedItem as PivotItem).Content as Grid;
             var smokeGrid = (collection.Children[2] as Grid);
             var children = ((smokeGrid.Children[0] as Grid).Children[0] as StackPanel).Children[0] as Grid;
 
             var childGrid = (children.Children[2] as Grid).Children;
-            var gameImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+            var image = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
 
-            gameImage.Source = (_storedChallenge as GameChallenge).Game.URI;
-            (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Games.IndexOf((_storedChallenge as GameChallenge).Game);
-            (childGrid[2] as TextBox).Text = (_storedChallenge as GameChallenge).Game.Name;
+            switch (ChallengeList.SelectedIndex)
+            {
+                case 0:
+                case 1:
+                case 7:
+                    (_storedChallenge as GameChallenge).Game = ViewModel.Games[(sender as ComboBox).SelectedIndex];
+                    image.Source = (_storedChallenge as GameChallenge).Game.URI;
+                    (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Games.IndexOf((_storedChallenge as GameChallenge).Game);
+                    (childGrid[2] as TextBox).Text = (_storedChallenge as GameChallenge).Game.Name;
+                    break;
+                case 3:
+                    (_storedChallenge as MusicChallenge).Song = ViewModel.Music[(sender as ComboBox).SelectedIndex];
+                    image.Source = (_storedChallenge as MusicChallenge).Song.URI;
+                    (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Music.IndexOf((_storedChallenge as MusicChallenge).Song);
+                    (childGrid[2] as TextBox).Text = (_storedChallenge as MusicChallenge).Song.Name;
+                    break;
+                case 5:
+                case 6:
+                    (_storedChallenge as ImageChallenge).Image = ViewModel.Images[(sender as ComboBox).SelectedIndex];
+                    image.Source = (_storedChallenge as ImageChallenge).Image.URI;
+                    (childGrid[1] as ComboBox).SelectedIndex = ViewModel.Images.IndexOf((_storedChallenge as ImageChallenge).Image);
+                    (childGrid[2] as TextBox).Text = (_storedChallenge as ImageChallenge).Image.Name;
+                    break;
+            }
         }
 
+        /// <summary>Handles the Tapped event of the StackPanel control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="Windows.UI.Xaml.Input.TappedRoutedEventArgs"/> instance containing the event data.</param>
         private async void StackPanel_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             var picker = new Windows.Storage.Pickers.FileOpenPicker
@@ -548,15 +615,16 @@ namespace SyntaxError.V2.App.Views
                         var gameImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
                         gameImage.Source = (_storedChallenge as GameChallenge).Game.URI;
                         break;
-                    case 2:
-                        break;
                     case 3:
-                        break;
-                    case 4:
+                        (_storedChallenge as MusicChallenge).Song.URI = await ViewModel.ObjectsViewModel.ImagesDataAccess.PostImageAsync(file);
+                        var songImage = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+                        songImage.Source = (_storedChallenge as MusicChallenge).Song.URI;
                         break;
                     case 5:
-                        break;
                     case 6:
+                        (_storedChallenge as ImageChallenge).Image.URI = await ViewModel.ObjectsViewModel.ImagesDataAccess.PostImageAsync(file);
+                        var image = ((((childGrid[0] as StackPanel).Children[0] as Grid).Children[0] as Grid).Children[0] as ImageEx);
+                        image.Source = (_storedChallenge as ImageChallenge).Image.URI;
                         break;
                 }
             }

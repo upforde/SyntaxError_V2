@@ -15,10 +15,11 @@
         x:Name="ContentArea"
         Margin="{StaticResource SmallLeftRightMargin}">
         <Pivot x:ConnectionId='3' x:Name="ChallengeList"
-              Grid.Column="1"
-              Grid.RowSpan="3"
-              BorderThickness="5, 0, 0, 0"
-              BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+               Grid.Column="1"
+               Grid.RowSpan="3"
+               BorderThickness="5, 0, 0, 0"
+               BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                                                                >
             <PivotItem Header="Audience challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -33,32 +34,32 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='121' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='130' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='122' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='131' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='123' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='132' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        <AppBarButton x:ConnectionId='120' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='129' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView x:ConnectionId='106'                                                    
+                    <controls:AdaptiveGridView x:ConnectionId='116'                                                  
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -69,26 +70,20 @@
                                                                             >
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate                                          >
-                                <Grid x:ConnectionId='116' x:Name="connectedElement" 
+                                <Grid x:ConnectionId='126' x:Name="connectedElement" 
                                       Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx x:ConnectionId='117' IsCacheEnabled="True"
+                                        <controls:ImageEx x:ConnectionId='127' IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                                                     />
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock x:ConnectionId='118'
+                                            <TextBlock x:ConnectionId='128'
                                                 Margin="{StaticResource XXSmallTopMargin}"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Bottom"
                                                                              
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock x:ConnectionId='119'
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                                         
                                                 Style="{ThemeResource BodyTextStyle}" />
                                         </StackPanel>
                                     </Grid>
@@ -123,7 +118,7 @@
                                              HorizontalAlignment="Left"
                                              Text=""
                                              Grid.Row="0"/>
-                                    <Button x:ConnectionId='110' Grid.Column="1"
+                                    <Button x:ConnectionId='120' Grid.Column="1"
                                             Grid.Row="0"
                                                                     
                                             VerticalAlignment="Top"
@@ -161,12 +156,12 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 
-                                                <Grid x:ConnectionId='114' Grid.Column="0"
+                                                <Grid x:ConnectionId='124' Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
                                                       Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
                                                                                 >
-                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                    <controls:ImageEx IsCacheEnabled="False"
                                                                       Height="200" Width="200"
                                                                       PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                                     <TextBlock Text="&#xE710;" FontSize="50"
@@ -178,7 +173,7 @@
                                                          FontSize="35"
                                                          Margin="12" VerticalAlignment="Center"
                                                          HorizontalAlignment="Left" />
-                                                <Button x:ConnectionId='115' Grid.Column="1"
+                                                <Button x:ConnectionId='125' Grid.Column="1"
                                                                                 
                                                         VerticalAlignment="Top"
                                                         HorizontalAlignment="Right"
@@ -193,13 +188,13 @@
                                                 </Button>
                                             </Grid>
                                         </StackPanel>
-                                        <ComboBox x:ConnectionId='111' Grid.Column="1" Grid.Row="0"                                       
+                                        <ComboBox x:ConnectionId='121' Grid.Column="1" Grid.Row="0"                                       
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
-                                                  Width="200"                                                 >
+                                                  Width="200"                                             >
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate                               >
-                                                    <StackPanel x:ConnectionId='112'>
-                                                        <TextBlock x:ConnectionId='113'                     />
+                                                    <StackPanel x:ConnectionId='122'>
+                                                        <TextBlock x:ConnectionId='123'                     />
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
@@ -213,16 +208,16 @@
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                <AppBarButton x:ConnectionId='108' Label="Save"
+                                <AppBarButton x:ConnectionId='118' Label="Save"
                                               Icon="Accept"
                                                                       />
-                                <AppBarButton x:ConnectionId='109' Label="Cancel"
+                                <AppBarButton x:ConnectionId='119' Label="Cancel"
                                               Icon="Cancel"
                                                                       />
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <TextBlock x:ConnectionId='107' x:Name="EmptyAudienceChallenges"
+                    <TextBlock x:ConnectionId='117' x:Name="EmptyAudienceChallenges"
                                Grid.Row="1"
                                Text="No items found"
                                Visibility="Collapsed"
@@ -232,7 +227,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Crew challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -247,32 +241,32 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='103' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='113' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='104' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='114' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='105' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='115' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        <AppBarButton x:ConnectionId='102' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='112' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView x:ConnectionId='87'                                                
+                    <controls:AdaptiveGridView x:ConnectionId='99'                                              
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -283,32 +277,20 @@
                                                                             >
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate                                      >
-                                <Grid x:ConnectionId='97' x:Name="connectedElement" 
+                                <Grid x:ConnectionId='109' x:Name="connectedElement" 
                                       Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx x:ConnectionId='98' IsCacheEnabled="True"
+                                        <controls:ImageEx x:ConnectionId='110' IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                                                     />
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock x:ConnectionId='99'
+                                            <TextBlock x:ConnectionId='111'
                                                 Margin="{StaticResource XXSmallTopMargin}"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Bottom"
                                                                              
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock x:ConnectionId='100'
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                                         
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock x:ConnectionId='101'
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                                                  
                                                 Style="{ThemeResource BodyTextStyle}" />
                                         </StackPanel>
                                     </Grid>
@@ -343,7 +325,7 @@
                                              HorizontalAlignment="Left"
                                              Text=""
                                              Grid.Row="0"/>
-                                    <Button x:ConnectionId='91' Grid.Column="1"
+                                    <Button x:ConnectionId='103' Grid.Column="1"
                                             Grid.Row="0"
                                                                     
                                             VerticalAlignment="Top"
@@ -380,12 +362,12 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Grid x:ConnectionId='95' Grid.Column="0"
+                                                <Grid x:ConnectionId='107' Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
                                                       Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
                                                                                 >
-                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                    <controls:ImageEx IsCacheEnabled="False"
                                                                       Height="200" Width="200"
                                                                       PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                                     <TextBlock Text="&#xE710;" FontSize="50"
@@ -397,7 +379,7 @@
                                                          FontSize="35"
                                                          Margin="12" VerticalAlignment="Center"
                                                          HorizontalAlignment="Left" />
-                                                <Button x:ConnectionId='96' Grid.Column="1"
+                                                <Button x:ConnectionId='108' Grid.Column="1"
                                                                                 
                                                         VerticalAlignment="Top"
                                                         HorizontalAlignment="Right"
@@ -412,13 +394,13 @@
                                                 </Button>
                                             </Grid>
                                         </StackPanel>
-                                        <ComboBox x:ConnectionId='92' Grid.Column="1" Grid.Row="0"                                       
+                                        <ComboBox x:ConnectionId='104' Grid.Column="1" Grid.Row="0"                                       
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
-                                                  Width="200"                                                 >
+                                                  Width="200"                                             >
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate                               >
-                                                    <StackPanel x:ConnectionId='93'>
-                                                        <TextBlock x:ConnectionId='94'                     />
+                                                    <StackPanel x:ConnectionId='105'>
+                                                        <TextBlock x:ConnectionId='106'                     />
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
@@ -432,16 +414,16 @@
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                <AppBarButton x:ConnectionId='89' Label="Save"
+                                <AppBarButton x:ConnectionId='101' Label="Save"
                                               Icon="Accept"
                                                                       />
-                                <AppBarButton x:ConnectionId='90' Label="Cancel"
+                                <AppBarButton x:ConnectionId='102' Label="Cancel"
                                               Icon="Cancel"
                                                                       />
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <TextBlock x:ConnectionId='88' x:Name="EmptyCrewChallenges"
+                    <TextBlock x:ConnectionId='100' x:Name="EmptyCrewChallenges"
                                Grid.Row="0"
                                Text="No items found"
                                Visibility="Collapsed"
@@ -451,7 +433,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Multiple choice challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -466,53 +447,49 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='84' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='96' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='85' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='97' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='86' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='98' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        <AppBarButton x:ConnectionId='83' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='95' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <ListView x:ConnectionId='71' x:Name="MultipleChoiceChallengeList"
+                    <ListView x:ConnectionId='84'                                               
+                              x:Name="MultipleChoiceChallengeList"
                               Grid.Row="1"
-                                                                                       
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
                                                            >
                         <ListView.ItemTemplate>
                             <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
                                                                                            >
-                                <Grid x:ConnectionId='80' x:Name="connectedElement">
+                                <Grid x:ConnectionId='93' x:Name="connectedElement">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                 
-                                    <TextBlock x:ConnectionId='81' Grid.Row="0"                              
+                                    <TextBlock x:ConnectionId='94' Grid.Row="0"                              
                                                 HorizontalAlignment="Stretch"
                                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                    <TextBlock x:ConnectionId='82' Grid.Row="1"                               
-                                                HorizontalAlignment="Stretch"
-                                                Style="{ThemeResource BodyTextBlockStyle}"
                                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                                 </Grid>
                             </DataTemplate>
@@ -544,7 +521,7 @@
                                              FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"/>
-                                    <Button x:ConnectionId='75' Grid.Row="0"
+                                    <Button x:ConnectionId='88' Grid.Row="0"
                                                                     
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -574,7 +551,7 @@
                                                                   BlurRadius="15"
                                                                   ShadowOpacity="1"
                                                                   Color="#77DD77">
-                                            <TextBox x:ConnectionId='79' Name="MultipleChoiceAnswer"
+                                            <TextBox x:ConnectionId='92' Name="MultipleChoiceAnswer"
                                                      Width="200" MaxWidth="250"/>
                                         </controls:DropShadowPanel>
                                         <controls:DropShadowPanel Grid.Row="0" Grid.Column="1"
@@ -582,7 +559,7 @@
                                                                   BlurRadius="15"
                                                                   ShadowOpacity="1"
                                                                   Color="#FF6961">
-                                            <TextBox x:ConnectionId='78' Name="MultipleChoiceDummy1"
+                                            <TextBox x:ConnectionId='91' Name="MultipleChoiceDummy1"
                                                      Width="200" MaxWidth="250"/>
                                         </controls:DropShadowPanel>
                                         <controls:DropShadowPanel Grid.Row="1" Grid.Column="0"
@@ -590,7 +567,7 @@
                                                                   BlurRadius="15"
                                                                   ShadowOpacity="1"
                                                                   Color="#FF6961">
-                                            <TextBox x:ConnectionId='77' Name="MultipleChoiceDummy2"
+                                            <TextBox x:ConnectionId='90' Name="MultipleChoiceDummy2"
                                                      Width="200" MaxWidth="250"/>
                                         </controls:DropShadowPanel>
                                         <controls:DropShadowPanel Grid.Row="1" Grid.Column="1"
@@ -598,7 +575,7 @@
                                                                   BlurRadius="15"
                                                                   ShadowOpacity="1"
                                                                   Color="#FF6961">
-                                            <TextBox x:ConnectionId='76' Name="MultipleChoiceDummy3"
+                                            <TextBox x:ConnectionId='89' Name="MultipleChoiceDummy3"
                                                      Width="200" MaxWidth="250"/>
                                         </controls:DropShadowPanel>
                                     </Grid>
@@ -607,16 +584,16 @@
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                <AppBarButton x:ConnectionId='73' Label="Save"
+                                <AppBarButton x:ConnectionId='86' Label="Save"
                                               Icon="Accept"
                                                                       />
-                                <AppBarButton x:ConnectionId='74' Label="Cancel"
+                                <AppBarButton x:ConnectionId='87' Label="Cancel"
                                               Icon="Cancel"
                                                                       />
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <TextBlock x:ConnectionId='72' x:Name="EmptyMultipleChoiceChallenges"
+                    <TextBlock x:ConnectionId='85' x:Name="EmptyMultipleChoiceChallenges"
                                 Grid.Row="1"
                                 Text="No items found"
                                 Visibility="Collapsed"
@@ -626,13 +603,13 @@
                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Music challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -640,33 +617,32 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='68' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='81' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='69' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='82' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='70' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='83' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        
-                        <AppBarButton x:ConnectionId='67' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='80' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView x:ConnectionId='59'                                                 
+                    <controls:AdaptiveGridView x:ConnectionId='67'                                               
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -677,15 +653,15 @@
                                                                             >
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate                                       >
-                                <Grid x:ConnectionId='64' x:Name="connectedElement" 
+                                <Grid x:ConnectionId='77' x:Name="connectedElement" 
                                       Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx x:ConnectionId='65' IsCacheEnabled="True"
+                                        <controls:ImageEx x:ConnectionId='78' IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                                                     />
-                                        <TextBlock x:ConnectionId='66'
+                                        <TextBlock x:ConnectionId='79'
                                             Margin="{StaticResource XXSmallTopMargin}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
@@ -697,55 +673,131 @@
                         </controls:AdaptiveGridView.ItemTemplate>
                     </controls:AdaptiveGridView>
                     <Grid HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch"
-                      Visibility="Collapsed"
-                      Grid.Row="1">
-                    <Grid.Background>
-                        <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
-                    </Grid.Background>
+                          VerticalAlignment="Stretch"
+                          Visibility="Collapsed"
+                          Grid.Row="1">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                        </Grid.Background>
                     
-                    <Grid HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Width="500" Height="200"
-                          BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <Grid HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="650" Height="350"
+                              BorderThickness="1"
+                              BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <StackPanel HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
+                                             Margin="12" VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+                                    <Button x:ConnectionId='71' Grid.Row="0"
+                                            Grid.Column="1"
+                                                                    
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Height="40"
+                                            Width="40"
+                                            Margin="5" 
+                                            ToolTipService.ToolTip="Close"
+                                            AutomationProperties.Name="Close">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Clear" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
-                        <StackPanel HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <Grid>
-                                <TextBox FontSize="35"
-                                         Margin="12" VerticalAlignment="Center"
-                                         HorizontalAlignment="Left" />
-                                <Button x:ConnectionId='63' Grid.Column="1"
-                                                                
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Height="40"
-                                        Width="40"
-                                        Margin="5" 
-                                        ToolTipService.ToolTip="Close"
-                                        AutomationProperties.Name="Close">
-                                    <Button.Content>
-                                        <SymbolIcon Symbol="Clear" />
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-                        
-                        <StackPanel HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    Orientation="Horizontal">
-                            <AppBarButton x:ConnectionId='61' Label="Save"
-                                          Icon="Accept"
-                                                                  />
-                            <AppBarButton x:ConnectionId='62' Label="Cancel"
-                                          Icon="Cancel"
-                                                                  />
-                        </StackPanel>
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid x:ConnectionId='75' Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                                                >
+                                                    <controls:ImageEx IsCacheEnabled="False"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button x:ConnectionId='76' Grid.Column="1"
+                                                                                
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <ComboBox x:ConnectionId='72' Grid.Column="1" Grid.Row="0"                                       
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200"                                             >
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate                                >
+                                                    <StackPanel x:ConnectionId='73'>
+                                                        <TextBlock x:ConnectionId='74'                     />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Orientation="Horizontal">
+                                <AppBarButton x:ConnectionId='69' Label="Save"
+                                              Icon="Accept"
+                                                                      />
+                                <AppBarButton x:ConnectionId='70' Label="Cancel"
+                                              Icon="Cancel"
+                                                                      />
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                </Grid>
-                    <TextBlock x:ConnectionId='60' x:Name="EmptyMusicChallenges"
+                    <TextBlock x:ConnectionId='68' x:Name="EmptyMusicChallenges"
                                Grid.Row="1"
                                Text="No items found"
                                Visibility="Collapsed"
@@ -755,7 +807,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Quiz challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -770,53 +821,44 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='56' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='64' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='57' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='65' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='58' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='66' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        <AppBarButton x:ConnectionId='55' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='63' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <ListView x:ConnectionId='46' x:Name="QuizChallengeList"
+                    <ListView x:ConnectionId='55'                                              
+                              x:Name="QuizChallengeList"
                               Grid.Row="1"
-                                                                             
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
                                                            >
                         <ListView.ItemTemplate>
                             <DataTemplate x:Name="QuizChallengeDataTemplate"
                                                                                  >
-                                <Grid x:ConnectionId='52' x:Name="connectedElement">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-
-                                    <TextBlock x:ConnectionId='53' Grid.Row="0"                              
+                                <Grid x:ConnectionId='61' x:Name="connectedElement">
+                                    <TextBlock x:ConnectionId='62' Grid.Row="0"                              
                                                 HorizontalAlignment="Stretch"
                                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                    <TextBlock x:ConnectionId='54' Grid.Row="1"                               
-                                                HorizontalAlignment="Stretch"
-                                                Style="{ThemeResource BodyTextBlockStyle}"
                                                 Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                                 </Grid>
                             </DataTemplate>
@@ -832,17 +874,23 @@
                     
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Width="500" Height="200"
+                              Width="600" Height="250"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                                 <Grid>
-                                    <TextBox FontSize="35"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
-                                    <Button x:ConnectionId='50' Grid.Column="1"
+                                    <Button x:ConnectionId='59' Grid.Row="0" Grid.Column="1"
                                                                     
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -855,22 +903,33 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
-                                    <TextBox x:ConnectionId='51' Name="QuizAnswer"/>
+                                    <Grid Grid.Row="1"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center">
+                                        <controls:DropShadowPanel Margin="20"
+                                                                  BlurRadius="15"
+                                                                  ShadowOpacity="1"
+                                                                  Color="#77DD77">
+                                                <TextBox x:ConnectionId='60' Name="QuizAnswer"
+                                                         FontSize="35"
+                                                         PlaceholderText="Correct answer"/>
+                                        </controls:DropShadowPanel>
+                                    </Grid>
                                 </Grid>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                <AppBarButton x:ConnectionId='48' Label="Save"
+                                <AppBarButton x:ConnectionId='57' Label="Save"
                                               Icon="Accept"
                                                                       />
-                                <AppBarButton x:ConnectionId='49' Label="Cancel"
+                                <AppBarButton x:ConnectionId='58' Label="Cancel"
                                               Icon="Cancel"
                                                                       />
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <TextBlock x:ConnectionId='47' x:Name="EmptyQuizChallenges"
+                    <TextBlock x:ConnectionId='56' x:Name="EmptyQuizChallenges"
                                Grid.Row="1"
                                Text="No items found"
                                Visibility="Collapsed"
@@ -880,13 +939,13 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-           
             <PivotItem Header="Screenshot challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -894,33 +953,32 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='43' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='52' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='44' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='53' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='45' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='54' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        
-                        <AppBarButton x:ConnectionId='42' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='51' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView x:ConnectionId='34'                                                      
+                    <controls:AdaptiveGridView x:ConnectionId='38'                                                
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -931,15 +989,15 @@
                                                                             >
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate                                            >
-                                <Grid x:ConnectionId='39' x:Name="connectedElement" 
+                                <Grid x:ConnectionId='48' x:Name="connectedElement" 
                                       Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx x:ConnectionId='40' IsCacheEnabled="True"
+                                        <controls:ImageEx x:ConnectionId='49' IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                                                      />
-                                        <TextBlock x:ConnectionId='41'
+                                        <TextBlock x:ConnectionId='50'
                                             Margin="{StaticResource XXSmallTopMargin}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
@@ -960,18 +1018,24 @@
                     
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Width="500" Height="200"
+                              Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                                 <Grid>
-                                    <TextBox FontSize="35"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
-                                    <Button x:ConnectionId='38' Grid.Column="1"
+                                    <Button x:ConnectionId='42' Grid.Row="0"
+                                            Grid.Column="1"
                                                                     
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -984,23 +1048,92 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid x:ConnectionId='46' Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                                                >
+                                                    <controls:ImageEx IsCacheEnabled="False"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button x:ConnectionId='47' Grid.Column="1"
+                                                                                
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <ComboBox x:ConnectionId='43' Grid.Column="1" Grid.Row="0"                                        
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200"                                             >
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate                                >
+                                                    <StackPanel x:ConnectionId='44'>
+                                                        <TextBlock x:ConnectionId='45'                     />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                <AppBarButton x:ConnectionId='36' Label="Save"
+                                <AppBarButton x:ConnectionId='40' Label="Save"
                                               Icon="Accept"
                                                                       />
-                                <AppBarButton x:ConnectionId='37' Label="Cancel"
+                                <AppBarButton x:ConnectionId='41' Label="Cancel"
                                               Icon="Cancel"
                                                                       />
                             </StackPanel>
                         </Grid>
-                    
                     </Grid>
-                    <TextBlock x:ConnectionId='35' x:Name="EmptyScreenshotChallenges"
+                    <TextBlock x:ConnectionId='39' x:Name="EmptyScreenshotChallenges"
                                Grid.Row="1"
                                Text="No items found"
                                Visibility="Collapsed"
@@ -1010,13 +1143,13 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-                       
             <PivotItem Header="Silhouette challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -1024,33 +1157,32 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='31' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='35' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='32' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='36' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='33' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='37' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        
-                        <AppBarButton x:ConnectionId='30' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='34' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView x:ConnectionId='22'                                                      
+                    <controls:AdaptiveGridView x:ConnectionId='21'                                               
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -1061,15 +1193,15 @@
                                                                             >
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate                                            >
-                                <Grid x:ConnectionId='27' x:Name="connectedElement" 
+                                <Grid x:ConnectionId='31' x:Name="connectedElement" 
                                       Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx x:ConnectionId='28' IsCacheEnabled="True"
+                                        <controls:ImageEx x:ConnectionId='32' IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                                                      />
-                                        <TextBlock x:ConnectionId='29'
+                                        <TextBlock x:ConnectionId='33'
                                             Margin="{StaticResource XXSmallTopMargin}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Bottom"
@@ -1090,18 +1222,24 @@
                     
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Width="500" Height="200"
+                              Width="650" Height="350"
                               BorderThickness="1"
                               BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-
                             <StackPanel HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
                                         Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                                 <Grid>
-                                    <TextBox FontSize="35"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBox Grid.Row="0"
+                                             FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
-                                    <Button x:ConnectionId='26' Grid.Column="1"
+                                    <Button x:ConnectionId='25' Grid.Row="0"
+                                            Grid.Column="1"
                                                                     
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Right"
@@ -1114,22 +1252,92 @@
                                             <SymbolIcon Symbol="Clear" />
                                         </Button.Content>
                                     </Button>
+                                    <Grid Grid.Row="1"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="50, 0, 50, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Grid.RowSpan="3"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid x:ConnectionId='29' Grid.Column="0"
+                                                      VerticalAlignment="Center"
+                                                      Height="200" Width="200"
+                                                      Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
+                                                                                >
+                                                    <controls:ImageEx IsCacheEnabled="False"
+                                                                      Height="200" Width="200"
+                                                                      PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
+                                                    <TextBlock Text="&#xE710;" FontSize="50"
+                                                                Padding="0, 75, 0, 0"
+                                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                                HorizontalTextAlignment="Center"/>
+                                                </Grid>
+                                                <TextBox Grid.Column="1"
+                                                         FontSize="35"
+                                                         Margin="12" VerticalAlignment="Center"
+                                                         HorizontalAlignment="Left" />
+                                                <Button x:ConnectionId='30' Grid.Column="1"
+                                                                                
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right"
+                                                        Height="40"
+                                                        Width="40"
+                                                        Margin="5" 
+                                                        ToolTipService.ToolTip="Close"
+                                                        AutomationProperties.Name="Close">
+                                                    <Button.Content>
+                                                        <SymbolIcon Symbol="Clear" />
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <ComboBox x:ConnectionId='26' Grid.Column="1" Grid.Row="0"                                        
+                                                  Margin="25,0,0,0" VerticalAlignment="Center"
+                                                  Width="200"                                             >
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate                                >
+                                                    <StackPanel x:ConnectionId='27'>
+                                                        <TextBlock x:ConnectionId='28'                     />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="1"
+                                                 Margin="25,0,0,0" VerticalAlignment="Center"
+                                                 MinWidth="250" Width="Auto" Height="40"/>
+                                    </Grid>
                                 </Grid>
                             </StackPanel>
-                        
                             <StackPanel HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                <AppBarButton x:ConnectionId='24' Label="Save"
+                                <AppBarButton x:ConnectionId='23' Label="Save"
                                               Icon="Accept"
                                                                       />
-                                <AppBarButton x:ConnectionId='25' Label="Cancel"
+                                <AppBarButton x:ConnectionId='24' Label="Cancel"
                                               Icon="Cancel"
                                                                       />
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <TextBlock x:ConnectionId='23' x:Name="EmptySilhouetteChallenges"
+                    <TextBlock x:ConnectionId='22' x:Name="EmptySilhouetteChallenges"
                                Grid.Row="1"
                                Text="No items found"
                                Visibility="Collapsed"
@@ -1139,7 +1347,6 @@
                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                 </Grid>
             </PivotItem>
-               
             <PivotItem Header="Sologame challenges">
                 <Grid Padding="5">
                     <Grid.RowDefinitions>
@@ -1154,32 +1361,32 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <AutoSuggestBox x:ConnectionId='19' IsEnabled="False" PlaceholderText="Search" 
+                            <AutoSuggestBox x:ConnectionId='18' IsEnabled="True" PlaceholderText="Search" 
                                                                                     
                                                                                           
                                             QueryIcon="Find"
                                             Width="300"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"/>
-                            <AppBarButton x:ConnectionId='20' Label="Selection mode"
+                            <AppBarButton x:ConnectionId='19' Label="Selection mode"
                                                                                   >
                                 <AppBarButton.Icon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               Glyph="&#xE762;"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
-                            <AppBarButton x:ConnectionId='21' Label="Delete Selected"
+                            <AppBarButton x:ConnectionId='20' Label="Delete Selected"
                                           Icon="Delete"
                                           Visibility="Collapsed"
                                                                                    />
                         </StackPanel>
-                        <AppBarButton x:ConnectionId='18' Grid.Column="1"
+                        <AppBarButton x:ConnectionId='17' Grid.Column="1"
                                   Icon="Add"
                                   Label="New Challenge"
                                                                      
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <controls:AdaptiveGridView x:ConnectionId='4'                                                    
+                    <controls:AdaptiveGridView x:ConnectionId='4'                                              
                                                Grid.Row="1"
                                                StretchContentForSingleRow="False"
                                                SelectionMode="None"
@@ -1195,7 +1402,7 @@
                                       Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                                     <Grid HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
-                                        <controls:ImageEx x:ConnectionId='15' IsCacheEnabled="True"
+                                        <controls:ImageEx x:ConnectionId='15' IsCacheEnabled="False"
                                                           PlaceholderSource="/assets/LockScreenLogo.scale-200.png"
                                                                                     />
                                         <StackPanel Orientation="Vertical">
@@ -1204,12 +1411,6 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Bottom"
                                                                              
-                                                Style="{ThemeResource BodyTextStyle}" />
-                                            <TextBlock x:ConnectionId='17'
-                                                Margin="{StaticResource XXSmallTopMargin}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                                         
                                                 Style="{ThemeResource BodyTextStyle}" />
                                         </StackPanel>
                                     </Grid>
@@ -1287,7 +1488,7 @@
                                                       Height="200" Width="200"
                                                       Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}"
                                                                                 >
-                                                    <controls:ImageEx IsCacheEnabled="True"
+                                                    <controls:ImageEx IsCacheEnabled="False"
                                                                       Height="200" Width="200"
                                                                       PlaceholderSource="/assets/LockScreenLogo.scale-200.png"/>
                                                     <TextBlock Text="&#xE710;" FontSize="50"
@@ -1317,7 +1518,7 @@
                                         
                                         <ComboBox x:ConnectionId='9' Grid.Column="1" Grid.Row="0"                                       
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
-                                                  Width="200"                                                 >
+                                                  Width="200"                                             >
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate                               >
                                                     <StackPanel x:ConnectionId='10'>
