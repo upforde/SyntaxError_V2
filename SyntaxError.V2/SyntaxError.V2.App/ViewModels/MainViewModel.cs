@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.Views;
+using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using Windows.UI.Xaml.Controls;
@@ -17,10 +19,13 @@ namespace SyntaxError.V2.App.ViewModels
         public ICommand AddGameProfileCommand { get; set; }
         public ICommand DeleteGameProfileCommand { get; set; }
 
-        public List<ChallengeBase> ChallengesFromDB = new List<ChallengeBase>();
+        public ObservableCollection<ChallengeBase> ChallengesFromDB { get; set; } = new ObservableCollection<ChallengeBase>();
 
         public ObservableCollection<ListItemMainPage> GameProfiles { get; set; } = new ObservableCollection<ListItemMainPage>();
-        public GameProfiles GameProfilesDataAccess = new GameProfiles();
+        public GameProfiles GameProfilesDataAccess { get; set; } = new GameProfiles();
+        public Challenges ChallengesDataAccess { get; set; } = new Challenges();
+        public MediaObjects MediaObjectsDataAccess { get; set; } = new MediaObjects();
+        public DataAccess.Answers AnswersDataAccess { get; set; } = new DataAccess.Answers();
         
         public ObservableCollection<ListItemMainPage> AudienceChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
         public ObservableCollection<ListItemMainPage> CrewChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
@@ -31,9 +36,8 @@ namespace SyntaxError.V2.App.ViewModels
         public ObservableCollection<ListItemMainPage> SilhouetteChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
         public ObservableCollection<ListItemMainPage> SologameChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
 
-        public Challenges ChallengesDataAccess = new Challenges();
 
-        public List<ObservableCollection<ListItemMainPage>> ChallengeListList;
+        public List<ObservableCollection<ListItemMainPage>> ChallengeListList { get; set; }
 
         public MainViewModel()
         {
@@ -48,6 +52,44 @@ namespace SyntaxError.V2.App.ViewModels
                                                         if (await GameProfilesDataAccess.DeleteGameProfileAsync(param.GameProfile))
                                                             GameProfiles.Remove(param);
                                                     }, param => param != null);
+        }
+
+        internal async Task LoadMediaObjectsFromDBAsync()
+        {
+            foreach (var challenge in ChallengesFromDB)
+                switch (challenge.GetDiscriminator())
+                {
+                    case "AudienceChallenge":
+                    case "CrewChallenge":
+                    case "SologameChallenge":
+                        if((challenge as GameChallenge).GameID != 0 && (challenge as GameChallenge).Game == null)
+                            try{
+                                (challenge as GameChallenge).Game = await MediaObjectsDataAccess.GetMediaObjectAsync((challenge as GameChallenge).GameID, "Game") as Game;
+                            }
+                            catch (Exception e) { }
+                        break;
+                    case "MultipleChoiceChallenge":
+                    case "QuizChallenge":
+                        if((challenge as QuestionChallenge).AnswersID != 0 && (challenge as QuestionChallenge).Answers == null)
+                            try {
+                                (challenge as QuestionChallenge).Answers = await AnswersDataAccess.GetAnswersAsync((challenge as QuestionChallenge).AnswersID);
+                            } catch (Exception e) { }
+                        break;
+                    case "MusicChallenge":
+                        if((challenge as MusicChallenge).SongID != 0 && (challenge as MusicChallenge).Song == null)
+                            try {
+                                (challenge as MusicChallenge).Song = await MediaObjectsDataAccess.GetMediaObjectAsync((challenge as MusicChallenge).SongID, "Music") as Music;
+                            } catch (Exception e){ }
+                        break;
+                    case "ScreenshotChallenge":
+                    case "SilhouetteChallenge":
+                        if((challenge as ImageChallenge).ImageID != 0 && (challenge as ImageChallenge).Image == null)
+                            try
+                            {
+                                (challenge as ImageChallenge).Image = await MediaObjectsDataAccess.GetMediaObjectAsync((challenge as ImageChallenge).ImageID, "Image") as Modell.ChallengeObjects.Image;
+                            } catch (Exception e) { }
+                        break;
+                }
         }
 
         /// <summary>Loads the game profiles from database asynchronous.</summary>
@@ -99,7 +141,7 @@ namespace SyntaxError.V2.App.ViewModels
             
             foreach (var profileChallenge in profile.Profile.Challenges)
             {
-                var challenge = ChallengesFromDB.Find(c => c.ChallengeID == profileChallenge.ChallengeID);
+                var challenge = ChallengesFromDB.Where(c => c.ChallengeID == profileChallenge.ChallengeID).First();
                 ListItemMainPage listChallenge = new ListItemMainPage
                 {
                     IsChallengeCompleted = (saveGameChallengeIDs.Contains(profileChallenge.ChallengeID)?true:false)

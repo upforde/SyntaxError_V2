@@ -2,6 +2,7 @@
 using SyntaxError.V2.Modell.Utility;
 using System.Drawing;
 using System.Windows.Input;
+using Windows.UI.Xaml.Media;
 
 namespace SyntaxError.V2.App.Helpers
 {
@@ -21,12 +22,12 @@ namespace SyntaxError.V2.App.Helpers
         public SologameChallenge SologameChallenge { get; set; }
         
         public bool IsChallengeCompleted { get; set; }
-        public string GetIsChallengeCompletedString()
+        public SolidColorBrush GetIsChallengeCompletedString()
         {
             if (IsChallengeCompleted)
-                return "Completed";
+                return new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 105, 97)); // #FF6961
 
-            return "Not yet";
+            return new SolidColorBrush(Windows.UI.Color.FromArgb(255, 119, 221, 119)); // #77DD77 
         }
     }
 }

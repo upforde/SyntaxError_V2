@@ -6,6 +6,7 @@ using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.NetworkInformation;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
@@ -61,21 +62,21 @@ namespace SyntaxError.V2.App.Views
                 try
                 {
                     await ViewModel.LoadGameProfilesFromDBAsync();
-                } catch (System.Net.Http.HttpRequestException)
-                {
+                } catch (System.Net.Http.HttpRequestException) { }
 
-                }
                 listViewProgressBar.Visibility = Visibility.Collapsed;
 
                 try
                 {
                     await ViewModel.LoadChallengesFromDBAsync();
-                } catch (System.Net.Http.HttpRequestException)
-                {
-
-                }
-
+                } catch (System.Net.Http.HttpRequestException) { }
+                
                 GameProfilesList.SelectionMode = ListViewSelectionMode.Single;
+
+                try
+                {
+                    await ViewModel.LoadMediaObjectsFromDBAsync();
+                } catch (System.Net.Http.HttpRequestException) { } catch (InvalidOperationException) { }
             }
             ChangeButtonsEnabled(isInternetAvailable);
         }
@@ -104,13 +105,13 @@ namespace SyntaxError.V2.App.Views
         private void ChangeVisibility()
         {
             var audience = (ChallengeList.Items[0] as PivotItem).Content as Grid;
-            var count = (audience.Children[0] as AdaptiveGridView).Items.Count;
-            (audience.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
+            var count = (audience.Children[0] as ListView).Items.Count;
+            (audience.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (audience.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
+            
             var crew = (ChallengeList.Items[1] as PivotItem).Content as Grid;
-            count = (crew.Children[0] as AdaptiveGridView).Items.Count;
-            (crew.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
+            count = (crew.Children[0] as ListView).Items.Count;
+            (crew.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (crew.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
 
             var multiple = (ChallengeList.Items[2] as PivotItem).Content as Grid;
@@ -119,8 +120,8 @@ namespace SyntaxError.V2.App.Views
             (multiple.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
 
             var music = (ChallengeList.Items[3] as PivotItem).Content as Grid;
-            count = (music.Children[0] as AdaptiveGridView).Items.Count;
-            (music.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
+            count = (music.Children[0] as ListView).Items.Count;
+            (music.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (music.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
 
             var quiz = (ChallengeList.Items[4] as PivotItem).Content as Grid;
@@ -129,18 +130,18 @@ namespace SyntaxError.V2.App.Views
             (quiz.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
 
             var screenshot = (ChallengeList.Items[5] as PivotItem).Content as Grid;
-            count = (screenshot.Children[0] as AdaptiveGridView).Items.Count;
-            (screenshot.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
+            count = (screenshot.Children[0] as ListView).Items.Count;
+            (screenshot.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (screenshot.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
 
             var silouette = (ChallengeList.Items[6] as PivotItem).Content as Grid;
-            count = (silouette.Children[0] as AdaptiveGridView).Items.Count;
-            (silouette.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
+            count = (silouette.Children[0] as ListView).Items.Count;
+            (silouette.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (silouette.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
 
             var sologame = (ChallengeList.Items[7] as PivotItem).Content as Grid;
-            count = (sologame.Children[0] as AdaptiveGridView).Items.Count;
-            (sologame.Children[0] as AdaptiveGridView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
+            count = (sologame.Children[0] as ListView).Items.Count;
+            (sologame.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
             (sologame.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
         }
         
