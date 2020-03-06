@@ -6,12 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:SyntaxError.V2.App.Helpers"
     xmlns:challenges="using:SyntaxError.V2.Modell.Challenges"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
-    <Grid x:ConnectionId='2' 
+    <Page.Resources>
+        <CollectionViewSource x:ConnectionId='2' x:Name="ChallengesCVS" IsSourceGrouped="True"/>
+    </Page.Resources>
+    <Grid x:ConnectionId='3' 
         x:Name="ContentArea"
         Margin="5, 5, 5, 0"
         Padding="0, 0, 0, 5"
@@ -35,27 +36,31 @@
                     Padding="15">
             <TextBlock Text="Game Profiles" Style="{ThemeResource TitleTextBlockStyle}"/>
         </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Grid.Row="0"
+                    BorderThickness="5, 0, 0, 0"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Padding="15">
+            <TextBlock Text="Game Profile Challenges" Style="{ThemeResource TitleTextBlockStyle}"/>
+        </StackPanel>
         <!--The GameProfile list-->
         <StackPanel Grid.Column="0"
                     Grid.Row="1"
                     BorderThickness="0, 0, 5, 0"
                     BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        
-            <ProgressBar x:ConnectionId='53' x:Name="listViewProgressBar" IsIndeterminate="True"/>
-
-            <ListView x:ConnectionId='54' x:Name="GameProfilesList"
+            <ProgressBar x:ConnectionId='25' x:Name="listViewProgressBar" IsIndeterminate="True"/>
+            <ListView x:ConnectionId='26' x:Name="GameProfilesList"
                                                                      
                         SelectionMode="Single"
                                                                             >
                 <ListView.ItemTemplate>
                     <DataTemplate x:Name="SingleLineDataTemplate"
                                                                          >
-                        <StackPanel x:ConnectionId='55'>
-                            <TextBlock x:ConnectionId='56'                                            
+                        <StackPanel x:ConnectionId='27'>
+                            <TextBlock x:ConnectionId='28'                                            
                                         Style="{ThemeResource BaseTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
-                                        
-                            <TextBlock x:ConnectionId='57'                                                                         
+                            <TextBlock x:ConnectionId='29'                                                                         
                                         Style="{ThemeResource BodyTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                         VerticalAlignment="Center"
@@ -74,19 +79,19 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Padding="0, 0, 5, 0">
-                <AppBarButton x:ConnectionId='49' x:Name="PlayButton"
+                <AppBarButton x:ConnectionId='21' x:Name="PlayButton"
                               IsEnabled="False"
                               IsTabStop="False"
                               Icon="Play"
                               Label="Play"
                                                             />
-                <AppBarButton x:ConnectionId='50' x:Name="AddButton"
+                <AppBarButton x:ConnectionId='22' x:Name="AddButton"
                               IsTabStop="False"
                               Icon="Add"
                               Label="Add"
                               Visibility="Visible"
                                                            />
-                <AppBarButton x:ConnectionId='51' x:Name="EditButton"
+                <AppBarButton x:ConnectionId='23' x:Name="EditButton"
                               IsEnabled="False"
                               IsTabStop="False"
                               Icon="Edit"
@@ -94,7 +99,7 @@
                               Visibility="Visible"
                                                                                    
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                <AppBarButton x:ConnectionId='52' x:Name="DeleteButton"
+                <AppBarButton x:ConnectionId='24' x:Name="DeleteButton"
                               IsTabStop="False"
                               Icon="Delete"
                               Label="Delete"
@@ -103,21 +108,131 @@
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
             </StackPanel>
         </StackPanel>
-        <!--The Challenge pivot-->
-        <Pivot x:ConnectionId='3' x:Name="ChallengeList"
+        <!--The Challenge ListView-->
+        <ListView x:ConnectionId='4' x:Name="ChallengeList"
+                                                                        
+                  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"
+                  BorderThickness="5, 0, 0, 0"
+                  BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel AreStickyGroupHeadersEnabled="True"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.GroupStyle>
+              <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding Key}"/>
+                  </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+              </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate                                      >
+                    <Grid x:ConnectionId='6'>
+                        <Grid x:ConnectionId='7'                                      >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:ConnectionId='18' Grid.Column="0" Grid.RowSpan="2"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                                                                      />
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock x:ConnectionId='19'                                                     
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Stretch" />
+                                <TextBlock x:ConnectionId='20'                                                          
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid x:ConnectionId='8'                                       >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:ConnectionId='16' Grid.Column="0"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                                                                      />
+                            <TextBlock x:ConnectionId='17'                                                           
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Grid x:ConnectionId='9'                                       >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:ConnectionId='14' Grid.Column="0"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                                                                      />
+                            <TextBlock x:ConnectionId='15'                                                           
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Grid x:ConnectionId='10'                                          >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:ConnectionId='11' Grid.Column="0" Grid.RowSpan="2"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                                                                      />
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock x:ConnectionId='12'                                        
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Stretch" />
+                                <TextBlock x:ConnectionId='13'                                                           
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--Pivot x:Name="ChallengeList"
                Grid.Column="1"
                Grid.RowSpan="3"
                BorderThickness="5, 0, 0, 0"
                BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <PivotItem Header="Audience challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='43' x:Name="AudienceChallengeList"
-                                                                                                    
+                        <ListView x:Name="AudienceChallengeList"
+                                    ItemsSource="{x:Bind ViewModel.AudienceChallenges, Mode=OneWay}"
                                     SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="AudienceChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='45' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40"/>
                                             <RowDefinition/>
@@ -127,16 +242,16 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='46' Grid.Column="0" Grid.RowSpan="2"
+                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
                                                     Visibility="Visible" Height="30" Width="30"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Left"
-                                                                                                   />
+                                                    Fill="{x:Bind GetIsChallengeCompletedString()}"/>
                                         <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock x:ConnectionId='47'                                                             
+                                            <TextBlock Text="{x:Bind AudienceChallenge.ChallengeTask, Mode=OneWay}"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Stretch" />
-                                            <TextBlock x:ConnectionId='48'                                                         
+                                            <TextBlock Text="{x:Bind AudienceChallenge.Game.Name, Mode=OneWay}"
                                                         VerticalAlignment="Top"
                                                         HorizontalAlignment="Stretch"
                                                         Style="{ThemeResource BodyTextBlockStyle}"
@@ -146,7 +261,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='44' x:Name="EmptyAudienceChallenges"
+                        <TextBlock x:Name="EmptyAudienceChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -154,16 +269,16 @@
                                     Style="{ThemeResource BodyTextBlockStyle}"
                                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                     </Grid>
-                </PivotItem>
+                </>
                 <PivotItem Header="Crew challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='37' x:Name="CrewChallengeList"
-                                                                                 
+                        <ListView x:Name="CrewChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.CrewChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="CrewChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='39' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40"/>
                                             <RowDefinition/>
@@ -173,16 +288,16 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='40' Grid.Column="0" Grid.RowSpan="2"
+                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
                                         <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock x:ConnectionId='41'                                            
+                                            <TextBlock Text="{x:Bind CrewChallenge.ChallengeTask}"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Stretch" />
-                                            <TextBlock x:ConnectionId='42'                                        
+                                            <TextBlock Text="{x:Bind CrewChallenge.Game.Name}"
                                                        VerticalAlignment="Top"
                                                        HorizontalAlignment="Stretch"
                                                        Style="{ThemeResource BodyTextBlockStyle}"
@@ -192,7 +307,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='38' x:Name="EmptyCrewChallenges"
+                        <TextBlock x:Name="EmptyCrewChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -203,13 +318,13 @@
                 </PivotItem>
                 <PivotItem Header="Multiple choice challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='31' x:Name="MultipleChoiceChallengeList"
-                                                                                           
+                        <ListView x:Name="MultipleChoiceChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='33' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40"/>
                                             <RowDefinition/>
@@ -219,16 +334,16 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='34' Grid.Column="0" Grid.RowSpan="2"
+                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
                                         <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock x:ConnectionId='35'                                                      
+                                            <TextBlock Text="{x:Bind MultipleChoiceChallenge.ChallengeTask}"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Stretch" />
-                                            <TextBlock x:ConnectionId='36'                                                       
+                                            <TextBlock Text="{x:Bind MultipleChoiceChallenge.Answers.Answer}"
                                                        VerticalAlignment="Top"
                                                        HorizontalAlignment="Stretch"
                                                        Style="{ThemeResource BodyTextBlockStyle}"
@@ -238,7 +353,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='32' x:Name="EmptyMultipleChoiceChallenges"
+                        <TextBlock x:Name="EmptyMultipleChoiceChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -249,24 +364,24 @@
                 </PivotItem>
                 <PivotItem Header="Music challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='26' x:Name="MusicChallengeList"
-                                                                                  
+                        <ListView x:Name="MusicChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.MusicChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="MusicChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='28' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='29' Grid.Column="0"
+                                        <Ellipse Grid.Column="0"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
-                                        <TextBlock x:ConnectionId='30'                                         
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
+                                        <TextBlock Text="{x:Bind MusicChallenge.Song.Name}"
                                                     Grid.Column="1"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Stretch"/>
@@ -274,7 +389,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='27' x:Name="EmptyMusicChallenges"
+                        <TextBlock x:Name="EmptyMusicChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -285,13 +400,13 @@
                 </PivotItem>
                 <PivotItem Header="Quiz challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='20' x:Name="QuizChallengeList"
-                                                                                 
+                        <ListView x:Name="QuizChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.QuizChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="QuizChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='22' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40"/>
                                             <RowDefinition/>
@@ -301,16 +416,16 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='23' Grid.Column="0" Grid.RowSpan="2"
+                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
                                         <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock x:ConnectionId='24'                                            
+                                            <TextBlock Text="{x:Bind QuizChallenge.ChallengeTask}"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Stretch" />
-                                            <TextBlock x:ConnectionId='25'                                             
+                                            <TextBlock Text="{x:Bind QuizChallenge.Answers.Answer}"
                                                        VerticalAlignment="Top"
                                                        HorizontalAlignment="Stretch"
                                                        Style="{ThemeResource BodyTextBlockStyle}"
@@ -320,7 +435,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='21' x:Name="EmptyQuizChallenges"
+                        <TextBlock x:Name="EmptyQuizChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -331,24 +446,24 @@
                 </PivotItem>
                 <PivotItem Header="Screenshot challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='15' x:Name="ScreenshotChallengeList"
-                                                                                       
+                        <ListView x:Name="ScreenshotChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.ScreenshotChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="ScreenshotChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='17' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='18' Grid.Column="0"
+                                        <Ellipse Grid.Column="0"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
-                                        <TextBlock x:ConnectionId='19'                                               
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
+                                        <TextBlock Text="{x:Bind ScreenshotChallenge.Image.Name}"
                                                    Grid.Column="1"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"/>
@@ -356,7 +471,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='16' x:Name="EmptyScreenshotChallenges"
+                        <TextBlock x:Name="EmptyScreenshotChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -367,24 +482,24 @@
                 </PivotItem>
                 <PivotItem Header="Silhouette challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='10' x:Name="SilhouetteChallengeList"
-                                                                                       
+                        <ListView x:Name="SilhouetteChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.SilhouetteChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="SilhouetteChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='12' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='13' Grid.Column="0"
+                                        <Ellipse Grid.Column="0"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
-                                        <TextBlock x:ConnectionId='14'                                               
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
+                                        <TextBlock Text="{x:Bind SilhouetteChallenge.Image.Name}"
                                                    Grid.Column="1"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"/>
@@ -392,7 +507,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='11' x:Name="EmptySilhouetteChallenges"
+                        <TextBlock x:Name="EmptySilhouetteChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -403,13 +518,13 @@
                 </PivotItem>
                 <PivotItem Header="Sologame challenges">
                     <Grid Padding="5">
-                        <ListView x:ConnectionId='4' x:Name="SologameChallengeList"
-                                                                                     
+                        <ListView x:Name="SologameChallengeList"
+                                  ItemsSource="{x:Bind ViewModel.SologameChallenges}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="SologameChallengeDataTemplate"
-                                                                                     >
-                                    <Grid x:ConnectionId='6' x:Name="challengeItemGrid">
+                                                x:DataType="helpers:ListItemMainPage">
+                                    <Grid x:Name="challengeItemGrid">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40"/>
                                             <RowDefinition/>
@@ -419,16 +534,16 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Ellipse x:ConnectionId='7' Grid.Column="0" Grid.RowSpan="2"
+                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
                                                  Visibility="Visible" Height="30" Width="30"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Left"
-                                                                                                />
+                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
                                         <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock x:ConnectionId='8'                                                
+                                            <TextBlock Text="{x:Bind SologameChallenge.ChallengeTask}"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Stretch" />
-                                            <TextBlock x:ConnectionId='9'                                            
+                                            <TextBlock Text="{x:Bind SologameChallenge.Game.Name}"
                                                        VerticalAlignment="Top"
                                                        HorizontalAlignment="Stretch"
                                                        Style="{ThemeResource BodyTextBlockStyle}"
@@ -438,7 +553,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock x:ConnectionId='5' x:Name="EmptySologameChallenges"
+                        <TextBlock x:Name="EmptySologameChallenges"
                                     Text="No items found"
                                     Visibility="Collapsed"
                                     HorizontalAlignment="Center"
@@ -447,7 +562,7 @@
                                     Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                     </Grid>
                 </PivotItem>
-        </Pivot>
+        </Pivot-->
     </Grid>
 </Page>
 

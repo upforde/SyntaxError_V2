@@ -6,17 +6,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:SyntaxError.V2.App.Helpers"
     xmlns:challenges="using:SyntaxError.V2.Modell.Challenges"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
-    <Grid 
-        x:Name="ContentArea"
-        Margin="5, 5, 5, 0"
-        Padding="0, 0, 0, 5"
-        Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    
+    <Page.Resources>
+        <CollectionViewSource x:Name="ChallengesCVS" IsSourceGrouped="True"/>
+    </Page.Resources>
+    <Grid x:Name="ContentArea"
+          Margin="5, 5, 5, 0"
+          Padding="0, 0, 0, 5"
+          Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*"/>
@@ -35,14 +34,19 @@
                     Padding="15">
             <TextBlock Text="Game Profiles" Style="{ThemeResource TitleTextBlockStyle}"/>
         </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Grid.Row="0"
+                    BorderThickness="5, 0, 0, 0"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Padding="15">
+            <TextBlock Text="Game Profile Challenges" Style="{ThemeResource TitleTextBlockStyle}"/>
+        </StackPanel>
         <!--The GameProfile list-->
         <StackPanel Grid.Column="0"
                     Grid.Row="1"
                     BorderThickness="0, 0, 5, 0"
                     BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        
             <ProgressBar x:Name="listViewProgressBar" IsIndeterminate="True"/>
-
             <ListView x:Name="GameProfilesList"
                         ItemsSource="{x:Bind ViewModel.GameProfiles}"
                         SelectionMode="Single"
@@ -54,7 +58,6 @@
                             <TextBlock Text="{x:Bind GameProfile.GameProfileName}"
                                         Style="{ThemeResource BaseTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
-                                        
                             <TextBlock Text="{x:Bind x:String.Format('Created: {0}', GameProfile.DateCreated)}"
                                         Style="{ThemeResource BodyTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
@@ -103,350 +106,117 @@
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
             </StackPanel>
         </StackPanel>
-        <!--The Challenge pivot-->
-        <Pivot x:Name="ChallengeList"
-               Grid.Column="1"
-               Grid.RowSpan="3"
-               BorderThickness="5, 0, 0, 0"
-               BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <PivotItem Header="Audience challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="AudienceChallengeList"
-                                    ItemsSource="{x:Bind ViewModel.AudienceChallenges, Mode=OneWay}"
-                                    SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="AudienceChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+        <!--The Challenge ListView-->
+        <ListView x:Name="ChallengeList"
+                  ItemsSource="{x:Bind ChallengesCVS.View, Mode=OneWay}"
+                  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"
+                  BorderThickness="5, 0, 0, 0"
+                  BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                  SelectionMode="None">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel AreStickyGroupHeadersEnabled="True"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.GroupStyle>
+              <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding Key}"/>
+                  </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+              </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="helpers:ListItemMainPage">
+                    <Grid>
+                        <Grid Visibility="{x:Bind IsGameChallenge}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
-                                                    Visibility="Visible" Height="30" Width="30"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Left"
-                                                    Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock Text="{x:Bind AudienceChallenge.ChallengeTask, Mode=OneWay}"
-                                                        VerticalAlignment="Center"
-                                                        HorizontalAlignment="Stretch" />
-                                            <TextBlock Text="{x:Bind AudienceChallenge.Game.Name, Mode=OneWay}"
-                                                        VerticalAlignment="Top"
-                                                        HorizontalAlignment="Stretch"
-                                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptyAudienceChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-                <PivotItem Header="Crew challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="CrewChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.CrewChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="CrewChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+                            <Ellipse Grid.Column="0" Grid.RowSpan="2"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Fill="{x:Bind GetIsChallengeCompletedBrush()}"/>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="{x:Bind Challenge.ChallengeTask, Mode=OneWay}"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Stretch" />
+                                <TextBlock Text="{x:Bind DecideCorrectText(Challenge), Mode=OneWay}"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Visibility="{x:Bind IsImageChallenge}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock Text="{x:Bind CrewChallenge.ChallengeTask}"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Stretch" />
-                                            <TextBlock Text="{x:Bind CrewChallenge.Game.Name}"
-                                                       VerticalAlignment="Top"
-                                                       HorizontalAlignment="Stretch"
-                                                       Style="{ThemeResource BodyTextBlockStyle}"
-                                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptyCrewChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-                <PivotItem Header="Multiple choice challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="MultipleChoiceChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="MultipleChoiceChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+                            <Ellipse Grid.Column="0"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Fill="{x:Bind GetIsChallengeCompletedBrush()}"/>
+                            <TextBlock Text="{x:Bind  DecideCorrectText(Challenge), Mode=OneWay}"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Grid Visibility="{x:Bind IsMusicChallenge}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock Text="{x:Bind MultipleChoiceChallenge.ChallengeTask}"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Stretch" />
-                                            <TextBlock Text="{x:Bind MultipleChoiceChallenge.Answers.Answer}"
-                                                       VerticalAlignment="Top"
-                                                       HorizontalAlignment="Stretch"
-                                                       Style="{ThemeResource BodyTextBlockStyle}"
-                                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptyMultipleChoiceChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-                <PivotItem Header="Music challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="MusicChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.MusicChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="MusicChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+                            <Ellipse Grid.Column="0"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Fill="{x:Bind GetIsChallengeCompletedBrush()}"/>
+                            <TextBlock Text="{x:Bind  DecideCorrectText(Challenge), Mode=OneWay}"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Grid Visibility="{x:Bind IsQuestionChallenge}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                                        <Ellipse Grid.Column="0"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <TextBlock Text="{x:Bind MusicChallenge.Song.Name}"
-                                                    Grid.Column="1"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Stretch"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptyMusicChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            <Ellipse Grid.Column="0" Grid.RowSpan="2"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Fill="{x:Bind GetIsChallengeCompletedBrush()}"/>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="{x:Bind Challenge.ChallengeTask}"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Stretch" />
+                                <TextBlock Text="{x:Bind  DecideCorrectText(Challenge), Mode=OneWay}"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                </PivotItem>
-                <PivotItem Header="Quiz challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="QuizChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.QuizChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="QuizChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock Text="{x:Bind QuizChallenge.ChallengeTask}"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Stretch" />
-                                            <TextBlock Text="{x:Bind QuizChallenge.Answers.Answer}"
-                                                       VerticalAlignment="Top"
-                                                       HorizontalAlignment="Stretch"
-                                                       Style="{ThemeResource BodyTextBlockStyle}"
-                                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptyQuizChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-                <PivotItem Header="Screenshot challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="ScreenshotChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.ScreenshotChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="ScreenshotChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Ellipse Grid.Column="0"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <TextBlock Text="{x:Bind ScreenshotChallenge.Image.Name}"
-                                                   Grid.Column="1"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Stretch"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptyScreenshotChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-                <PivotItem Header="Silhouette challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="SilhouetteChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.SilhouetteChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="SilhouetteChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Ellipse Grid.Column="0"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <TextBlock Text="{x:Bind SilhouetteChallenge.Image.Name}"
-                                                   Grid.Column="1"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Stretch"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptySilhouetteChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-                <PivotItem Header="Sologame challenges">
-                    <Grid Padding="5">
-                        <ListView x:Name="SologameChallengeList"
-                                  ItemsSource="{x:Bind ViewModel.SologameChallenges}"
-                                  SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="SologameChallengeDataTemplate"
-                                                x:DataType="helpers:ListItemMainPage">
-                                    <Grid x:Name="challengeItemGrid">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Ellipse Grid.Column="0" Grid.RowSpan="2"
-                                                 Visibility="Visible" Height="30" Width="30"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Left"
-                                                 Fill="{x:Bind GetIsChallengeCompletedString()}"/>
-                                        <StackPanel Grid.Row="0" Grid.Column="1">
-                                            <TextBlock Text="{x:Bind SologameChallenge.ChallengeTask}"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Stretch" />
-                                            <TextBlock Text="{x:Bind SologameChallenge.Game.Name}"
-                                                       VerticalAlignment="Top"
-                                                       HorizontalAlignment="Stretch"
-                                                       Style="{ThemeResource BodyTextBlockStyle}"
-                                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <TextBlock x:Name="EmptySologameChallenges"
-                                    Text="No items found"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                    </Grid>
-                </PivotItem>
-        </Pivot>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

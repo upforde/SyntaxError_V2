@@ -127,6 +127,7 @@
     <Compile Include="DataAccess\MediaObjects.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\GameObjectForSending.cs" />
+    <Compile Include="Helpers\GroupedChallengesList.cs" />
     <Compile Include="Helpers\ListItemMainPage.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\Observable.cs" />

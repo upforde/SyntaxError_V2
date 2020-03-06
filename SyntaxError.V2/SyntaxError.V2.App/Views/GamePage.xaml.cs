@@ -123,18 +123,38 @@ namespace SyntaxError.V2.App.Views
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            GameProfile = (e.Parameter as GameObjectForSending).GameProfile;
+            GameProfile = (e.Parameter as ListItemMainPage).GameProfile;
             
-            foreach (ListItemMainPage challenge in ((GameObjectForSending)e.Parameter).Challenges)
+            foreach (ListItemMainPage challenge in ((ListItemMainPage)e.Parameter).Challenges)
             {
-                if(challenge.AudienceChallenge != null) AudienceChallenges.Add(challenge.AudienceChallenge);
-                else if(challenge.CrewChallenge != null) CrewChallenges.Add(challenge.CrewChallenge);
-                else if(challenge.MultipleChoiceChallenge != null) MultipleChoiceChallenges.Add(challenge.MultipleChoiceChallenge);
-                else if(challenge.MusicChallenge != null) MusicChallenges.Add(challenge.MusicChallenge);
-                else if(challenge.QuizChallenge != null) QuizChallenges.Add(challenge.QuizChallenge);
-                else if(challenge.ScreenshotChallenge != null) ScreenshotChallenges.Add(challenge.ScreenshotChallenge);
-                else if(challenge.SilhouetteChallenge != null) SilhouetteChallenges.Add(challenge.SilhouetteChallenge);
-                else if(challenge.SologameChallenge != null) SologameChallenges.Add(challenge.SologameChallenge);
+                if(challenge.Challenge != null)
+                    switch (challenge.Challenge.GetDiscriminator())
+                    {
+                        case "AudienceChallenge":
+                            AudienceChallenges.Add(challenge.Challenge as AudienceChallenge);
+                            break;
+                        case "CrewChallenge":
+                            CrewChallenges.Add(challenge.Challenge as CrewChallenge);
+                            break;
+                        case "MultipleChoiceChallenge":
+                            MultipleChoiceChallenges.Add(challenge.Challenge as MultipleChoiceChallenge);
+                            break;
+                        case "MusicChallenge":
+                            MusicChallenges.Add(challenge.Challenge as MusicChallenge);
+                            break;
+                        case "QuizChallenge":
+                            QuizChallenges.Add(challenge.Challenge as QuizChallenge);
+                            break;
+                        case "ScreenshotChallenge":
+                            ScreenshotChallenges.Add(challenge.Challenge as ScreenshotChallenge);
+                            break;
+                        case "SilhouetteChallenge":
+                            SilhouetteChallenges.Add(challenge.Challenge as SilhouetteChallenge);
+                            break;
+                        case "SologameChallenge":
+                            SologameChallenges.Add(challenge.Challenge as SologameChallenge);
+                            break;
+                    }
             }
 
             CoreApplicationView newView = CoreApplication.CreateNewView();

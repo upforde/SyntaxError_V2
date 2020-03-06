@@ -6,8 +6,10 @@ using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.UI.Core;
@@ -90,59 +92,13 @@ namespace SyntaxError.V2.App.Views
             try
             {
                 ViewModel.PutChallengesInLists(listItem.GameProfile);
-                ChangeVisibility();
+                ChallengesCVS.Source = GetChallengesGrouped();
                 PlayButton.IsEnabled = true;
             }
             catch (NullReferenceException)
             {
-                foreach (var item in ViewModel.ChallengeListList)
-                    item.Clear();
-                ChangeVisibility();
+                ViewModel.GameProfileChallenges.Clear();
             }
-        }
-
-        /// <summary>Swaps the visibility of List and TextBlock that says 'no items'.</summary>
-        private void ChangeVisibility()
-        {
-            var audience = (ChallengeList.Items[0] as PivotItem).Content as Grid;
-            var count = (audience.Children[0] as ListView).Items.Count;
-            (audience.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (audience.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-            
-            var crew = (ChallengeList.Items[1] as PivotItem).Content as Grid;
-            count = (crew.Children[0] as ListView).Items.Count;
-            (crew.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (crew.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
-            var multiple = (ChallengeList.Items[2] as PivotItem).Content as Grid;
-            count = (multiple.Children[0] as ListView).Items.Count;
-            (multiple.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (multiple.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
-            var music = (ChallengeList.Items[3] as PivotItem).Content as Grid;
-            count = (music.Children[0] as ListView).Items.Count;
-            (music.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (music.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
-            var quiz = (ChallengeList.Items[4] as PivotItem).Content as Grid;
-            count = (quiz.Children[0] as ListView).Items.Count;
-            (quiz.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (quiz.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
-            var screenshot = (ChallengeList.Items[5] as PivotItem).Content as Grid;
-            count = (screenshot.Children[0] as ListView).Items.Count;
-            (screenshot.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (screenshot.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
-            var silouette = (ChallengeList.Items[6] as PivotItem).Content as Grid;
-            count = (silouette.Children[0] as ListView).Items.Count;
-            (silouette.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (silouette.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
-
-            var sologame = (ChallengeList.Items[7] as PivotItem).Content as Grid;
-            count = (sologame.Children[0] as ListView).Items.Count;
-            (sologame.Children[0] as ListView).Visibility = (count == 0) ? Visibility.Collapsed: Visibility.Visible;
-            (sologame.Children[1] as TextBlock).Visibility = (count == 0) ? Visibility.Visible: Visibility.Collapsed;
         }
         
         private void AppBarButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -159,21 +115,14 @@ namespace SyntaxError.V2.App.Views
 
         private async void AppBarButtonPlay_Click(object sender, RoutedEventArgs e)
         {
-            var gameProfileWithObjects = new GameObjectForSending
+            if((GameProfilesList.SelectedItem as ListItemMainPage) == null) return;
+
+            var gameProfileWithObjects = new ListItemMainPage
             {
                 GameProfile = (GameProfilesList.SelectedItem as ListItemMainPage).GameProfile,
-                Challenges = new List<ListItemMainPage>()
+                Challenges = ViewModel.GameProfileChallenges
             };
-
-            if (ViewModel.AudienceChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.AudienceChallenges);
-            if (ViewModel.CrewChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.CrewChallenges);
-            if (ViewModel.MultipleChoiceChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.MultipleChoiceChallenges);
-            if (ViewModel.MusicChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.MusicChallenges);
-            if (ViewModel.QuizChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.QuizChallenges);
-            if (ViewModel.ScreenshotChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.ScreenshotChallenges);
-            if (ViewModel.SilhouetteChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.SilhouetteChallenges);
-            if (ViewModel.SologameChallenges != null) gameProfileWithObjects.Challenges.AddRange(ViewModel.SologameChallenges);
-
+            
             try{
                 CoreApplicationView newView = CoreApplication.CreateNewView();
                 int newViewId = 0;
@@ -188,6 +137,16 @@ namespace SyntaxError.V2.App.Views
                 });
                 bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
             } catch (NullReferenceException){}
+        }
+        
+        public ObservableCollection<GroupChallengesList> GetChallengesGrouped()
+        {
+            var query = from item in ViewModel.GameProfileChallenges
+            group item by item.Challenge.GetDiscriminator() into g
+            orderby g.Key
+            select new GroupChallengesList(g) { Key = g.Key };
+    
+            return new ObservableCollection<GroupChallengesList>(query);
         }
     }
 }

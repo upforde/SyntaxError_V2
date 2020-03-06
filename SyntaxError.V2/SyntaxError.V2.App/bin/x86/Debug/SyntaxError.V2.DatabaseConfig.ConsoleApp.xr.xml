@@ -4,6 +4,7 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="Key" />
     <RootPropertyPathName Name="SelectedItem" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -258,6 +259,10 @@
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="IsItemClickEnabled" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="GroupStyle" />
       <RootEvent Name="Tapped" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
@@ -306,6 +311,22 @@
       <RootMethod Name="SetKey" />
     </RootType>
     <RootType FullName="SyntaxError.V2.App.Views.GamePage" />
+    <RootType FullName="Windows.UI.Xaml.Data.CollectionViewSource">
+      <RootProperty Name="IsSourceGrouped" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsStackPanel">
+      <RootProperty Name="AreStickyGroupHeadersEnabled" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.GroupStyle">
+      <RootProperty Name="HeaderTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="ElementName" />
+      <RootProperty Name="Path" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Ellipse">
       <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
@@ -313,10 +334,6 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Fill" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="ElementName" />
-      <RootProperty Name="Path" />
     </RootType>
     <RootType FullName="SyntaxError.V2.App.Views.MainPage" />
     <RootType FullName="SyntaxError.V2.App.Helpers.EnumToBooleanConverter">
