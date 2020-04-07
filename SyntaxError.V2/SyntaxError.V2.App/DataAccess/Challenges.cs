@@ -13,17 +13,6 @@ namespace SyntaxError.V2.App.DataAccess
     {
         readonly HttpClient _httpClient = new HttpClient();
         static readonly Uri challengesBaseUri = new Uri("http://localhost:51749/api/ChallengeBases");
-        static readonly string[] challengeTypes =
-            {
-                "AudienceChallenge",
-                "CrewChallenge",
-                "MultipleChoiceChallenge",
-                "MusicChallenge",
-                "QuizChallenge",
-                "ScreenshotChallenge",
-                "SilhouetteChallenge",
-                "SologameChallenge"
-            };
 
         /// <summary>Creates the Challenge asynchronous.</summary>
         /// <param name="param">The parameter.</param>
@@ -47,47 +36,66 @@ namespace SyntaxError.V2.App.DataAccess
         public async Task<List<ChallengeBase>> GetChallengesAsync()
         {
             List<ChallengeBase> challenges = new List<ChallengeBase>();
-            foreach (var type in challengeTypes)
-            {
-                HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=" + type));
-                string json = await result.Content.ReadAsStringAsync();
-                switch (type)
-                {
-                    case "AudienceChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<AudienceChallenge[]>(json));
-                        break;
-                    case "CrewChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<CrewChallenge[]>(json));
-                        break;
-                    case "MultipleChoiceChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<MultipleChoiceChallenge[]>(json));
-                        break;
-                    case "MusicChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<MusicChallenge[]>(json));
-                        break;
-                    case "QuizChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<QuizChallenge[]>(json));
-                        break;
-                    case "ScreenshotChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<ScreenshotChallenge[]>(json));
-                        break;
-                    case "SilhouetteChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<SilhouetteChallenge[]>(json));
-                        break;
-                    case "SologameChallenge":
-                        if (result.IsSuccessStatusCode)
-                            challenges.AddRange(JsonConvert.DeserializeObject<SologameChallenge[]>(json));
-                        break;
-                }
-            }
+            challenges.AddRange(await GetAudienceChallengesAsync());
+            challenges.AddRange(await GetCrewChallengesAsync());
+            challenges.AddRange(await GetMultipleChoiceChallengesAsync());
+            challenges.AddRange(await GetMusicChallengesAsync());
+            challenges.AddRange(await GetQuizChallengesAsync());
+            challenges.AddRange(await GetScreenshotChallengesAsync());
+            challenges.AddRange(await GetSilhouetteChallengesAsync());
+            challenges.AddRange(await GetSologameChallengesAsync());
             return challenges;
+        }
+
+        public async Task<List<AudienceChallenge>> GetAudienceChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=AudienceChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<AudienceChallenge[]>(json).ToList();
+        }
+
+        public async Task<CrewChallenge[]> GetCrewChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=CrewChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<CrewChallenge[]>(json);
+        }
+
+        public async Task<MultipleChoiceChallenge[]> GetMultipleChoiceChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=MultipleChoiceChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<MultipleChoiceChallenge[]>(json);
+        }
+        public async Task<MusicChallenge[]> GetMusicChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=MusicChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<MusicChallenge[]>(json);
+        }
+        public async Task<QuizChallenge[]> GetQuizChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=QuizChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<QuizChallenge[]>(json);
+        }
+        public async Task<ScreenshotChallenge[]> GetScreenshotChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=ScreenshotChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ScreenshotChallenge[]>(json);
+        }
+        public async Task<SilhouetteChallenge[]> GetSilhouetteChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=SilhouetteChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<SilhouetteChallenge[]>(json);
+        }
+        public async Task<SologameChallenge[]> GetSologameChallengesAsync()
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(challengesBaseUri, "ChallengeBases/?type=SologameChallenge"));
+            string json = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<SologameChallenge[]>(json);
         }
 
         /// <summary>Edits the media object asynchronous.</summary>

@@ -13,6 +13,7 @@ using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.Services;
 using SyntaxError.V2.App.Views;
 using SyntaxError.V2.Modell.ChallengeObjects;
+using SyntaxError.V2.Modell.Challenges;
 using Windows.UI.Xaml.Media.Animation;
 
 namespace SyntaxError.V2.App.ViewModels
@@ -67,12 +68,18 @@ namespace SyntaxError.V2.App.ViewModels
                                                             {
                                                                 case "Game":
                                                                     Games.Remove(param as Game);
+                                                                    CreateChallengesViewModel.AudienceChallenges.RemoveAll(x => x.GameID == param.ID);
+                                                                    CreateChallengesViewModel.CrewChallenges.RemoveAll(x => x.GameID == param.ID);
+                                                                    CreateChallengesViewModel.SologameChallenges.RemoveAll(x => x.GameID == param.ID);
                                                                     break;
                                                                 case "Image":
                                                                     Images.Remove(param as Image);
+                                                                    CreateChallengesViewModel.ScreenshotChallenges.RemoveAll(x => x.ImageID == param.ID);
+                                                                    CreateChallengesViewModel.SilhouetteChallenges.RemoveAll(x => x.ImageID == param.ID);
                                                                     break;
                                                                 case "Music":
                                                                     Music.Remove(param as Music);
+                                                                    CreateChallengesViewModel.MusicChallenges.RemoveAll(x => x.SongID == param.ID);
                                                                     break;
                                                             }
                                                     }, param => param != null);

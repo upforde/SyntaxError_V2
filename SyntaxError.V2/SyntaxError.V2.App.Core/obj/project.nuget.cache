@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+ZkJVppcdNZCoKwtKrEyLOpau0b6eNgSrZ/maEUE1kaIvV/H9EMayvdUGuBsJ7HW68lhEk17/cQ9XETM9Sugyg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App.Core\\SyntaxError.V2.App.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\upfor\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\upfor\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

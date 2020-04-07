@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "UAP,Version=v10.0.17763": {
+    "UAP,Version=v10.0.18362": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -367,7 +367,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -551,7 +551,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -561,7 +561,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-arm": {
+    "UAP,Version=v10.0.18362/win10-arm": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -928,7 +928,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1246,7 +1246,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -1256,7 +1256,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-arm-aot": {
+    "UAP,Version=v10.0.18362/win10-arm-aot": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -1623,7 +1623,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1942,7 +1942,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -1952,7 +1952,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-arm64-aot": {
+    "UAP,Version=v10.0.18362/win10-arm64-aot": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -2319,7 +2319,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -2630,7 +2630,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -2640,7 +2640,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-x64": {
+    "UAP,Version=v10.0.18362/win10-x64": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -3007,7 +3007,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -3325,7 +3325,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -3335,7 +3335,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-x64-aot": {
+    "UAP,Version=v10.0.18362/win10-x64-aot": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -3702,7 +3702,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -4021,7 +4021,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -4031,7 +4031,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-x86": {
+    "UAP,Version=v10.0.18362/win10-x86": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -4398,7 +4398,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -4716,7 +4716,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -4726,7 +4726,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17763/win10-x86-aot": {
+    "UAP,Version=v10.0.18362/win10-x86-aot": {
       "ColorCode.Core/2.0.6": {
         "type": "package",
         "dependencies": {
@@ -5093,7 +5093,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -5412,7 +5412,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/SyntaxError.V2.App.Core.dll": {}
@@ -5452,7 +5452,7 @@
       ]
     },
     "Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "gY/ksTbfZCB00oBIGXyY9+vcfpNMvOmbSw0lmalj0ew6Yjw4kRn3bOyZ7jvTY0n43yopWxxBaWesGTQcAusntg==",
+      "sha512": "u3AtYGuq1wFEXYug2PYEM/BsfD30MwvPdfYa5aUS9aIsadV4YMGwgXBurrf6yazlfSz4jBSPh02Jc/skkBYseA==",
       "type": "package",
       "path": "microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -6043,11 +6043,12 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -6170,42 +6171,33 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.1": {
-      "sha512": "jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.1",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.pdb",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.pdb",
         "lib/net35/Newtonsoft.Json.xml",
         "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.pdb",
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.pdb",
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.pdb",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.pdb",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.pdb",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.1.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -6417,7 +6409,7 @@
       ]
     },
     "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "26bk91kdrCRu2AyVr89JLcChYVlmjVhzDkdfgjzGvcxMfP7R2YgUYwChAOr83LK3uymw0GIGUL2X1M76mrPX2A==",
+      "sha512": "gvTd561mfNUCh3NCwltlTBMNDn3oKGnrr95zSD6pEDGLgKm1As6sawAz+Fhuj/7VFSqQRYw9qPGIo8eoQZnhiw==",
       "type": "package",
       "path": "runtime.win10-arm.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -6716,7 +6708,7 @@
       ]
     },
     "runtime.win10-arm.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "uOFR+/pJt7Umh26bHklerwIOGUXbNaIrBfe/TIqdl+Fm13LiX58vhc2cJeDIIp821hqyZ6DkciIGFpRhJ8CPmA==",
+      "sha512": "RN/vjLWi/7ArJDafYU8aB5mHoC071BHVA196JJtlJsjfB9CSaZ5SdIaUhZTLigdyoyknnpScLx+nuPMZAB1ZxA==",
       "type": "package",
       "path": "runtime.win10-arm.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -7480,7 +7472,7 @@
       ]
     },
     "runtime.win10-arm64.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "VPlKZvbNbdX/oWIQxh7U3y+w4k7eMBj8eqYL+BF1AdcXbisNyLeEOtBwDpZZrwwJZztiQ0WLSzbkLEuZGoTbAA==",
+      "sha512": "EE1OkMLtTNVIhrv3JgykBXo+uuLaYKS3TvdnTVZrPfS4fIB4ohanHkh/yBkL9ONKJ0vAmxREw/tPG5BXTCHVxw==",
       "type": "package",
       "path": "runtime.win10-arm64.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -7658,7 +7650,7 @@
       ]
     },
     "runtime.win10-arm64.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "nLt0gIS43aEDxDW2mS+rrxORNukr2MjaEi5F1lrhZqK/v1Y17H6ML+vZoy9f61aHIEJ3a+TrBS2HBREa0JmWjA==",
+      "sha512": "ypogg/fd+tGu/RqD1FE2BnoR9MGBz4ftXX9mtHiO7LT9ylwx9x16y4huEYnOCK82TY/AvbvgccwXwaNav48jaw==",
       "type": "package",
       "path": "runtime.win10-arm64.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -8221,7 +8213,7 @@
       ]
     },
     "runtime.win10-x64.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "Q2fug+oB2XouUS3px0gTj3FMRNqH/phKpsleF4r0XxIvkgVb2uwKGEQuJxNK7reGOkoHLTywmOhEzK3T1vHWpA==",
+      "sha512": "P+SCTHJJ4L/KeqDxiMNp4Ga2/02hJZqytiTWoQ/A45xzSAKMHO5KvWPvFLNk6+Yy7/SIEBM3oDMQWuDm4/5kSA==",
       "type": "package",
       "path": "runtime.win10-x64.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -8514,7 +8506,7 @@
       ]
     },
     "runtime.win10-x64.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "fMh4rdxMCEn231IrJcGw1efdvbqgZDHof/QUMZk18sMyXRfbYOv3thHeDVUqm7BVv++j2dN+9tahf9QV38aQZw==",
+      "sha512": "yLpdE/5/EdNTICRCmllNGDOS5jhsbpaRLEcMhPUHN0IeWFRnalYRbiQVDz0NXAOFt774NfGcOopECBiDHppYBQ==",
       "type": "package",
       "path": "runtime.win10-x64.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -9278,7 +9270,7 @@
       ]
     },
     "runtime.win10-x86.Microsoft.Net.Native.Compiler/2.2.3": {
-      "sha512": "LEqVUkB5JKPUatE73OB2epKNscsG7aqvpxr8rVSV8slsm3VW8DvHE/aXVXpl2AoOTzA16W3o4yB/mnalylKDeQ==",
+      "sha512": "Izyr+0ohPBJ63rWmI8ZnlGgw9TUgSxjTRQmRiKC3TFHWnKh9MTIdVCOtE6aWojcxTb2fIAtAEV2yKCQFLrAPGA==",
       "type": "package",
       "path": "runtime.win10-x86.microsoft.net.native.compiler/2.2.3",
       "hasTools": true,
@@ -9571,7 +9563,7 @@
       ]
     },
     "runtime.win10-x86.Microsoft.Net.Native.SharedLibrary/2.2.3": {
-      "sha512": "dYO/1+ZP+/i66Al4AaatEv4Ll5xgj6mdkRcZ+vEJkMbpabEzTvCRgnO850YHNFhP7WESzzy2R3kyGz4FCOcd7g==",
+      "sha512": "bSeHHQc62j7mZx/M3RojqcDuOtrSqXUWB75PnBrGluFlDYVFOeB1rP2o66uqgYYvH0ZbTH2j5jCoyCcmtULMvg==",
       "type": "package",
       "path": "runtime.win10-x86.microsoft.net.native.sharedlibrary/2.2.3",
       "hasTools": true,
@@ -10223,7 +10215,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "UAP,Version=v10.0.17763": [
+    "UAP,Version=v10.0.18362": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.8",
       "Microsoft.Toolkit.Uwp.Connectivity >= 5.1.1",
       "Microsoft.Toolkit.Uwp.Notifications >= 5.1.1",
@@ -10256,14 +10248,14 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "uap10.0.17763"
+        "uap10.0.18362"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "uap10.0.17763": {
+        "uap10.0.18362": {
           "projectReferences": {
             "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App.Core\\SyntaxError.V2.App.Core.csproj": {
               "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App.Core\\SyntaxError.V2.App.Core.csproj"
@@ -10278,7 +10270,7 @@
       }
     },
     "frameworks": {
-      "uap10.0.17763": {
+      "uap10.0.18362": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",

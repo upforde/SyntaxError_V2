@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxError.V2.Modell", "SyntaxError.V2.Model\SyntaxError.V2.Modell.csproj", "{A7050338-B932-4269-AB08-3E82F793EAE5}"
 EndProject
@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxError.V2.App", "Synta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxError.V2.App.Core", "SyntaxError.V2.App.Core\SyntaxError.V2.App.Core.csproj", "{86CE3FD0-782E-4E96-9F4D-9A1B7378ED9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxError.V2.ImageAPI", "SyntaxError.V2.ImageAPI\SyntaxError.V2.ImageAPI.csproj", "{682DB873-580A-4AF2-9BAF-8035C6D5902D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxError.V2.ImageAPI", "SyntaxError.V2.ImageAPI\SyntaxError.V2.ImageAPI.csproj", "{682DB873-580A-4AF2-9BAF-8035C6D5902D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

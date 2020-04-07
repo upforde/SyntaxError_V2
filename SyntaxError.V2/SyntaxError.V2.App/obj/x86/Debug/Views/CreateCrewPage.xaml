@@ -22,7 +22,6 @@
               Padding="15, 15, 15, 0">
             <TextBlock Text="Crew Members" Style="{ThemeResource TitleTextBlockStyle}"/>
         </Grid>
-
         <Grid x:ConnectionId='4' x:Name="ActionBar"
               HorizontalAlignment="Stretch"
               Grid.Row="1"
@@ -32,7 +31,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
                     
-            <AutoSuggestBox x:ConnectionId='14' x:Name="SearchBar"
+            <AutoSuggestBox x:ConnectionId='15' x:Name="SearchBar"
                             PlaceholderText="Search"
                             Grid.Column="0"
                                                                     
@@ -42,20 +41,18 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"/>
                     
-            <AppBarButton x:ConnectionId='15' x:Name="AddButton"
+            <AppBarButton x:ConnectionId='16' x:Name="AddButton"
                           Grid.Column="1"
                           Icon="Add"
                           Label="New Crew Member"
                                                               
                           HorizontalAlignment="Right"/>
         </Grid>
-
         <ProgressBar x:ConnectionId='5' x:Name="LoadingProgressBar"
                      Grid.Row="2"
                      VerticalAlignment="Top"
                      IsIndeterminate="True"
                      Visibility="Collapsed"/>
-        
         <controls:AdaptiveGridView x:ConnectionId='6' x:Name="CrewGrid"
                                                                   
                                    Grid.Row="2"
@@ -69,12 +66,12 @@
                                    animations:ReorderGridAnimation.Duration="300">
             <controls:AdaptiveGridView.ItemTemplate>
                 <DataTemplate                                         >
-                    <Grid x:ConnectionId='12' x:Name="connectedElement" 
+                    <Grid x:ConnectionId='13' x:Name="connectedElement" 
                             Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE77B;"/>
-                            <TextBlock x:ConnectionId='13'
+                            <TextBlock x:ConnectionId='14'
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Center"
                                                                     

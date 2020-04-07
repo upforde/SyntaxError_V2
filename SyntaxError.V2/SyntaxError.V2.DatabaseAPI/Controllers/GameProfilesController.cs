@@ -76,6 +76,11 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
             _context.Entry(gameProfile).State = EntityState.Modified;
 
+            _context.UsingChallenges.RemoveRange(await _context.UsingChallenges.Where(x => x.UsingID == gameProfile.ProfileID).ToListAsync());
+
+            foreach (var challenge in gameProfile.Profile.Challenges.)
+                _context.UsingChallenges.Add(new UsingChallenge { ChallengeID=challenge.ChallengeID, UsingID=gameProfile.ProfileID });
+
             try
             {
                 await _context.SaveChangesAsync();

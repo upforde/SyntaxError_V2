@@ -20,14 +20,14 @@ namespace SyntaxError.V2.App.ViewModels
         /// <value>The delete command.</value>
         public ICommand DeleteCommand { get; set; }
 
-        public ObservableCollection<AudienceChallenge> AudienceChallenges { get; set; } = new ObservableCollection<AudienceChallenge>();
-        public ObservableCollection<CrewChallenge> CrewChallenges { get; set; } = new ObservableCollection<CrewChallenge>();
-        public ObservableCollection<MultipleChoiceChallenge> MultipleChoiceChallenges { get; set; } = new ObservableCollection<MultipleChoiceChallenge>();
-        public ObservableCollection<MusicChallenge> MusicChallenges { get; set; } = new ObservableCollection<MusicChallenge>();
-        public ObservableCollection<QuizChallenge> QuizChallenges { get; set; } = new ObservableCollection<QuizChallenge>();
-        public ObservableCollection<ScreenshotChallenge> ScreenshotChallenges { get; set; } = new ObservableCollection<ScreenshotChallenge>();
-        public ObservableCollection<SilhouetteChallenge> SilhouetteChallenges { get; set; } = new ObservableCollection<SilhouetteChallenge>();
-        public ObservableCollection<SologameChallenge> SologameChallenges { get; set; } = new ObservableCollection<SologameChallenge>();
+        public static List<AudienceChallenge> AudienceChallenges { get; set; } = new List<AudienceChallenge>();
+        public static List<CrewChallenge> CrewChallenges { get; set; } = new List<CrewChallenge>();
+        public static List<MultipleChoiceChallenge> MultipleChoiceChallenges { get; set; } = new List<MultipleChoiceChallenge>();
+        public static List<MusicChallenge> MusicChallenges { get; set; } = new List<MusicChallenge>();
+        public static List<QuizChallenge> QuizChallenges { get; set; } = new List<QuizChallenge>();
+        public static List<ScreenshotChallenge> ScreenshotChallenges { get; set; } = new List<ScreenshotChallenge>();
+        public static List<SilhouetteChallenge> SilhouetteChallenges { get; set; } = new List<SilhouetteChallenge>();
+        public static List<SologameChallenge> SologameChallenges { get; set; } = new List<SologameChallenge>();
         
         public ObservableCollection<AudienceChallenge> FilteredAudience { get; set; } = new ObservableCollection<AudienceChallenge>();
         public ObservableCollection<CrewChallenge> FilteredCrew { get; set; } = new ObservableCollection<CrewChallenge>();
@@ -119,75 +119,66 @@ namespace SyntaxError.V2.App.ViewModels
 
         /// <summary>Loads the challenges from database asynchronous.</summary>
         /// <returns></returns>
-        internal async Task LoadChallengesFromDBAsync()
+        public async Task LoadChallengesFromDBAsync()
         {
-            var challenges = await ChallengesDataAccess.GetChallengesAsync();
-            
+            if (AudienceChallenges.Count == 0)
+                AudienceChallenges.AddRange(await ChallengesDataAccess.GetAudienceChallengesAsync());
+            if (CrewChallenges.Count == 0)
+                CrewChallenges.AddRange(await ChallengesDataAccess.GetCrewChallengesAsync());
+            if (MultipleChoiceChallenges.Count == 0)
+                MultipleChoiceChallenges.AddRange(await ChallengesDataAccess.GetMultipleChoiceChallengesAsync());
+            if (MusicChallenges.Count == 0)
+                MusicChallenges.AddRange(await ChallengesDataAccess.GetMusicChallengesAsync());
+            if (QuizChallenges.Count == 0)
+                QuizChallenges.AddRange(await ChallengesDataAccess.GetQuizChallengesAsync());
+            if (ScreenshotChallenges.Count == 0)
+                ScreenshotChallenges.AddRange(await ChallengesDataAccess.GetScreenshotChallengesAsync());
+            if (SilhouetteChallenges.Count == 0)
+                SilhouetteChallenges.AddRange(await ChallengesDataAccess.GetSilhouetteChallengesAsync());
+            if (SologameChallenges.Count == 0)
+                SologameChallenges.AddRange(await ChallengesDataAccess.GetSologameChallengesAsync());
+
             await ObjectsViewModel.LoadObjectsFromDBAsync();
             foreach (Game game in CreateObjectsViewModel.Games) Games.Add(game);
             foreach (Image image in CreateObjectsViewModel.Images) Images.Add(image);
             foreach (Music music in CreateObjectsViewModel.Music) Music.Add(music);
 
-            foreach (ChallengeBase challenge in challenges)
-            {
-                switch (challenge.GetDiscriminator())
-                {
-                    case "AudienceChallenge":
-                        foreach (Game game in Games)
-                            if (game.ID.Equals((challenge as AudienceChallenge).GameID)) {
-                                (challenge as AudienceChallenge).Game = game;
-                                break;
-                            }
-                        AudienceChallenges.Add(challenge as AudienceChallenge);
+            foreach (AudienceChallenge challenge in AudienceChallenges)
+                foreach (Game game in Games)
+                    if (game.ID.Equals(challenge.GameID)) {
+                        challenge.Game = game;
                         break;
-                    case "CrewChallenge":
-                        foreach (Game game in Games)
-                            if (game.ID.Equals((challenge as CrewChallenge).GameID)) {
-                                (challenge as CrewChallenge).Game = game;
-                                break;
-                            }
-                        CrewChallenges.Add(challenge as CrewChallenge);
+                    }
+            foreach (CrewChallenge challenge in CrewChallenges)
+                foreach (Game game in Games)
+                        if (game.ID.Equals(challenge.GameID)) {
+                            challenge.Game = game;
+                            break;
+                        }
+            foreach (MusicChallenge challenge in MusicChallenges)
+                foreach (Music music in Music)
+                    if (music.ID.Equals(challenge.SongID)){
+                        challenge.Song = music;
                         break;
-                    case "MultipleChoiceChallenge":
-                        MultipleChoiceChallenges.Add(challenge as MultipleChoiceChallenge);
+                    }
+            foreach (ScreenshotChallenge challenge in ScreenshotChallenges)
+                foreach (Image image in Images)
+                    if (image.ID.Equals(challenge.ImageID)){
+                        challenge.Image = image;
                         break;
-                    case "MusicChallenge":
-                        foreach (Music music in Music)
-                            if (music.ID.Equals((challenge as MusicChallenge).SongID)){
-                                (challenge as MusicChallenge).Song = music;
-                                break;
-                            }
-                        MusicChallenges.Add(challenge as MusicChallenge);
+                    }
+            foreach (SilhouetteChallenge challenge in SilhouetteChallenges)
+                foreach (Image image in Images)
+                    if (image.ID.Equals(challenge.ImageID)){
+                        challenge.Image = image;
                         break;
-                    case "QuizChallenge":
-                        QuizChallenges.Add(challenge as QuizChallenge);
+                    }
+            foreach (SologameChallenge challenge in SologameChallenges)
+                foreach (Game game in Games)
+                    if (game.ID.Equals(challenge.GameID)){
+                        challenge.Game = game;
                         break;
-                    case "ScreenshotChallenge":
-                        foreach (Image image in Images)
-                            if (image.ID.Equals((challenge as ScreenshotChallenge).ImageID)){
-                                (challenge as ScreenshotChallenge).Image = image;
-                                break;
-                            }
-                        ScreenshotChallenges.Add(challenge as ScreenshotChallenge);
-                        break;
-                    case "SilhouetteChallenge":
-                        foreach (Image image in Images)
-                            if (image.ID.Equals((challenge as SilhouetteChallenge).ImageID)){
-                                (challenge as SilhouetteChallenge).Image = image;
-                                break;
-                            }
-                        SilhouetteChallenges.Add(challenge as SilhouetteChallenge);
-                        break;
-                    case "SologameChallenge":
-                        foreach (Game game in Games)
-                            if (game.ID.Equals((challenge as SologameChallenge).GameID)){
-                                (challenge as SologameChallenge).Game = game;
-                                break;
-                            }
-                        SologameChallenges.Add(challenge as SologameChallenge);
-                        break;
-                }
-            }
+                    }
 
             CreateNewObjectPlaceholder();
         }
@@ -219,8 +210,9 @@ namespace SyntaxError.V2.App.ViewModels
                     break;
                 case 3:
                     FilteredMusic.Clear();
-                    foreach (var filtered in MusicChallenges.Where(x => x.Song.Name.ToLower().StartsWith(filterText)))
-                        FilteredMusic.Add(filtered);
+                    foreach (var filtered in MusicChallenges)
+                        if (filtered.Song != null && filtered.Song.Name.ToLower().StartsWith(filterText)) FilteredMusic.Add(filtered);
+                        else if (filterText.Equals("")) FilteredMusic.Add(filtered);
                     break;
                 case 4:
                     FilteredQuiz.Clear();
@@ -229,13 +221,15 @@ namespace SyntaxError.V2.App.ViewModels
                     break;
                 case 5:
                     FilteredScreen.Clear();
-                    foreach (var filtered in ScreenshotChallenges.Where(x => x.Image.Name.ToLower().StartsWith(filterText)))
-                        FilteredScreen.Add(filtered);
+                    foreach (var filtered in ScreenshotChallenges)
+                        if (filtered.Image != null && filtered.Image.Name.ToLower().StartsWith(filterText)) FilteredScreen.Add(filtered);
+                        else if (filterText.Equals("")) FilteredScreen.Add(filtered);
                     break;
                 case 6:
                     FilteredSilhu.Clear();
-                    foreach (var filtered in SilhouetteChallenges.Where(x => x.Image.Name.ToLower().StartsWith(filterText)))
-                        FilteredSilhu.Add(filtered);
+                    foreach (var filtered in SilhouetteChallenges)
+                        if (filtered.Image != null && filtered.Image.Name.ToLower().StartsWith(filterText)) FilteredSilhu.Add(filtered);
+                        else if (filterText.Equals("")) FilteredSilhu.Add(filtered);
                     break;
                 case 7:
                     FilteredSolo.Clear();
@@ -249,9 +243,9 @@ namespace SyntaxError.V2.App.ViewModels
         /// <summary>Creates the new object placeholder.</summary>
         internal void CreateNewObjectPlaceholder()
         {
-            if (!Games.Contains(new Game())) Games.Add(new Game{ Name="<Add a new game>" });
-            if (!Images.Contains(new Image())) Images.Add(new Image{ Name="<Add a new image>" });
-            if (!Music.Contains(new Music())) Music.Add(new Music{ Name="<Add a new song>" });
+            if (!Games.Last().Name.Equals("<Add a new game>")) Games.Add(new Game{ Name="<Add a new game>" });
+            if (!Images.Last().Name.Equals("<Add a new image>")) Images.Add(new Image{ Name="<Add a new image>" });
+            if (!Music.Last().Name.Equals("<Add a new song>")) Music.Add(new Music{ Name="<Add a new song>" });
         }
     }
 }

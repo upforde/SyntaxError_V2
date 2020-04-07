@@ -49,35 +49,35 @@ namespace SyntaxError.V2.App.Views
                                                         switch (param.GetDiscriminator())
                                                         {
                                                             case "AudienceChallenge":
-                                                                ViewModel.AudienceChallenges.Insert(0, param as AudienceChallenge);
+                                                                CreateChallengesViewModel.AudienceChallenges.Insert(0, param as AudienceChallenge);
                                                                 ViewModel.FilteredAudience.Insert(0, param as AudienceChallenge);
                                                                 break;
                                                             case "CrewChallenge":
-                                                                ViewModel.CrewChallenges.Insert(0, param as CrewChallenge);
+                                                                CreateChallengesViewModel.CrewChallenges.Insert(0, param as CrewChallenge);
                                                                 ViewModel.FilteredCrew.Insert(0, param as CrewChallenge);
                                                                 break;
                                                             case "MultipleChoiceChallenge":
-                                                                ViewModel.MultipleChoiceChallenges.Insert(0, param as MultipleChoiceChallenge);
+                                                                CreateChallengesViewModel.MultipleChoiceChallenges.Insert(0, param as MultipleChoiceChallenge);
                                                                 ViewModel.FilteredMulti.Insert(0, param as MultipleChoiceChallenge);
                                                                 break;
                                                             case "MusicChallenge":
-                                                                ViewModel.MusicChallenges.Insert(0, param as MusicChallenge);
+                                                                CreateChallengesViewModel.MusicChallenges.Insert(0, param as MusicChallenge);
                                                                 ViewModel.FilteredMusic.Insert(0, param as MusicChallenge);
                                                                 break;
                                                             case "QuizChallenge":
-                                                                ViewModel.QuizChallenges.Insert(0, param as QuizChallenge);
+                                                                CreateChallengesViewModel.QuizChallenges.Insert(0, param as QuizChallenge);
                                                                 ViewModel.FilteredQuiz.Insert(0, param as QuizChallenge);
                                                                 break;
                                                             case "ScreenshotChallenge":
-                                                                ViewModel.ScreenshotChallenges.Insert(0, param as ScreenshotChallenge);
+                                                                CreateChallengesViewModel.ScreenshotChallenges.Insert(0, param as ScreenshotChallenge);
                                                                 ViewModel.FilteredScreen.Insert(0, param as ScreenshotChallenge);
                                                                 break;
                                                             case "SilhouetteChallenge":
-                                                                ViewModel.SilhouetteChallenges.Insert(0, param as SilhouetteChallenge);
+                                                                CreateChallengesViewModel.SilhouetteChallenges.Insert(0, param as SilhouetteChallenge);
                                                                 ViewModel.FilteredSilhu.Insert(0, param as SilhouetteChallenge);
                                                                 break;
                                                             case "SologameChallenge":
-                                                                ViewModel.SologameChallenges.Insert(0, param as SologameChallenge);
+                                                                CreateChallengesViewModel.SologameChallenges.Insert(0, param as SologameChallenge);
                                                                 ViewModel.FilteredSolo.Insert(0, param as SologameChallenge);
                                                                 break;
                                                         }
@@ -490,43 +490,43 @@ namespace SyntaxError.V2.App.Views
             switch (ChallengeList.SelectedIndex)
             {
                 case 0:
-                    var audienceIndex = ViewModel.AudienceChallenges.IndexOf(ViewModel.AudienceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.AudienceChallenges[audienceIndex] = _storedChallenge as AudienceChallenge;
+                    var audienceIndex = CreateChallengesViewModel.AudienceChallenges.IndexOf(CreateChallengesViewModel.AudienceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.AudienceChallenges[audienceIndex] = _storedChallenge as AudienceChallenge;
                     ViewModel.FilteredAudience[audienceIndex] = _storedChallenge as AudienceChallenge;
                     break;
                 case 1:
-                    var crewIndex = ViewModel.CrewChallenges.IndexOf(ViewModel.CrewChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.CrewChallenges[crewIndex] = _storedChallenge as CrewChallenge;
+                    var crewIndex = CreateChallengesViewModel.CrewChallenges.IndexOf(CreateChallengesViewModel.CrewChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.CrewChallenges[crewIndex] = _storedChallenge as CrewChallenge;
                     ViewModel.FilteredCrew[crewIndex] = _storedChallenge as CrewChallenge;
                     break;
                 case 2:
-                    var multipleChoiceIndex = ViewModel.MultipleChoiceChallenges.IndexOf(ViewModel.MultipleChoiceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.MultipleChoiceChallenges[multipleChoiceIndex] = _storedChallenge as MultipleChoiceChallenge;
+                    var multipleChoiceIndex = CreateChallengesViewModel.MultipleChoiceChallenges.IndexOf(CreateChallengesViewModel.MultipleChoiceChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.MultipleChoiceChallenges[multipleChoiceIndex] = _storedChallenge as MultipleChoiceChallenge;
                     ViewModel.FilteredMulti[multipleChoiceIndex] = _storedChallenge as MultipleChoiceChallenge;
                     break;
                 case 3:
-                    var musicIndex = ViewModel.MusicChallenges.IndexOf(ViewModel.MusicChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.MusicChallenges[musicIndex] = _storedChallenge as MusicChallenge;
+                    var musicIndex = CreateChallengesViewModel.MusicChallenges.IndexOf(CreateChallengesViewModel.MusicChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.MusicChallenges[musicIndex] = _storedChallenge as MusicChallenge;
                     ViewModel.FilteredMusic[musicIndex] = _storedChallenge as MusicChallenge;
                     break;
                 case 4:
-                    var quizIndex = ViewModel.QuizChallenges.IndexOf(ViewModel.QuizChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.QuizChallenges[quizIndex] = _storedChallenge as QuizChallenge;
+                    var quizIndex = CreateChallengesViewModel.QuizChallenges.IndexOf(CreateChallengesViewModel.QuizChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.QuizChallenges[quizIndex] = _storedChallenge as QuizChallenge;
                     ViewModel.FilteredQuiz[quizIndex] = _storedChallenge as QuizChallenge;
                     break;
                 case 5:
-                    var screenshotIndex = ViewModel.ScreenshotChallenges.IndexOf(ViewModel.ScreenshotChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.ScreenshotChallenges[screenshotIndex] = _storedChallenge as ScreenshotChallenge;
+                    var screenshotIndex = CreateChallengesViewModel.ScreenshotChallenges.IndexOf(CreateChallengesViewModel.ScreenshotChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.ScreenshotChallenges[screenshotIndex] = _storedChallenge as ScreenshotChallenge;
                     ViewModel.FilteredScreen[screenshotIndex] = _storedChallenge as ScreenshotChallenge;
                     break;
                 case 6:
-                    var silhouetteIndex = ViewModel.SilhouetteChallenges.IndexOf(ViewModel.SilhouetteChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.SilhouetteChallenges[silhouetteIndex] = _storedChallenge as SilhouetteChallenge;
+                    var silhouetteIndex = CreateChallengesViewModel.SilhouetteChallenges.IndexOf(CreateChallengesViewModel.SilhouetteChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.SilhouetteChallenges[silhouetteIndex] = _storedChallenge as SilhouetteChallenge;
                     ViewModel.FilteredSilhu[silhouetteIndex] = _storedChallenge as SilhouetteChallenge;
                     break;
                 case 7:
-                    var sologameIndex = ViewModel.SologameChallenges.IndexOf(ViewModel.SologameChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
-                    ViewModel.SologameChallenges[sologameIndex] = _storedChallenge as SologameChallenge;
+                    var sologameIndex = CreateChallengesViewModel.SologameChallenges.IndexOf(CreateChallengesViewModel.SologameChallenges.Where(obj => obj.ChallengeID == _storedChallenge.ChallengeID).First());
+                    CreateChallengesViewModel.SologameChallenges[sologameIndex] = _storedChallenge as SologameChallenge;
                     ViewModel.FilteredSolo[sologameIndex] = _storedChallenge as SologameChallenge;
                     break;
             }

@@ -14,19 +14,19 @@ namespace SyntaxError.V2.App.Views
     {
 
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         private global::Microsoft.UI.Xaml.Controls.NavigationView navigationView; 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         private global::Windows.UI.Xaml.Controls.Frame shellFrame; 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         private global::Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification InAppNotification; 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         private bool _contentLoaded;
 
         /// <summary>
         /// InitializeComponent()
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public void InitializeComponent()
         {
@@ -41,7 +41,7 @@ namespace SyntaxError.V2.App.Views
 
         partial void UnloadObject(global::Windows.UI.Xaml.DependencyObject unloadableObject);
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         private interface IShellPage_Bindings
         {
             void Initialize();
@@ -49,9 +49,18 @@ namespace SyntaxError.V2.App.Views
             void StopTracking();
             void DisconnectUnloadedObject(int connectionId);
         }
+
+        private interface IShellPage_BindingsScopeConnector
+        {
+            global::System.WeakReference Parent { get; set; }
+            bool ContainsElement(int connectionId);
+            void RegisterForElementConnection(int connectionId, global::Windows.UI.Xaml.Markup.IComponentConnector connector);
+        }
 #pragma warning disable 0169    //  Proactively suppress unused field warning in case Bindings is not used.
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+#pragma warning disable 0649
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         private IShellPage_Bindings Bindings;
+#pragma warning restore 0649
 #pragma warning restore 0169
     }
 }

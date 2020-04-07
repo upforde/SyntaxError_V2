@@ -4,8 +4,8 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="Key" />
     <RootPropertyPathName Name="SelectedItem" />
+    <RootPropertyPathName Name="Key" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -263,7 +263,13 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="ItemsPanel" />
       <RootProperty Name="GroupStyle" />
+      <RootProperty Name="CanDragItems" />
+      <RootProperty Name="CanReorderItems" />
+      <RootProperty Name="AllowDrop" />
       <RootEvent Name="Tapped" />
+      <RootEvent Name="DragItemsStarting" />
+      <RootEvent Name="DragEnter" />
+      <RootEvent Name="Drop" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="SyntaxError.V2.App.Views.CreateChallengesPage" />
@@ -314,6 +320,16 @@
     <RootType FullName="Windows.UI.Xaml.Data.CollectionViewSource">
       <RootProperty Name="IsSourceGrouped" />
     </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.Expander">
+      <RootProperty Name="Header" />
+      <RootProperty Name="Content" />
+      <RootEvent Name="Expanded" />
+      <RootEvent Name="Collapsed" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="ElementName" />
+      <RootProperty Name="Path" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -322,10 +338,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.GroupStyle">
       <RootProperty Name="HeaderTemplate" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="ElementName" />
-      <RootProperty Name="Path" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Ellipse">
       <RootProperty Name="Visibility" />

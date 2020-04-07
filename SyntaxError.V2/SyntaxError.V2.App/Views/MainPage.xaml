@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:SyntaxError.V2.App.Helpers"
     xmlns:challenges="using:SyntaxError.V2.Modell.Challenges"
+    xmlns:controlls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
@@ -42,8 +43,7 @@
             <TextBlock Text="Game Profile Challenges" Style="{ThemeResource TitleTextBlockStyle}"/>
         </StackPanel>
         <!--The GameProfile list-->
-        <StackPanel Grid.Column="0"
-                    Grid.Row="1"
+        <StackPanel Grid.Column="0" Grid.Row="1"
                     BorderThickness="0, 0, 5, 0"
                     BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <ProgressBar x:Name="listViewProgressBar" IsIndeterminate="True"/>
@@ -54,7 +54,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:Name="SingleLineDataTemplate"
                                     x:DataType="helpers:ListItemMainPage">
-                        <StackPanel>
+                        <StackPanel x:Name="connectedElement">
                             <TextBlock Text="{x:Bind GameProfile.GameProfileName}"
                                         Style="{ThemeResource BaseTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
@@ -67,44 +67,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackPanel>
-        <!--Bottom AppBarButtons-->
-        <StackPanel Grid.Column="0"
-                    Grid.Row="2"
-                    BorderThickness="0, 0, 5, 0"
-                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Padding="0, 0, 5, 0">
-                <AppBarButton x:Name="PlayButton"
-                              IsEnabled="False"
-                              IsTabStop="False"
-                              Icon="Play"
-                              Label="Play"
-                              Click="AppBarButtonPlay_Click"/>
-                <AppBarButton x:Name="AddButton"
-                              IsTabStop="False"
-                              Icon="Add"
-                              Label="Add"
-                              Visibility="Visible"
-                              Click="AppBarButtonAdd_Click"/>
-                <AppBarButton x:Name="EditButton"
-                              IsEnabled="False"
-                              IsTabStop="False"
-                              Icon="Edit"
-                              Label="Edit"
-                              Visibility="Visible"
-                              Command="{x:Bind ViewModel.DeleteGameProfileCommand}"
-                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                <AppBarButton x:Name="DeleteButton"
-                              IsTabStop="False"
-                              Icon="Delete"
-                              Label="Delete"
-                              Visibility="Visible"
-                              Command="{x:Bind ViewModel.DeleteGameProfileCommand}"
-                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-            </StackPanel>
         </StackPanel>
         <!--The Challenge ListView-->
         <ListView x:Name="ChallengeList"
@@ -119,13 +81,13 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.GroupStyle>
-              <GroupStyle>
-                <GroupStyle.HeaderTemplate>
-                  <DataTemplate>
-                    <TextBlock Text="{Binding Key}"/>
-                  </DataTemplate>
-                </GroupStyle.HeaderTemplate>
-              </GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
             </ListView.GroupStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="helpers:ListItemMainPage">
@@ -218,5 +180,576 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <!--Bottom AppBarButtons-->
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    BorderThickness="0, 0, 5, 0"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Padding="0, 0, 5, 0">
+                <AppBarButton x:Name="PlayButton"
+                              IsEnabled="False"
+                              IsTabStop="False"
+                              Icon="Play"
+                              Label="Play"
+                              Click="AppBarButtonPlay_Click"/>
+                <AppBarButton x:Name="AddButton"
+                              IsTabStop="False"
+                              Icon="Add"
+                              Label="Add"
+                              Visibility="Visible"
+                              Click="AppBarButtonAdd_Click"/>
+                <AppBarButton x:Name="EditButton"
+                              IsEnabled="False"
+                              IsTabStop="False"
+                              Icon="Edit"
+                              Label="Edit"
+                              Visibility="Visible"
+                              Command="{x:Bind EditCommand}"
+                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                <AppBarButton x:Name="DeleteButton"
+                              IsTabStop="False"
+                              Icon="Delete"
+                              Label="Delete"
+                              Visibility="Visible"
+                              Command="{x:Bind ViewModel.DeleteGameProfileCommand}"
+                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+            </StackPanel>
+        </StackPanel>
+        <!--Smoke grid-->
+        <Grid x:Name="SmokeGrid"
+              Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="3"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Visibility="Collapsed"
+              Padding="15">
+            <Grid.Background>
+                <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+            </Grid.Background>
+                    
+            <Grid HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="650" Height="500"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="SmokeGridText"
+                         Grid.Row="0"
+                         Grid.Column="0" 
+                         FontSize="35"
+                         Margin="12"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left" />
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Click="BackButton_Click"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Height="40"
+                        Width="40"
+                        Margin="5" 
+                        ToolTipService.ToolTip="Close"
+                        AutomationProperties.Name="Close">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Clear" />
+                    </Button.Content>
+                </Button>
+                <Grid Grid.ColumnSpan="2"
+                      Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                                Padding="15, 0, 5, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Text="Total Challenges"
+                                   Grid.Row="0" Padding="5"/>
+                        <StackPanel Grid.Row="1">
+                            <controlls:Expander x:Name="AudienceChallengesExpander" Header="AudienceChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.AudienceChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:AudienceChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask, Mode=OneWay}"
+                                                                VerticalAlignment="Center"
+                                                                HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind Game.Name, Mode=OneWay}"
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="CrewChallengesExpander" Header="CrewChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.CrewChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:CrewChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask, Mode=OneWay}"
+                                                                VerticalAlignment="Center"
+                                                                HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind Game.Name, Mode=OneWay}"
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="MultipleChoiceChallengesExpander" Header="MultipleChoiceChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:MultipleChoiceChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask}"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind  Answers.Answer, Mode=OneWay}"
+                                                               VerticalAlignment="Top"
+                                                               HorizontalAlignment="Stretch"
+                                                               Style="{ThemeResource BodyTextBlockStyle}"
+                                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="MusicChallengesExpander" Header="MusicChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.MusicChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:MusicChallenge">
+                                                <TextBlock Text="{x:Bind  Song.Name, Mode=OneWay}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="QuizChallengesExpander" Header="QuizChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.QuizChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:QuizChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask}"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind  Answers.Answer, Mode=OneWay}"
+                                                               VerticalAlignment="Top"
+                                                               HorizontalAlignment="Stretch"
+                                                               Style="{ThemeResource BodyTextBlockStyle}"
+                                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="ScreenshotChallengesExpander" Header="ScreenshotChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.ScreenshotChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:ScreenshotChallenge">
+                                                <TextBlock Text="{x:Bind  Image.Name, Mode=OneWay}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="SilhouetteChallengesExpander" Header="SilhouetteChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.SilhouetteChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:SilhouetteChallenge">
+                                                <TextBlock Text="{x:Bind  Image.Name, Mode=OneWay}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="SologameChallengesExpander" Header="SologameChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.SologameChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="TotalChallenges_DragItemsStarting"
+                                              DragEnter="TotalChallenges_DragEnter"
+                                              Drop="TotalChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:SologameChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask, Mode=OneWay}"
+                                                                VerticalAlignment="Center"
+                                                                HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind Game.Name, Mode=OneWay}"
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1"
+                                Padding="5, 0, 15, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Challenges in this Game profile"
+                                   Grid.Row="0" Padding="5" />
+                        <StackPanel Grid.Row="1">
+                            <controlls:Expander x:Name="AudienceChallengesExpander2" Header="AudienceChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewAudienceChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:AudienceChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask, Mode=OneWay}"
+                                                                VerticalAlignment="Center"
+                                                                HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind Game.Name, Mode=OneWay}"
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="CrewChallengesExpander2" Header="CrewChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewCrewChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:CrewChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask, Mode=OneWay}"
+                                                                VerticalAlignment="Center"
+                                                                HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind Game.Name, Mode=OneWay}"
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="MultipleChoiceChallengesExpander2" Header="MultipleChoiceChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewMultipleChoiceChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:MultipleChoiceChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask}"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind  Answers.Answer, Mode=OneWay}"
+                                                               VerticalAlignment="Top"
+                                                               HorizontalAlignment="Stretch"
+                                                               Style="{ThemeResource BodyTextBlockStyle}"
+                                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="MusicChallengesExpander2" Header="MusicChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewMusicChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:MusicChallenge">
+                                                <TextBlock Text="{x:Bind  Song.Name, Mode=OneWay}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="QuizChallengesExpander2" Header="QuizChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewQuizChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:QuizChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask}"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind  Answers.Answer, Mode=OneWay}"
+                                                               VerticalAlignment="Top"
+                                                               HorizontalAlignment="Stretch"
+                                                               Style="{ThemeResource BodyTextBlockStyle}"
+                                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="ScreenshotChallengesExpander2" Header="ScreenshotChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewScreenshotChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:ScreenshotChallenge">
+                                                <TextBlock Text="{x:Bind  Image.Name, Mode=OneWay}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="SilhouetteChallengesExpander2" Header="SilhouetteChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewSilhouetteChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:SilhouetteChallenge">
+                                                <TextBlock Text="{x:Bind  Image.Name, Mode=OneWay}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                            <controlls:Expander x:Name="SologameChallengesExpander2" Header="SologameChallenges"
+                                                Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
+                                <Grid Height="300" Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListView ItemsSource="{x:Bind ViewModel.NewSologameChallenges}"
+                                              CanDragItems="True" CanReorderItems="False" AllowDrop="True"
+                                              SelectionMode="Extended"
+                                              DragItemsStarting="GameProfileChallenges_DragItemsStarting"
+                                              DragEnter="GameProfileChallenges_DragEnter"
+                                              Drop="GameProfileChallenges_Drop">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="challenges:SologameChallenge">
+                                                <StackPanel>
+                                                    <TextBlock Text="{x:Bind ChallengeTask, Mode=OneWay}"
+                                                                VerticalAlignment="Center"
+                                                                HorizontalAlignment="Stretch" />
+                                                    <TextBlock Text="{x:Bind Game.Name, Mode=OneWay}"
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Stretch"
+                                                                Style="{ThemeResource BodyTextBlockStyle}"
+                                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </controlls:Expander>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <StackPanel Grid.Row="2"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                    <AppBarButton Label="Save"
+                                  Icon="Accept"
+                                  Click="SaveButton_Click"/>
+                    <AppBarButton Label="Cancel"
+                                  Icon="Cancel"
+                                  Click="BackButton_Click"/>
+                </StackPanel>
+            </Grid>
+                    
+        </Grid>
     </Grid>
 </Page>

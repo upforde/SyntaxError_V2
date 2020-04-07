@@ -4,6 +4,6 @@ C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.deps.json
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.pdb
-C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.csprojAssemblyReference.cache
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.pdb
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.csprojAssemblyReference.cache

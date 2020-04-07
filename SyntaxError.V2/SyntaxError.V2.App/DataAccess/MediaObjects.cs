@@ -20,15 +20,17 @@ namespace SyntaxError.V2.App.DataAccess
         /// <returns></returns>
         public async Task<MediaObject> CreateMediaObjectAsync(MediaObject param)
         {
-            string json = await Task.Run(() => JsonConvert.SerializeObject(param));
+            if (!param.Name.Equals(""))
+            {
+                string json = await Task.Run(() => JsonConvert.SerializeObject(param));
 
-            var type = param.GetType().Name;
+                var type = param.GetType().Name;
 
-            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage result = await _httpClient.PostAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/?type=" + type), content);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage result = await _httpClient.PostAsync(new Uri(MediaObjectsBaseUri, "MediaObjects/?type=" + type), content);
 
-            param.ID = int.Parse(result.Headers.Location.Segments.Last());
-
+                param.ID = int.Parse(result.Headers.Location.Segments.Last());
+            }
             return param;
         }
 

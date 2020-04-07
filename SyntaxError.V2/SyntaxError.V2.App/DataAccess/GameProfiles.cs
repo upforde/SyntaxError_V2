@@ -40,7 +40,7 @@ namespace SyntaxError.V2.App.DataAccess
             string json = await Task.Run(() => JsonConvert.SerializeObject(param));
             
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(gameProfilesBaseUri, param.ID.ToString()), content);
+            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(gameProfilesBaseUri, "GameProfiles/" + param.ID.ToString()), content);
 
             return result.IsSuccessStatusCode;
         }

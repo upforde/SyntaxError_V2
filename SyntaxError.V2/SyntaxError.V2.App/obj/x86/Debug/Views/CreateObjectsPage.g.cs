@@ -15,7 +15,7 @@ namespace SyntaxError.V2.App.Views
         global::Windows.UI.Xaml.Markup.IComponentConnector,
         global::Windows.UI.Xaml.Markup.IComponentConnector2
     {
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private static class XamlBindingSetters
         {
@@ -45,9 +45,9 @@ namespace SyntaxError.V2.App.Views
             }
         };
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateObjectsPage_obj9_Bindings :
+        private class CreateObjectsPage_obj10_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -61,15 +61,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj9;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj10;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj11;
+            private global::System.WeakReference obj10;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj11;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj12;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj10SourceDisabled = false;
-            private static bool isobj11TextDisabled = false;
+            private static bool isobj11SourceDisabled = false;
+            private static bool isobj12TextDisabled = false;
 
-            public CreateObjectsPage_obj9_Bindings()
+            public CreateObjectsPage_obj10_Bindings()
             {
             }
 
@@ -77,11 +77,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 384 && columnNumber == 55)
                 {
-                    isobj10SourceDisabled = true;
+                    isobj11SourceDisabled = true;
                 }
                 else if (lineNumber == 389 && columnNumber == 41)
                 {
-                    isobj11TextDisabled = true;
+                    isobj12TextDisabled = true;
                 }
             }
 
@@ -91,14 +91,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 9: // Views\CreateObjectsPage.xaml line 377
-                        this.obj9 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 10: // Views\CreateObjectsPage.xaml line 377
+                        this.obj10 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 10: // Views\CreateObjectsPage.xaml line 382
-                        this.obj10 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 11: // Views\CreateObjectsPage.xaml line 382
+                        this.obj11 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 11: // Views\CreateObjectsPage.xaml line 385
-                        this.obj11 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 12: // Views\CreateObjectsPage.xaml line 385
+                        this.obj12 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -145,7 +145,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj9.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj10.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -209,9 +209,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateObjectsPage.xaml line 382
-                    if (!isobj10SourceDisabled)
+                    if (!isobj11SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj10, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj11, obj, null);
                     }
                 }
             }
@@ -220,17 +220,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateObjectsPage.xaml line 385
-                    if (!isobj11TextDisabled)
+                    if (!isobj12TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj11, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj12, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateObjectsPage_obj22_Bindings :
+        private class CreateObjectsPage_obj24_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -244,15 +244,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj22;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj23;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj24;
+            private global::System.WeakReference obj24;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj25;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj26;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj23SourceDisabled = false;
-            private static bool isobj24TextDisabled = false;
+            private static bool isobj25SourceDisabled = false;
+            private static bool isobj26TextDisabled = false;
 
-            public CreateObjectsPage_obj22_Bindings()
+            public CreateObjectsPage_obj24_Bindings()
             {
             }
 
@@ -260,11 +260,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 234 && columnNumber == 55)
                 {
-                    isobj23SourceDisabled = true;
+                    isobj25SourceDisabled = true;
                 }
                 else if (lineNumber == 239 && columnNumber == 41)
                 {
-                    isobj24TextDisabled = true;
+                    isobj26TextDisabled = true;
                 }
             }
 
@@ -274,14 +274,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 22: // Views\CreateObjectsPage.xaml line 227
-                        this.obj22 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 24: // Views\CreateObjectsPage.xaml line 227
+                        this.obj24 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 23: // Views\CreateObjectsPage.xaml line 232
-                        this.obj23 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 25: // Views\CreateObjectsPage.xaml line 232
+                        this.obj25 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 24: // Views\CreateObjectsPage.xaml line 235
-                        this.obj24 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 26: // Views\CreateObjectsPage.xaml line 235
+                        this.obj26 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -328,7 +328,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj22.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj24.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -392,9 +392,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateObjectsPage.xaml line 232
-                    if (!isobj23SourceDisabled)
+                    if (!isobj25SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj23, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj25, obj, null);
                     }
                 }
             }
@@ -403,17 +403,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateObjectsPage.xaml line 235
-                    if (!isobj24TextDisabled)
+                    if (!isobj26TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj24, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj26, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateObjectsPage_obj35_Bindings :
+        private class CreateObjectsPage_obj38_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -427,15 +427,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj35;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj36;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj37;
+            private global::System.WeakReference obj38;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj39;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj40;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj36SourceDisabled = false;
-            private static bool isobj37TextDisabled = false;
+            private static bool isobj39SourceDisabled = false;
+            private static bool isobj40TextDisabled = false;
 
-            public CreateObjectsPage_obj35_Bindings()
+            public CreateObjectsPage_obj38_Bindings()
             {
             }
 
@@ -443,11 +443,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 84 && columnNumber == 55)
                 {
-                    isobj36SourceDisabled = true;
+                    isobj39SourceDisabled = true;
                 }
                 else if (lineNumber == 89 && columnNumber == 41)
                 {
-                    isobj37TextDisabled = true;
+                    isobj40TextDisabled = true;
                 }
             }
 
@@ -457,14 +457,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 35: // Views\CreateObjectsPage.xaml line 77
-                        this.obj35 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 38: // Views\CreateObjectsPage.xaml line 77
+                        this.obj38 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 36: // Views\CreateObjectsPage.xaml line 82
-                        this.obj36 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 39: // Views\CreateObjectsPage.xaml line 82
+                        this.obj39 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 37: // Views\CreateObjectsPage.xaml line 85
-                        this.obj37 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 40: // Views\CreateObjectsPage.xaml line 85
+                        this.obj40 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -511,7 +511,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj35.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj38.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -575,9 +575,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateObjectsPage.xaml line 82
-                    if (!isobj36SourceDisabled)
+                    if (!isobj39SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj36, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj39, obj, null);
                     }
                 }
             }
@@ -586,15 +586,15 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateObjectsPage.xaml line 85
-                    if (!isobj37TextDisabled)
+                    if (!isobj40TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj37, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj40, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private class CreateObjectsPage_obj1_Bindings :
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
@@ -609,13 +609,13 @@ namespace SyntaxError.V2.App.Views
 
             // Fields for each control that has bindings.
             private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj4;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj17;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj30;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj18;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj32;
 
             // Static fields for each binding's enabled/disabled state
             private static bool isobj4ItemsSourceDisabled = false;
-            private static bool isobj17ItemsSourceDisabled = false;
-            private static bool isobj30ItemsSourceDisabled = false;
+            private static bool isobj18ItemsSourceDisabled = false;
+            private static bool isobj32ItemsSourceDisabled = false;
 
             public CreateObjectsPage_obj1_Bindings()
             {
@@ -629,11 +629,11 @@ namespace SyntaxError.V2.App.Views
                 }
                 else if (lineNumber == 216 && columnNumber == 44)
                 {
-                    isobj17ItemsSourceDisabled = true;
+                    isobj18ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 66 && columnNumber == 44)
                 {
-                    isobj30ItemsSourceDisabled = true;
+                    isobj32ItemsSourceDisabled = true;
                 }
             }
 
@@ -646,11 +646,11 @@ namespace SyntaxError.V2.App.Views
                     case 4: // Views\CreateObjectsPage.xaml line 366
                         this.obj4 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 17: // Views\CreateObjectsPage.xaml line 216
-                        this.obj17 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 18: // Views\CreateObjectsPage.xaml line 216
+                        this.obj18 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 30: // Views\CreateObjectsPage.xaml line 66
-                        this.obj30 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 32: // Views\CreateObjectsPage.xaml line 66
+                        this.obj32 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
                     default:
                         break;
@@ -661,12 +661,12 @@ namespace SyntaxError.V2.App.Views
 
             public void ProcessBindings(global::System.Object item, int itemIndex, int phase, out int nextPhase)
             {
-                throw new global::System.NotImplementedException();
+                nextPhase = -1;
             }
 
             public void Recycle()
             {
-                throw new global::System.NotImplementedException();
+                return;
             }
 
             // ICreateObjectsPage_Bindings
@@ -730,14 +730,14 @@ namespace SyntaxError.V2.App.Views
                         XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj4, obj, null);
                     }
                     // Views\CreateObjectsPage.xaml line 216
-                    if (!isobj17ItemsSourceDisabled)
+                    if (!isobj18ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj17, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj18, obj, null);
                     }
                     // Views\CreateObjectsPage.xaml line 66
-                    if (!isobj30ItemsSourceDisabled)
+                    if (!isobj32ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj30, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj32, obj, null);
                     }
                 }
             }
@@ -745,7 +745,7 @@ namespace SyntaxError.V2.App.Views
         /// <summary>
         /// Connect()
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public void Connect(int connectionId, object target)
         {
@@ -792,149 +792,149 @@ namespace SyntaxError.V2.App.Views
                     ((global::Windows.UI.Xaml.Controls.Button)element8).Click += this.BackButton_Click;
                 }
                 break;
-            case 12: // Views\CreateObjectsPage.xaml line 353
+            case 13: // Views\CreateObjectsPage.xaml line 353
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element12 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element12).Click += this.AddNewObjectButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element13 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element13).Click += this.AddNewObjectButton_Click;
                 }
                 break;
-            case 13: // Views\CreateObjectsPage.xaml line 331
+            case 14: // Views\CreateObjectsPage.xaml line 331
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element13 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element13).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element13).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element14 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element14).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element14).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 14: // Views\CreateObjectsPage.xaml line 339
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element14 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element14).Click += this.AppBarButton_SelectionMode_Click;
-                }
-                break;
-            case 15: // Views\CreateObjectsPage.xaml line 347
+            case 15: // Views\CreateObjectsPage.xaml line 339
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element15 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element15).Click += this.AppBarButton_DeleteSelected_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element15).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 16: // Views\CreateObjectsPage.xaml line 168
+            case 16: // Views\CreateObjectsPage.xaml line 347
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element16 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element16).Click += this.AppBarButton_DeleteSelected_Click;
+                }
+                break;
+            case 17: // Views\CreateObjectsPage.xaml line 168
                 {
                     this.ImagesContentArea = (global::Windows.UI.Xaml.Controls.Grid)(target);
                 }
                 break;
-            case 17: // Views\CreateObjectsPage.xaml line 216
+            case 18: // Views\CreateObjectsPage.xaml line 216
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element17 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element17).Tapped += this.AdaptiveGridView_Tapped;
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element18 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element18).Tapped += this.AdaptiveGridView_Tapped;
                 }
                 break;
-            case 18: // Views\CreateObjectsPage.xaml line 304
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element18 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element18).Click += this.SaveButton_Click;
-                }
-                break;
-            case 19: // Views\CreateObjectsPage.xaml line 307
+            case 19: // Views\CreateObjectsPage.xaml line 304
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element19 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element19).Click += this.BackButton_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element19).Click += this.SaveButton_Click;
                 }
                 break;
-            case 20: // Views\CreateObjectsPage.xaml line 269
+            case 20: // Views\CreateObjectsPage.xaml line 307
                 {
-                    global::Windows.UI.Xaml.Controls.Grid element20 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element20).Tapped += this.StackPanel_Tapped;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element20 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element20).Click += this.BackButton_Click;
                 }
                 break;
-            case 21: // Views\CreateObjectsPage.xaml line 285
+            case 21: // Views\CreateObjectsPage.xaml line 269
                 {
-                    global::Windows.UI.Xaml.Controls.Button element21 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element21).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Grid element21 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element21).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 25: // Views\CreateObjectsPage.xaml line 203
+            case 22: // Views\CreateObjectsPage.xaml line 285
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element25 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element25).Click += this.AddNewObjectButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element22 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element22).Click += this.BackButton_Click;
                 }
                 break;
-            case 26: // Views\CreateObjectsPage.xaml line 181
-                {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element26 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element26).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element26).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
-                }
-                break;
-            case 27: // Views\CreateObjectsPage.xaml line 189
+            case 27: // Views\CreateObjectsPage.xaml line 203
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element27 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element27).Click += this.AppBarButton_SelectionMode_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element27).Click += this.AddNewObjectButton_Click;
                 }
                 break;
-            case 28: // Views\CreateObjectsPage.xaml line 197
+            case 28: // Views\CreateObjectsPage.xaml line 181
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element28 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element28).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element28 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element28).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element28).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 29: // Views\CreateObjectsPage.xaml line 18
+            case 29: // Views\CreateObjectsPage.xaml line 189
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element29 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element29).Click += this.AppBarButton_SelectionMode_Click;
+                }
+                break;
+            case 30: // Views\CreateObjectsPage.xaml line 197
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element30 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element30).Click += this.AppBarButton_DeleteSelected_Click;
+                }
+                break;
+            case 31: // Views\CreateObjectsPage.xaml line 18
                 {
                     this.GamesContentArea = (global::Windows.UI.Xaml.Controls.Grid)(target);
                 }
                 break;
-            case 30: // Views\CreateObjectsPage.xaml line 66
+            case 32: // Views\CreateObjectsPage.xaml line 66
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element30 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element30).Tapped += this.AdaptiveGridView_Tapped;
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element32 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element32).Tapped += this.AdaptiveGridView_Tapped;
                 }
                 break;
-            case 31: // Views\CreateObjectsPage.xaml line 154
+            case 33: // Views\CreateObjectsPage.xaml line 154
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element31 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element31).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element33 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element33).Click += this.SaveButton_Click;
                 }
                 break;
-            case 32: // Views\CreateObjectsPage.xaml line 157
+            case 34: // Views\CreateObjectsPage.xaml line 157
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element32 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element32).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element34 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element34).Click += this.BackButton_Click;
                 }
                 break;
-            case 33: // Views\CreateObjectsPage.xaml line 119
+            case 35: // Views\CreateObjectsPage.xaml line 119
                 {
-                    global::Windows.UI.Xaml.Controls.Grid element33 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element33).Tapped += this.StackPanel_Tapped;
+                    global::Windows.UI.Xaml.Controls.Grid element35 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element35).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 34: // Views\CreateObjectsPage.xaml line 135
+            case 36: // Views\CreateObjectsPage.xaml line 135
                 {
-                    global::Windows.UI.Xaml.Controls.Button element34 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element34).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element36 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element36).Click += this.BackButton_Click;
                 }
                 break;
-            case 38: // Views\CreateObjectsPage.xaml line 53
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element38 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element38).Click += this.AddNewObjectButton_Click;
-                }
-                break;
-            case 39: // Views\CreateObjectsPage.xaml line 31
-                {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element39 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element39).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element39).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
-                }
-                break;
-            case 40: // Views\CreateObjectsPage.xaml line 39
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element40 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element40).Click += this.AppBarButton_SelectionMode_Click;
-                }
-                break;
-            case 41: // Views\CreateObjectsPage.xaml line 47
+            case 41: // Views\CreateObjectsPage.xaml line 53
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element41 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element41).Click += this.AppBarButton_DeleteSelected_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element41).Click += this.AddNewObjectButton_Click;
+                }
+                break;
+            case 42: // Views\CreateObjectsPage.xaml line 31
+                {
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element42 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element42).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element42).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                }
+                break;
+            case 43: // Views\CreateObjectsPage.xaml line 39
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element43 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element43).Click += this.AppBarButton_SelectionMode_Click;
+                }
+                break;
+            case 44: // Views\CreateObjectsPage.xaml line 47
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element44 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element44).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
             default:
@@ -946,7 +946,7 @@ namespace SyntaxError.V2.App.Views
         /// <summary>
         /// GetBindingConnector(int connectionId, object target)
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::Windows.UI.Xaml.Markup.IComponentConnector GetBindingConnector(int connectionId, object target)
         {
@@ -964,37 +964,37 @@ namespace SyntaxError.V2.App.Views
                     global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element1, bindings);
                 }
                 break;
-            case 9: // Views\CreateObjectsPage.xaml line 377
+            case 10: // Views\CreateObjectsPage.xaml line 377
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element9 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateObjectsPage_obj9_Bindings bindings = new CreateObjectsPage_obj9_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element10 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateObjectsPage_obj10_Bindings bindings = new CreateObjectsPage_obj10_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element9.DataContext);
-                    element9.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element9, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element9, bindings);
+                    bindings.SetDataRoot(element10.DataContext);
+                    element10.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element10, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element10, bindings);
                 }
                 break;
-            case 22: // Views\CreateObjectsPage.xaml line 227
+            case 24: // Views\CreateObjectsPage.xaml line 227
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element22 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateObjectsPage_obj22_Bindings bindings = new CreateObjectsPage_obj22_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element24 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateObjectsPage_obj24_Bindings bindings = new CreateObjectsPage_obj24_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element22.DataContext);
-                    element22.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element22, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element22, bindings);
+                    bindings.SetDataRoot(element24.DataContext);
+                    element24.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element24, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element24, bindings);
                 }
                 break;
-            case 35: // Views\CreateObjectsPage.xaml line 77
+            case 38: // Views\CreateObjectsPage.xaml line 77
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element35 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateObjectsPage_obj35_Bindings bindings = new CreateObjectsPage_obj35_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element38 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateObjectsPage_obj38_Bindings bindings = new CreateObjectsPage_obj38_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element35.DataContext);
-                    element35.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element35, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element35, bindings);
+                    bindings.SetDataRoot(element38.DataContext);
+                    element38.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element38, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element38, bindings);
                 }
                 break;
             }

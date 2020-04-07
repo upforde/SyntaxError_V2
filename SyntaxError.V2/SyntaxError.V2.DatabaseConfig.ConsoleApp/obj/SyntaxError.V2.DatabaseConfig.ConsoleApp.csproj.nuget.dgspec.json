@@ -1,0 +1,229 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj",
+        "projectName": "SyntaxError.V2.DataAccess",
+        "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\upfor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\upfor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj": {
+                "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
+        "projectName": "SyntaxError.V2.DatabaseConfig.ConsoleApp",
+        "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
+        "packagesPath": "C:\\Users\\upfor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\upfor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DataAccess\\SyntaxError.V2.DataAccess.csproj"
+              },
+              "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj": {
+                "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.9.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj",
+        "projectName": "SyntaxError.V2.Modell",
+        "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\SyntaxError.V2.Modell.csproj",
+        "packagesPath": "C:\\Users\\upfor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\upfor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.9.8, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

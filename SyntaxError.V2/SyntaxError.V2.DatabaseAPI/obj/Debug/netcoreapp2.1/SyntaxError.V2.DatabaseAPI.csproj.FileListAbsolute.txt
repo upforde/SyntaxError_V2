@@ -17,3 +17,7 @@ C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.pdb
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.dll
 C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseConfig.ConsoleApp.pdb
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.DatabaseAPI\obj\Debug\netcoreapp2.1\SyntaxError.V2.DatabaseAPI.genruntimeconfig.cache

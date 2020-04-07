@@ -11,7 +11,6 @@ namespace SyntaxError.V2.App.Helpers
     {
         public GameProfile GameProfile { get; set; }
         public ICommand DeleteCommandGameProfile { get; set; }
-        public ICommand EditCommandGameProfile { get; set; }
         
         public ObservableCollection<ListItemMainPage> Challenges { get; set; }
         

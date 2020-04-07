@@ -11,36 +11,44 @@ using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace SyntaxError.V2.App.ViewModels
 {
     public class MainViewModel : Observable
     {
         public ICommand AddGameProfileCommand { get; set; }
+        public ICommand EditCommand { get; set; }
         public ICommand DeleteGameProfileCommand { get; set; }
-        public ICommand EdigGameProfileCommand { get; set; }
 
         public GameProfiles GameProfilesDataAccess { get; set; } = new GameProfiles();
         public Challenges ChallengesDataAccess { get; set; } = new Challenges();
         public MediaObjects MediaObjectsDataAccess { get; set; } = new MediaObjects();
         public DataAccess.Answers AnswersDataAccess { get; set; } = new DataAccess.Answers();
+
+        public CreateChallengesViewModel ChallengesViewModel = new CreateChallengesViewModel();
         
         public ObservableCollection<ListItemMainPage> GameProfiles { get; set; } = new ObservableCollection<ListItemMainPage>();
-        
-        public ObservableCollection<ChallengeBase> ChallengesFromDB { get; set; } = new ObservableCollection<ChallengeBase>();
-
+        public List<ChallengeBase> ChallengesFromDB { get; set; } = new List<ChallengeBase>();
         public ObservableCollection<ListItemMainPage> GameProfileChallenges { get; set; } = new ObservableCollection<ListItemMainPage>();
-
-        /*
+        
         public ObservableCollection<AudienceChallenge> AudienceChallenges { get; set; } = new ObservableCollection<AudienceChallenge>();
         public ObservableCollection<CrewChallenge> CrewChallenges { get; set; } = new ObservableCollection<CrewChallenge>();
         public ObservableCollection<MultipleChoiceChallenge> MultipleChoiceChallenges { get; set; } = new ObservableCollection<MultipleChoiceChallenge>();
         public ObservableCollection<MusicChallenge> MusicChallenges { get; set; } = new ObservableCollection<MusicChallenge>();
-        public ObservableCollection<QuizChallenge> QuizChallenges { get; set; } = new ObservableCollection<QuizChallenge>();
+        public ObservableCollection<QuizChallenge> QuizChallenges { get; set; }  = new ObservableCollection<QuizChallenge>();
         public ObservableCollection<ScreenshotChallenge> ScreenshotChallenges { get; set; } = new ObservableCollection<ScreenshotChallenge>();
         public ObservableCollection<SilhouetteChallenge> SilhouetteChallenges { get; set; } = new ObservableCollection<SilhouetteChallenge>();
         public ObservableCollection<SologameChallenge> SologameChallenges { get; set; } = new ObservableCollection<SologameChallenge>();
-        */
+
+        public ObservableCollection<AudienceChallenge> NewAudienceChallenges { get; set; } = new ObservableCollection<AudienceChallenge>();
+        public ObservableCollection<CrewChallenge> NewCrewChallenges { get; set; } = new ObservableCollection<CrewChallenge>();
+        public ObservableCollection<MultipleChoiceChallenge> NewMultipleChoiceChallenges { get; set; } = new ObservableCollection<MultipleChoiceChallenge>();
+        public ObservableCollection<MusicChallenge> NewMusicChallenges { get; set; } = new ObservableCollection<MusicChallenge>();
+        public ObservableCollection<QuizChallenge> NewQuizChallenges { get; set; } = new ObservableCollection<QuizChallenge>();
+        public ObservableCollection<ScreenshotChallenge> NewScreenshotChallenges { get; set; } = new ObservableCollection<ScreenshotChallenge>();
+        public ObservableCollection<SilhouetteChallenge> NewSilhouetteChallenges { get; set; } = new ObservableCollection<SilhouetteChallenge>();
+        public ObservableCollection<SologameChallenge> NewSologameChallenges { get; set; } = new ObservableCollection<SologameChallenge>();
 
         public MainViewModel()
         {
@@ -50,13 +58,18 @@ namespace SyntaxError.V2.App.ViewModels
                                                         GameProfiles.Add(new ListItemMainPage{ GameProfile = param });
                                                     }, param => param != null);
 
+            EditCommand = new RelayCommand<GameProfile>(async param =>
+                                                    {
+                                                        await GameProfilesDataAccess.EditGameProfileAsync(param);
+                                                    }, param => param != null);
+
             DeleteGameProfileCommand = new RelayCommand<ListItemMainPage>(async param =>
                                                     {
                                                         if (await GameProfilesDataAccess.DeleteGameProfileAsync(param.GameProfile))
                                                             GameProfiles.Remove(param);
                                                     }, param => param != null);
         }
-
+        
         /// <summary>Loads the game profiles from database asynchronous.</summary>
         /// <returns></returns>
         internal async Task LoadGameProfilesFromDBAsync()
@@ -69,8 +82,7 @@ namespace SyntaxError.V2.App.ViewModels
                     GameProfiles.Add(new ListItemMainPage
                     {
                         GameProfile = gameProfile,
-                        DeleteCommandGameProfile = DeleteGameProfileCommand,
-                        EditCommandGameProfile = EdigGameProfileCommand
+                        DeleteCommandGameProfile = DeleteGameProfileCommand
                     });
                 }
             }
@@ -80,8 +92,15 @@ namespace SyntaxError.V2.App.ViewModels
         /// <returns></returns>
         internal async Task LoadChallengesFromDBAsync()
         {
-            var challenges = await ChallengesDataAccess.GetChallengesAsync();
-            foreach (ChallengeBase challenge in challenges) ChallengesFromDB.Add(challenge);
+            if (ChallengesFromDB.Count == 0) await ChallengesViewModel.LoadChallengesFromDBAsync();
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.AudienceChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.CrewChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.MultipleChoiceChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.MusicChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.QuizChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.ScreenshotChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.SilhouetteChallenges);
+            ChallengesFromDB.AddRange(CreateChallengesViewModel.SologameChallenges);
         }
         
         internal async Task LoadMediaObjectsFromDBAsync()
@@ -126,7 +145,6 @@ namespace SyntaxError.V2.App.ViewModels
         /// <param name="profile">The profile.</param>
         internal void PutChallengesInLists(GameProfile profile)
         {
-            //ClearLists();
             GameProfileChallenges.Clear();
             
             List<int?> saveGameChallengeIDs = new List<int?>();
@@ -183,55 +201,7 @@ namespace SyntaxError.V2.App.ViewModels
                         GameProfileChallenges.Add(listChallenge);
                         break;
                 }
-
-                /*switch (challenge.GetDiscriminator())
-                {
-                    case "AudienceChallenge":
-                        listChallenge.AudienceChallenge = (AudienceChallenge) challenge;
-                        AudienceChallenges.Add(challenge as AudienceChallenge);
-                        break;
-                    case "CrewChallenge":
-                        listChallenge.CrewChallenge = (CrewChallenge) challenge;
-                        CrewChallenges.Add(challenge as CrewChallenge);
-                        break;
-                    case "MultipleChoiceChallenge":
-                        listChallenge.MultipleChoiceChallenge = (MultipleChoiceChallenge) challenge;
-                        MultipleChoiceChallenges.Add(challenge as MultipleChoiceChallenge);
-                        break;
-                    case "MusicChallenge":
-                        listChallenge.MusicChallenge = (MusicChallenge) challenge;
-                        MusicChallenges.Add(challenge as MusicChallenge);
-                        break;
-                    case "QuizChallenge":
-                        listChallenge.QuizChallenge = (QuizChallenge) challenge;
-                        QuizChallenges.Add(challenge as QuizChallenge);
-                        break;
-                    case "ScreenshotChallenge":
-                        listChallenge.ScreenshotChallenge = (ScreenshotChallenge) challenge;
-                        ScreenshotChallenges.Add(challenge as ScreenshotChallenge);
-                        break;
-                    case "SilhouetteChallenge":
-                        listChallenge.SilhouetteChallenge = (SilhouetteChallenge) challenge;
-                        SilhouetteChallenges.Add(challenge as SilhouetteChallenge);
-                        break;
-                    case "SologameChallenge":
-                        listChallenge.SologameChallenge = (SologameChallenge) challenge;
-                        SologameChallenges.Add(challenge as SologameChallenge);
-                        break;
-                }*/
             }
         }
-
-        /*private void ClearLists()
-        {
-            AudienceChallenges.Clear();
-            CrewChallenges.Clear();
-            MultipleChoiceChallenges.Clear();
-            MusicChallenges.Clear();
-            QuizChallenges.Clear();
-            ScreenshotChallenges.Clear();
-            SilhouetteChallenges.Clear();
-            SologameChallenges.Clear();
-        }*/
     }
 }

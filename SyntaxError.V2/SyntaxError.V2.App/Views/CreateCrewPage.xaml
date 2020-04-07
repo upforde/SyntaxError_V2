@@ -22,7 +22,6 @@
               Padding="15, 15, 15, 0">
             <TextBlock Text="Crew Members" Style="{ThemeResource TitleTextBlockStyle}"/>
         </Grid>
-
         <Grid x:Name="ActionBar"
               HorizontalAlignment="Stretch"
               Grid.Row="1"
@@ -49,13 +48,11 @@
                           Click="AddNewCrewMemberButton_Click"
                           HorizontalAlignment="Right"/>
         </Grid>
-
         <ProgressBar x:Name="LoadingProgressBar"
                      Grid.Row="2"
                      VerticalAlignment="Top"
                      IsIndeterminate="True"
                      Visibility="Collapsed"/>
-        
         <controls:AdaptiveGridView x:Name="CrewGrid"
                                    ItemsSource="{x:Bind Filtered}"
                                    Grid.Row="2"

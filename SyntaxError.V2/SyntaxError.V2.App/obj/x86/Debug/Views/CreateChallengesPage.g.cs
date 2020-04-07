@@ -15,7 +15,7 @@ namespace SyntaxError.V2.App.Views
         global::Windows.UI.Xaml.Markup.IComponentConnector,
         global::Windows.UI.Xaml.Markup.IComponentConnector2
     {
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private static class XamlBindingSetters
         {
@@ -45,9 +45,9 @@ namespace SyntaxError.V2.App.Views
             }
         };
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj10_Bindings :
+        private class CreateChallengesPage_obj11_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -61,13 +61,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj10;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj11;
+            private global::System.WeakReference obj11;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj12;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj11TextDisabled = false;
+            private static bool isobj12TextDisabled = false;
 
-            public CreateChallengesPage_obj10_Bindings()
+            public CreateChallengesPage_obj11_Bindings()
             {
             }
 
@@ -75,7 +75,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 1525 && columnNumber == 68)
                 {
-                    isobj11TextDisabled = true;
+                    isobj12TextDisabled = true;
                 }
             }
 
@@ -85,11 +85,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 10: // Views\CreateChallengesPage.xaml line 1524
-                        this.obj10 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
+                    case 11: // Views\CreateChallengesPage.xaml line 1524
+                        this.obj11 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
                         break;
-                    case 11: // Views\CreateChallengesPage.xaml line 1525
-                        this.obj11 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 12: // Views\CreateChallengesPage.xaml line 1525
+                        this.obj12 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -136,7 +136,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj10.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj11.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -199,17 +199,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1525
-                    if (!isobj11TextDisabled)
+                    if (!isobj12TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj11, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj12, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj14_Bindings :
+        private class CreateChallengesPage_obj16_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -223,15 +223,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj14;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj15;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj16;
+            private global::System.WeakReference obj16;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj17;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj18;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj15SourceDisabled = false;
-            private static bool isobj16TextDisabled = false;
+            private static bool isobj17SourceDisabled = false;
+            private static bool isobj18TextDisabled = false;
 
-            public CreateChallengesPage_obj14_Bindings()
+            public CreateChallengesPage_obj16_Bindings()
             {
             }
 
@@ -239,11 +239,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 1407 && columnNumber == 59)
                 {
-                    isobj15SourceDisabled = true;
+                    isobj17SourceDisabled = true;
                 }
                 else if (lineNumber == 1413 && columnNumber == 49)
                 {
-                    isobj16TextDisabled = true;
+                    isobj18TextDisabled = true;
                 }
             }
 
@@ -253,14 +253,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 14: // Views\CreateChallengesPage.xaml line 1400
-                        this.obj14 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 16: // Views\CreateChallengesPage.xaml line 1400
+                        this.obj16 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 15: // Views\CreateChallengesPage.xaml line 1405
-                        this.obj15 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 17: // Views\CreateChallengesPage.xaml line 1405
+                        this.obj17 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 16: // Views\CreateChallengesPage.xaml line 1409
-                        this.obj16 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 18: // Views\CreateChallengesPage.xaml line 1409
+                        this.obj18 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -307,7 +307,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj14.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj16.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -381,9 +381,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1405
-                    if (!isobj15SourceDisabled)
+                    if (!isobj17SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj15, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj17, obj, null);
                     }
                 }
             }
@@ -392,17 +392,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1409
-                    if (!isobj16TextDisabled)
+                    if (!isobj18TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj16, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj18, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj27_Bindings :
+        private class CreateChallengesPage_obj30_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -416,13 +416,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj27;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj28;
+            private global::System.WeakReference obj30;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj31;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj28TextDisabled = false;
+            private static bool isobj31TextDisabled = false;
 
-            public CreateChallengesPage_obj27_Bindings()
+            public CreateChallengesPage_obj30_Bindings()
             {
             }
 
@@ -430,7 +430,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 1317 && columnNumber == 68)
                 {
-                    isobj28TextDisabled = true;
+                    isobj31TextDisabled = true;
                 }
             }
 
@@ -440,11 +440,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 27: // Views\CreateChallengesPage.xaml line 1316
-                        this.obj27 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
+                    case 30: // Views\CreateChallengesPage.xaml line 1316
+                        this.obj30 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
                         break;
-                    case 28: // Views\CreateChallengesPage.xaml line 1317
-                        this.obj28 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 31: // Views\CreateChallengesPage.xaml line 1317
+                        this.obj31 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -491,7 +491,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj27.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj30.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -554,17 +554,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1317
-                    if (!isobj28TextDisabled)
+                    if (!isobj31TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj28, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj31, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj31_Bindings :
+        private class CreateChallengesPage_obj35_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -578,15 +578,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj31;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj32;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj33;
+            private global::System.WeakReference obj35;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj36;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj37;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj32SourceDisabled = false;
-            private static bool isobj33TextDisabled = false;
+            private static bool isobj36SourceDisabled = false;
+            private static bool isobj37TextDisabled = false;
 
-            public CreateChallengesPage_obj31_Bindings()
+            public CreateChallengesPage_obj35_Bindings()
             {
             }
 
@@ -594,11 +594,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 1203 && columnNumber == 59)
                 {
-                    isobj32SourceDisabled = true;
+                    isobj36SourceDisabled = true;
                 }
                 else if (lineNumber == 1208 && columnNumber == 45)
                 {
-                    isobj33TextDisabled = true;
+                    isobj37TextDisabled = true;
                 }
             }
 
@@ -608,14 +608,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 31: // Views\CreateChallengesPage.xaml line 1196
-                        this.obj31 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 35: // Views\CreateChallengesPage.xaml line 1196
+                        this.obj35 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 32: // Views\CreateChallengesPage.xaml line 1201
-                        this.obj32 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 36: // Views\CreateChallengesPage.xaml line 1201
+                        this.obj36 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 33: // Views\CreateChallengesPage.xaml line 1204
-                        this.obj33 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 37: // Views\CreateChallengesPage.xaml line 1204
+                        this.obj37 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -662,7 +662,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj31.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj35.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -736,9 +736,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1201
-                    if (!isobj32SourceDisabled)
+                    if (!isobj36SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj32, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj36, obj, null);
                     }
                 }
             }
@@ -747,17 +747,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1204
-                    if (!isobj33TextDisabled)
+                    if (!isobj37TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj33, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj37, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj44_Bindings :
+        private class CreateChallengesPage_obj49_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -771,13 +771,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj44;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj45;
+            private global::System.WeakReference obj49;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj50;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj45TextDisabled = false;
+            private static bool isobj50TextDisabled = false;
 
-            public CreateChallengesPage_obj44_Bindings()
+            public CreateChallengesPage_obj49_Bindings()
             {
             }
 
@@ -785,7 +785,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 1113 && columnNumber == 68)
                 {
-                    isobj45TextDisabled = true;
+                    isobj50TextDisabled = true;
                 }
             }
 
@@ -795,11 +795,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 44: // Views\CreateChallengesPage.xaml line 1112
-                        this.obj44 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
+                    case 49: // Views\CreateChallengesPage.xaml line 1112
+                        this.obj49 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
                         break;
-                    case 45: // Views\CreateChallengesPage.xaml line 1113
-                        this.obj45 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 50: // Views\CreateChallengesPage.xaml line 1113
+                        this.obj50 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -846,7 +846,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj44.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj49.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -909,17 +909,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1113
-                    if (!isobj45TextDisabled)
+                    if (!isobj50TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj45, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj50, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj48_Bindings :
+        private class CreateChallengesPage_obj54_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -933,15 +933,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj48;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj49;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj50;
+            private global::System.WeakReference obj54;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj55;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj56;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj49SourceDisabled = false;
-            private static bool isobj50TextDisabled = false;
+            private static bool isobj55SourceDisabled = false;
+            private static bool isobj56TextDisabled = false;
 
-            public CreateChallengesPage_obj48_Bindings()
+            public CreateChallengesPage_obj54_Bindings()
             {
             }
 
@@ -949,11 +949,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 999 && columnNumber == 59)
                 {
-                    isobj49SourceDisabled = true;
+                    isobj55SourceDisabled = true;
                 }
                 else if (lineNumber == 1004 && columnNumber == 45)
                 {
-                    isobj50TextDisabled = true;
+                    isobj56TextDisabled = true;
                 }
             }
 
@@ -963,14 +963,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 48: // Views\CreateChallengesPage.xaml line 992
-                        this.obj48 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 54: // Views\CreateChallengesPage.xaml line 992
+                        this.obj54 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 49: // Views\CreateChallengesPage.xaml line 997
-                        this.obj49 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 55: // Views\CreateChallengesPage.xaml line 997
+                        this.obj55 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 50: // Views\CreateChallengesPage.xaml line 1000
-                        this.obj50 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 56: // Views\CreateChallengesPage.xaml line 1000
+                        this.obj56 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -1017,7 +1017,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj48.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj54.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -1091,9 +1091,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 997
-                    if (!isobj49SourceDisabled)
+                    if (!isobj55SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj49, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj55, obj, null);
                     }
                 }
             }
@@ -1102,17 +1102,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1000
-                    if (!isobj50TextDisabled)
+                    if (!isobj56TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj50, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj56, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj61_Bindings :
+        private class CreateChallengesPage_obj68_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -1126,13 +1126,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj61;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj62;
+            private global::System.WeakReference obj68;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj69;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj62TextDisabled = false;
+            private static bool isobj69TextDisabled = false;
 
-            public CreateChallengesPage_obj61_Bindings()
+            public CreateChallengesPage_obj68_Bindings()
             {
             }
 
@@ -1140,7 +1140,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 859 && columnNumber == 61)
                 {
-                    isobj62TextDisabled = true;
+                    isobj69TextDisabled = true;
                 }
             }
 
@@ -1150,11 +1150,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 61: // Views\CreateChallengesPage.xaml line 858
-                        this.obj61 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 68: // Views\CreateChallengesPage.xaml line 858
+                        this.obj68 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 62: // Views\CreateChallengesPage.xaml line 859
-                        this.obj62 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 69: // Views\CreateChallengesPage.xaml line 859
+                        this.obj69 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -1201,7 +1201,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj61.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj68.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -1264,17 +1264,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 859
-                    if (!isobj62TextDisabled)
+                    if (!isobj69TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj62, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj69, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj73_Bindings :
+        private class CreateChallengesPage_obj81_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -1288,13 +1288,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj73;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj74;
+            private global::System.WeakReference obj81;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj82;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj74TextDisabled = false;
+            private static bool isobj82TextDisabled = false;
 
-            public CreateChallengesPage_obj73_Bindings()
+            public CreateChallengesPage_obj81_Bindings()
             {
             }
 
@@ -1302,7 +1302,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 777 && columnNumber == 68)
                 {
-                    isobj74TextDisabled = true;
+                    isobj82TextDisabled = true;
                 }
             }
 
@@ -1312,11 +1312,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 73: // Views\CreateChallengesPage.xaml line 776
-                        this.obj73 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
+                    case 81: // Views\CreateChallengesPage.xaml line 776
+                        this.obj81 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
                         break;
-                    case 74: // Views\CreateChallengesPage.xaml line 777
-                        this.obj74 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 82: // Views\CreateChallengesPage.xaml line 777
+                        this.obj82 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -1363,7 +1363,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj73.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj81.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -1426,17 +1426,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 777
-                    if (!isobj74TextDisabled)
+                    if (!isobj82TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj74, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj82, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj77_Bindings :
+        private class CreateChallengesPage_obj86_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -1450,15 +1450,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj77;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj78;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj79;
+            private global::System.WeakReference obj86;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj87;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj88;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj78SourceDisabled = false;
-            private static bool isobj79TextDisabled = false;
+            private static bool isobj87SourceDisabled = false;
+            private static bool isobj88TextDisabled = false;
 
-            public CreateChallengesPage_obj77_Bindings()
+            public CreateChallengesPage_obj86_Bindings()
             {
             }
 
@@ -1466,11 +1466,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 663 && columnNumber == 59)
                 {
-                    isobj78SourceDisabled = true;
+                    isobj87SourceDisabled = true;
                 }
                 else if (lineNumber == 668 && columnNumber == 45)
                 {
-                    isobj79TextDisabled = true;
+                    isobj88TextDisabled = true;
                 }
             }
 
@@ -1480,14 +1480,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 77: // Views\CreateChallengesPage.xaml line 656
-                        this.obj77 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 86: // Views\CreateChallengesPage.xaml line 656
+                        this.obj86 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 78: // Views\CreateChallengesPage.xaml line 661
-                        this.obj78 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 87: // Views\CreateChallengesPage.xaml line 661
+                        this.obj87 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 79: // Views\CreateChallengesPage.xaml line 664
-                        this.obj79 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 88: // Views\CreateChallengesPage.xaml line 664
+                        this.obj88 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -1534,7 +1534,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj77.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj86.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -1608,9 +1608,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 661
-                    if (!isobj78SourceDisabled)
+                    if (!isobj87SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj78, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj87, obj, null);
                     }
                 }
             }
@@ -1619,17 +1619,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 664
-                    if (!isobj79TextDisabled)
+                    if (!isobj88TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj79, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj88, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj93_Bindings :
+        private class CreateChallengesPage_obj103_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -1643,13 +1643,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj93;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj94;
+            private global::System.WeakReference obj103;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj104;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj94TextDisabled = false;
+            private static bool isobj104TextDisabled = false;
 
-            public CreateChallengesPage_obj93_Bindings()
+            public CreateChallengesPage_obj103_Bindings()
             {
             }
 
@@ -1657,7 +1657,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 490 && columnNumber == 61)
                 {
-                    isobj94TextDisabled = true;
+                    isobj104TextDisabled = true;
                 }
             }
 
@@ -1667,11 +1667,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 93: // Views\CreateChallengesPage.xaml line 484
-                        this.obj93 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 103: // Views\CreateChallengesPage.xaml line 484
+                        this.obj103 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 94: // Views\CreateChallengesPage.xaml line 490
-                        this.obj94 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 104: // Views\CreateChallengesPage.xaml line 490
+                        this.obj104 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -1718,7 +1718,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj93.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj103.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -1781,17 +1781,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 490
-                    if (!isobj94TextDisabled)
+                    if (!isobj104TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj94, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj104, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj105_Bindings :
+        private class CreateChallengesPage_obj116_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -1805,13 +1805,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj105;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj106;
+            private global::System.WeakReference obj116;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj117;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj106TextDisabled = false;
+            private static bool isobj117TextDisabled = false;
 
-            public CreateChallengesPage_obj105_Bindings()
+            public CreateChallengesPage_obj116_Bindings()
             {
             }
 
@@ -1819,7 +1819,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 403 && columnNumber == 68)
                 {
-                    isobj106TextDisabled = true;
+                    isobj117TextDisabled = true;
                 }
             }
 
@@ -1829,11 +1829,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 105: // Views\CreateChallengesPage.xaml line 402
-                        this.obj105 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
+                    case 116: // Views\CreateChallengesPage.xaml line 402
+                        this.obj116 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
                         break;
-                    case 106: // Views\CreateChallengesPage.xaml line 403
-                        this.obj106 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 117: // Views\CreateChallengesPage.xaml line 403
+                        this.obj117 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -1880,7 +1880,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj105.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj116.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -1943,17 +1943,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 403
-                    if (!isobj106TextDisabled)
+                    if (!isobj117TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj106, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj117, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj109_Bindings :
+        private class CreateChallengesPage_obj121_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -1967,15 +1967,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj109;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj110;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj111;
+            private global::System.WeakReference obj121;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj122;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj123;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj110SourceDisabled = false;
-            private static bool isobj111TextDisabled = false;
+            private static bool isobj122SourceDisabled = false;
+            private static bool isobj123TextDisabled = false;
 
-            public CreateChallengesPage_obj109_Bindings()
+            public CreateChallengesPage_obj121_Bindings()
             {
             }
 
@@ -1983,11 +1983,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 287 && columnNumber == 59)
                 {
-                    isobj110SourceDisabled = true;
+                    isobj122SourceDisabled = true;
                 }
                 else if (lineNumber == 293 && columnNumber == 49)
                 {
-                    isobj111TextDisabled = true;
+                    isobj123TextDisabled = true;
                 }
             }
 
@@ -1997,14 +1997,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 109: // Views\CreateChallengesPage.xaml line 280
-                        this.obj109 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 121: // Views\CreateChallengesPage.xaml line 280
+                        this.obj121 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 110: // Views\CreateChallengesPage.xaml line 285
-                        this.obj110 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 122: // Views\CreateChallengesPage.xaml line 285
+                        this.obj122 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 111: // Views\CreateChallengesPage.xaml line 289
-                        this.obj111 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 123: // Views\CreateChallengesPage.xaml line 289
+                        this.obj123 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -2051,7 +2051,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj109.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj121.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -2125,9 +2125,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 285
-                    if (!isobj110SourceDisabled)
+                    if (!isobj122SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj110, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj122, obj, null);
                     }
                 }
             }
@@ -2136,17 +2136,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 289
-                    if (!isobj111TextDisabled)
+                    if (!isobj123TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj111, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj123, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj122_Bindings :
+        private class CreateChallengesPage_obj135_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -2160,13 +2160,13 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj122;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj123;
+            private global::System.WeakReference obj135;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj136;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj123TextDisabled = false;
+            private static bool isobj136TextDisabled = false;
 
-            public CreateChallengesPage_obj122_Bindings()
+            public CreateChallengesPage_obj135_Bindings()
             {
             }
 
@@ -2174,7 +2174,7 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 197 && columnNumber == 68)
                 {
-                    isobj123TextDisabled = true;
+                    isobj136TextDisabled = true;
                 }
             }
 
@@ -2184,11 +2184,11 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 122: // Views\CreateChallengesPage.xaml line 196
-                        this.obj122 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
+                    case 135: // Views\CreateChallengesPage.xaml line 196
+                        this.obj135 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.StackPanel)target);
                         break;
-                    case 123: // Views\CreateChallengesPage.xaml line 197
-                        this.obj123 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 136: // Views\CreateChallengesPage.xaml line 197
+                        this.obj136 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -2235,7 +2235,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj122.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj135.Target as global::Windows.UI.Xaml.Controls.StackPanel).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -2298,17 +2298,17 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 197
-                    if (!isobj123TextDisabled)
+                    if (!isobj136TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj123, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj136, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private class CreateChallengesPage_obj126_Bindings :
+        private class CreateChallengesPage_obj140_Bindings :
             global::Windows.UI.Xaml.IDataTemplateExtension,
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
             global::Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics,
@@ -2322,15 +2322,15 @@ namespace SyntaxError.V2.App.Views
             private bool removedDataContextHandler = false;
 
             // Fields for each control that has bindings.
-            private global::System.WeakReference obj126;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj127;
-            private global::Windows.UI.Xaml.Controls.TextBlock obj128;
+            private global::System.WeakReference obj140;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx obj141;
+            private global::Windows.UI.Xaml.Controls.TextBlock obj142;
 
             // Static fields for each binding's enabled/disabled state
-            private static bool isobj127SourceDisabled = false;
-            private static bool isobj128TextDisabled = false;
+            private static bool isobj141SourceDisabled = false;
+            private static bool isobj142TextDisabled = false;
 
-            public CreateChallengesPage_obj126_Bindings()
+            public CreateChallengesPage_obj140_Bindings()
             {
             }
 
@@ -2338,11 +2338,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (lineNumber == 80 && columnNumber == 59)
                 {
-                    isobj127SourceDisabled = true;
+                    isobj141SourceDisabled = true;
                 }
                 else if (lineNumber == 86 && columnNumber == 49)
                 {
-                    isobj128TextDisabled = true;
+                    isobj142TextDisabled = true;
                 }
             }
 
@@ -2352,14 +2352,14 @@ namespace SyntaxError.V2.App.Views
             {
                 switch(connectionId)
                 {
-                    case 126: // Views\CreateChallengesPage.xaml line 73
-                        this.obj126 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
+                    case 140: // Views\CreateChallengesPage.xaml line 73
+                        this.obj140 = new global::System.WeakReference((global::Windows.UI.Xaml.Controls.Grid)target);
                         break;
-                    case 127: // Views\CreateChallengesPage.xaml line 78
-                        this.obj127 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
+                    case 141: // Views\CreateChallengesPage.xaml line 78
+                        this.obj141 = (global::Microsoft.Toolkit.Uwp.UI.Controls.ImageEx)target;
                         break;
-                    case 128: // Views\CreateChallengesPage.xaml line 82
-                        this.obj128 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
+                    case 142: // Views\CreateChallengesPage.xaml line 82
+                        this.obj142 = (global::Windows.UI.Xaml.Controls.TextBlock)target;
                         break;
                     default:
                         break;
@@ -2406,7 +2406,7 @@ namespace SyntaxError.V2.App.Views
                         if (!removedDataContextHandler)
                         {
                             removedDataContextHandler = true;
-                            (this.obj126.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
+                            (this.obj140.Target as global::Windows.UI.Xaml.Controls.Grid).DataContextChanged -= this.DataContextChangedHandler;
                         }
                         this.initialized = true;
                         break;
@@ -2480,9 +2480,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 78
-                    if (!isobj127SourceDisabled)
+                    if (!isobj141SourceDisabled)
                     {
-                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj127, obj, null);
+                        XamlBindingSetters.Set_Microsoft_Toolkit_Uwp_UI_Controls_ImageExBase_Source(this.obj141, obj, null);
                     }
                 }
             }
@@ -2491,15 +2491,15 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 82
-                    if (!isobj128TextDisabled)
+                    if (!isobj142TextDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj128, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj142, obj, null);
                     }
                 }
             }
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private class CreateChallengesPage_obj1_Bindings :
             global::Windows.UI.Xaml.Markup.IDataTemplateComponent,
@@ -2515,34 +2515,34 @@ namespace SyntaxError.V2.App.Views
             // Fields for each control that has bindings.
             private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj4;
             private global::Windows.UI.Xaml.Controls.ComboBox obj9;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj21;
-            private global::Windows.UI.Xaml.Controls.ComboBox obj26;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj38;
-            private global::Windows.UI.Xaml.Controls.ComboBox obj43;
-            private global::Windows.UI.Xaml.Controls.ListView obj55;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj67;
-            private global::Windows.UI.Xaml.Controls.ComboBox obj72;
-            private global::Windows.UI.Xaml.Controls.ListView obj84;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj99;
-            private global::Windows.UI.Xaml.Controls.ComboBox obj104;
-            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj116;
-            private global::Windows.UI.Xaml.Controls.ComboBox obj121;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj23;
+            private global::Windows.UI.Xaml.Controls.ComboBox obj28;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj42;
+            private global::Windows.UI.Xaml.Controls.ComboBox obj47;
+            private global::Windows.UI.Xaml.Controls.ListView obj61;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj74;
+            private global::Windows.UI.Xaml.Controls.ComboBox obj79;
+            private global::Windows.UI.Xaml.Controls.ListView obj93;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj109;
+            private global::Windows.UI.Xaml.Controls.ComboBox obj114;
+            private global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView obj128;
+            private global::Windows.UI.Xaml.Controls.ComboBox obj133;
 
             // Static fields for each binding's enabled/disabled state
             private static bool isobj4ItemsSourceDisabled = false;
             private static bool isobj9ItemsSourceDisabled = false;
-            private static bool isobj21ItemsSourceDisabled = false;
-            private static bool isobj26ItemsSourceDisabled = false;
-            private static bool isobj38ItemsSourceDisabled = false;
-            private static bool isobj43ItemsSourceDisabled = false;
-            private static bool isobj55ItemsSourceDisabled = false;
-            private static bool isobj67ItemsSourceDisabled = false;
-            private static bool isobj72ItemsSourceDisabled = false;
-            private static bool isobj84ItemsSourceDisabled = false;
-            private static bool isobj99ItemsSourceDisabled = false;
-            private static bool isobj104ItemsSourceDisabled = false;
-            private static bool isobj116ItemsSourceDisabled = false;
-            private static bool isobj121ItemsSourceDisabled = false;
+            private static bool isobj23ItemsSourceDisabled = false;
+            private static bool isobj28ItemsSourceDisabled = false;
+            private static bool isobj42ItemsSourceDisabled = false;
+            private static bool isobj47ItemsSourceDisabled = false;
+            private static bool isobj61ItemsSourceDisabled = false;
+            private static bool isobj74ItemsSourceDisabled = false;
+            private static bool isobj79ItemsSourceDisabled = false;
+            private static bool isobj93ItemsSourceDisabled = false;
+            private static bool isobj109ItemsSourceDisabled = false;
+            private static bool isobj114ItemsSourceDisabled = false;
+            private static bool isobj128ItemsSourceDisabled = false;
+            private static bool isobj133ItemsSourceDisabled = false;
 
             public CreateChallengesPage_obj1_Bindings()
             {
@@ -2560,51 +2560,51 @@ namespace SyntaxError.V2.App.Views
                 }
                 else if (lineNumber == 1185 && columnNumber == 48)
                 {
-                    isobj21ItemsSourceDisabled = true;
+                    isobj23ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 1311 && columnNumber == 80)
                 {
-                    isobj26ItemsSourceDisabled = true;
+                    isobj28ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 981 && columnNumber == 48)
                 {
-                    isobj38ItemsSourceDisabled = true;
+                    isobj42ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 1107 && columnNumber == 80)
                 {
-                    isobj43ItemsSourceDisabled = true;
+                    isobj47ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 849 && columnNumber == 31)
                 {
-                    isobj55ItemsSourceDisabled = true;
+                    isobj61ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 645 && columnNumber == 48)
                 {
-                    isobj67ItemsSourceDisabled = true;
+                    isobj74ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 771 && columnNumber == 80)
                 {
-                    isobj72ItemsSourceDisabled = true;
+                    isobj79ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 475 && columnNumber == 31)
                 {
-                    isobj84ItemsSourceDisabled = true;
+                    isobj93ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 269 && columnNumber == 48)
                 {
-                    isobj99ItemsSourceDisabled = true;
+                    isobj109ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 397 && columnNumber == 80)
                 {
-                    isobj104ItemsSourceDisabled = true;
+                    isobj114ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 62 && columnNumber == 48)
                 {
-                    isobj116ItemsSourceDisabled = true;
+                    isobj128ItemsSourceDisabled = true;
                 }
                 else if (lineNumber == 191 && columnNumber == 80)
                 {
-                    isobj121ItemsSourceDisabled = true;
+                    isobj133ItemsSourceDisabled = true;
                 }
             }
 
@@ -2620,41 +2620,41 @@ namespace SyntaxError.V2.App.Views
                     case 9: // Views\CreateChallengesPage.xaml line 1519
                         this.obj9 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
                         break;
-                    case 21: // Views\CreateChallengesPage.xaml line 1185
-                        this.obj21 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 23: // Views\CreateChallengesPage.xaml line 1185
+                        this.obj23 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 26: // Views\CreateChallengesPage.xaml line 1311
-                        this.obj26 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
+                    case 28: // Views\CreateChallengesPage.xaml line 1311
+                        this.obj28 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
                         break;
-                    case 38: // Views\CreateChallengesPage.xaml line 981
-                        this.obj38 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 42: // Views\CreateChallengesPage.xaml line 981
+                        this.obj42 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 43: // Views\CreateChallengesPage.xaml line 1107
-                        this.obj43 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
+                    case 47: // Views\CreateChallengesPage.xaml line 1107
+                        this.obj47 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
                         break;
-                    case 55: // Views\CreateChallengesPage.xaml line 849
-                        this.obj55 = (global::Windows.UI.Xaml.Controls.ListView)target;
+                    case 61: // Views\CreateChallengesPage.xaml line 849
+                        this.obj61 = (global::Windows.UI.Xaml.Controls.ListView)target;
                         break;
-                    case 67: // Views\CreateChallengesPage.xaml line 645
-                        this.obj67 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 74: // Views\CreateChallengesPage.xaml line 645
+                        this.obj74 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 72: // Views\CreateChallengesPage.xaml line 771
-                        this.obj72 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
+                    case 79: // Views\CreateChallengesPage.xaml line 771
+                        this.obj79 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
                         break;
-                    case 84: // Views\CreateChallengesPage.xaml line 475
-                        this.obj84 = (global::Windows.UI.Xaml.Controls.ListView)target;
+                    case 93: // Views\CreateChallengesPage.xaml line 475
+                        this.obj93 = (global::Windows.UI.Xaml.Controls.ListView)target;
                         break;
-                    case 99: // Views\CreateChallengesPage.xaml line 269
-                        this.obj99 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 109: // Views\CreateChallengesPage.xaml line 269
+                        this.obj109 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 104: // Views\CreateChallengesPage.xaml line 397
-                        this.obj104 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
+                    case 114: // Views\CreateChallengesPage.xaml line 397
+                        this.obj114 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
                         break;
-                    case 116: // Views\CreateChallengesPage.xaml line 62
-                        this.obj116 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
+                    case 128: // Views\CreateChallengesPage.xaml line 62
+                        this.obj128 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)target;
                         break;
-                    case 121: // Views\CreateChallengesPage.xaml line 191
-                        this.obj121 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
+                    case 133: // Views\CreateChallengesPage.xaml line 191
+                        this.obj133 = (global::Windows.UI.Xaml.Controls.ComboBox)target;
                         break;
                     default:
                         break;
@@ -2665,12 +2665,12 @@ namespace SyntaxError.V2.App.Views
 
             public void ProcessBindings(global::System.Object item, int itemIndex, int phase, out int nextPhase)
             {
-                throw new global::System.NotImplementedException();
+                nextPhase = -1;
             }
 
             public void Recycle()
             {
-                throw new global::System.NotImplementedException();
+                return;
             }
 
             // ICreateChallengesPage_Bindings
@@ -2765,14 +2765,14 @@ namespace SyntaxError.V2.App.Views
                         XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj9, obj, null);
                     }
                     // Views\CreateChallengesPage.xaml line 397
-                    if (!isobj104ItemsSourceDisabled)
+                    if (!isobj114ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj104, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj114, obj, null);
                     }
                     // Views\CreateChallengesPage.xaml line 191
-                    if (!isobj121ItemsSourceDisabled)
+                    if (!isobj133ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj121, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj133, obj, null);
                     }
                 }
             }
@@ -2781,9 +2781,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1185
-                    if (!isobj21ItemsSourceDisabled)
+                    if (!isobj23ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj21, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj23, obj, null);
                     }
                 }
             }
@@ -2792,14 +2792,14 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 1311
-                    if (!isobj26ItemsSourceDisabled)
+                    if (!isobj28ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj26, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj28, obj, null);
                     }
                     // Views\CreateChallengesPage.xaml line 1107
-                    if (!isobj43ItemsSourceDisabled)
+                    if (!isobj47ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj43, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj47, obj, null);
                     }
                 }
             }
@@ -2808,9 +2808,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 981
-                    if (!isobj38ItemsSourceDisabled)
+                    if (!isobj42ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj38, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj42, obj, null);
                     }
                 }
             }
@@ -2819,9 +2819,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 849
-                    if (!isobj55ItemsSourceDisabled)
+                    if (!isobj61ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj55, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj61, obj, null);
                     }
                 }
             }
@@ -2830,9 +2830,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 645
-                    if (!isobj67ItemsSourceDisabled)
+                    if (!isobj74ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj67, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj74, obj, null);
                     }
                 }
             }
@@ -2841,9 +2841,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 771
-                    if (!isobj72ItemsSourceDisabled)
+                    if (!isobj79ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj72, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj79, obj, null);
                     }
                 }
             }
@@ -2852,9 +2852,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 475
-                    if (!isobj84ItemsSourceDisabled)
+                    if (!isobj93ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj84, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj93, obj, null);
                     }
                 }
             }
@@ -2863,9 +2863,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 269
-                    if (!isobj99ItemsSourceDisabled)
+                    if (!isobj109ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj99, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj109, obj, null);
                     }
                 }
             }
@@ -2874,9 +2874,9 @@ namespace SyntaxError.V2.App.Views
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {
                     // Views\CreateChallengesPage.xaml line 62
-                    if (!isobj116ItemsSourceDisabled)
+                    if (!isobj128ItemsSourceDisabled)
                     {
-                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj116, obj, null);
+                        XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj128, obj, null);
                     }
                 }
             }
@@ -2884,7 +2884,7 @@ namespace SyntaxError.V2.App.Views
         /// <summary>
         /// Connect()
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public void Connect(int connectionId, object target)
         {
@@ -2936,534 +2936,534 @@ namespace SyntaxError.V2.App.Views
                     ((global::Windows.UI.Xaml.Controls.ComboBox)element9).SelectionChanged += this.ComboBox_SelectionChanged;
                 }
                 break;
-            case 12: // Views\CreateChallengesPage.xaml line 1486
+            case 13: // Views\CreateChallengesPage.xaml line 1486
                 {
-                    global::Windows.UI.Xaml.Controls.Grid element12 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element12).Tapped += this.StackPanel_Tapped;
+                    global::Windows.UI.Xaml.Controls.Grid element13 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element13).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 13: // Views\CreateChallengesPage.xaml line 1503
+            case 14: // Views\CreateChallengesPage.xaml line 1503
                 {
-                    global::Windows.UI.Xaml.Controls.Button element13 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element13).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element14 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element14).Click += this.BackButton_Click;
                 }
                 break;
-            case 17: // Views\CreateChallengesPage.xaml line 1383
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element17 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element17).Click += this.AddNewChallengeButton_Click;
-                }
-                break;
-            case 18: // Views\CreateChallengesPage.xaml line 1364
-                {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element18 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element18).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element18).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
-                }
-                break;
-            case 19: // Views\CreateChallengesPage.xaml line 1371
+            case 19: // Views\CreateChallengesPage.xaml line 1383
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element19 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element19).Click += this.AppBarButton_SelectionMode_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element19).Click += this.AddNewChallengeButton_Click;
                 }
                 break;
-            case 20: // Views\CreateChallengesPage.xaml line 1378
+            case 20: // Views\CreateChallengesPage.xaml line 1364
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element20 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element20).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element20 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element20).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element20).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 21: // Views\CreateChallengesPage.xaml line 1185
+            case 21: // Views\CreateChallengesPage.xaml line 1371
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element21 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element21).Tapped += this.ChallengeList_Tapped;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element21 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element21).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 22: // Views\CreateChallengesPage.xaml line 1340
+            case 22: // Views\CreateChallengesPage.xaml line 1378
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element22 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element22).Click += this.AppBarButton_DeleteSelected_Click;
+                }
+                break;
+            case 23: // Views\CreateChallengesPage.xaml line 1185
+                {
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element23 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element23).Tapped += this.ChallengeList_Tapped;
+                }
+                break;
+            case 24: // Views\CreateChallengesPage.xaml line 1340
                 {
                     this.EmptySilhouetteChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 23: // Views\CreateChallengesPage.xaml line 1331
+            case 25: // Views\CreateChallengesPage.xaml line 1331
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element23 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element23).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element25 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element25).Click += this.SaveButton_Click;
                 }
                 break;
-            case 24: // Views\CreateChallengesPage.xaml line 1334
+            case 26: // Views\CreateChallengesPage.xaml line 1334
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element24 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element24).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element26 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element26).Click += this.BackButton_Click;
                 }
                 break;
-            case 25: // Views\CreateChallengesPage.xaml line 1241
+            case 27: // Views\CreateChallengesPage.xaml line 1241
                 {
-                    global::Windows.UI.Xaml.Controls.Button element25 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element25).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element27 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element27).Click += this.BackButton_Click;
                 }
                 break;
-            case 26: // Views\CreateChallengesPage.xaml line 1311
+            case 28: // Views\CreateChallengesPage.xaml line 1311
                 {
-                    global::Windows.UI.Xaml.Controls.ComboBox element26 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.ComboBox)element26).SelectionChanged += this.ComboBox_SelectionChanged;
+                    global::Windows.UI.Xaml.Controls.ComboBox element28 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.ComboBox)element28).SelectionChanged += this.ComboBox_SelectionChanged;
                 }
                 break;
-            case 29: // Views\CreateChallengesPage.xaml line 1279
+            case 32: // Views\CreateChallengesPage.xaml line 1279
                 {
-                    global::Windows.UI.Xaml.Controls.Grid element29 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element29).Tapped += this.StackPanel_Tapped;
+                    global::Windows.UI.Xaml.Controls.Grid element32 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element32).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 30: // Views\CreateChallengesPage.xaml line 1296
+            case 33: // Views\CreateChallengesPage.xaml line 1296
                 {
-                    global::Windows.UI.Xaml.Controls.Button element30 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element30).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element33 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element33).Click += this.BackButton_Click;
                 }
                 break;
-            case 34: // Views\CreateChallengesPage.xaml line 1179
+            case 38: // Views\CreateChallengesPage.xaml line 1179
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element34 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element34).Click += this.AddNewChallengeButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element38 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element38).Click += this.AddNewChallengeButton_Click;
                 }
                 break;
-            case 35: // Views\CreateChallengesPage.xaml line 1160
+            case 39: // Views\CreateChallengesPage.xaml line 1160
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element35 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element35).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element35).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element39 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element39).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element39).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 36: // Views\CreateChallengesPage.xaml line 1167
+            case 40: // Views\CreateChallengesPage.xaml line 1167
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element36 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element36).Click += this.AppBarButton_SelectionMode_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element40 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element40).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 37: // Views\CreateChallengesPage.xaml line 1174
+            case 41: // Views\CreateChallengesPage.xaml line 1174
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element37 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element37).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element41 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element41).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
-            case 38: // Views\CreateChallengesPage.xaml line 981
+            case 42: // Views\CreateChallengesPage.xaml line 981
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element38 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element38).Tapped += this.ChallengeList_Tapped;
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element42 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element42).Tapped += this.ChallengeList_Tapped;
                 }
                 break;
-            case 39: // Views\CreateChallengesPage.xaml line 1136
+            case 43: // Views\CreateChallengesPage.xaml line 1136
                 {
                     this.EmptyScreenshotChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 40: // Views\CreateChallengesPage.xaml line 1127
+            case 44: // Views\CreateChallengesPage.xaml line 1127
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element40 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element40).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element44 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element44).Click += this.SaveButton_Click;
                 }
                 break;
-            case 41: // Views\CreateChallengesPage.xaml line 1130
+            case 45: // Views\CreateChallengesPage.xaml line 1130
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element41 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element41).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element45 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element45).Click += this.BackButton_Click;
                 }
                 break;
-            case 42: // Views\CreateChallengesPage.xaml line 1037
+            case 46: // Views\CreateChallengesPage.xaml line 1037
                 {
-                    global::Windows.UI.Xaml.Controls.Button element42 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element42).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element46 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element46).Click += this.BackButton_Click;
                 }
                 break;
-            case 43: // Views\CreateChallengesPage.xaml line 1107
+            case 47: // Views\CreateChallengesPage.xaml line 1107
                 {
-                    global::Windows.UI.Xaml.Controls.ComboBox element43 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.ComboBox)element43).SelectionChanged += this.ComboBox_SelectionChanged;
+                    global::Windows.UI.Xaml.Controls.ComboBox element47 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.ComboBox)element47).SelectionChanged += this.ComboBox_SelectionChanged;
                 }
                 break;
-            case 46: // Views\CreateChallengesPage.xaml line 1075
+            case 51: // Views\CreateChallengesPage.xaml line 1075
                 {
-                    global::Windows.UI.Xaml.Controls.Grid element46 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element46).Tapped += this.StackPanel_Tapped;
+                    global::Windows.UI.Xaml.Controls.Grid element51 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element51).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 47: // Views\CreateChallengesPage.xaml line 1092
+            case 52: // Views\CreateChallengesPage.xaml line 1092
                 {
-                    global::Windows.UI.Xaml.Controls.Button element47 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element47).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element52 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element52).Click += this.BackButton_Click;
                 }
                 break;
-            case 51: // Views\CreateChallengesPage.xaml line 975
+            case 57: // Views\CreateChallengesPage.xaml line 975
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element51 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element51).Click += this.AddNewChallengeButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element57 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element57).Click += this.AddNewChallengeButton_Click;
                 }
                 break;
-            case 52: // Views\CreateChallengesPage.xaml line 956
+            case 58: // Views\CreateChallengesPage.xaml line 956
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element52 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element52).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element52).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element58 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element58).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element58).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 53: // Views\CreateChallengesPage.xaml line 963
+            case 59: // Views\CreateChallengesPage.xaml line 963
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element53 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element53).Click += this.AppBarButton_SelectionMode_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element59 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element59).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 54: // Views\CreateChallengesPage.xaml line 970
+            case 60: // Views\CreateChallengesPage.xaml line 970
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element54 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element54).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element60 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element60).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
-            case 55: // Views\CreateChallengesPage.xaml line 849
+            case 61: // Views\CreateChallengesPage.xaml line 849
                 {
                     this.QuizChallengeList = (global::Windows.UI.Xaml.Controls.ListView)(target);
                     ((global::Windows.UI.Xaml.Controls.ListView)this.QuizChallengeList).Tapped += this.ChallengeList_Tapped;
                 }
                 break;
-            case 56: // Views\CreateChallengesPage.xaml line 932
+            case 62: // Views\CreateChallengesPage.xaml line 932
                 {
                     this.EmptyQuizChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 57: // Views\CreateChallengesPage.xaml line 923
+            case 63: // Views\CreateChallengesPage.xaml line 923
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element57 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element57).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element63 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element63).Click += this.SaveButton_Click;
                 }
                 break;
-            case 58: // Views\CreateChallengesPage.xaml line 926
+            case 64: // Views\CreateChallengesPage.xaml line 926
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element58 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element58).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element64 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element64).Click += this.BackButton_Click;
                 }
                 break;
-            case 59: // Views\CreateChallengesPage.xaml line 893
+            case 65: // Views\CreateChallengesPage.xaml line 893
                 {
-                    global::Windows.UI.Xaml.Controls.Button element59 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element59).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element65 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element65).Click += this.BackButton_Click;
                 }
                 break;
-            case 60: // Views\CreateChallengesPage.xaml line 913
+            case 66: // Views\CreateChallengesPage.xaml line 913
                 {
                     this.QuizAnswer = (global::Windows.UI.Xaml.Controls.TextBox)(target);
                 }
                 break;
-            case 63: // Views\CreateChallengesPage.xaml line 843
+            case 70: // Views\CreateChallengesPage.xaml line 843
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element63 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element63).Click += this.AddNewChallengeButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element70 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element70).Click += this.AddNewChallengeButton_Click;
                 }
                 break;
-            case 64: // Views\CreateChallengesPage.xaml line 824
+            case 71: // Views\CreateChallengesPage.xaml line 824
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element64 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element64).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element64).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element71 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element71).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element71).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 65: // Views\CreateChallengesPage.xaml line 831
+            case 72: // Views\CreateChallengesPage.xaml line 831
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element65 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element65).Click += this.AppBarButton_SelectionMode_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element72 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element72).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 66: // Views\CreateChallengesPage.xaml line 838
+            case 73: // Views\CreateChallengesPage.xaml line 838
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element66 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element66).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element73 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element73).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
-            case 67: // Views\CreateChallengesPage.xaml line 645
+            case 74: // Views\CreateChallengesPage.xaml line 645
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element67 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element67).Tapped += this.ChallengeList_Tapped;
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element74 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element74).Tapped += this.ChallengeList_Tapped;
                 }
                 break;
-            case 68: // Views\CreateChallengesPage.xaml line 800
+            case 75: // Views\CreateChallengesPage.xaml line 800
                 {
                     this.EmptyMusicChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 69: // Views\CreateChallengesPage.xaml line 791
+            case 76: // Views\CreateChallengesPage.xaml line 791
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element69 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element69).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element76 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element76).Click += this.SaveButton_Click;
                 }
                 break;
-            case 70: // Views\CreateChallengesPage.xaml line 794
+            case 77: // Views\CreateChallengesPage.xaml line 794
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element70 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element70).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element77 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element77).Click += this.BackButton_Click;
                 }
                 break;
-            case 71: // Views\CreateChallengesPage.xaml line 701
+            case 78: // Views\CreateChallengesPage.xaml line 701
                 {
-                    global::Windows.UI.Xaml.Controls.Button element71 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element71).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element78 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element78).Click += this.BackButton_Click;
                 }
                 break;
-            case 72: // Views\CreateChallengesPage.xaml line 771
+            case 79: // Views\CreateChallengesPage.xaml line 771
                 {
-                    global::Windows.UI.Xaml.Controls.ComboBox element72 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.ComboBox)element72).SelectionChanged += this.ComboBox_SelectionChanged;
+                    global::Windows.UI.Xaml.Controls.ComboBox element79 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.ComboBox)element79).SelectionChanged += this.ComboBox_SelectionChanged;
                 }
                 break;
-            case 75: // Views\CreateChallengesPage.xaml line 739
+            case 83: // Views\CreateChallengesPage.xaml line 739
                 {
-                    global::Windows.UI.Xaml.Controls.Grid element75 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element75).Tapped += this.StackPanel_Tapped;
+                    global::Windows.UI.Xaml.Controls.Grid element83 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element83).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 76: // Views\CreateChallengesPage.xaml line 756
+            case 84: // Views\CreateChallengesPage.xaml line 756
                 {
-                    global::Windows.UI.Xaml.Controls.Button element76 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element76).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element84 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element84).Click += this.BackButton_Click;
                 }
                 break;
-            case 80: // Views\CreateChallengesPage.xaml line 639
+            case 89: // Views\CreateChallengesPage.xaml line 639
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element80 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element80).Click += this.AddNewChallengeButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element89 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element89).Click += this.AddNewChallengeButton_Click;
                 }
                 break;
-            case 81: // Views\CreateChallengesPage.xaml line 620
+            case 90: // Views\CreateChallengesPage.xaml line 620
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element81 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element81).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element81).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element90 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element90).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element90).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 82: // Views\CreateChallengesPage.xaml line 627
+            case 91: // Views\CreateChallengesPage.xaml line 627
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element82 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element82).Click += this.AppBarButton_SelectionMode_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element91 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element91).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 83: // Views\CreateChallengesPage.xaml line 634
+            case 92: // Views\CreateChallengesPage.xaml line 634
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element83 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element83).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element92 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element92).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
-            case 84: // Views\CreateChallengesPage.xaml line 475
+            case 93: // Views\CreateChallengesPage.xaml line 475
                 {
                     this.MultipleChoiceChallengeList = (global::Windows.UI.Xaml.Controls.ListView)(target);
                     ((global::Windows.UI.Xaml.Controls.ListView)this.MultipleChoiceChallengeList).Tapped += this.ChallengeList_Tapped;
                 }
                 break;
-            case 85: // Views\CreateChallengesPage.xaml line 596
+            case 94: // Views\CreateChallengesPage.xaml line 596
                 {
                     this.EmptyMultipleChoiceChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 86: // Views\CreateChallengesPage.xaml line 587
+            case 95: // Views\CreateChallengesPage.xaml line 587
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element86 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element86).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element95 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element95).Click += this.SaveButton_Click;
                 }
                 break;
-            case 87: // Views\CreateChallengesPage.xaml line 590
+            case 96: // Views\CreateChallengesPage.xaml line 590
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element87 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element87).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element96 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element96).Click += this.BackButton_Click;
                 }
                 break;
-            case 88: // Views\CreateChallengesPage.xaml line 524
+            case 97: // Views\CreateChallengesPage.xaml line 524
                 {
-                    global::Windows.UI.Xaml.Controls.Button element88 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element88).Click += this.BackButton_Click;
+                    global::Windows.UI.Xaml.Controls.Button element97 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element97).Click += this.BackButton_Click;
                 }
                 break;
-            case 89: // Views\CreateChallengesPage.xaml line 578
+            case 98: // Views\CreateChallengesPage.xaml line 578
                 {
                     this.MultipleChoiceDummy3 = (global::Windows.UI.Xaml.Controls.TextBox)(target);
                 }
                 break;
-            case 90: // Views\CreateChallengesPage.xaml line 570
+            case 99: // Views\CreateChallengesPage.xaml line 570
                 {
                     this.MultipleChoiceDummy2 = (global::Windows.UI.Xaml.Controls.TextBox)(target);
                 }
                 break;
-            case 91: // Views\CreateChallengesPage.xaml line 562
+            case 100: // Views\CreateChallengesPage.xaml line 562
                 {
                     this.MultipleChoiceDummy1 = (global::Windows.UI.Xaml.Controls.TextBox)(target);
                 }
                 break;
-            case 92: // Views\CreateChallengesPage.xaml line 554
+            case 101: // Views\CreateChallengesPage.xaml line 554
                 {
                     this.MultipleChoiceAnswer = (global::Windows.UI.Xaml.Controls.TextBox)(target);
                 }
                 break;
-            case 95: // Views\CreateChallengesPage.xaml line 469
+            case 105: // Views\CreateChallengesPage.xaml line 469
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element95 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element95).Click += this.AddNewChallengeButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element105 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element105).Click += this.AddNewChallengeButton_Click;
                 }
                 break;
-            case 96: // Views\CreateChallengesPage.xaml line 450
+            case 106: // Views\CreateChallengesPage.xaml line 450
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element96 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element96).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element96).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element106 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element106).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element106).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
                 }
                 break;
-            case 97: // Views\CreateChallengesPage.xaml line 457
+            case 107: // Views\CreateChallengesPage.xaml line 457
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element97 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element97).Click += this.AppBarButton_SelectionMode_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element107 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element107).Click += this.AppBarButton_SelectionMode_Click;
                 }
                 break;
-            case 98: // Views\CreateChallengesPage.xaml line 464
+            case 108: // Views\CreateChallengesPage.xaml line 464
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element98 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element98).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element108 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element108).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
-            case 99: // Views\CreateChallengesPage.xaml line 269
+            case 109: // Views\CreateChallengesPage.xaml line 269
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element99 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element99).Tapped += this.ChallengeList_Tapped;
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element109 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element109).Tapped += this.ChallengeList_Tapped;
                 }
                 break;
-            case 100: // Views\CreateChallengesPage.xaml line 426
+            case 110: // Views\CreateChallengesPage.xaml line 426
                 {
                     this.EmptyCrewChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 101: // Views\CreateChallengesPage.xaml line 417
+            case 111: // Views\CreateChallengesPage.xaml line 417
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element101 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element101).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element111 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element111).Click += this.SaveButton_Click;
                 }
                 break;
-            case 102: // Views\CreateChallengesPage.xaml line 420
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element102 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element102).Click += this.BackButton_Click;
-                }
-                break;
-            case 103: // Views\CreateChallengesPage.xaml line 328
-                {
-                    global::Windows.UI.Xaml.Controls.Button element103 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element103).Click += this.BackButton_Click;
-                }
-                break;
-            case 104: // Views\CreateChallengesPage.xaml line 397
-                {
-                    global::Windows.UI.Xaml.Controls.ComboBox element104 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.ComboBox)element104).SelectionChanged += this.ComboBox_SelectionChanged;
-                }
-                break;
-            case 107: // Views\CreateChallengesPage.xaml line 365
-                {
-                    global::Windows.UI.Xaml.Controls.Grid element107 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element107).Tapped += this.StackPanel_Tapped;
-                }
-                break;
-            case 108: // Views\CreateChallengesPage.xaml line 382
-                {
-                    global::Windows.UI.Xaml.Controls.Button element108 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element108).Click += this.BackButton_Click;
-                }
-                break;
-            case 112: // Views\CreateChallengesPage.xaml line 263
+            case 112: // Views\CreateChallengesPage.xaml line 420
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element112 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element112).Click += this.AddNewChallengeButton_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element112).Click += this.BackButton_Click;
                 }
                 break;
-            case 113: // Views\CreateChallengesPage.xaml line 244
+            case 113: // Views\CreateChallengesPage.xaml line 328
                 {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element113 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element113).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element113).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                    global::Windows.UI.Xaml.Controls.Button element113 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element113).Click += this.BackButton_Click;
                 }
                 break;
-            case 114: // Views\CreateChallengesPage.xaml line 251
+            case 114: // Views\CreateChallengesPage.xaml line 397
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element114 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element114).Click += this.AppBarButton_SelectionMode_Click;
+                    global::Windows.UI.Xaml.Controls.ComboBox element114 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.ComboBox)element114).SelectionChanged += this.ComboBox_SelectionChanged;
                 }
                 break;
-            case 115: // Views\CreateChallengesPage.xaml line 258
+            case 118: // Views\CreateChallengesPage.xaml line 365
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element115 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element115).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.Grid element118 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element118).Tapped += this.StackPanel_Tapped;
                 }
                 break;
-            case 116: // Views\CreateChallengesPage.xaml line 62
+            case 119: // Views\CreateChallengesPage.xaml line 382
                 {
-                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element116 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
-                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element116).Tapped += this.ChallengeList_Tapped;
+                    global::Windows.UI.Xaml.Controls.Button element119 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element119).Click += this.BackButton_Click;
                 }
                 break;
-            case 117: // Views\CreateChallengesPage.xaml line 220
+            case 124: // Views\CreateChallengesPage.xaml line 263
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element124 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element124).Click += this.AddNewChallengeButton_Click;
+                }
+                break;
+            case 125: // Views\CreateChallengesPage.xaml line 244
+                {
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element125 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element125).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element125).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                }
+                break;
+            case 126: // Views\CreateChallengesPage.xaml line 251
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element126 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element126).Click += this.AppBarButton_SelectionMode_Click;
+                }
+                break;
+            case 127: // Views\CreateChallengesPage.xaml line 258
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element127 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element127).Click += this.AppBarButton_DeleteSelected_Click;
+                }
+                break;
+            case 128: // Views\CreateChallengesPage.xaml line 62
+                {
+                    global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView element128 = (global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)(target);
+                    ((global::Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView)element128).Tapped += this.ChallengeList_Tapped;
+                }
+                break;
+            case 129: // Views\CreateChallengesPage.xaml line 220
                 {
                     this.EmptyAudienceChallenges = (global::Windows.UI.Xaml.Controls.TextBlock)(target);
                 }
                 break;
-            case 118: // Views\CreateChallengesPage.xaml line 211
+            case 130: // Views\CreateChallengesPage.xaml line 211
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element118 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element118).Click += this.SaveButton_Click;
+                    global::Windows.UI.Xaml.Controls.AppBarButton element130 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element130).Click += this.SaveButton_Click;
                 }
                 break;
-            case 119: // Views\CreateChallengesPage.xaml line 214
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element119 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element119).Click += this.BackButton_Click;
-                }
-                break;
-            case 120: // Views\CreateChallengesPage.xaml line 121
-                {
-                    global::Windows.UI.Xaml.Controls.Button element120 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element120).Click += this.BackButton_Click;
-                }
-                break;
-            case 121: // Views\CreateChallengesPage.xaml line 191
-                {
-                    global::Windows.UI.Xaml.Controls.ComboBox element121 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.ComboBox)element121).SelectionChanged += this.ComboBox_SelectionChanged;
-                }
-                break;
-            case 124: // Views\CreateChallengesPage.xaml line 159
-                {
-                    global::Windows.UI.Xaml.Controls.Grid element124 = (global::Windows.UI.Xaml.Controls.Grid)(target);
-                    ((global::Windows.UI.Xaml.Controls.Grid)element124).Tapped += this.StackPanel_Tapped;
-                }
-                break;
-            case 125: // Views\CreateChallengesPage.xaml line 176
-                {
-                    global::Windows.UI.Xaml.Controls.Button element125 = (global::Windows.UI.Xaml.Controls.Button)(target);
-                    ((global::Windows.UI.Xaml.Controls.Button)element125).Click += this.BackButton_Click;
-                }
-                break;
-            case 129: // Views\CreateChallengesPage.xaml line 56
-                {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element129 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element129).Click += this.AddNewChallengeButton_Click;
-                }
-                break;
-            case 130: // Views\CreateChallengesPage.xaml line 37
-                {
-                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element130 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element130).TextChanged += this.AutoSuggestBox_TextChanged;
-                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element130).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
-                }
-                break;
-            case 131: // Views\CreateChallengesPage.xaml line 44
+            case 131: // Views\CreateChallengesPage.xaml line 214
                 {
                     global::Windows.UI.Xaml.Controls.AppBarButton element131 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element131).Click += this.AppBarButton_SelectionMode_Click;
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element131).Click += this.BackButton_Click;
                 }
                 break;
-            case 132: // Views\CreateChallengesPage.xaml line 51
+            case 132: // Views\CreateChallengesPage.xaml line 121
                 {
-                    global::Windows.UI.Xaml.Controls.AppBarButton element132 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
-                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element132).Click += this.AppBarButton_DeleteSelected_Click;
+                    global::Windows.UI.Xaml.Controls.Button element132 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element132).Click += this.BackButton_Click;
+                }
+                break;
+            case 133: // Views\CreateChallengesPage.xaml line 191
+                {
+                    global::Windows.UI.Xaml.Controls.ComboBox element133 = (global::Windows.UI.Xaml.Controls.ComboBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.ComboBox)element133).SelectionChanged += this.ComboBox_SelectionChanged;
+                }
+                break;
+            case 137: // Views\CreateChallengesPage.xaml line 159
+                {
+                    global::Windows.UI.Xaml.Controls.Grid element137 = (global::Windows.UI.Xaml.Controls.Grid)(target);
+                    ((global::Windows.UI.Xaml.Controls.Grid)element137).Tapped += this.StackPanel_Tapped;
+                }
+                break;
+            case 138: // Views\CreateChallengesPage.xaml line 176
+                {
+                    global::Windows.UI.Xaml.Controls.Button element138 = (global::Windows.UI.Xaml.Controls.Button)(target);
+                    ((global::Windows.UI.Xaml.Controls.Button)element138).Click += this.BackButton_Click;
+                }
+                break;
+            case 143: // Views\CreateChallengesPage.xaml line 56
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element143 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element143).Click += this.AddNewChallengeButton_Click;
+                }
+                break;
+            case 144: // Views\CreateChallengesPage.xaml line 37
+                {
+                    global::Windows.UI.Xaml.Controls.AutoSuggestBox element144 = (global::Windows.UI.Xaml.Controls.AutoSuggestBox)(target);
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element144).TextChanged += this.AutoSuggestBox_TextChanged;
+                    ((global::Windows.UI.Xaml.Controls.AutoSuggestBox)element144).QuerySubmitted += this.AutoSuggestBox_QuerySubmitted;
+                }
+                break;
+            case 145: // Views\CreateChallengesPage.xaml line 44
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element145 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element145).Click += this.AppBarButton_SelectionMode_Click;
+                }
+                break;
+            case 146: // Views\CreateChallengesPage.xaml line 51
+                {
+                    global::Windows.UI.Xaml.Controls.AppBarButton element146 = (global::Windows.UI.Xaml.Controls.AppBarButton)(target);
+                    ((global::Windows.UI.Xaml.Controls.AppBarButton)element146).Click += this.AppBarButton_DeleteSelected_Click;
                 }
                 break;
             default:
@@ -3475,7 +3475,7 @@ namespace SyntaxError.V2.App.Views
         /// <summary>
         /// GetBindingConnector(int connectionId, object target)
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.17.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::Windows.UI.Xaml.Markup.IComponentConnector GetBindingConnector(int connectionId, object target)
         {
@@ -3493,158 +3493,158 @@ namespace SyntaxError.V2.App.Views
                     global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element1, bindings);
                 }
                 break;
-            case 10: // Views\CreateChallengesPage.xaml line 1524
+            case 11: // Views\CreateChallengesPage.xaml line 1524
                 {                    
-                    global::Windows.UI.Xaml.Controls.StackPanel element10 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
-                    CreateChallengesPage_obj10_Bindings bindings = new CreateChallengesPage_obj10_Bindings();
+                    global::Windows.UI.Xaml.Controls.StackPanel element11 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
+                    CreateChallengesPage_obj11_Bindings bindings = new CreateChallengesPage_obj11_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element10.DataContext);
-                    element10.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element10, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element10, bindings);
+                    bindings.SetDataRoot(element11.DataContext);
+                    element11.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element11, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element11, bindings);
                 }
                 break;
-            case 14: // Views\CreateChallengesPage.xaml line 1400
+            case 16: // Views\CreateChallengesPage.xaml line 1400
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element14 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj14_Bindings bindings = new CreateChallengesPage_obj14_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element16 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj16_Bindings bindings = new CreateChallengesPage_obj16_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element14.DataContext);
-                    element14.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element14, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element14, bindings);
+                    bindings.SetDataRoot(element16.DataContext);
+                    element16.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element16, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element16, bindings);
                 }
                 break;
-            case 27: // Views\CreateChallengesPage.xaml line 1316
+            case 30: // Views\CreateChallengesPage.xaml line 1316
                 {                    
-                    global::Windows.UI.Xaml.Controls.StackPanel element27 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
-                    CreateChallengesPage_obj27_Bindings bindings = new CreateChallengesPage_obj27_Bindings();
+                    global::Windows.UI.Xaml.Controls.StackPanel element30 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
+                    CreateChallengesPage_obj30_Bindings bindings = new CreateChallengesPage_obj30_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element27.DataContext);
-                    element27.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element27, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element27, bindings);
+                    bindings.SetDataRoot(element30.DataContext);
+                    element30.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element30, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element30, bindings);
                 }
                 break;
-            case 31: // Views\CreateChallengesPage.xaml line 1196
+            case 35: // Views\CreateChallengesPage.xaml line 1196
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element31 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj31_Bindings bindings = new CreateChallengesPage_obj31_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element35 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj35_Bindings bindings = new CreateChallengesPage_obj35_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element31.DataContext);
-                    element31.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element31, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element31, bindings);
+                    bindings.SetDataRoot(element35.DataContext);
+                    element35.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element35, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element35, bindings);
                 }
                 break;
-            case 44: // Views\CreateChallengesPage.xaml line 1112
+            case 49: // Views\CreateChallengesPage.xaml line 1112
                 {                    
-                    global::Windows.UI.Xaml.Controls.StackPanel element44 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
-                    CreateChallengesPage_obj44_Bindings bindings = new CreateChallengesPage_obj44_Bindings();
+                    global::Windows.UI.Xaml.Controls.StackPanel element49 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
+                    CreateChallengesPage_obj49_Bindings bindings = new CreateChallengesPage_obj49_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element44.DataContext);
-                    element44.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element44, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element44, bindings);
+                    bindings.SetDataRoot(element49.DataContext);
+                    element49.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element49, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element49, bindings);
                 }
                 break;
-            case 48: // Views\CreateChallengesPage.xaml line 992
+            case 54: // Views\CreateChallengesPage.xaml line 992
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element48 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj48_Bindings bindings = new CreateChallengesPage_obj48_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element54 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj54_Bindings bindings = new CreateChallengesPage_obj54_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element48.DataContext);
-                    element48.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element48, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element48, bindings);
+                    bindings.SetDataRoot(element54.DataContext);
+                    element54.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element54, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element54, bindings);
                 }
                 break;
-            case 61: // Views\CreateChallengesPage.xaml line 858
+            case 68: // Views\CreateChallengesPage.xaml line 858
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element61 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj61_Bindings bindings = new CreateChallengesPage_obj61_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element68 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj68_Bindings bindings = new CreateChallengesPage_obj68_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element61.DataContext);
-                    element61.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element61, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element61, bindings);
+                    bindings.SetDataRoot(element68.DataContext);
+                    element68.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element68, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element68, bindings);
                 }
                 break;
-            case 73: // Views\CreateChallengesPage.xaml line 776
+            case 81: // Views\CreateChallengesPage.xaml line 776
                 {                    
-                    global::Windows.UI.Xaml.Controls.StackPanel element73 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
-                    CreateChallengesPage_obj73_Bindings bindings = new CreateChallengesPage_obj73_Bindings();
+                    global::Windows.UI.Xaml.Controls.StackPanel element81 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
+                    CreateChallengesPage_obj81_Bindings bindings = new CreateChallengesPage_obj81_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element73.DataContext);
-                    element73.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element73, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element73, bindings);
+                    bindings.SetDataRoot(element81.DataContext);
+                    element81.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element81, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element81, bindings);
                 }
                 break;
-            case 77: // Views\CreateChallengesPage.xaml line 656
+            case 86: // Views\CreateChallengesPage.xaml line 656
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element77 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj77_Bindings bindings = new CreateChallengesPage_obj77_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element86 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj86_Bindings bindings = new CreateChallengesPage_obj86_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element77.DataContext);
-                    element77.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element77, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element77, bindings);
+                    bindings.SetDataRoot(element86.DataContext);
+                    element86.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element86, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element86, bindings);
                 }
                 break;
-            case 93: // Views\CreateChallengesPage.xaml line 484
+            case 103: // Views\CreateChallengesPage.xaml line 484
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element93 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj93_Bindings bindings = new CreateChallengesPage_obj93_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element103 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj103_Bindings bindings = new CreateChallengesPage_obj103_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element93.DataContext);
-                    element93.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element93, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element93, bindings);
+                    bindings.SetDataRoot(element103.DataContext);
+                    element103.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element103, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element103, bindings);
                 }
                 break;
-            case 105: // Views\CreateChallengesPage.xaml line 402
+            case 116: // Views\CreateChallengesPage.xaml line 402
                 {                    
-                    global::Windows.UI.Xaml.Controls.StackPanel element105 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
-                    CreateChallengesPage_obj105_Bindings bindings = new CreateChallengesPage_obj105_Bindings();
+                    global::Windows.UI.Xaml.Controls.StackPanel element116 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
+                    CreateChallengesPage_obj116_Bindings bindings = new CreateChallengesPage_obj116_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element105.DataContext);
-                    element105.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element105, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element105, bindings);
+                    bindings.SetDataRoot(element116.DataContext);
+                    element116.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element116, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element116, bindings);
                 }
                 break;
-            case 109: // Views\CreateChallengesPage.xaml line 280
+            case 121: // Views\CreateChallengesPage.xaml line 280
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element109 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj109_Bindings bindings = new CreateChallengesPage_obj109_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element121 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj121_Bindings bindings = new CreateChallengesPage_obj121_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element109.DataContext);
-                    element109.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element109, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element109, bindings);
+                    bindings.SetDataRoot(element121.DataContext);
+                    element121.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element121, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element121, bindings);
                 }
                 break;
-            case 122: // Views\CreateChallengesPage.xaml line 196
+            case 135: // Views\CreateChallengesPage.xaml line 196
                 {                    
-                    global::Windows.UI.Xaml.Controls.StackPanel element122 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
-                    CreateChallengesPage_obj122_Bindings bindings = new CreateChallengesPage_obj122_Bindings();
+                    global::Windows.UI.Xaml.Controls.StackPanel element135 = (global::Windows.UI.Xaml.Controls.StackPanel)target;
+                    CreateChallengesPage_obj135_Bindings bindings = new CreateChallengesPage_obj135_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element122.DataContext);
-                    element122.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element122, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element122, bindings);
+                    bindings.SetDataRoot(element135.DataContext);
+                    element135.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element135, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element135, bindings);
                 }
                 break;
-            case 126: // Views\CreateChallengesPage.xaml line 73
+            case 140: // Views\CreateChallengesPage.xaml line 73
                 {                    
-                    global::Windows.UI.Xaml.Controls.Grid element126 = (global::Windows.UI.Xaml.Controls.Grid)target;
-                    CreateChallengesPage_obj126_Bindings bindings = new CreateChallengesPage_obj126_Bindings();
+                    global::Windows.UI.Xaml.Controls.Grid element140 = (global::Windows.UI.Xaml.Controls.Grid)target;
+                    CreateChallengesPage_obj140_Bindings bindings = new CreateChallengesPage_obj140_Bindings();
                     returnValue = bindings;
-                    bindings.SetDataRoot(element126.DataContext);
-                    element126.DataContextChanged += bindings.DataContextChangedHandler;
-                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element126, bindings);
-                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element126, bindings);
+                    bindings.SetDataRoot(element140.DataContext);
+                    element140.DataContextChanged += bindings.DataContextChangedHandler;
+                    global::Windows.UI.Xaml.DataTemplate.SetExtensionInstance(element140, bindings);
+                    global::Windows.UI.Xaml.Markup.XamlBindingHelper.SetDataTemplateComponent(element140, bindings);
                 }
                 break;
             }
