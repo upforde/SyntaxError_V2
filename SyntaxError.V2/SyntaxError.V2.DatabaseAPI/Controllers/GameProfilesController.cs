@@ -78,8 +78,45 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
 
             _context.UsingChallenges.RemoveRange(await _context.UsingChallenges.Where(x => x.UsingID == gameProfile.ProfileID).ToListAsync());
 
-            foreach (var challenge in gameProfile.Profile.Challenges.)
+            foreach (var challenge in gameProfile.Profile.Challenges)
                 _context.UsingChallenges.Add(new UsingChallenge { ChallengeID=challenge.ChallengeID, UsingID=gameProfile.ProfileID });
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GameProfileExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/GameProfiles/5/Refresh
+        [HttpPut("{id}/Refresh")]
+        public async Task<IActionResult> RefreshGameProfileSaveGame([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var profile = _context.GameProfiles.Where(x => x.ID == id).FirstOrDefault();
+
+            if (profile != null)
+            {
+                _context.UsingChallenges.RemoveRange(await _context.UsingChallenges.Where(x => x.UsingID == profile.SaveGameID).ToListAsync());
+
+                _context.Entry(profile).State = EntityState.Modified;
+            }
 
             try
             {

@@ -7,20 +7,19 @@ using SyntaxError.V2.Modell.Utility;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 
 namespace SyntaxError.V2.App.Views
 {
@@ -31,18 +30,21 @@ namespace SyntaxError.V2.App.Views
 
         public MainViewModel ViewModel { get; } = new MainViewModel();
         public bool IsConnected;
-        
+
         private ICommand _editCommand;
+        private ICommand _resetSaveCommand;
         /// <summary>A command to edit the selected GameProfile.</summary>
         /// <value>The edit command.</value>
         public ICommand EditCommand => _editCommand ?? (_editCommand = new RelayCommand<ListItemMainPage>(EditCommand_ItemClicked));
+        public ICommand ResetSaveCommand => _resetSaveCommand ?? (_resetSaveCommand = new RelayCommand<ListItemMainPage>(ResetSaveCommand_ItemClicked));
 
         public MainPage()
         {
             InitializeComponent();
-            
+
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
             Loaded += MainPage_GameProfilesLoadedAsync;
+            ViewModel.RefreshSaveDone += ViewModel_RefreshSaveDone;
         }
 
         private async void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -52,6 +54,13 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ChangeButtonsEnabled(e.IsAvailable));
         }
 
+        private async void ViewModel_RefreshSaveDone(object sender, PropertyChangedEventArgs e)
+        {
+            ViewModel.PutChallengesInLists(_storedGameProfile.GameProfile);
+            _challengesSource = await GetChallengesGrouped(ViewModel.GameProfileChallenges);
+            ChallengesCVS.Source = _challengesSource;
+        }
+
         private void ChangeButtonsEnabled(bool access)
         {
             if (!access)
@@ -59,7 +68,7 @@ namespace SyntaxError.V2.App.Views
                 listViewProgressBar.Visibility = Visibility.Collapsed;
                 PlayButton.IsEnabled = access;
             }
-            AddButton.IsEnabled =  access;
+            AddButton.IsEnabled = access;
             DeleteButton.IsEnabled = access;
         }
 
@@ -86,7 +95,7 @@ namespace SyntaxError.V2.App.Views
                 {
                     await ViewModel.LoadChallengesFromDBAsync();
                 } catch (System.Net.Http.HttpRequestException) { }
-                
+
                 GameProfilesList.SelectionMode = ListViewSelectionMode.Single;
                 try
                 {
@@ -109,6 +118,7 @@ namespace SyntaxError.V2.App.Views
                 ChallengesCVS.Source = _challengesSource;
                 PlayButton.IsEnabled = true;
                 EditButton.IsEnabled = true;
+                RefreshButton.IsEnabled = true;
 
                 PrepareLists();
             }
@@ -119,11 +129,12 @@ namespace SyntaxError.V2.App.Views
                 ChallengesCVS.Source = _challengesSource;
                 PlayButton.IsEnabled = false;
                 EditButton.IsEnabled = false;
+                RefreshButton.IsEnabled = false;
 
                 PrepareLists();
             }
         }
-        
+
         private void AppBarButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             var newProfile = new GameProfile
@@ -138,15 +149,15 @@ namespace SyntaxError.V2.App.Views
 
         private async void AppBarButtonPlay_Click(object sender, RoutedEventArgs e)
         {
-            if((GameProfilesList.SelectedItem as ListItemMainPage) == null) return;
+            if ((GameProfilesList.SelectedItem as ListItemMainPage) == null) return;
 
             var gameProfileWithObjects = new ListItemMainPage
             {
                 GameProfile = (GameProfilesList.SelectedItem as ListItemMainPage).GameProfile,
                 Challenges = ViewModel.GameProfileChallenges
             };
-            
-            try{
+
+            try {
                 CoreApplicationView newView = CoreApplication.CreateNewView();
                 int newViewId = 0;
                 await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -159,9 +170,9 @@ namespace SyntaxError.V2.App.Views
                     newViewId = ApplicationView.GetForCurrentView().Id;
                 });
                 bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-            } catch (NullReferenceException){}
+            } catch (NullReferenceException) { }
         }
-        
+
         private void EditCommand_ItemClicked(ListItemMainPage clickedGameProfile)
         {
             ConnectedAnimation animation = GameProfilesList.PrepareConnectedAnimation("forwardAnimation", _storedGameProfile, "connectedElement");
@@ -169,6 +180,11 @@ namespace SyntaxError.V2.App.Views
 
             SmokeGridText.Text = _storedGameProfile.GameProfile.GameProfileName;
             animation.TryStart(SmokeGrid.Children[0]);
+        }
+
+        private void ResetSaveCommand_ItemClicked(ListItemMainPage clickedGameProfile)
+        {
+            ViewModel.RefreshSaveGame.Execute(clickedGameProfile);
         }
 
         private async void BackButton_Click(object sender, RoutedEventArgs e)
@@ -212,7 +228,12 @@ namespace SyntaxError.V2.App.Views
 
             foreach (var challenge in newChallenges)
                 newProfile.Challenges.Add(
-                    new UsingChallenge { Challenge=challenge, ChallengeID=challenge.ChallengeID, UsingID=_storedGameProfile.GameProfile.ProfileID });
+                    new UsingChallenge
+                    {
+                        Challenge=challenge,
+                        ChallengeID=challenge.ChallengeID,
+                        UsingID=_storedGameProfile.GameProfile.ProfileID
+                    });
 
             _storedGameProfile.GameProfile.Profile = newProfile;
 

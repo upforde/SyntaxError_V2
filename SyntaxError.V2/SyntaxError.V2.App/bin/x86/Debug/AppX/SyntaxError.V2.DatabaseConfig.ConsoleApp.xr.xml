@@ -193,7 +193,6 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsEnabled" />
-      <RootProperty Name="IsTabStop" />
       <RootProperty Name="Command" />
       <RootProperty Name="CommandParameter" />
       <RootEvent Name="Click" />

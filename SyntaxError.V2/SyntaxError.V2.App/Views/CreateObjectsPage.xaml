@@ -35,7 +35,7 @@
                                         Width="300"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"/>
-                        
+
                         <AppBarButton Label="Selection mode"
                                       Click="AppBarButton_SelectionMode_Click">
                             <AppBarButton.Icon>
@@ -43,26 +43,22 @@
                                           Glyph="&#xE762;"/>
                             </AppBarButton.Icon>
                         </AppBarButton>
-                        
+
                         <AppBarButton Label="Delete Selected"
                                       Icon="Delete"
                                       Visibility="Collapsed"
                                       Click="AppBarButton_DeleteSelected_Click"/>
                     </StackPanel>
-                    
                     <AppBarButton Grid.Column="1"
                                   Icon="Add"
                                   Label="New object"
                                   Click="AddNewObjectButton_Click"
                                   HorizontalAlignment="Right"/>
-                    
                 </Grid>
-
                 <ProgressBar Grid.Row="1"
                              VerticalAlignment="Top"
                              IsIndeterminate="True"
                              Visibility="Collapsed"/>
-                
                 <controls:AdaptiveGridView ItemsSource="{x:Bind Filtered}"
                                            Grid.Row="1"
                                            StretchContentForSingleRow="False"
@@ -93,7 +89,6 @@
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
                 </controls:AdaptiveGridView>
-
                 <Grid HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
@@ -116,6 +111,7 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Grid Grid.Column="0"
                                       VerticalAlignment="Center"
                                       Height="200" Width="200"

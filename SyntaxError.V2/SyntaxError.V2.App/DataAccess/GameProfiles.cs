@@ -45,6 +45,17 @@ namespace SyntaxError.V2.App.DataAccess
             return result.IsSuccessStatusCode;
         }
 
+        public async Task<bool> RefreshSaveGameAsync(int id)
+        {
+            HttpResponseMessage result = await _httpClient.SendAsync(
+                new HttpRequestMessage
+                {
+                    RequestUri = new Uri(gameProfilesBaseUri, "GameProfiles/" + id.ToString() + "/Refresh"),
+                    Method = HttpMethod.Put
+                });
+            return result.IsSuccessStatusCode;
+        }
+
         internal async Task<bool> DeleteGameProfileAsync(GameProfile param)
         {
             HttpResponseMessage result = await _httpClient.DeleteAsync(new Uri(gameProfilesBaseUri, "GameProfiles/" + param.ID.ToString()));

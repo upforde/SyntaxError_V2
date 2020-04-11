@@ -46,19 +46,19 @@
         <StackPanel Grid.Column="0" Grid.Row="1"
                     BorderThickness="0, 0, 5, 0"
                     BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <ProgressBar x:ConnectionId='115' x:Name="listViewProgressBar" IsIndeterminate="True"/>
-            <ListView x:ConnectionId='116' x:Name="GameProfilesList"
+            <ProgressBar x:ConnectionId='116' x:Name="listViewProgressBar" IsIndeterminate="True"/>
+            <ListView x:ConnectionId='117' x:Name="GameProfilesList"
                                                                      
                         SelectionMode="Single"
                                                                             >
                 <ListView.ItemTemplate>
                     <DataTemplate x:Name="SingleLineDataTemplate"
                                                                          >
-                        <StackPanel x:ConnectionId='118' x:Name="connectedElement">
-                            <TextBlock x:ConnectionId='119'                                            
+                        <StackPanel x:ConnectionId='119' x:Name="connectedElement">
+                            <TextBlock x:ConnectionId='120'                                            
                                         Style="{ThemeResource BaseTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
-                            <TextBlock x:ConnectionId='120'                                                                         
+                            <TextBlock x:ConnectionId='121'                                                                         
                                         Style="{ThemeResource BodyTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                         VerticalAlignment="Center"
@@ -91,8 +91,8 @@
             </ListView.GroupStyle>
             <ListView.ItemTemplate>
                 <DataTemplate                                      >
-                    <Grid x:ConnectionId='100'>
-                        <Grid x:ConnectionId='101'                                      >
+                    <Grid x:ConnectionId='101'>
+                        <Grid x:ConnectionId='102'                                      >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition/>
@@ -102,37 +102,21 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Ellipse x:ConnectionId='112' Grid.Column="0" Grid.RowSpan="2"
+                            <Ellipse x:ConnectionId='113' Grid.Column="0" Grid.RowSpan="2"
                                         Visibility="Visible" Height="30" Width="30"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                                                                       />
                             <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock x:ConnectionId='113'                                                     
+                                <TextBlock x:ConnectionId='114'                                                     
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Stretch" />
-                                <TextBlock x:ConnectionId='114'                                                          
+                                <TextBlock x:ConnectionId='115'                                                          
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Stretch"
                                             Style="{ThemeResource BodyTextBlockStyle}"
                                             Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                             </StackPanel>
-                        </Grid>
-                        <Grid x:ConnectionId='102'                                       >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Ellipse x:ConnectionId='110' Grid.Column="0"
-                                        Visibility="Visible" Height="30" Width="30"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left"
-                                                                                      />
-                            <TextBlock x:ConnectionId='111'                                                           
-                                        Grid.Column="1"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Stretch"/>
                         </Grid>
                         <Grid x:ConnectionId='103'                                       >
                             <Grid.ColumnDefinitions>
@@ -140,17 +124,33 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Ellipse x:ConnectionId='108' Grid.Column="0"
+                            <Ellipse x:ConnectionId='111' Grid.Column="0"
                                         Visibility="Visible" Height="30" Width="30"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                                                                       />
-                            <TextBlock x:ConnectionId='109'                                                           
+                            <TextBlock x:ConnectionId='112'                                                           
                                         Grid.Column="1"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Stretch"/>
                         </Grid>
-                        <Grid x:ConnectionId='104'                                          >
+                        <Grid x:ConnectionId='104'                                       >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:ConnectionId='109' Grid.Column="0"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                                                                      />
+                            <TextBlock x:ConnectionId='110'                                                           
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Grid x:ConnectionId='105'                                          >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition/>
@@ -160,16 +160,16 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Ellipse x:ConnectionId='105' Grid.Column="0" Grid.RowSpan="2"
+                            <Ellipse x:ConnectionId='106' Grid.Column="0" Grid.RowSpan="2"
                                         Visibility="Visible" Height="30" Width="30"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                                                                       />
                             <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock x:ConnectionId='106'                                        
+                                <TextBlock x:ConnectionId='107'                                        
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Stretch" />
-                                <TextBlock x:ConnectionId='107'                                                           
+                                <TextBlock x:ConnectionId='108'                                                           
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Stretch"
                                             Style="{ThemeResource BodyTextBlockStyle}"
@@ -191,26 +191,28 @@
                         Padding="0, 0, 5, 0">
                 <AppBarButton x:ConnectionId='94' x:Name="PlayButton"
                               IsEnabled="False"
-                              IsTabStop="False"
                               Icon="Play"
                               Label="Play"
                                                             />
                 <AppBarButton x:ConnectionId='95' x:Name="AddButton"
-                              IsTabStop="False"
                               Icon="Add"
                               Label="Add"
                               Visibility="Visible"
                                                            />
                 <AppBarButton x:ConnectionId='96' x:Name="EditButton"
                               IsEnabled="False"
-                              IsTabStop="False"
                               Icon="Edit"
                               Label="Edit"
                               Visibility="Visible"
                                                             
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                <AppBarButton x:ConnectionId='97' x:Name="DeleteButton"
-                              IsTabStop="False"
+                <AppBarButton x:ConnectionId='97' x:Name="RefreshButton"
+                              IsEnabled="False"
+                              Label="Reset Save"
+                              Icon="Refresh"
+                                                                 
+                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                <AppBarButton x:ConnectionId='98' x:Name="DeleteButton"
                               Icon="Delete"
                               Label="Delete"
                               Visibility="Visible"

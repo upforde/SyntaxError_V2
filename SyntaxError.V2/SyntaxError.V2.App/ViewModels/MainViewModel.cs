@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
-using SyntaxError.V2.App.Views;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
 
 namespace SyntaxError.V2.App.ViewModels
 {
@@ -19,7 +17,10 @@ namespace SyntaxError.V2.App.ViewModels
     {
         public ICommand AddGameProfileCommand { get; set; }
         public ICommand EditCommand { get; set; }
+        public ICommand RefreshSaveGame { get; set; }
         public ICommand DeleteGameProfileCommand { get; set; }
+
+        public event PropertyChangedEventHandler RefreshSaveDone;
 
         public GameProfiles GameProfilesDataAccess { get; set; } = new GameProfiles();
         public Challenges ChallengesDataAccess { get; set; } = new Challenges();
@@ -61,6 +62,13 @@ namespace SyntaxError.V2.App.ViewModels
             EditCommand = new RelayCommand<GameProfile>(async param =>
                                                     {
                                                         await GameProfilesDataAccess.EditGameProfileAsync(param);
+                                                    }, param => param != null);
+
+            RefreshSaveGame = new RelayCommand<ListItemMainPage>(async param =>
+                                                    {
+                                                        var success = await GameProfilesDataAccess.RefreshSaveGameAsync(param.GameProfile.ID);
+                                                        if (success) param.GameProfile.SaveGame.Challenges.Clear();
+                                                        RefreshSaveDone.Invoke(this, new PropertyChangedEventArgs("RefreshSaveDone"));
                                                     }, param => param != null);
 
             DeleteGameProfileCommand = new RelayCommand<ListItemMainPage>(async param =>

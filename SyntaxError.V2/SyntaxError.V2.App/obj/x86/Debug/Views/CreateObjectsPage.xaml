@@ -35,7 +35,7 @@
                                         Width="300"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"/>
-                        
+
                         <AppBarButton x:ConnectionId='43' Label="Selection mode"
                                                                               >
                             <AppBarButton.Icon>
@@ -43,26 +43,22 @@
                                           Glyph="&#xE762;"/>
                             </AppBarButton.Icon>
                         </AppBarButton>
-                        
+
                         <AppBarButton x:ConnectionId='44' Label="Delete Selected"
                                       Icon="Delete"
                                       Visibility="Collapsed"
                                                                                />
                     </StackPanel>
-                    
                     <AppBarButton x:ConnectionId='41' Grid.Column="1"
                                   Icon="Add"
                                   Label="New object"
                                                                   
                                   HorizontalAlignment="Right"/>
-                    
                 </Grid>
-
                 <ProgressBar Grid.Row="1"
                              VerticalAlignment="Top"
                              IsIndeterminate="True"
                              Visibility="Collapsed"/>
-                
                 <controls:AdaptiveGridView x:ConnectionId='32'                                
                                            Grid.Row="1"
                                            StretchContentForSingleRow="False"
@@ -93,7 +89,6 @@
                         </DataTemplate>
                     </controls:AdaptiveGridView.ItemTemplate>
                 </controls:AdaptiveGridView>
-
                 <Grid HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"
                       Visibility="Collapsed"
@@ -116,6 +111,7 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Grid x:ConnectionId='35' Grid.Column="0"
                                       VerticalAlignment="Center"
                                       Height="200" Width="200"

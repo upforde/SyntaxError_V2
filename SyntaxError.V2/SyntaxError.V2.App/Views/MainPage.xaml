@@ -191,26 +191,28 @@
                         Padding="0, 0, 5, 0">
                 <AppBarButton x:Name="PlayButton"
                               IsEnabled="False"
-                              IsTabStop="False"
                               Icon="Play"
                               Label="Play"
                               Click="AppBarButtonPlay_Click"/>
                 <AppBarButton x:Name="AddButton"
-                              IsTabStop="False"
                               Icon="Add"
                               Label="Add"
                               Visibility="Visible"
                               Click="AppBarButtonAdd_Click"/>
                 <AppBarButton x:Name="EditButton"
                               IsEnabled="False"
-                              IsTabStop="False"
                               Icon="Edit"
                               Label="Edit"
                               Visibility="Visible"
                               Command="{x:Bind EditCommand}"
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
+                <AppBarButton x:Name="RefreshButton"
+                              IsEnabled="False"
+                              Label="Reset Save"
+                              Icon="Refresh"
+                              Command="{x:Bind ResetSaveCommand}"
+                              CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
                 <AppBarButton x:Name="DeleteButton"
-                              IsTabStop="False"
                               Icon="Delete"
                               Label="Delete"
                               Visibility="Visible"
