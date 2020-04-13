@@ -56,12 +56,20 @@ namespace SyntaxError.V2.App.DataAccess
             return result.IsSuccessStatusCode;
         }
 
+        public async Task<bool> AddNewEntryToSaveGameAsync(UsingChallenge usingChallenge)
+        {
+            string json = await Task.Run(() => JsonConvert.SerializeObject(usingChallenge));
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage result = await _httpClient.PostAsync(new Uri(gameProfilesBaseUri, "GameProfiles/SaveGameEntry"), content);
+
+            return result.IsSuccessStatusCode;
+        }
+
         internal async Task<bool> DeleteGameProfileAsync(GameProfile param)
         {
             HttpResponseMessage result = await _httpClient.DeleteAsync(new Uri(gameProfilesBaseUri, "GameProfiles/" + param.ID.ToString()));
             return result.IsSuccessStatusCode;
         }
-
-        
     }
 }

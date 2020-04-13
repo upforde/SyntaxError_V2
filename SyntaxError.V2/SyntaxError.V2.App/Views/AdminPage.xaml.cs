@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -53,14 +56,21 @@ namespace SyntaxError.V2.App.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             GamePage = (GamePage) e.Parameter;
-            
+            GamePage.RandomSelectDone += GamePage_RandomSelectDone;
             AddAllChallenges();
-
             RollAll();
-
             UpdateAllTextFields();
         }
-        
+
+        private async void GamePage_RandomSelectDone(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                PlayButton.IsEnabled = true;
+                DeselectButton.IsEnabled = true;
+            });
+        }
+
         private void AddAllChallenges()
         {
             AudienceChallenges.AddRange(GamePage.AudienceChallenges);
@@ -71,147 +81,164 @@ namespace SyntaxError.V2.App.Views
             ScreenshotChallenges.AddRange(GamePage.ScreenshotChallenges);
             SilhouetteChallenges.AddRange(GamePage.SilhouetteChallenges);
             SologameChallenges.AddRange(GamePage.SologameChallenges);
+
+            foreach (ListItemMainPage challenge in GamePage.GameProfileAndChallenges.Challenges)
+            {
+                if (challenge.Challenge != null)
+                    if (challenge.IsChallengeCompleted)
+                        switch (challenge.Challenge.GetDiscriminator())
+                        {
+                            case "AudienceChallenge":
+                                UsedAudienceChallenges.Add(challenge.Challenge as AudienceChallenge);
+                                break;
+                            case "CrewChallenge":
+                                UsedCrewChallenges.Add(challenge.Challenge as CrewChallenge);
+                                break;
+                            case "MultipleChoiceChallenge":
+                                UsedMultipleChoiceChallenges.Add(challenge.Challenge as MultipleChoiceChallenge);
+                                break;
+                            case "MusicChallenge":
+                                UsedMusicChallenges.Add(challenge.Challenge as MusicChallenge);
+                                break;
+                            case "QuizChallenge":
+                                UsedQuizChallenges.Add(challenge.Challenge as QuizChallenge);
+                                break;
+                            case "ScreenshotChallenge":
+                                UsedScreenshotChallenges.Add(challenge.Challenge as ScreenshotChallenge);
+                                break;
+                            case "SilhouetteChallenge":
+                                UsedSilhouetteChallenges.Add(challenge.Challenge as SilhouetteChallenge);
+                                break;
+                            case "SologameChallenge":
+                                UsedSologameChallenges.Add(challenge.Challenge as SologameChallenge);
+                                break;
+                        }
+            }
         }
         
         private void RollAll()
         {
-            CurrentAudienceChallenge = RollForAudienceChallengeRecursive();
-            CurrentCrewChallenge = RollForCrewChallengeRecursive();
-            CurrentMultipleChoiceChallenge = RollForMultipleChoiceChallengeRecursive();
-            CurrentMusicChallenge = RollForMusicChallengeRecursive();
-            CurrentQuizChallenge = RollForQuizChallengeRecursive();
-            CurrentScreenshotChallenge = RollForScreenshotChallengeRecursive();
-            CurrentSilhouetteChallenge = RollForSilhouetteChallengeRecursive();
-            CurrentSologameChallenge = RollForSoloGameChallengeRecursive();
+            RollForAudienceChallengeRecursive();
+            RollForCrewChallengeRecursive();
+            RollForMultipleChoiceChallengeRecursive();
+            RollForMusicChallengeRecursive();
+            RollForQuizChallengeRecursive();
+            RollForScreenshotChallengeRecursive();
+            RollForSilhouetteChallengeRecursive();
+            RollForSoloGameChallengeRecursive();
         }
 
-        private AudienceChallenge RollForAudienceChallengeRecursive()
+        private void RollForAudienceChallengeRecursive()
         {
             if (AudienceChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, AudienceChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, AudienceChallenges.Count);
                 if (UsedAudienceChallenges.Count < AudienceChallenges.Count)
                 {
-                    if(!UsedAudienceChallenges.Contains(AudienceChallenges[rnd]))
-                    {
-                        return AudienceChallenges[rnd];
-                    }
-                    RollForAudienceChallengeRecursive();
+                    if (!UsedAudienceChallenges.Contains(AudienceChallenges[rnd])) CurrentAudienceChallenge = AudienceChallenges[rnd];
+                    else RollForAudienceChallengeRecursive();
                 }
+                else CurrentAudienceChallenge = null;
             }
-            return null;
+            else CurrentAudienceChallenge = null;
         }
-        private CrewChallenge RollForCrewChallengeRecursive()
+        private void RollForCrewChallengeRecursive()
         {
             if (CrewChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, CrewChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, CrewChallenges.Count);
                 if (UsedCrewChallenges.Count < CrewChallenges.Count)
                 {
-                    if (!UsedCrewChallenges.Contains(CrewChallenges[rnd]))
-                    {
-                        return CrewChallenges[rnd];
-                    }
-                    RollForCrewChallengeRecursive();
+                    if (!UsedCrewChallenges.Contains(CrewChallenges[rnd])) CurrentCrewChallenge = CrewChallenges[rnd];
+                    else RollForCrewChallengeRecursive();
                 }
+                else CurrentCrewChallenge = null;
             }
-            return null;
+            else CurrentCrewChallenge = null;
         }
-        private MultipleChoiceChallenge RollForMultipleChoiceChallengeRecursive()
+        private void RollForMultipleChoiceChallengeRecursive()
         {
             if (MultipleChoiceChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, MultipleChoiceChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, MultipleChoiceChallenges.Count);
                 if (UsedMultipleChoiceChallenges.Count < MultipleChoiceChallenges.Count)
                 {
-                    if (!UsedMultipleChoiceChallenges.Contains(MultipleChoiceChallenges[rnd]))
-                    {
-                        return MultipleChoiceChallenges[rnd];
-                    }
-                    RollForMultipleChoiceChallengeRecursive();
+                    if (!UsedMultipleChoiceChallenges.Contains(MultipleChoiceChallenges[rnd])) CurrentMultipleChoiceChallenge = MultipleChoiceChallenges[rnd];
+                    else RollForMultipleChoiceChallengeRecursive();
                 }
+                else CurrentMultipleChoiceChallenge = null;
             }
-            return null;
+            else CurrentMultipleChoiceChallenge = null;
         }
-        private MusicChallenge RollForMusicChallengeRecursive()
+        private void RollForMusicChallengeRecursive()
         {
             if (MusicChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, MusicChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, MusicChallenges.Count);
                 if (UsedMusicChallenges.Count < MusicChallenges.Count)
                 {
-                    if (!UsedMusicChallenges.Contains(MusicChallenges[rnd]))
-                    {
-                        return MusicChallenges[rnd];
-                    }
-                    RollForMusicChallengeRecursive();
+                    if (!UsedMusicChallenges.Contains(MusicChallenges[rnd])) CurrentMusicChallenge = MusicChallenges[rnd];
+                    else RollForMusicChallengeRecursive();
                 }
+                else CurrentMusicChallenge = null;
             }
-            return null;
+            else CurrentMusicChallenge = null;
         }
-        private QuizChallenge RollForQuizChallengeRecursive()
+        private void RollForQuizChallengeRecursive()
         {
             if (QuizChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, QuizChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, QuizChallenges.Count);
                 if (UsedQuizChallenges.Count < QuizChallenges.Count)
                 {
-                    if (!UsedQuizChallenges.Contains(QuizChallenges[rnd]))
-                    {
-                        return QuizChallenges[rnd];
-                    }
-                    RollForQuizChallengeRecursive();
+                    if (!UsedQuizChallenges.Contains(QuizChallenges[rnd])) CurrentQuizChallenge = QuizChallenges[rnd];
+                    else RollForQuizChallengeRecursive();
                 }
+                else CurrentQuizChallenge = null;
             }
-            return null;
+            else CurrentQuizChallenge = null;
         }
-        private ScreenshotChallenge RollForScreenshotChallengeRecursive()
+        private void RollForScreenshotChallengeRecursive()
         {
             if (ScreenshotChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, ScreenshotChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, ScreenshotChallenges.Count);
                 if (UsedScreenshotChallenges.Count < ScreenshotChallenges.Count)
                 {
-                    if (!UsedScreenshotChallenges.Contains(ScreenshotChallenges[rnd]))
-                    {
-                        return ScreenshotChallenges[rnd];
-                    }
-                    RollForScreenshotChallengeRecursive();
+                    if (!UsedScreenshotChallenges.Contains(ScreenshotChallenges[rnd])) CurrentScreenshotChallenge = ScreenshotChallenges[rnd];
+                    else RollForScreenshotChallengeRecursive();
                 }
+                else CurrentScreenshotChallenge = null;
             }
-            return null;
+            else CurrentScreenshotChallenge = null;
         }
-        private SilhouetteChallenge RollForSilhouetteChallengeRecursive()
+        private void RollForSilhouetteChallengeRecursive()
         {
             if (SilhouetteChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, SilhouetteChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, SilhouetteChallenges.Count);
                 if (UsedSilhouetteChallenges.Count < SilhouetteChallenges.Count)
                 {
-                    if (!UsedSilhouetteChallenges.Contains(SilhouetteChallenges[rnd]))
-                    {
-                        return SilhouetteChallenges[rnd];
-                    }
-                    RollForSilhouetteChallengeRecursive();
+                    if (!UsedSilhouetteChallenges.Contains(SilhouetteChallenges[rnd])) CurrentSilhouetteChallenge = SilhouetteChallenges[rnd];
+                    else RollForSilhouetteChallengeRecursive();
                 }
+                else CurrentSilhouetteChallenge = null;
             }
-            return null;
+            else CurrentSilhouetteChallenge = null;
         }
-        private SologameChallenge RollForSoloGameChallengeRecursive()
+        private void RollForSoloGameChallengeRecursive()
         {
             if (SologameChallenges.Count != 0)
             {
-                int rnd = GamePage.RandomNumber(0, SologameChallenges.Count-1);
+                int rnd = GamePage.RandomNumber(0, SologameChallenges.Count);
                 if (UsedSologameChallenges.Count < SologameChallenges.Count)
                 {
-                    if (!UsedSologameChallenges.Contains(SologameChallenges[rnd]))
-                    {
-                        return SologameChallenges[rnd];
-                    }
-                    RollForSoloGameChallengeRecursive();
+                    if (!UsedSologameChallenges.Contains(SologameChallenges[rnd])) CurrentSologameChallenge = SologameChallenges[rnd];
+                    else RollForSoloGameChallengeRecursive();
                 }
+                else CurrentSologameChallenge = null;
             }
-            return null;
+            else CurrentSologameChallenge = null;
         }
         
         private void UpdateAllTextFields()
@@ -232,10 +259,11 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentAudienceChallenge.GameID != null)
                 {
-                    CurrentAudienceChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentAudienceChallenge.GameID, "Game") as Game;
+                    if (CurrentAudienceChallenge.Game == null) CurrentAudienceChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentAudienceChallenge.GameID, "Game") as Game;
                     AudienceNextGame.Text = CurrentAudienceChallenge.Game.Name;
                 }
-            } else
+            } 
+            else
             {
                 AudienceNextGame.Text = "No more challenges ;(";
                 AudienceButton.IsEnabled = false;
@@ -248,15 +276,18 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentCrewChallenge.GameID != null)
                 {
-                    CurrentCrewChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentCrewChallenge.GameID, "Game") as Game;
+                    if (CurrentCrewChallenge.Game == null)
+                        CurrentCrewChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentCrewChallenge.GameID, "Game") as Game;
                     CrewNextGame.Text = CurrentCrewChallenge.Game.Name;
                 } else CrewNextGame.Text = "";
                 if (CurrentCrewChallenge.CrewMemberID != null)
                 {
-                    CurrentCrewChallenge.CrewMember = await ViewModel.LoadCrewMemberFromDBAsync(CurrentCrewChallenge.CrewMemberID);
+                    if (CurrentCrewChallenge.CrewMember == null)
+                        CurrentCrewChallenge.CrewMember = await ViewModel.LoadCrewMemberFromDBAsync(CurrentCrewChallenge.CrewMemberID);
                     CrewNextCrew.Text = CurrentCrewChallenge.CrewMember.CrewTag;
                 } else CrewNextCrew.Text = "";
-            } else
+            }
+            else
             {
                 CrewNextGame.Text = "No more challenges ;(";
                 CrewNextCrew.Text = "";
@@ -271,12 +302,13 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentMultipleChoiceChallenge.AnswersID != null)
                 {
-
-                    CurrentMultipleChoiceChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentMultipleChoiceChallenge.AnswersID);
+                    if (CurrentMultipleChoiceChallenge.Answers == null)
+                        CurrentMultipleChoiceChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentMultipleChoiceChallenge.AnswersID);
                     MultipleChoiceQuiestion.Text = CurrentMultipleChoiceChallenge.ChallengeTask;
                     MultipleChoiceAnswer.Text = CurrentMultipleChoiceChallenge.Answers.Answer;
                 }
-            } else
+            }
+            else
             {
                 MultipleChoiceQuiestion.Text = "";
                 MultipleChoiceAnswer.Text = "No more challenges ;(";
@@ -290,10 +322,12 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentMusicChallenge.SongID != null)
                 {
-                    CurrentMusicChallenge.Song = await ViewModel.LoadObjectFromDBAsync(CurrentMusicChallenge.SongID, "Music") as Music;
+                    if (CurrentMusicChallenge.Song == null)
+                        CurrentMusicChallenge.Song = await ViewModel.LoadObjectFromDBAsync(CurrentMusicChallenge.SongID, "Music") as Music;
                     MusicNextSong.Text = CurrentMusicChallenge.Song.Name;
                 }
-            } else
+            }
+            else
             {
                 MusicNextSong.Text = "No more challenges ;(";
                 MusicButton.IsEnabled = false;
@@ -306,11 +340,13 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentQuizChallenge.AnswersID != null)
                 {
-                    CurrentQuizChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentQuizChallenge.AnswersID);
+                    if (CurrentQuizChallenge.Answers == null)
+                        CurrentQuizChallenge.Answers = await ViewModel.LoadAnswersFromDBAsync(CurrentQuizChallenge.AnswersID);
                     QuizQuiestion.Text = CurrentQuizChallenge.ChallengeTask;
                     QuizAnswer.Text = CurrentQuizChallenge.Answers.Answer;
                 }
-            } else
+            }
+            else
             {
                 QuizQuiestion.Text = "";
                 QuizAnswer.Text = "No more challenges ;(";
@@ -324,10 +360,12 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentScreenshotChallenge.ImageID != null)
                 {
-                    CurrentScreenshotChallenge.Image = await ViewModel.LoadObjectFromDBAsync(CurrentScreenshotChallenge.ImageID, "Image") as Modell.ChallengeObjects.Image;
+                    if (CurrentScreenshotChallenge.Image == null)
+                        CurrentScreenshotChallenge.Image = await ViewModel.LoadObjectFromDBAsync(CurrentScreenshotChallenge.ImageID, "Image") as Modell.ChallengeObjects.Image;
                     ScreenshotNextScreenshot.Text = CurrentScreenshotChallenge.Image.Name;
                 }
-            } else
+            }
+            else
             {
                 ScreenshotNextScreenshot.Text = "No more challenges ;(";
                 ScreenshotButton.IsEnabled = false;
@@ -340,10 +378,12 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentSilhouetteChallenge.ImageID != null)
                 {
-                    CurrentSilhouetteChallenge.Image = await ViewModel.LoadObjectFromDBAsync(CurrentSilhouetteChallenge.ImageID, "Image") as Modell.ChallengeObjects.Image;
+                    if (CurrentSilhouetteChallenge.Image == null)
+                        CurrentSilhouetteChallenge.Image = await ViewModel.LoadObjectFromDBAsync(CurrentSilhouetteChallenge.ImageID, "Image") as Modell.ChallengeObjects.Image;
                     SilhouetteNextSilhouette.Text = CurrentSilhouetteChallenge.Image.Name;
                 }
-            } else
+            }
+            else
             {
                 SilhouetteNextSilhouette.Text = "No more challenges ;(";
                 SilhouetteButton.IsEnabled = false;
@@ -356,10 +396,12 @@ namespace SyntaxError.V2.App.Views
             {
                 if (CurrentSologameChallenge.GameID != null)
                 {
-                    CurrentSologameChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentSologameChallenge.GameID, "Game") as Game;
+                    if (CurrentSologameChallenge.Game == null)
+                        CurrentSologameChallenge.Game = await ViewModel.LoadObjectFromDBAsync(CurrentSologameChallenge.GameID, "Game") as Game;
                     SologameNextGame.Text = CurrentSologameChallenge.Game.Name;
                 }
-            } else
+            }
+            else
             {
                 SologameNextGame.Text = "No more challenges ;(";
                 SologameButton.IsEnabled = false;
@@ -387,7 +429,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollAudience(object sender, RoutedEventArgs e)
         {
-            CurrentAudienceChallenge = RollForAudienceChallengeRecursive();
+            RollForAudienceChallengeRecursive();
             GetAudienceChallengeGameFromDBAsync();
         }
         private void Button_Click_Crew(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -402,7 +444,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollCrew(object sender, RoutedEventArgs e)
         {
-            CurrentCrewChallenge = RollForCrewChallengeRecursive();
+            RollForCrewChallengeRecursive();
             GetCrewChallengeGameAndMemberFromDBAsync();
         }
         private void Button_Click_Multiple(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -417,7 +459,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollMultiple(object sender, RoutedEventArgs e)
         {
-            CurrentMultipleChoiceChallenge = RollForMultipleChoiceChallengeRecursive();
+            RollForMultipleChoiceChallengeRecursive();
             GetMultipleChoiceAnswersFromDBAsync();
         }
         private void Button_Click_Music(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -432,7 +474,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollMusic(object sender, RoutedEventArgs e)
         {
-            CurrentMusicChallenge = RollForMusicChallengeRecursive();
+            RollForMusicChallengeRecursive();
             GetMusicChallengeSongFromDBAsync();
         }
         private void Button_Click_Quiz(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -447,7 +489,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollQuiz(object sender, RoutedEventArgs e)
         {
-            CurrentQuizChallenge = RollForQuizChallengeRecursive();
+            RollForQuizChallengeRecursive();
             GetQuizChallengeAnswerFromDBAsync();
         }
         private void Button_Click_Screenshot(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -462,7 +504,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollScreenshot(object sender, RoutedEventArgs e)
         {
-            CurrentScreenshotChallenge = RollForScreenshotChallengeRecursive();
+            RollForScreenshotChallengeRecursive();
             GetScreenshotChallengeScreenshotFromDBAsync();
         }
         private void Button_Click_Silhouette(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -477,7 +519,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollSilhouette(object sender, RoutedEventArgs e)
         {
-            CurrentSilhouetteChallenge = RollForSilhouetteChallengeRecursive();
+            RollForSilhouetteChallengeRecursive();
             GetSilhouetteChallengeSilhouetteFromDBAsync();
         }
         private void Button_Click_Sologame(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -492,7 +534,7 @@ namespace SyntaxError.V2.App.Views
         }
         private void Button_Click_RerollSologame(object sender, RoutedEventArgs e)
         {
-            CurrentSologameChallenge = RollForSoloGameChallengeRecursive();
+            RollForSoloGameChallengeRecursive();
             GetSologameChallengeGameFromDBAsync();
         }
         
@@ -588,42 +630,50 @@ namespace SyntaxError.V2.App.Views
             {
                 case 0:
                     UsedAudienceChallenges.Add(CurrentAudienceChallenge);
-                    CurrentAudienceChallenge = RollForAudienceChallengeRecursive();
+                    UpdateSaveGame(CurrentAudienceChallenge);
+                    RollForAudienceChallengeRecursive();
                     GetAudienceChallengeGameFromDBAsync();
                     break;
                 case 1:
                     UsedCrewChallenges.Add(CurrentCrewChallenge);
-                    CurrentCrewChallenge = RollForCrewChallengeRecursive();
+                    UpdateSaveGame(CurrentCrewChallenge);
+                    RollForCrewChallengeRecursive();
                     GetCrewChallengeGameAndMemberFromDBAsync();
                     break;
                 case 2:
                     UsedMultipleChoiceChallenges.Add(CurrentMultipleChoiceChallenge);
-                    CurrentMultipleChoiceChallenge = RollForMultipleChoiceChallengeRecursive();
+                    UpdateSaveGame(CurrentMultipleChoiceChallenge);
+                    RollForMultipleChoiceChallengeRecursive();
                     GetMultipleChoiceAnswersFromDBAsync();
                     break;
                 case 3:
                     UsedMusicChallenges.Add(CurrentMusicChallenge);
-                    CurrentMusicChallenge = RollForMusicChallengeRecursive();
+                    UpdateSaveGame(CurrentMusicChallenge);
+                    RollForMusicChallengeRecursive();
                     GetMusicChallengeSongFromDBAsync();
                     break;
                 case 4:
                     UsedQuizChallenges.Add(CurrentQuizChallenge);
-                    CurrentQuizChallenge = RollForQuizChallengeRecursive();
+                    UpdateSaveGame(CurrentQuizChallenge);
+                    RollForQuizChallengeRecursive();
                     GetQuizChallengeAnswerFromDBAsync();
                     break;
                 case 5:
                     UsedScreenshotChallenges.Add(CurrentScreenshotChallenge);
-                    CurrentScreenshotChallenge = RollForScreenshotChallengeRecursive();
+                    UpdateSaveGame(CurrentScreenshotChallenge);
+                    RollForScreenshotChallengeRecursive();
                     GetScreenshotChallengeScreenshotFromDBAsync();
                     break;
                 case 6:
                     UsedSilhouetteChallenges.Add(CurrentSilhouetteChallenge);
-                    CurrentSilhouetteChallenge = RollForSilhouetteChallengeRecursive();
+                    UpdateSaveGame(CurrentSilhouetteChallenge);
+                    RollForSilhouetteChallengeRecursive();
                     GetSilhouetteChallengeSilhouetteFromDBAsync();
                     break;
                 case 7:
                     UsedSologameChallenges.Add(CurrentSologameChallenge);
-                    CurrentSologameChallenge = RollForSoloGameChallengeRecursive();
+                    UpdateSaveGame(CurrentSologameChallenge);
+                    RollForSoloGameChallengeRecursive();
                     GetSologameChallengeGameFromDBAsync();
                     break;
                 default:
@@ -641,16 +691,13 @@ namespace SyntaxError.V2.App.Views
             }
             else RollForNextSyntaxError();
         }
-        private async void Button_Click_Random(object sender, RoutedEventArgs e)
+
+        private void Button_Click_Random(object sender, RoutedEventArgs e)
         {
             PlayButton.IsEnabled = false;
             DeselectButton.IsEnabled = false;
             RandomButton.IsEnabled = false;
             GamePage.ToggleRandomSelection();
-            await Task.Delay(6000);
-            PlayButton.IsEnabled = true;
-            DeselectButton.IsEnabled = true;
-
         }
 
         private void CauseSyntaxError()
@@ -671,30 +718,16 @@ namespace SyntaxError.V2.App.Views
             else SyntaxErrorCounter--;
         }
 
-        /// <summary>Updates the game profile.
-        /// INACTIVE Does not work yet</summary>
-        private void UpdateGameProfile()
+        private void UpdateSaveGame(ChallengeBase currentChallenge)
         {
-            GameProfile profile = GamePage.GameProfile;
-            
-            foreach(var challenge in UsedAudienceChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedCrewChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedMultipleChoiceChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedMusicChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedQuizChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedScreenshotChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedSilhouetteChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            foreach (var challenge in UsedSologameChallenges)
-                profile.SaveGame.Challenges.Add(new UsingChallenge{ Challenge = challenge, ChallengeID = challenge.ChallengeID  });
-            
-            ViewModel.EditCommand.Execute(profile);
+            var newEntry = new UsingChallenge
+            {
+                ChallengeID = currentChallenge.ChallengeID,
+                UsingID = GamePage.GameProfile.SaveGameID
+            };
+
+            GamePage.GameProfile.SaveGame.Challenges.Add(newEntry);
+            ViewModel.UpdateSaveGame.Execute(newEntry);
         }
     }
 }

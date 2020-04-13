@@ -152,6 +152,22 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return CreatedAtAction("GetGameProfile", new { id = gameProfile.ID }, gameProfile);
         }
 
+        // POST: api/GameProfiles/SaveGameEntry
+        [HttpPost("SaveGameEntry")]
+        public async Task<IActionResult> PostSaveGameEntry([FromBody] UsingChallenge usingChallenge)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.UsingChallenges.Add(new UsingChallenge { ChallengeID = usingChallenge.ChallengeID, UsingID = usingChallenge.UsingID });
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         // DELETE: api/GameProfiles/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGameProfile([FromRoute] int id)

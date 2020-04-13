@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Windows.Foundation;
+using System.ComponentModel;
 
 namespace SyntaxError.V2.App.Views
 {
@@ -25,6 +26,7 @@ namespace SyntaxError.V2.App.Views
         public int? CurrentChallenge;
         
         public GameViewModel ViewModel { get; } = new GameViewModel();
+        public ListItemMainPage GameProfileAndChallenges { get; set; }
         public GameProfile GameProfile { get; set; }
 
         public BitmapImage bitmapImage;
@@ -38,7 +40,17 @@ namespace SyntaxError.V2.App.Views
         public List<SilhouetteChallenge> SilhouetteChallenges = new List<SilhouetteChallenge>();
         public List<SologameChallenge> SologameChallenges = new List<SologameChallenge>();
 
-        
+        private bool _audienceAvailable = true;
+        private bool _crewAvailable = true;
+        private bool _multipleChoiceAvailable = true;
+        private bool _musicAvailable = true;
+        private bool _quizAvailable = true;
+        private bool _screenshotAvailable = true;
+        private bool _silhuetteAvailable = true;
+        private bool _sologameAvailable = true;
+
+        public event PropertyChangedEventHandler RandomSelectDone;
+
         public GamePage()
         {
             InitializeComponent();
@@ -57,6 +69,58 @@ namespace SyntaxError.V2.App.Views
             SilhouetteOpacityUp.Completed += SilhouetteOpacityUp_Completed;
             SilhouetteOpacityDown.Completed += CollapseChallengeWindows;
             SologameOpacityDown.Completed += CollapseChallengeWindows;
+        }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            GameProfileAndChallenges = e.Parameter as ListItemMainPage;
+
+            GameProfile = (e.Parameter as ListItemMainPage).GameProfile;
+
+            foreach (ListItemMainPage challenge in ((ListItemMainPage)e.Parameter).Challenges)
+            {
+                if (challenge.Challenge != null)
+                    switch (challenge.Challenge.GetDiscriminator())
+                    {
+                        case "AudienceChallenge":
+                            AudienceChallenges.Add(challenge.Challenge as AudienceChallenge);
+                            break;
+                        case "CrewChallenge":
+                            CrewChallenges.Add(challenge.Challenge as CrewChallenge);
+                            break;
+                        case "MultipleChoiceChallenge":
+                            MultipleChoiceChallenges.Add(challenge.Challenge as MultipleChoiceChallenge);
+                            break;
+                        case "MusicChallenge":
+                            MusicChallenges.Add(challenge.Challenge as MusicChallenge);
+                            break;
+                        case "QuizChallenge":
+                            QuizChallenges.Add(challenge.Challenge as QuizChallenge);
+                            break;
+                        case "ScreenshotChallenge":
+                            ScreenshotChallenges.Add(challenge.Challenge as ScreenshotChallenge);
+                            break;
+                        case "SilhouetteChallenge":
+                            SilhouetteChallenges.Add(challenge.Challenge as SilhouetteChallenge);
+                            break;
+                        case "SologameChallenge":
+                            SologameChallenges.Add(challenge.Challenge as SologameChallenge);
+                            break;
+                    }
+            }
+
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(AdminPage), this);
+                Window.Current.Content = frame;
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
         private void CollapseChallengeWindows(object sender, object e)
@@ -119,56 +183,6 @@ namespace SyntaxError.V2.App.Views
         private void OpacityCompleted(object sender, object e)
         {
             ImgMove.Stop();
-        }
-
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            GameProfile = (e.Parameter as ListItemMainPage).GameProfile;
-            
-            foreach (ListItemMainPage challenge in ((ListItemMainPage)e.Parameter).Challenges)
-            {
-                if(challenge.Challenge != null)
-                    switch (challenge.Challenge.GetDiscriminator())
-                    {
-                        case "AudienceChallenge":
-                            AudienceChallenges.Add(challenge.Challenge as AudienceChallenge);
-                            break;
-                        case "CrewChallenge":
-                            CrewChallenges.Add(challenge.Challenge as CrewChallenge);
-                            break;
-                        case "MultipleChoiceChallenge":
-                            MultipleChoiceChallenges.Add(challenge.Challenge as MultipleChoiceChallenge);
-                            break;
-                        case "MusicChallenge":
-                            MusicChallenges.Add(challenge.Challenge as MusicChallenge);
-                            break;
-                        case "QuizChallenge":
-                            QuizChallenges.Add(challenge.Challenge as QuizChallenge);
-                            break;
-                        case "ScreenshotChallenge":
-                            ScreenshotChallenges.Add(challenge.Challenge as ScreenshotChallenge);
-                            break;
-                        case "SilhouetteChallenge":
-                            SilhouetteChallenges.Add(challenge.Challenge as SilhouetteChallenge);
-                            break;
-                        case "SologameChallenge":
-                            SologameChallenges.Add(challenge.Challenge as SologameChallenge);
-                            break;
-                    }
-            }
-
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(AdminPage), this);
-                Window.Current.Content = frame;
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
         public async void TogglePlayScreen()
@@ -1263,6 +1277,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await audienceChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _audienceAvailable = false;
                             });
         }
         public async void ToggleCrewSaturation()
@@ -1270,6 +1285,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await crewChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _crewAvailable = false;
                             });
         }
         public async void ToggleMultipleChoiceSaturation()
@@ -1277,6 +1293,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await multipleChoiceChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _multipleChoiceAvailable = false;
                             });
         }
         public async void ToggleMusicSaturation()
@@ -1284,6 +1301,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await musicChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _musicAvailable = false;
                             });
         }
         public async void ToggleQuizSaturation()
@@ -1291,6 +1309,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await quizChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _quizAvailable = false;
                             });
         }
         public async void ToggleScreenshotSaturation()
@@ -1298,6 +1317,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await screenshotChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _screenshotAvailable = false;
                             });
         }
         public async void ToggleSilhouetteSaturation()
@@ -1305,6 +1325,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await silhouetteChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _silhuetteAvailable = false;
                             });
         }
         public async void ToggleSologameSaturation()
@@ -1312,6 +1333,7 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 await sologameChallenge.Saturation(value:0, duration:1000, delay:1000).StartAsync();
+                                _sologameAvailable = false;
                             });
         }
 
@@ -1593,56 +1615,129 @@ namespace SyntaxError.V2.App.Views
             int rnd = RandomNumber(16, 33);
             int delay = 200;
             DeselectChallenge();
-            HighlightAudience();
-            CurrentChallenge = 0;
+            if (_audienceAvailable)
+            {
+                HighlightAudience();
+                CurrentChallenge = 0;
+            }
             await Task.Delay(delay);
             for (int i = 0; i < rnd; i++)
             {
+                DeselectChallenge();
                 switch (i % 8)
                 {
                     case 0:
-                        DeHighlightAudience();
-                        HighlightCrew();
-                        CurrentChallenge = 1;
+                        if (_crewAvailable)
+                        {
+                            HighlightCrew();
+                            CurrentChallenge = 1;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 1:
-                        DeHighlightCrew();
-                        HighlightMultipleChoice();
-                        CurrentChallenge = 2;
+                        if (_multipleChoiceAvailable)
+                        {
+                            HighlightMultipleChoice();
+                            CurrentChallenge = 2;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 2:
-                        DeHighlightMultipleChoice();
-                        HighlightMusic();
-                        CurrentChallenge = 3;
+                        if (_musicAvailable)
+                        {
+                            HighlightMusic();
+                            CurrentChallenge = 3;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 3:
-                        DeHighlightMusic();
-                        HighlightQuiz();
-                        CurrentChallenge = 4;
+                        if (_quizAvailable)
+                        {
+                            HighlightQuiz();
+                            CurrentChallenge = 4;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 4:
-                        DeHighlightQuiz();
-                        HighlightScreenshot();
-                        CurrentChallenge = 5;
+                        if (_screenshotAvailable)
+                        {
+                            HighlightScreenshot();
+                            CurrentChallenge = 5;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 5:
-                        DeHighlightScreenshot();
-                        HighlightSilhouette();
-                        CurrentChallenge = 6;
+                        if (_silhuetteAvailable)
+                        {
+                            HighlightSilhouette();
+                            CurrentChallenge = 6;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 6:
-                        DeHighlightSilhouette();
-                        HighlightSologame();
-                        CurrentChallenge = 7;
+                        if (_sologameAvailable)
+                        {
+                            HighlightSologame();
+                            CurrentChallenge = 7;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                     case 7:
-                        DeHighlightSologame();
-                        HighlightAudience();
-                        CurrentChallenge = 0;
+                        if (_audienceAvailable)
+                        {
+                            HighlightAudience();
+                            CurrentChallenge = 0;
+                            await Task.Delay((i < 33 && i > 16) ? delay + 100 + i * 10 : (i <= 16 && i > 8) ? delay + 100 + i : delay);
+                        }
                         break;
                 }
-                await Task.Delay((i<33 && i>16)?delay+100+i*10:(i<=16 && i>8)?delay+100:delay);
             }
+            if (CurrentChallenge == null)
+            {
+                DeselectChallenge();
+                await Task.Delay(delay);
+                if (_audienceAvailable)
+                {
+                    HighlightAudience();
+                    CurrentChallenge = 0;
+                }
+                else if (_crewAvailable)
+                {
+                    HighlightCrew();
+                    CurrentChallenge = 1;
+                }
+                else if (_multipleChoiceAvailable)
+                {
+                    HighlightMultipleChoice();
+                    CurrentChallenge = 2;
+                }
+                else if (_musicAvailable)
+                {
+                    HighlightMusic();
+                    CurrentChallenge = 3;
+                }
+                else if (_quizAvailable)
+                {
+                    HighlightQuiz();
+                    CurrentChallenge = 4;
+                }
+                else if (_screenshotAvailable)
+                {
+                    HighlightScreenshot();
+                    CurrentChallenge = 5;
+                }
+                else if (_silhuetteAvailable)
+                {
+                    HighlightSilhouette();
+                    CurrentChallenge = 6;
+                }
+                else if (_sologameAvailable)
+                {
+                    HighlightSologame();
+                    CurrentChallenge = 7;
+                }
+            }
+            RandomSelectDone.Invoke(this, new PropertyChangedEventArgs("RandomSelectDone"));
         }
         public void DeselectChallenge()
         {

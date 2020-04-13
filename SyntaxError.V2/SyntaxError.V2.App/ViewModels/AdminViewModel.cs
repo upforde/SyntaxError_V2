@@ -10,7 +10,7 @@ namespace SyntaxError.V2.App.ViewModels
 {
     public class AdminViewModel : Observable
     {
-        public ICommand EditCommand { get; set; }
+        public ICommand UpdateSaveGame { get; set; }
 
         public MediaObjects MediaObjectsDataAccess = new MediaObjects();
         public CrewMembers CrewMemberDataAccess = new CrewMembers();
@@ -19,9 +19,9 @@ namespace SyntaxError.V2.App.ViewModels
 
         public AdminViewModel()
         {
-            EditCommand = new RelayCommand<GameProfile>(async param =>
+            UpdateSaveGame = new RelayCommand<UsingChallenge>(async param =>
                                                     {
-                                                        await GameProfilesDataAccess.EditGameProfileAsync(param);
+                                                        await GameProfilesDataAccess.AddNewEntryToSaveGameAsync(param);
                                                     }, param => param != null);
         }
 
