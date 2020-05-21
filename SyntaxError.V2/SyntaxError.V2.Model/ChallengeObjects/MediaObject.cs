@@ -6,6 +6,7 @@ using SyntaxError.V2.Modell.Challenges;
 
 namespace SyntaxError.V2.Modell.ChallengeObjects
 {
+    /// <summary>The base class for all games, images and songs</summary>
     [Table("Objects")]
     public class MediaObject
     {

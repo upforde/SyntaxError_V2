@@ -6,6 +6,7 @@ using SyntaxError.V2.Modell.Utility;
 
 namespace SyntaxError.V2.Modell.ChallengeObjects
 {
+    /// <summary>Class used to contain answers to <see cref="Challenges.QuizChallenge"/> or <see cref="Challenges.MultipleChoiceChallenge"/></summary>
     [Table("Answers")]
     public class Answers
     {

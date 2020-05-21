@@ -3,10 +3,14 @@ using System.Collections.Generic;
 
 namespace SyntaxError.V2.Modell.Utility
 {
+    /// <summary>Class containing extra implementation</summary>
     public static class ExtraImplementation
     {
-        private static Random rng = new Random();  
+        private static Random rng = new Random();
 
+        /// <summary>Shuffles the specified list.</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">The list.</param>
         public static void Shuffle<T>(this IList<T> list)  
         {
             #pragma warning disable CA1062 // Validate arguments of public methods

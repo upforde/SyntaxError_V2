@@ -202,6 +202,9 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(gameProfile);
         }
 
+        /// <summary>  Checks if the game profile exists in the database.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool GameProfileExists(int id)
         {
             return _context.GameProfiles.Any(e => e.ID == id);

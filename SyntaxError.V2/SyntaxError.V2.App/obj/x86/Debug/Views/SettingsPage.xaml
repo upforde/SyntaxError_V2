@@ -23,7 +23,7 @@
                     x:Uid="Settings_Theme" />
 
                 <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                    <RadioButton x:ConnectionId='4'
+                    <RadioButton x:ConnectionId='5'
                         x:Uid="Settings_Theme_Light"
                         GroupName="AppTheme"
                                                                                                                                                              
@@ -33,7 +33,7 @@
                             <xaml:ElementTheme>Light</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='5'
+                    <RadioButton x:ConnectionId='6'
                         x:Uid="Settings_Theme_Dark"
                         GroupName="AppTheme"
                                                                                                                                                             
@@ -43,7 +43,7 @@
                             <xaml:ElementTheme>Dark</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='6'
+                    <RadioButton x:ConnectionId='7'
                         x:Uid="Settings_Theme_Default"
                         GroupName="AppTheme"
                                                                                                                                                                
@@ -58,9 +58,9 @@
 
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock
-                    Text="Configure database"
+                    Text="Maximum value of challenges before Syntax Error occurs"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <Button>DatabaseConfig ConsoleApp (under construction)</Button>
+                <TextBox x:ConnectionId='4' x:Name="syntaxErrorMaxValue"                                               Text="25"></TextBox>
             </StackPanel>
 
             <TextBlock

@@ -121,6 +121,9 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(crewMember);
         }
 
+        /// <summary>Checks if the crew member exists in the database.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool CrewMemberExists(int id)
         {
             return _context.CrewMembers.Any(e => e.CrewMemberID == id);

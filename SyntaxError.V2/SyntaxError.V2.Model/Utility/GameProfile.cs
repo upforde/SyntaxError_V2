@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SyntaxError.V2.Modell.Utility
 {
+    /// <summary>Game profile containing the <see cref="Utility.Profile"/> and <see cref="Utility.SaveGame"/></summary>
     public class GameProfile
     {
         [Key]

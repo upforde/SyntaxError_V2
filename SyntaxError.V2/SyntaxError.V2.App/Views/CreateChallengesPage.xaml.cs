@@ -32,9 +32,15 @@ namespace SyntaxError.V2.App.Views
         /// <value>The edit command.</value>
         public ICommand EditCommand => _editCommand ?? (_editCommand = new RelayCommand<ChallengeBase>(EditCommand_ItemClicked));
 
+        /// <summary>Gets the view model.</summary>
+        /// <value>The view model.</value>
         public CreateChallengesViewModel ViewModel { get; } = new CreateChallengesViewModel();
-        
+
+        /// <summary>The segoe md l2 assets</summary>
         public FontFamily segoeMDL2Assets = new FontFamily("Segoe MDL2 Assets");
+
+        /// <summary>Gets or sets the stored challenge.</summary>
+        /// <value>The stored challenge.</value>
         public ChallengeBase _storedChallenge { get; set; }
 
         /// <summary>Initializes a new instance of the <see cref="CreateChallengesPage"/> class.</summary>

@@ -24,7 +24,9 @@ namespace SyntaxError.V2.App.Views
 {
     public sealed partial class CreateObjectsPage : Page
     {
+        /// <summary>The stored item</summary>
         public MediaObject _storedItem;
+        /// <summary>The stored item index</summary>
         public int _storedItemIndex = -1;
         private ICommand _editCommand;
         /// <summary>Edit command for the MediaObject.</summary>
@@ -34,15 +36,26 @@ namespace SyntaxError.V2.App.Views
         /// <value>The add new object command.</value>
         public ICommand AddNewObjectCommand { get; set; }
 
+        /// <summary>The filtered
+        /// list of MediaObjects</summary>
         public ObservableCollection<MediaObject> Filtered = new ObservableCollection<MediaObject>();
+        /// <summary>The segoe md l2 assets</summary>
         public FontFamily segoeMDL2Assets = new FontFamily("Segoe MDL2 Assets");
+        /// <summary>Gets the view model.</summary>
+        /// <value>The view model.</value>
         public CreateObjectsViewModel ViewModel { get; } = new CreateObjectsViewModel();
 
+        /// <summary>The grid</summary>
         public UIElementCollection TheGrid;
+        /// <summary>The action grid</summary>
         public Grid ActionGrid;
+        /// <summary>The loading progress bar</summary>
         public ProgressBar LoadingProgressBar;
+        /// <summary>The collection</summary>
         public AdaptiveGridView Collection;
+        /// <summary>The smoke grid</summary>
         public Grid SmokeGrid;
+        /// <summary>The smoke grid child</summary>
         public Grid SmokeGridChild;
         
 
@@ -55,6 +68,9 @@ namespace SyntaxError.V2.App.Views
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChangedAsync;
         }
 
+        /// <summary>Handles the NetworkAvailabilityChangedAsync event of the NetworkChange control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="NetworkAvailabilityEventArgs" /> instance containing the event data.</param>
         private async void NetworkChange_NetworkAvailabilityChangedAsync(object sender, NetworkAvailabilityEventArgs e)
         {
             if (!e.IsAvailable)
@@ -62,6 +78,8 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ChangeButtonsEnabled(e.IsAvailable));
         }
 
+        /// <summary>Changes which buttons are enabled.</summary>
+        /// <param name="access">if set to <c>true</c> [access].</param>
         private void ChangeButtonsEnabled(bool access)
         {
             GetCurrentGrid();
@@ -380,6 +398,9 @@ namespace SyntaxError.V2.App.Views
             }
         }
 
+        /// <summary>Handles the Tapped event of the StackPanel control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs" /> instance containing the event data.</param>
         private async void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var picker = new Windows.Storage.Pickers.FileOpenPicker

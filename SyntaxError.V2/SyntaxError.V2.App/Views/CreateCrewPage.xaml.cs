@@ -25,8 +25,10 @@ namespace SyntaxError.V2.App.Views
 {
     public sealed partial class CreateCrewPage : Page
     {
+        /// <summary>The stored crew member</summary>
         public CrewMember _storedMember;
 
+        /// <summary>The segoe md l2 assets</summary>
         public FontFamily segoeMDL2Assets = new FontFamily("Segoe MDL2 Assets");
         
         /// <summary>  A command to add a new CrewMember to the database and list.</summary>
@@ -37,7 +39,11 @@ namespace SyntaxError.V2.App.Views
         /// <value>The edit command.</value>
         public ICommand EditCommand => _editCommand ?? (_editCommand = new RelayCommand<CrewMember>(EditCommand_ItemClicked));
 
+        /// <summary>The filtered
+        /// crew members</summary>
         public ObservableCollection<CrewMember> Filtered = new ObservableCollection<CrewMember>();
+        /// <summary>Gets the view model.</summary>
+        /// <value>The view model.</value>
         public CreateCrewViewModel ViewModel { get; } = new CreateCrewViewModel();
 
         public CreateCrewPage()
@@ -58,6 +64,9 @@ namespace SyntaxError.V2.App.Views
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChangedAsync;
         }
 
+        /// <summary>Handles the NetworkAvailabilityChangedAsync event of the NetworkChange control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="NetworkAvailabilityEventArgs" /> instance containing the event data.</param>
         private async void NetworkChange_NetworkAvailabilityChangedAsync(object sender, NetworkAvailabilityEventArgs e)
         {
             if (!e.IsAvailable)
@@ -65,6 +74,8 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ChangeButtonsEnabled(e.IsAvailable));
         }
 
+        /// <summary>Changes which buttons are enabled.</summary>
+        /// <param name="access">if set to <c>true</c> [access].</param>
         private void ChangeButtonsEnabled(bool access)
         {
             if (!access)

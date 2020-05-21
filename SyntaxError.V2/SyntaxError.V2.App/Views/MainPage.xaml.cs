@@ -25,7 +25,9 @@ namespace SyntaxError.V2.App.Views
 {
     public sealed partial class MainPage : Page
     {
+        /// <summary>The stored game profile</summary>
         private ListItemMainPage _storedGameProfile;
+        /// <summary>The challenges source</summary>
         private ObservableCollection<GroupChallengesList> _challengesSource;
 
         public MainViewModel ViewModel { get; } = new MainViewModel();
@@ -33,9 +35,11 @@ namespace SyntaxError.V2.App.Views
 
         private ICommand _editCommand;
         private ICommand _resetSaveCommand;
-        /// <summary>A command to edit the selected GameProfile.</summary>
+        /// <summary>A command to edit the selected <see cref="GameProfile"/>.</summary>
         /// <value>The edit command.</value>
         public ICommand EditCommand => _editCommand ?? (_editCommand = new RelayCommand<ListItemMainPage>(EditCommand_ItemClicked));
+        /// <summary>A command to reset the selected <see cref="GameProfile"/> <see cref="SaveGame"/>.</summary>
+        /// <value>The edit command.</value>
         public ICommand ResetSaveCommand => _resetSaveCommand ?? (_resetSaveCommand = new RelayCommand<ListItemMainPage>(ResetSaveCommand_ItemClicked));
 
         public MainPage()
@@ -47,6 +51,9 @@ namespace SyntaxError.V2.App.Views
             ViewModel.RefreshSaveDone += ViewModel_RefreshSaveDone;
         }
 
+        /// <summary>Handles the NetworkAvailabilityChanged event of the NetworkChange control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="NetworkAvailabilityEventArgs" /> instance containing the event data.</param>
         private async void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
             if (e.IsAvailable)
@@ -54,6 +61,9 @@ namespace SyntaxError.V2.App.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ChangeButtonsEnabled(e.IsAvailable));
         }
 
+        /// <summary>Handles the RefreshSaveDone event of the ViewModel control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PropertyChangedEventArgs" /> instance containing the event data.</param>
         private async void ViewModel_RefreshSaveDone(object sender, PropertyChangedEventArgs e)
         {
             ViewModel.PutChallengesInLists(_storedGameProfile.GameProfile);
@@ -61,6 +71,8 @@ namespace SyntaxError.V2.App.Views
             ChallengesCVS.Source = _challengesSource;
         }
 
+        /// <summary>Changes which buttons are enabled.</summary>
+        /// <param name="access">if set to <c>true</c> [access].</param>
         private void ChangeButtonsEnabled(bool access)
         {
             if (!access)
@@ -135,6 +147,9 @@ namespace SyntaxError.V2.App.Views
             }
         }
 
+        /// <summary>  Creates a new <see cref="GameProfile"/>.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void AppBarButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             var newProfile = new GameProfile
@@ -147,6 +162,9 @@ namespace SyntaxError.V2.App.Views
             ViewModel.AddGameProfileCommand.Execute(newProfile);
         }
 
+        /// <summary> Starts the game with the selected <see cref="GameProfile"/>.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private async void AppBarButtonPlay_Click(object sender, RoutedEventArgs e)
         {
             if ((GameProfilesList.SelectedItem as ListItemMainPage) == null) return;
@@ -173,6 +191,8 @@ namespace SyntaxError.V2.App.Views
             } catch (NullReferenceException) { }
         }
 
+        /// <summary>Opens the edit menu for the <see cref="GameProfile"/></summary>
+        /// <param name="clickedGameProfile">The clicked game profile.</param>
         private void EditCommand_ItemClicked(ListItemMainPage clickedGameProfile)
         {
             ConnectedAnimation animation = GameProfilesList.PrepareConnectedAnimation("forwardAnimation", _storedGameProfile, "connectedElement");
@@ -182,23 +202,30 @@ namespace SyntaxError.V2.App.Views
             animation.TryStart(SmokeGrid.Children[0]);
         }
 
+        /// <summary>Resets the <see cref="SaveGame"/> of the <see cref="GameProfile"/>.</summary>
+        /// <param name="clickedGameProfile">The clicked game profile.</param>
         private void ResetSaveCommand_ItemClicked(ListItemMainPage clickedGameProfile)
         {
             ViewModel.RefreshSaveGame.Execute(clickedGameProfile);
         }
 
+        /// <summary>Handles the Click event of the BackButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private async void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            PrepareLists();
+
             ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("backwardsAnimation", SmokeGrid.Children[0]);
-            
+
             animation.Completed += Animation_Completed;
-            
+
             GameProfilesList.ScrollIntoView(_storedGameProfile, ScrollIntoViewAlignment.Default);
             GameProfilesList.UpdateLayout();
-            
+
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
                 animation.Configuration = new DirectConnectedAnimationConfiguration();
-            
+
             await GameProfilesList.TryStartConnectedAnimationAsync(animation, _storedGameProfile, "connectedElement");
         }
 
@@ -210,6 +237,9 @@ namespace SyntaxError.V2.App.Views
             SmokeGrid.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>Handles the Click event of the SaveButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             var newChallenges = new List<ChallengeBase>();
@@ -248,6 +278,9 @@ namespace SyntaxError.V2.App.Views
             BackButton_Click(sender, e);
         }
 
+        /// <summary>Handles the Expanded event of the Expander control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void Expander_Expanded(object sender, EventArgs e)
         {
             ChangeExpanderVisibility(Visibility.Collapsed);
@@ -304,6 +337,9 @@ namespace SyntaxError.V2.App.Views
                     break;
             }
         }
+        /// <summary>Handles the Collapsed event of the Expander control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void Expander_Collapsed(object sender, EventArgs e)
         {
             ChangeExpanderVisibility(Visibility.Visible);
@@ -345,6 +381,9 @@ namespace SyntaxError.V2.App.Views
             }
         }
 
+        /// <summary>Gets the challenges grouped.</summary>
+        /// <param name="list">The list.</param>
+        /// <returns></returns>
         public async Task<ObservableCollection<GroupChallengesList>> GetChallengesGrouped(ObservableCollection<ListItemMainPage> list)
         {
             var query = await Task.Run(() => from item in list
@@ -355,6 +394,9 @@ namespace SyntaxError.V2.App.Views
             return new ObservableCollection<GroupChallengesList>(query);
         }
 
+        /// <summary>Handles the DragItemsStarting event of the TotalChallenges control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DragItemsStartingEventArgs" /> instance containing the event data.</param>
         private void TotalChallenges_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
             var challengeType = (((sender as ListView).Parent as Grid).Parent as Expander).Header + ";";
@@ -362,6 +404,9 @@ namespace SyntaxError.V2.App.Views
             e.Data.SetText(challengeType + challengeIDs);
             e.Data.RequestedOperation = DataPackageOperation.Copy;
         }
+        /// <summary>Handles the DragItemsStarting event of the GameProfileChallenges control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DragItemsStartingEventArgs" /> instance containing the event data.</param>
         private void GameProfileChallenges_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
             var challengeType = (((sender as ListView).Parent as Grid).Parent as Expander).Header + ";";
@@ -370,6 +415,9 @@ namespace SyntaxError.V2.App.Views
             e.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
+        /// <summary>Handles the DragEnter event of the TotalChallenges control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DragEventArgs" /> instance containing the event data.</param>
         private void TotalChallenges_DragEnter(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = ((e.Data.RequestedOperation == DataPackageOperation.Move)?DataPackageOperation.Move:DataPackageOperation.None);
@@ -384,6 +432,9 @@ namespace SyntaxError.V2.App.Views
                 e.DragUIOverride.IsCaptionVisible = false;
             }
         }
+        /// <summary>Handles the DragEnter event of the GameProfileChallenges control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DragEventArgs" /> instance containing the event data.</param>
         private void GameProfileChallenges_DragEnter(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = ((e.Data.RequestedOperation==DataPackageOperation.Copy)?DataPackageOperation.Copy:DataPackageOperation.None);
@@ -399,6 +450,9 @@ namespace SyntaxError.V2.App.Views
             }
         }
 
+        /// <summary>Handles the Drop event of the TotalChallenges control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DragEventArgs" /> instance containing the event data.</param>
         private async void TotalChallenges_Drop(object sender, DragEventArgs e)
         {
             if (e.DataView.Contains(StandardDataFormats.Text))
@@ -480,6 +534,9 @@ namespace SyntaxError.V2.App.Views
                 def.Complete();
             }
         }
+        /// <summary>Handles the Drop event of the GameProfileChallenges control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DragEventArgs" /> instance containing the event data.</param>
         private async void GameProfileChallenges_Drop(object sender, DragEventArgs e)
         {
             if (e.DataView.Contains(StandardDataFormats.Text))
@@ -562,6 +619,8 @@ namespace SyntaxError.V2.App.Views
             }
         }
 
+        /// <summary>Changes the expander visibility.</summary>
+        /// <param name="visibility">The visibility.</param>
         internal void ChangeExpanderVisibility(Visibility visibility)
         {
             AudienceChallengesExpander.Visibility = visibility;
@@ -582,6 +641,7 @@ namespace SyntaxError.V2.App.Views
             SilhouetteChallengesExpander2.Visibility = visibility;
             SologameChallengesExpander2.Visibility = visibility;
         }
+        /// <summary>Prepares the lists.</summary>
         private void PrepareLists()
         {
             ClearLists();
@@ -648,6 +708,7 @@ namespace SyntaxError.V2.App.Views
                 }
             }
         }
+        /// <summary>Clears the lists.</summary>
         private void ClearLists()
         {
             ViewModel.AudienceChallenges.Clear();

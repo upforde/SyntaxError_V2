@@ -118,6 +118,9 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(answer);
         }
 
+        /// <summary>  Checks if the answer exists in the database.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool AnswersExists(int id)
         {
             return _context.Answers.Any(e => e.AnswersID == id);

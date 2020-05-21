@@ -35,6 +35,15 @@ namespace SyntaxError.V2.App.DataAccess
             return new GameProfile[0];
         }
 
+        public async Task<GameProfile> GetGameProfileAsync(int id)
+        {
+            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(gameProfilesBaseUri, "GameProfiles/" + id));
+            string json = await result.Content.ReadAsStringAsync();
+            if (result.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<GameProfile>(json);
+            return null;
+        }
+
         public async Task<bool> EditGameProfileAsync(GameProfile param)
         {
             string json = await Task.Run(() => JsonConvert.SerializeObject(param));

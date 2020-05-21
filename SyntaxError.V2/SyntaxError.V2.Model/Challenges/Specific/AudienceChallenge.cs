@@ -2,6 +2,7 @@
 
 namespace SyntaxError.V2.Modell.Challenges
 {
+    /// <summary>Challenge where a contestant has to compete against an audience member</summary>
     public class AudienceChallenge: GameChallenge
     {
     }

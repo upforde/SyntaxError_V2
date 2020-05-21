@@ -23,21 +23,31 @@ namespace SyntaxError.V2.App.Views
 {
     public sealed partial class GamePage : Page
     {
+        /// <summary>The current challenge</summary>
         public int? CurrentChallenge;
         
         public GameViewModel ViewModel { get; } = new GameViewModel();
         public ListItemMainPage GameProfileAndChallenges { get; set; }
         public GameProfile GameProfile { get; set; }
 
+        /// <summary>The bitmap image</summary>
         public BitmapImage bitmapImage;
 
+        /// <summary>The audience challenges</summary>
         public List<AudienceChallenge> AudienceChallenges = new List<AudienceChallenge>();
+        /// <summary>The crew challenges</summary>
         public List<CrewChallenge> CrewChallenges = new List<CrewChallenge>();
+        /// <summary>The multiple choice challenges</summary>
         public List<MultipleChoiceChallenge> MultipleChoiceChallenges = new List<MultipleChoiceChallenge>();
+        /// <summary>The music challenges</summary>
         public List<MusicChallenge> MusicChallenges =  new List<MusicChallenge>();
+        /// <summary>The quiz challenges</summary>
         public List<QuizChallenge> QuizChallenges = new List<QuizChallenge>();
+        /// <summary>The screenshot challenges</summary>
         public List<ScreenshotChallenge> ScreenshotChallenges = new List<ScreenshotChallenge>();
+        /// <summary>The silhouette challenges</summary>
         public List<SilhouetteChallenge> SilhouetteChallenges = new List<SilhouetteChallenge>();
+        /// <summary>The sologame challenges</summary>
         public List<SologameChallenge> SologameChallenges = new List<SologameChallenge>();
 
         private bool _audienceAvailable = true;
@@ -49,6 +59,7 @@ namespace SyntaxError.V2.App.Views
         private bool _silhuetteAvailable = true;
         private bool _sologameAvailable = true;
 
+        /// <summary>Occurs when random selection is done.</summary>
         public event PropertyChangedEventHandler RandomSelectDone;
 
         public GamePage()
@@ -71,6 +82,10 @@ namespace SyntaxError.V2.App.Views
             SologameOpacityDown.Completed += CollapseChallengeWindows;
         }
 
+        /// <summary>Invoked when the Page is loaded and becomes the current source of a parent Frame.</summary>
+        /// <param name="e">
+        /// Event data that can be examined by overriding code. The event data is representative of the pending navigation that will load the current Page. Usually the most relevant property to examine is Parameter.
+        /// </param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             GameProfileAndChallenges = e.Parameter as ListItemMainPage;
@@ -123,6 +138,9 @@ namespace SyntaxError.V2.App.Views
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
+        /// <summary>Collapses the challenge windows.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void CollapseChallengeWindows(object sender, object e)
         {
             switch (CurrentChallenge)
@@ -162,29 +180,44 @@ namespace SyntaxError.V2.App.Views
             }
             DeselectChallenge();
         }
-        
+
+        /// <summary>  Collapses the music answer area.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void MusicOpacityUp_Completed(object sender, object e)
         {
             MusicAnswerArea.Visibility = Visibility.Collapsed;
         }
+        /// <summary>  Collapses the quiz answer plane.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void QuizOpacityUp_Completed(object sender, object e)
         {
             QuizAnswerPlane.Visibility = Visibility.Collapsed;
         }
+        /// <summary>  Collapses the screenshot answer area.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void ScreenshotOpacityUp_Completed(object sender, object e)
         {
             ScreenshotAnswerArea.Visibility = Visibility.Collapsed;
         }
+        /// <summary>  Shows the silhouette action area.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void SilhouetteOpacityUp_Completed(object sender, object e)
         {
             SilhouetteActionArea.Visibility = Visibility.Visible;
         }
-
+        /// <summary>  Stops the images when opacity change has completed.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void OpacityCompleted(object sender, object e)
         {
             ImgMove.Stop();
         }
 
+        /// <summary>Toggles the play screen.</summary>
         public async void TogglePlayScreen()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -235,6 +268,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the main screen.</summary>
         public async void ToggleMainScreen()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -273,6 +307,7 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Toggles the moving images at the top and bottom of the game screen.</summary>
         public async void ToggleImgMove()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -339,6 +374,7 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Toggles the syntax error.</summary>
         public async void ToggleSyntaxError()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -363,6 +399,7 @@ namespace SyntaxError.V2.App.Views
                                 AnimateSyntaxErrorLogo();
                             });
         }
+        /// <summary>Toggles the syntax error fix.</summary>
         public async void ToggleSyntaxErrorFix()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -379,6 +416,7 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Animates the syntax error for logo.</summary>
         private async void AnimateSyntaxErrorLogo()
         {
             var ttv = SyntaxErrorLogoImg.TransformToVisual(Window.Current.Content);
@@ -433,6 +471,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorLogo.Begin();
         }
+        /// <summary>Fixes the syntax error for logo.</summary>
         private void FixSyntaxErrorLogo()
         {
             SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -440,6 +479,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorLogo.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorLogo.Begin();
         }
+        /// <summary>Animates the syntax error for audience challenge.</summary>
         private async void AnimateSyntaxErrorAudienceChallenge()
         {
             AudienceGlow.ShadowOpacity = 0;
@@ -495,6 +535,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorAudience.Begin();
         }
+        /// <summary>Fixes the syntax error for audience.</summary>
         private void FixSyntaxErrorAudience()
         {
             SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -502,6 +543,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorAudience.Begin();
         }
+        /// <summary>Animates the syntax error for crew challenge.</summary>
         private async void AnimateSyntaxErrorCrewChallenge()
         {
             CrewGlow.ShadowOpacity = 0;
@@ -557,6 +599,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorCrew.Begin();
         }
+        /// <summary>Fixes the syntax error for crew.</summary>
         private void FixSyntaxErrorCrew()
         {
             SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -564,6 +607,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorCrew.Begin();
         }
+        /// <summary>Animates the syntax error for multiple choice challenge.</summary>
         private async void AnimateSyntaxErrorMultipleChoiceChallenge()
         {
             MultipleChoiceGlow.ShadowOpacity = 0;
@@ -619,6 +663,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorMultipleChoice.Begin();
         }
+        /// <summary>Fixes the syntax error for multiple choice.</summary>
         private void FixSyntaxErrorMultipleChoice()
         {
             SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -626,6 +671,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorMultipleChoice.Begin();
         }
+        /// <summary>Animates the syntax error for music challenge.</summary>
         private async void AnimateSyntaxErrorMusicChallenge()
         {
             MusicGlow.ShadowOpacity = 0;
@@ -681,6 +727,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorMusic.Begin();
         }
+        /// <summary>Fixes the syntax error for music.</summary>
         private void FixSyntaxErrorMusic()
         {
             SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -688,6 +735,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorMusic.Begin();
         }
+        /// <summary>Animates the syntax error for quiz challenge.</summary>
         private async void AnimateSyntaxErrorQuizChallenge()
         {
             QuizGlow.ShadowOpacity = 0;
@@ -743,6 +791,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorQuiz.Begin();
         }
+        /// <summary>Fixes the syntax error for quiz.</summary>
         private void FixSyntaxErrorQuiz()
         {
             SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -750,6 +799,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorQuiz.Begin();
         }
+        /// <summary>Animates the syntax error for screenshot challenge.</summary>
         private async void AnimateSyntaxErrorScreenshotChallenge()
         {
             ScreenshotGlow.ShadowOpacity = 0;
@@ -805,6 +855,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorScreenshot.Begin();
         }
+        /// <summary>Fixes the syntax error for screenshot.</summary>
         private void FixSyntaxErrorScreenshot()
         {
             SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -812,6 +863,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorScreenshot.Begin();
         }
+        /// <summary>Animates the syntax error for silhouette challenge.</summary>
         private async void AnimateSyntaxErrorSilhouetteChallenge()
         {
             SilhouetteGlow.ShadowOpacity = 0;
@@ -867,6 +919,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorSilhouette.Begin();
         }
+        /// <summary>Fixes the syntax error for silhouette.</summary>
         private void FixSyntaxErrorSilhouette()
         {
             SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -874,6 +927,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorSilhouette.Begin();
         }
+        /// <summary>Animates the syntax error for sologame challenge.</summary>
         private async void AnimateSyntaxErrorSologameChallenge()
         {
             SologameGlow.ShadowOpacity = 0;
@@ -929,6 +983,7 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(68)));
             SyntaxErrorSologame.Begin();
         }
+        /// <summary>Fixes the syntax error for sologame.</summary>
         private void FixSyntaxErrorSologame()
         {
             SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.ToProperty, 0);
@@ -936,7 +991,9 @@ namespace SyntaxError.V2.App.Views
             SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.DurationProperty, new Duration(TimeSpan.FromMilliseconds(2500)));
             SyntaxErrorSologame.Begin();
         }
-        
+
+        /// <summary>Actuates the audience challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateAudienceChallenge(AudienceChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -950,6 +1007,8 @@ namespace SyntaxError.V2.App.Views
                                 AudienceTaskText.Text = challenge.ChallengeTask;
                             });
         }
+        /// <summary>Actuates the crew challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateCrewChallenge(CrewChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -964,6 +1023,8 @@ namespace SyntaxError.V2.App.Views
                                 //CrewCrewMember.Text = challenge.CrewMember.CrewTag;
                             });
         }
+        /// <summary>Actuates the multiple choice challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -981,6 +1042,8 @@ namespace SyntaxError.V2.App.Views
                                 MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                             });
         }
+        /// <summary>Actuates the music challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateMusicChallenge(MusicChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -993,6 +1056,8 @@ namespace SyntaxError.V2.App.Views
                                 MusicAnswer.Text = challenge.Song.Name;
                             });
         }
+        /// <summary>Actuates the quiz challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateQuizChallenge(QuizChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1001,6 +1066,8 @@ namespace SyntaxError.V2.App.Views
                                 QuizAnswer.Text = challenge.Answers.Answer;
                             });
         }
+        /// <summary>Actuates the screenshot challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateScreenshotChallenge(ScreenshotChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1013,6 +1080,8 @@ namespace SyntaxError.V2.App.Views
                                 ScreenshotAnswer.Text = challenge.Image.Name;
                             });
         }
+        /// <summary>Actuates the silhouette challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateSilhouetteChallenge(SilhouetteChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1026,6 +1095,8 @@ namespace SyntaxError.V2.App.Views
                             });
             
         }
+        /// <summary>Actuates the sologame challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void ActuateSologameChallenge(SologameChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1040,6 +1111,8 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Answers the multiple choice challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void AnswerMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1141,6 +1214,8 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Answers the music challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void AnswerMusicChallenge(MusicChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1148,6 +1223,8 @@ namespace SyntaxError.V2.App.Views
                                 MusicAnswerArea.Visibility = Visibility.Visible;
                             });
         }
+        /// <summary>Answers the quiz challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void AnswerQuizChallenge(QuizChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1155,6 +1232,8 @@ namespace SyntaxError.V2.App.Views
                                 QuizAnswerPlane.Visibility = Visibility.Visible;
                             });
         }
+        /// <summary>Answers the screenshot challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void AnswerScreenshotChallenge(ScreenshotChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1162,6 +1241,8 @@ namespace SyntaxError.V2.App.Views
                                 ScreenshotAnswerArea.Visibility = Visibility.Visible;
                             });
         }
+        /// <summary>Answers the silhouette challenge.</summary>
+        /// <param name="challenge">The challenge.</param>
         public async void AnswerSilhouetteChallenge(SilhouetteChallenge challenge)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1171,6 +1252,7 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Toggles the audience challenge.</summary>
         public async void ToggleAudienceChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1183,6 +1265,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the crew challenge.</summary>
         public async void ToggleCrewChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1195,6 +1278,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the multiple choice challenge.</summary>
         public async void ToggleMultipleChoiceChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1207,6 +1291,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the music challenge.</summary>
         public async void ToggleMusicChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1219,6 +1304,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the quiz challenge.</summary>
         public async void ToggleQuizChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1231,6 +1317,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the screenshot challenge.</summary>
         public async void ToggleScreenshotChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1243,6 +1330,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the silhouette challenge.</summary>
         public async void ToggleSilhouetteChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1255,6 +1343,7 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the sologame challenge.</summary>
         public async void ToggleSologameChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1267,11 +1356,13 @@ namespace SyntaxError.V2.App.Views
                                 }
                             });
         }
+        /// <summary>Toggles the deselect.</summary>
         public async void ToggleDeselect()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => DeselectChallenge());
         }
 
+        /// <summary>Toggles the audience saturation.</summary>
         public async void ToggleAudienceSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1280,6 +1371,7 @@ namespace SyntaxError.V2.App.Views
                                 _audienceAvailable = false;
                             });
         }
+        /// <summary>Toggles the crew saturation.</summary>
         public async void ToggleCrewSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1288,6 +1380,7 @@ namespace SyntaxError.V2.App.Views
                                 _crewAvailable = false;
                             });
         }
+        /// <summary>Toggles the multiple choice saturation.</summary>
         public async void ToggleMultipleChoiceSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1296,6 +1389,7 @@ namespace SyntaxError.V2.App.Views
                                 _multipleChoiceAvailable = false;
                             });
         }
+        /// <summary>Toggles the music saturation.</summary>
         public async void ToggleMusicSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1304,6 +1398,7 @@ namespace SyntaxError.V2.App.Views
                                 _musicAvailable = false;
                             });
         }
+        /// <summary>Toggles the quiz saturation.</summary>
         public async void ToggleQuizSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1312,6 +1407,7 @@ namespace SyntaxError.V2.App.Views
                                 _quizAvailable = false;
                             });
         }
+        /// <summary>Toggles the screenshot saturation.</summary>
         public async void ToggleScreenshotSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1320,6 +1416,7 @@ namespace SyntaxError.V2.App.Views
                                 _screenshotAvailable = false;
                             });
         }
+        /// <summary>Toggles the silhouette saturation.</summary>
         public async void ToggleSilhouetteSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1328,6 +1425,7 @@ namespace SyntaxError.V2.App.Views
                                 _silhuetteAvailable = false;
                             });
         }
+        /// <summary>Toggles the sologame saturation.</summary>
         public async void ToggleSologameSaturation()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -1337,6 +1435,7 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Toggles the random selection.</summary>
         public async void ToggleRandomSelection()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -1345,6 +1444,7 @@ namespace SyntaxError.V2.App.Views
                             });
         }
 
+        /// <summary>Highlights audience.</summary>
         private async void HighlightAudience()
         {
             AudienceGlow.ShadowOpacity = 0.5;
@@ -1361,6 +1461,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary> Dehighlights audience.</summary>
         private async void DeHighlightAudience()
         {
             SyntaxErrorAudience.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1377,7 +1478,8 @@ namespace SyntaxError.V2.App.Views
             }
             AudienceGlow.ShadowOpacity = 0;
         }
-        
+
+        /// <summary>Highlights crew.</summary>
         private async void HighlightCrew()
         {
             CrewGlow.ShadowOpacity = 0.5;
@@ -1394,6 +1496,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>Dehighlights crew.</summary>
         private async void DeHighlightCrew()
         {
             SyntaxErrorCrew.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1412,6 +1515,7 @@ namespace SyntaxError.V2.App.Views
             CrewGlow.ShadowOpacity = 0;
         }
 
+        /// <summary>Highlights multiplechoice.</summary>
         private async void HighlightMultipleChoice()
         {
             MultipleChoiceGlow.ShadowOpacity = 0.5;
@@ -1428,6 +1532,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>Dehighlights multiplechoice.</summary>
         private async void DeHighlightMultipleChoice()
         {
             SyntaxErrorMultipleChoice.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1444,7 +1549,8 @@ namespace SyntaxError.V2.App.Views
             }
             MultipleChoiceGlow.ShadowOpacity = 0;
         }
-        
+
+        /// <summary>Highlights music.</summary>
         private async void HighlightMusic()
         {
             MusicGlow.ShadowOpacity = 0.5;
@@ -1461,6 +1567,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>Dehighlights music.</summary>
         private async void DeHighlightMusic()
         {
             SyntaxErrorMusic.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1478,6 +1585,7 @@ namespace SyntaxError.V2.App.Views
             MusicGlow.ShadowOpacity = 0;
         }
 
+        /// <summary>Highlights quiz.</summary>
         private async void HighlightQuiz()
         {
             QuizGlow.ShadowOpacity = 0.5;
@@ -1494,6 +1602,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>Dehighlights quiz.</summary>
         private async void DeHighlightQuiz()
         {
             SyntaxErrorQuiz.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1510,7 +1619,8 @@ namespace SyntaxError.V2.App.Views
             }
             QuizGlow.ShadowOpacity = 0;
         }
-        
+
+        /// <summary>Highlights screenshot.</summary>
         private async void HighlightScreenshot()
         {
             ScreenshotGlow.ShadowOpacity = 0.5;
@@ -1527,6 +1637,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>Dehighlights screenshot.</summary>
         private async void DeHighlightScreenshot()
         {
             SyntaxErrorScreenshot.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1543,7 +1654,8 @@ namespace SyntaxError.V2.App.Views
             }
             ScreenshotGlow.ShadowOpacity = 0;
         }
-        
+
+        /// <summary>Highlights silhouette.</summary>
         private async void HighlightSilhouette()
         {
             SilhouetteGlow.ShadowOpacity = 0.5;
@@ -1560,6 +1672,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>Dehighlights silhouette.</summary>
         private async void DeHighlightSilhouette()
         {
             SyntaxErrorSilhouette.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1576,7 +1689,8 @@ namespace SyntaxError.V2.App.Views
             }
             SilhouetteGlow.ShadowOpacity = 0;
         }
-        
+
+        /// <summary>Highlights sologame.</summary>
         private async void HighlightSologame()
         {
             SologameGlow.ShadowOpacity = 0.5;
@@ -1593,6 +1707,7 @@ namespace SyntaxError.V2.App.Views
                 await Task.Delay(1);
             }
         }
+        /// <summary>  Dehighlights sologame.</summary>
         private async void DeHighlightSologame()
         {
             SyntaxErrorSologame.Children[0].SetValue(DoubleAnimation.FromProperty, -20);
@@ -1610,6 +1725,7 @@ namespace SyntaxError.V2.App.Views
             SologameGlow.ShadowOpacity = 0;
         }
 
+        /// <summary>Selects random challenge.</summary>
         private async void RandomSelectChallenge()
         {
             int rnd = RandomNumber(16, 33);
@@ -1739,6 +1855,7 @@ namespace SyntaxError.V2.App.Views
             }
             RandomSelectDone.Invoke(this, new PropertyChangedEventArgs("RandomSelectDone"));
         }
+        /// <summary>Deselects the challenge.</summary>
         public void DeselectChallenge()
         {
             switch (CurrentChallenge)
@@ -1772,6 +1889,8 @@ namespace SyntaxError.V2.App.Views
             }
             CurrentChallenge = null;
         }
+        /// <summary>Toggles the shadow opacity.</summary>
+        /// <param name="level">The level.</param>
         public void ToggleShadowOpacity(double level)
         {
             AudienceGlow.ShadowOpacity = level;
@@ -1784,6 +1903,10 @@ namespace SyntaxError.V2.App.Views
             SologameGlow.ShadowOpacity = level;
         }
 
+        /// <summary>  Returns a random number between the given minimum and maximum values.</summary>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <returns></returns>
         public int RandomNumber(int min, int max)
         {
             Random random = new Random();

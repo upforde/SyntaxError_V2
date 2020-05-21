@@ -10,10 +10,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SyntaxError.V2.App.Views
 {
-    // TODO WTS: Change the URL for your privacy policy in the Resource File, currently set to https://YourPrivacyUrlGoesHere
     public sealed partial class SettingsPage : Page
     {
         public SettingsViewModel ViewModel { get; } = new SettingsViewModel();
+        /// <summary>The syntax error maximum value</summary>
+        public static int _syntaxErrorMaxVal = 25;
 
         public SettingsPage()
         {
@@ -23,6 +24,14 @@ namespace SyntaxError.V2.App.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             await ViewModel.InitializeAsync();
+        }
+
+        /// <summary>Handles the TextChanged event of the SyntaxErrorMaxValue control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TextChangedEventArgs" /> instance containing the event data.</param>
+        private void SyntaxErrorMaxValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _syntaxErrorMaxVal = (int.TryParse(syntaxErrorMaxValue.Text, out int result))?result:25;
         }
     }
 }

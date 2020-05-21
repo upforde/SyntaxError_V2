@@ -4,6 +4,7 @@ using SyntaxError.V2.Modell.Challenges;
 
 namespace SyntaxError.V2.Modell.Utility
 {
+    /// <summary>Class that binds a <see cref="ChallengeBase"/> to a <see cref="UsingBase"/></summary>
     [Table("UsingProfileToChallenge")]
     public class UsingChallenge
     {

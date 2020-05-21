@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SyntaxError.V2.Modell.Utility
 {
+    /// <summary>Save-state class holding the list of appropriate <see cref="UsingChallenge"/></summary>
     [Table("UsingProfiles")]
     public abstract class UsingBase
     {

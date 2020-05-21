@@ -7,6 +7,7 @@ using SyntaxError.V2.Modell.Utility;
 
 namespace SyntaxError.V2.Modell.Challenges
 {
+    /// <summary>The base class for all challenges</summary>
     [Table("Challenges")]
     public class ChallengeBase
     {

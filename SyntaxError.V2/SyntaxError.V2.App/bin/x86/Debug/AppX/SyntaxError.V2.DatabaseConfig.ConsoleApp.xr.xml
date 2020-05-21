@@ -209,6 +209,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="MaxWidth" />
+      <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />

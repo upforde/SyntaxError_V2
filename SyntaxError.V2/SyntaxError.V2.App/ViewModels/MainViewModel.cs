@@ -56,7 +56,10 @@ namespace SyntaxError.V2.App.ViewModels
             AddGameProfileCommand = new RelayCommand<GameProfile>(async param =>
                                                     {
                                                         param = await GameProfilesDataAccess.CreateNewGame(param);
-                                                        GameProfiles.Add(new ListItemMainPage{ GameProfile = param });
+                                                        GameProfiles.Add(new ListItemMainPage
+                                                        {
+                                                            GameProfile = await GameProfilesDataAccess.GetGameProfileAsync(param.ID)
+                                                        });
                                                     }, param => param != null);
 
             EditCommand = new RelayCommand<GameProfile>(async param =>

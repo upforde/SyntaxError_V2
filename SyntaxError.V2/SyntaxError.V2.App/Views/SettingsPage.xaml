@@ -58,9 +58,9 @@
 
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock
-                    Text="Configure database"
+                    Text="Maximum value of challenges before Syntax Error occurs"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <Button>DatabaseConfig ConsoleApp (under construction)</Button>
+                <TextBox x:Name="syntaxErrorMaxValue" TextChanged="SyntaxErrorMaxValue_TextChanged" Text="25"></TextBox>
             </StackPanel>
 
             <TextBlock

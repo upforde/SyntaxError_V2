@@ -204,6 +204,9 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(outerSourceObject);
         }
 
+        /// <summary>  Checks if the media object exists in the database.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool OuterSourceObjectExists(int id)
         {
             return _context.Objects.Any(e => e.ID == id);

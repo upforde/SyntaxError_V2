@@ -440,6 +440,9 @@ namespace SyntaxError.V2.DatabaseAPI.Controllers
             return Ok(challengeBase);
         }
 
+        /// <summary>  Checks if the challenge exists in the database.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool ChallengeBaseExists(int id)
         {
             return _context.Challenges.Any(e => e.ChallengeID == id);
