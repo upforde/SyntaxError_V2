@@ -57,8 +57,8 @@ namespace SyntaxError.V2.App.Views
         public Grid SmokeGrid;
         /// <summary>The smoke grid child</summary>
         public Grid SmokeGridChild;
-        
 
+        /// <summary>Initializes a new instance of the <see cref="CreateObjectsPage" /> class.</summary>
         public CreateObjectsPage()
         {
             InitializeComponent();

@@ -6,8 +6,7 @@ namespace SyntaxError.V2.App.ViewModels
 {
     public class GameViewModel : Observable
     {
-        public ObservableCollection<string> List = new ObservableCollection<string>();
-
+        /// <summary>Initializes a new instance of the <see cref="GameViewModel" /> class.</summary>
         public GameViewModel()
         {
         }

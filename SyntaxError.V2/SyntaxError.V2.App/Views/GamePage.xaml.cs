@@ -26,7 +26,6 @@ namespace SyntaxError.V2.App.Views
         /// <summary>The current challenge</summary>
         public int? CurrentChallenge;
         
-        public GameViewModel ViewModel { get; } = new GameViewModel();
         public ListItemMainPage GameProfileAndChallenges { get; set; }
         public GameProfile GameProfile { get; set; }
 
@@ -50,13 +49,21 @@ namespace SyntaxError.V2.App.Views
         /// <summary>The sologame challenges</summary>
         public List<SologameChallenge> SologameChallenges = new List<SologameChallenge>();
 
+        /// <summary>  The boolean indicating if audience is available</summary>
         private bool _audienceAvailable = true;
+        /// <summary>The boolean indicating if crew is available</summary>
         private bool _crewAvailable = true;
+        /// <summary>The boolean indicating if multiple choice is available</summary>
         private bool _multipleChoiceAvailable = true;
+        /// <summary>The boolean indicating if music is available</summary>
         private bool _musicAvailable = true;
+        /// <summary>The boolean indicating if quiz is available</summary>
         private bool _quizAvailable = true;
+        /// <summary>The boolean indicating if screenshot is available</summary>
         private bool _screenshotAvailable = true;
+        /// <summary>The boolean indicating if silhuette is available</summary>
         private bool _silhuetteAvailable = true;
+        /// <summary>The boolean indicating if sologame is available</summary>
         private bool _sologameAvailable = true;
 
         /// <summary>Occurs when random selection is done.</summary>
@@ -1115,6 +1122,11 @@ namespace SyntaxError.V2.App.Views
         /// <param name="challenge">The challenge.</param>
         public async void AnswerMultipleChoiceChallenge(MultipleChoiceChallenge challenge)
         {
+            //Used to collor in the multiple choice answers
+            // into their respective colors, red if incorrect
+            // and green if correct. This is done in a random
+            // order, but it is ensured that the correct
+            // answer is revealed last.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
                                 string answer = challenge.Answers.Answer;
@@ -1135,6 +1147,7 @@ namespace SyntaxError.V2.App.Views
                                                     await Task.Delay(3);
                                                 }
                                                 MultipleChoiceTopLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                                await Task.Delay(235);
                                             } else queueAnswer = i;
                                             break;
                                         case 1:
@@ -1146,6 +1159,7 @@ namespace SyntaxError.V2.App.Views
                                                     await Task.Delay(3);
                                                 }
                                                 MultipleChoiceTopRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                                await Task.Delay(235);
                                             } else queueAnswer = i;
                                             break;
                                         case 2:
@@ -1157,6 +1171,7 @@ namespace SyntaxError.V2.App.Views
                                                     await Task.Delay(3);
                                                 }
                                                 MultipleChoiceBottomLeftBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                                await Task.Delay(235);
                                             } else queueAnswer = i;
                                             break;
                                         case 3:
@@ -1168,10 +1183,10 @@ namespace SyntaxError.V2.App.Views
                                                     await Task.Delay(3);
                                                 }
                                                 MultipleChoiceBottomRightBorder.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                                                await Task.Delay(235);
                                             } else queueAnswer = i;
                                             break;
                                     }
-                                    await Task.Delay(235);
                                 }
                                 switch (queue[queueAnswer])
                                 {
@@ -1728,8 +1743,29 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Selects random challenge.</summary>
         private async void RandomSelectChallenge()
         {
-            int rnd = RandomNumber(16, 33);
+            //The random number in rnd is chosen to be between 16 and 33
+            // bacause i wanted to have the random selection to go through each
+            // challenge at least two times before stopping at one. The gap between
+            // 16 and 31 is 15. This is to try to lower the gaussian bell curve
+            // bias. This implicite bias occurs in all random selections, because it's
+            // statistically less likely to roll an "edge" number such as 0 and 7 and
+            // more likely to roll a "middle" number such as 4 and 5. By allowing each
+            // number to be picked twice, I smooth out the bell curve, as the edge numbers
+            // allso occur in the middle of the curve, effectively getting picked as much as
+            // non edge numbers.
+
+            // 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+            //  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+            //  0  1  2  3  4  5  6  7  0  1  2  3  4  5  6  7
+
+            int rnd = RandomNumber(16, 31);
+            //The delay being 200ms to start just felt right
             int delay = 200;
+
+            //The random selection begins at the first available challenge, which in most
+            // cases will be the Audience challenge. Then it highlights and dehighligts
+            // each subsequant available challenge, going slower and slower each time,
+            // before stopping at one of the challenges.
             DeselectChallenge();
             if (_audienceAvailable)
             {
@@ -1808,6 +1844,8 @@ namespace SyntaxError.V2.App.Views
                         break;
                 }
             }
+            //This part ensures that if the challenge that the random selection
+            // stopped at is inavailable, then it skips to the next available challenge.
             if (CurrentChallenge == null)
             {
                 DeselectChallenge();

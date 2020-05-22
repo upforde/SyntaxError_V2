@@ -88,6 +88,7 @@ namespace SyntaxError.V2.App.Views
         /// <value>The current sologame challenge.</value>
         public SologameChallenge CurrentSologameChallenge { get; set; }
 
+        /// <summary>Initializes a new instance of the <see cref="AdminPage" /> class.</summary>
         public AdminPage()
         {
             InitializeComponent();
@@ -841,7 +842,6 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Rolls for syntax error next .</summary>
         private void RollForNextSyntaxError()
         {
-            var test = SyntaxErrorCounter;
             int rnd = GamePage.RandomNumber(1, SyntaxErrorCounter+1);
             if (rnd == SyntaxErrorCounter)
             {

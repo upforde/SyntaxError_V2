@@ -20,33 +20,79 @@ namespace SyntaxError.V2.App.ViewModels
         /// <value>The delete command.</value>
         public ICommand DeleteCommand { get; set; }
 
+        /// <summary>Gets or sets the audience challenges.</summary>
+        /// <value>The audience challenges.</value>
         public static List<AudienceChallenge> AudienceChallenges { get; set; } = new List<AudienceChallenge>();
+        /// <summary>Gets or sets the crew challenges.</summary>
+        /// <value>The crew challenges.</value>
         public static List<CrewChallenge> CrewChallenges { get; set; } = new List<CrewChallenge>();
+        /// <summary>Gets or sets the multiple choice challenges.</summary>
+        /// <value>The multiple choice challenges.</value>
         public static List<MultipleChoiceChallenge> MultipleChoiceChallenges { get; set; } = new List<MultipleChoiceChallenge>();
+        /// <summary>Gets or sets the music challenges.</summary>
+        /// <value>The music challenges.</value>
         public static List<MusicChallenge> MusicChallenges { get; set; } = new List<MusicChallenge>();
+        /// <summary>Gets or sets the quiz challenges.</summary>
+        /// <value>The quiz challenges.</value>
         public static List<QuizChallenge> QuizChallenges { get; set; } = new List<QuizChallenge>();
+        /// <summary>Gets or sets the screenshot challenges.</summary>
+        /// <value>The screenshot challenges.</value>
         public static List<ScreenshotChallenge> ScreenshotChallenges { get; set; } = new List<ScreenshotChallenge>();
+        /// <summary>Gets or sets the silhouette challenges.</summary>
+        /// <value>The silhouette challenges.</value>
         public static List<SilhouetteChallenge> SilhouetteChallenges { get; set; } = new List<SilhouetteChallenge>();
+        /// <summary>Gets or sets the sologame challenges.</summary>
+        /// <value>The sologame challenges.</value>
         public static List<SologameChallenge> SologameChallenges { get; set; } = new List<SologameChallenge>();
-        
+
+        /// <summary>  The filtered audience challenges.</summary>
+        /// <value>The filtered audience.</value>
         public ObservableCollection<AudienceChallenge> FilteredAudience { get; set; } = new ObservableCollection<AudienceChallenge>();
+        /// <summary>  The filtered crew challenges.</summary>
+        /// <value>The filtered crew.</value>
         public ObservableCollection<CrewChallenge> FilteredCrew { get; set; } = new ObservableCollection<CrewChallenge>();
+        /// <summary>  The filtered multiple choice challenges.</summary>
+        /// <value>The filtered multi.</value>
         public ObservableCollection<MultipleChoiceChallenge> FilteredMulti { get; set; } = new ObservableCollection<MultipleChoiceChallenge>();
+        /// <summary>  The filtered music challenges.</summary>
+        /// <value>The filtered music.</value>
         public ObservableCollection<MusicChallenge> FilteredMusic { get; set; } = new ObservableCollection<MusicChallenge>();
+        /// <summary>  The filtered quiz challenges.</summary>
+        /// <value>The filtered quiz.</value>
         public ObservableCollection<QuizChallenge> FilteredQuiz { get; set; } = new ObservableCollection<QuizChallenge>();
+        /// <summary>  The filtered screenshot challenges.</summary>
+        /// <value>The filtered screen.</value>
         public ObservableCollection<ScreenshotChallenge> FilteredScreen { get; set; } = new ObservableCollection<ScreenshotChallenge>();
+        /// <summary>  The filtered silhuette challenges.</summary>
+        /// <value>The filtered silhu.</value>
         public ObservableCollection<SilhouetteChallenge> FilteredSilhu { get; set; } = new ObservableCollection<SilhouetteChallenge>();
+        /// <summary>  The filtered sologame challenges.</summary>
+        /// <value>The filtered solo.</value>
         public ObservableCollection<SologameChallenge> FilteredSolo { get; set; } = new ObservableCollection<SologameChallenge>();
 
+        /// <summary>Gets or sets the challenges data access.</summary>
+        /// <value>The challenges data access.</value>
         public Challenges ChallengesDataAccess { get; set; } = new Challenges();
+        /// <summary>Gets or sets the answers data access.</summary>
+        /// <value>The answers data access.</value>
         public DataAccess.Answers AnswersDataAccess { get; set; } = new DataAccess.Answers();
-        
+
+        /// <summary>Gets or sets the challenges from database.</summary>
+        /// <value>The challenges from database.</value>
         public List<ChallengeBase> ChallengesFromDB { get; set; } = new List<ChallengeBase>();
 
+        /// <summary>Gets or sets the objects view model.</summary>
+        /// <value>The objects view model.</value>
         public CreateObjectsViewModel ObjectsViewModel { get; set; } = new CreateObjectsViewModel();
 
+        /// <summary>Gets or sets the games.</summary>
+        /// <value>The games.</value>
         public ObservableCollection<Game> Games { get; set; } = new ObservableCollection<Game>();
+        /// <summary>Gets or sets the images.</summary>
+        /// <value>The images.</value>
         public ObservableCollection<Image> Images { get; set; } = new ObservableCollection<Image>();
+        /// <summary>Gets or sets the music.</summary>
+        /// <value>The music.</value>
         public ObservableCollection<Music> Music { get; set; } = new ObservableCollection<Music>();
 
         /// <summary>Initializes a new instance of the <see cref="CreateChallengesViewModel"/> class.</summary>

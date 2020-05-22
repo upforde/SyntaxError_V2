@@ -30,7 +30,11 @@ namespace SyntaxError.V2.App.Views
         /// <summary>The challenges source</summary>
         private ObservableCollection<GroupChallengesList> _challengesSource;
 
+        /// <summary>Gets the view model.</summary>
+        /// <value>The view model.</value>
         public MainViewModel ViewModel { get; } = new MainViewModel();
+        /// <summary>The is connected
+        /// boolean</summary>
         public bool IsConnected;
 
         private ICommand _editCommand;
@@ -42,6 +46,7 @@ namespace SyntaxError.V2.App.Views
         /// <value>The edit command.</value>
         public ICommand ResetSaveCommand => _resetSaveCommand ?? (_resetSaveCommand = new RelayCommand<ListItemMainPage>(ResetSaveCommand_ItemClicked));
 
+        /// <summary>Initializes a new instance of the <see cref="MainPage" /> class.</summary>
         public MainPage()
         {
             InitializeComponent();

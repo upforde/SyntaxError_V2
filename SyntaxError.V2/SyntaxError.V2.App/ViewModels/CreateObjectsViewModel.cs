@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
-using Microsoft.Toolkit.Uwp.UI.Animations;
-
-using SyntaxError.V2.App.Core.Models;
-using SyntaxError.V2.App.Core.Services;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
-using SyntaxError.V2.App.Services;
-using SyntaxError.V2.App.Views;
 using SyntaxError.V2.Modell.ChallengeObjects;
-using SyntaxError.V2.Modell.Challenges;
-using Windows.UI.Xaml.Media.Animation;
 
 namespace SyntaxError.V2.App.ViewModels
 {
@@ -27,15 +17,23 @@ namespace SyntaxError.V2.App.ViewModels
         /// <value>The delete command.</value>
         public ICommand DeleteCommand { get; set; }
 
+        /// <summary>Adds a new media object to the database and list.</summary>
+        /// <value>The add new object command.</value>
         public ICommand AddNewObjectCommand { get; set; }
 
+        /// <summary>The games</summary>
         public static List<Game> Games = new List<Game>();
+        /// <summary>The images</summary>
         public static List<Image> Images = new List<Image>();
+        /// <summary>The music</summary>
         public static List<Music> Music = new List<Music>();
-        
+
+        /// <summary>The media objects data access</summary>
         public MediaObjects MediaObjectsDataAccess = new MediaObjects();
+        /// <summary>The images data access</summary>
         public Images ImagesDataAccess = new DataAccess.Images();
 
+        /// <summary>Initializes a new instance of the <see cref="CreateObjectsViewModel" /> class.</summary>
         public CreateObjectsViewModel()
         {
             AddNewObjectCommand = new RelayCommand<MediaObject>(async param =>
@@ -125,14 +123,20 @@ namespace SyntaxError.V2.App.ViewModels
             return true;
         }
 
+        /// <summary>Gets the games.</summary>
+        /// <returns></returns>
         public List<Game> GetGames()
         {
             return Games;
         }
+        /// <summary>Gets the images.</summary>
+        /// <returns></returns>
         public List<Image> GetImages()
         {
             return Images;
         }
+        /// <summary>Gets the musics.</summary>
+        /// <returns></returns>
         public List<Music> GetMusics()
         {
             return Music;
