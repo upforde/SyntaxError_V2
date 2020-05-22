@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using SyntaxError.V2.App.Helpers;
+﻿using SyntaxError.V2.App.Helpers;
 
 namespace SyntaxError.V2.App.ViewModels
 {

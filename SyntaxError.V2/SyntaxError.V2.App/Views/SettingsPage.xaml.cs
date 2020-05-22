@@ -1,10 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using SyntaxError.V2.App.ViewModels;
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
+﻿using SyntaxError.V2.App.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

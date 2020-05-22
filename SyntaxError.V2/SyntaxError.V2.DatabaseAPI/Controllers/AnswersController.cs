@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SyntaxError.V2.DataAccess;
 using SyntaxError.V2.Modell.ChallengeObjects;
-using SyntaxError.V2.Modell.Challenges;
 
 namespace SyntaxError.V2.DatabaseAPI.Controllers
 {

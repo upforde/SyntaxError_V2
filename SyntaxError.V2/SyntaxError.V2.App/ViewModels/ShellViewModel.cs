@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Microsoft.Toolkit.Uwp.Connectivity;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.Services;
 using SyntaxError.V2.App.Views;

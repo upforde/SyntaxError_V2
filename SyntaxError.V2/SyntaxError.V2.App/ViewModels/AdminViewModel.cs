@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;

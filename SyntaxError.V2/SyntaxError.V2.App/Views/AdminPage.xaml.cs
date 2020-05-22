@@ -737,13 +737,13 @@ namespace SyntaxError.V2.App.Views
                     GamePage.AnswerMusicChallenge(CurrentMusicChallenge);
                     break;
                 case 4:
-                    GamePage.AnswerQuizChallenge(CurrentQuizChallenge);
+                    GamePage.AnswerQuizChallenge();
                     break;
                 case 5:
-                    GamePage.AnswerScreenshotChallenge(CurrentScreenshotChallenge);
+                    GamePage.AnswerScreenshotChallenge();
                     break;
                 case 6:
-                    GamePage.AnswerSilhouetteChallenge(CurrentSilhouetteChallenge);
+                    GamePage.AnswerSilhouetteChallenge();
                     break;
                 default:
                     break;

@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Uwp.Connectivity;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;
 using Windows.Foundation.Metadata;
-using Windows.Storage;
-using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace SyntaxError.V2.App.Views
 {

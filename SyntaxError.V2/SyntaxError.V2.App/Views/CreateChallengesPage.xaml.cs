@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Uwp.Connectivity;
 using Microsoft.Toolkit.Uwp.UI.Controls;

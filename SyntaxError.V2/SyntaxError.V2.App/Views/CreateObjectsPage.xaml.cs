@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Uwp.Connectivity;
 using Microsoft.Toolkit.Uwp.UI.Controls;
-using SyntaxError.V2.App.DataAccess;
 using SyntaxError.V2.App.Helpers;
 using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.ChallengeObjects;

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SyntaxError.V2.App.Helpers;
-using SyntaxError.V2.App.ViewModels;
 using SyntaxError.V2.Modell.Challenges;
 using SyntaxError.V2.Modell.Utility;
 using Windows.ApplicationModel.Core;
@@ -69,6 +68,7 @@ namespace SyntaxError.V2.App.Views
         /// <summary>Occurs when random selection is done.</summary>
         public event PropertyChangedEventHandler RandomSelectDone;
 
+        /// <summary>Initializes a new instance of the <see cref="GamePage" /> class.</summary>
         public GamePage()
         {
             InitializeComponent();
@@ -1036,8 +1036,8 @@ namespace SyntaxError.V2.App.Views
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                             {
-                                var answers = challenge.Answers.GetAll();
-                                MultipleChoiceTask.Text = challenge.ChallengeTask;
+                                var answers = (challenge.Answers!=null)?challenge.Answers.GetAll():new List<string>(){ "null", "null", "null", "Whoops!" };
+                                MultipleChoiceTask.Text = (challenge.Answers!=null)?challenge.ChallengeTask:"Whoops!";
                                 MultipleChoiceTopLeft.Text = answers[0];
                                 MultipleChoiceTopRight.Text = answers[1];
                                 MultipleChoiceBottomLeft.Text = answers[2];
@@ -1069,8 +1069,8 @@ namespace SyntaxError.V2.App.Views
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                             {
-                                QuizTask.Text = challenge.ChallengeTask;
-                                QuizAnswer.Text = challenge.Answers.Answer;
+                                QuizTask.Text = (challenge.Answers!=null)?challenge.ChallengeTask:"Whoops!";
+                                QuizAnswer.Text = (challenge.Answers!=null)?challenge.Answers.Answer:"Whoops!";
                             });
         }
         /// <summary>Actuates the screenshot challenge.</summary>
@@ -1129,7 +1129,7 @@ namespace SyntaxError.V2.App.Views
             // answer is revealed last.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                string answer = challenge.Answers.Answer;
+                                string answer = (challenge.Answers != null)?challenge.Answers.Answer:"Whoops!";
                                 int[] queue = {0, 1, 2, 3};
                                 int queueAnswer = -1;
                                 queue.Shuffle();
@@ -1240,7 +1240,7 @@ namespace SyntaxError.V2.App.Views
         }
         /// <summary>Answers the quiz challenge.</summary>
         /// <param name="challenge">The challenge.</param>
-        public async void AnswerQuizChallenge(QuizChallenge challenge)
+        public async void AnswerQuizChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                             {
@@ -1249,7 +1249,7 @@ namespace SyntaxError.V2.App.Views
         }
         /// <summary>Answers the screenshot challenge.</summary>
         /// <param name="challenge">The challenge.</param>
-        public async void AnswerScreenshotChallenge(ScreenshotChallenge challenge)
+        public async void AnswerScreenshotChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                             {
@@ -1258,12 +1258,11 @@ namespace SyntaxError.V2.App.Views
         }
         /// <summary>Answers the silhouette challenge.</summary>
         /// <param name="challenge">The challenge.</param>
-        public async void AnswerSilhouetteChallenge(SilhouetteChallenge challenge)
+        public async void AnswerSilhouetteChallenge()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                             {
                                 Silhouette.Visibility = Visibility.Collapsed;
-                                SilhouetteAnswer.Text = challenge.Image.Name;
                             });
         }
 
