@@ -284,8 +284,8 @@
 
                         <StackPanel Grid.Row="0"
                                     Orientation="Horizontal">
-                            <TextBlock Text="Total Challenges:" Padding="5"/>
-                            <TextBlock x:ConnectionId='96' x:Name="TotalChallengeNumber" Padding="5"/>
+                            <TextBlock Text="Total Challenges:" Padding="5, 0, 5, 0"/>
+                            <TextBlock x:ConnectionId='96' x:Name="TotalChallengeNumber" Padding="5, 0, 5, 0"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <controlls:Expander x:ConnectionId='54' x:Name="AudienceChallengesExpander" Header="AudienceChallenges"
@@ -517,8 +517,8 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
-                            <TextBlock Text="Challenges in this Game profile:" Padding="5" />
-                            <TextBlock x:ConnectionId='53' x:Name="GameProfileChallengeNumber" Padding="5"/>
+                            <TextBlock Text="Challenges in this Game profile:" Padding="5, 0, 5, 0" />
+                            <TextBlock x:ConnectionId='53' x:Name="GameProfileChallengeNumber" Padding="5, 0, 5, 0"/>
                         </StackPanel>
                         
                         <StackPanel Grid.Row="1">

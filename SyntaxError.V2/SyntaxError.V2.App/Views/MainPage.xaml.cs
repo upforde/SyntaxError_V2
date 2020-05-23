@@ -291,13 +291,13 @@ namespace SyntaxError.V2.App.Views
         {
             if (IsButtonAdd())
             {
-                AddRemoveAll.Label = "Add all challenges";
+                AddRemoveAll.Label = "Add all";
                 AddRemoveAll.Click += AddRemoveAll_Click_Add;
                 AddRemoveAll.Click -= AddRemoveAll_Click_Remove;
             }
             else
             {
-                AddRemoveAll.Label = "Remove all challenges";
+                AddRemoveAll.Label = "Remove all";
                 AddRemoveAll.Click -= AddRemoveAll_Click_Add;
                 AddRemoveAll.Click += AddRemoveAll_Click_Remove;
             }
