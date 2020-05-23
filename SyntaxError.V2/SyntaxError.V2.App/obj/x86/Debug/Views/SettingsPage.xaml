@@ -60,7 +60,10 @@
                 <TextBlock
                     Text="Maximum value of challenges before Syntax Error occurs"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <TextBox x:ConnectionId='4' x:Name="syntaxErrorMaxValue"                                               Text="25"></TextBox>
+                <TextBox x:ConnectionId='4' HorizontalAlignment="Left"
+                    x:Name="syntaxErrorMaxValue"
+                                                                 
+                    Text="25" Width="100"/>
             </StackPanel>
 
             <TextBlock
@@ -72,12 +75,13 @@
                                                                              
                     Style="{ThemeResource BodyTextBlockStyle}" />
                 <TextBlock
-                    x:Uid="Settings_AboutDescription"
+                    Text="SyntaxError is the highly popular gameshow held at each LANmine event. The flexible design of the app allows for small twists keep the gameshow feeling new and fresh each time it is held. Contenders compete against the crew members, other audience members and also themselves for fun, glory and of course various prizes. More info on LANmine can be found on our website."
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{ThemeResource BodyTextBlockStyle}" />
 
                 <HyperlinkButton
-                    x:Uid="Settings_PrivacyTermsLink"
+                    Content="www.lanmine.no"
+                    NavigateUri="https://lanmine.no/"
                     Margin="{StaticResource XSmallTopMargin}" />
             </StackPanel>
         </StackPanel>
