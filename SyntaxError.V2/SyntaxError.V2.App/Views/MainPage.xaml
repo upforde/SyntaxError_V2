@@ -281,9 +281,12 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        
-                        <TextBlock Text="Total Challenges"
-                                   Grid.Row="0" Padding="5"/>
+
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal">
+                            <TextBlock Text="Total Challenges:" Padding="5"/>
+                            <TextBlock x:Name="TotalChallengeNumber" Padding="5"/>
+                        </StackPanel>
                         <StackPanel Grid.Row="1">
                             <controlls:Expander x:Name="AudienceChallengesExpander" Header="AudienceChallenges"
                                                 Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
@@ -513,8 +516,11 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Challenges in this Game profile"
-                                   Grid.Row="0" Padding="5" />
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock Text="Challenges in this Game profile:" Padding="5" />
+                            <TextBlock x:Name="GameProfileChallengeNumber" Padding="5"/>
+                        </StackPanel>
+                        
                         <StackPanel Grid.Row="1">
                             <controlls:Expander x:Name="AudienceChallengesExpander2" Header="AudienceChallenges"
                                                 Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
@@ -743,6 +749,8 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Orientation="Horizontal">
+                    <AppBarButton x:Name="AddRemoveAll"
+                                  Icon="Switch"/>
                     <AppBarButton Label="Save"
                                   Icon="Accept"
                                   Click="SaveButton_Click"/>

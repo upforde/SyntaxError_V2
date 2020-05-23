@@ -200,6 +200,9 @@ namespace SyntaxError.V2.App.Views
         /// <param name="clickedGameProfile">The clicked game profile.</param>
         private void EditCommand_ItemClicked(ListItemMainPage clickedGameProfile)
         {
+            AddRemoveAll_Click();
+            InsertChallengeAmounts();
+
             ConnectedAnimation animation = GameProfilesList.PrepareConnectedAnimation("forwardAnimation", _storedGameProfile, "connectedElement");
             SmokeGrid.Visibility = Visibility.Visible;
 
@@ -281,6 +284,57 @@ namespace SyntaxError.V2.App.Views
             _storedGameProfile = ViewModel.GameProfiles[index];
 
             BackButton_Click(sender, e);
+        }
+
+        /// <summary>  Handles the flipping of functionality when click event of AddRemoveButton is triggered.</summary>
+        private void AddRemoveAll_Click()
+        {
+            if (IsButtonAdd())
+            {
+                AddRemoveAll.Label = "Add all challenges";
+                AddRemoveAll.Click += AddRemoveAll_Click_Add;
+                AddRemoveAll.Click -= AddRemoveAll_Click_Remove;
+            }
+            else
+            {
+                AddRemoveAll.Label = "Remove all challenges";
+                AddRemoveAll.Click -= AddRemoveAll_Click_Add;
+                AddRemoveAll.Click += AddRemoveAll_Click_Remove;
+            }
+
+            InsertChallengeAmounts();
+        }
+        /// <summary>  Adds all challenges in the database to the selected profile.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void AddRemoveAll_Click_Add(object sender, RoutedEventArgs e)
+        {
+            foreach (AudienceChallenge challenge in ViewModel.AudienceChallenges)
+                if (!ViewModel.NewAudienceChallenges.Contains(challenge)) ViewModel.NewAudienceChallenges.Add(challenge);
+            foreach (CrewChallenge challenge in ViewModel.CrewChallenges)
+                if (!ViewModel.NewCrewChallenges.Contains(challenge)) ViewModel.NewCrewChallenges.Add(challenge);
+            foreach (MultipleChoiceChallenge challenge in ViewModel.MultipleChoiceChallenges)
+                if (!ViewModel.NewMultipleChoiceChallenges.Contains(challenge)) ViewModel.NewMultipleChoiceChallenges.Add(challenge);
+            foreach (MusicChallenge challenge in ViewModel.MusicChallenges)
+                if (!ViewModel.NewMusicChallenges.Contains(challenge)) ViewModel.NewMusicChallenges.Add(challenge);
+            foreach (QuizChallenge challenge in ViewModel.QuizChallenges)
+                if (!ViewModel.NewQuizChallenges.Contains(challenge)) ViewModel.NewQuizChallenges.Add(challenge);
+            foreach (ScreenshotChallenge challenge in ViewModel.ScreenshotChallenges)
+                if (!ViewModel.NewScreenshotChallenges.Contains(challenge)) ViewModel.NewScreenshotChallenges.Add(challenge);
+            foreach (SilhouetteChallenge challenge in ViewModel.SilhouetteChallenges)
+                if (!ViewModel.NewSilhouetteChallenges.Contains(challenge)) ViewModel.NewSilhouetteChallenges.Add(challenge);
+            foreach (SologameChallenge challenge in ViewModel.SologameChallenges)
+                if (!ViewModel.NewSologameChallenges.Contains(challenge)) ViewModel.NewSologameChallenges.Add(challenge);
+
+            AddRemoveAll_Click();
+        }
+        /// <summary>  Removes all challenges from the profile.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void AddRemoveAll_Click_Remove(object sender, RoutedEventArgs e)
+        {
+            ClearNewLists();
+            AddRemoveAll_Click();
         }
 
         /// <summary>Handles the Expanded event of the Expander control.</summary>
@@ -624,6 +678,42 @@ namespace SyntaxError.V2.App.Views
             }
         }
 
+        /// <summary>Inserts the challenge amounts.</summary>
+        private void InsertChallengeAmounts()
+        {
+            TotalChallengeNumber.Text = (ViewModel.AudienceChallenges.Count +
+                ViewModel.CrewChallenges.Count +
+                ViewModel.MultipleChoiceChallenges.Count +
+                ViewModel.MusicChallenges.Count +
+                ViewModel.QuizChallenges.Count +
+                ViewModel.ScreenshotChallenges.Count +
+                ViewModel.SilhouetteChallenges.Count +
+                ViewModel.SologameChallenges.Count).ToString();
+            GameProfileChallengeNumber.Text = (ViewModel.NewAudienceChallenges.Count +
+                ViewModel.NewCrewChallenges.Count +
+                ViewModel.NewMultipleChoiceChallenges.Count +
+                ViewModel.NewMusicChallenges.Count +
+                ViewModel.NewQuizChallenges.Count +
+                ViewModel.NewScreenshotChallenges.Count +
+                ViewModel.NewSilhouetteChallenges.Count +
+                ViewModel.NewSologameChallenges.Count).ToString();
+        }
+        /// <summary>  Checks if the AddRemoveButton should add or remove challenges.</summary>
+        /// <returns>
+        ///   <c>true</c> if [is button add]; otherwise, <c>false</c>.</returns>
+        private bool IsButtonAdd()
+        {
+            if (ViewModel.AudienceChallenges.Count.Equals(ViewModel.NewAudienceChallenges.Count) &&
+                ViewModel.CrewChallenges.Count.Equals(ViewModel.NewCrewChallenges.Count) &&
+                ViewModel.MultipleChoiceChallenges.Count.Equals(ViewModel.NewMultipleChoiceChallenges.Count) &&
+                ViewModel.MusicChallenges.Count.Equals(ViewModel.NewMusicChallenges.Count) &&
+                ViewModel.QuizChallenges.Count.Equals(ViewModel.QuizChallenges.Count) &&
+                ViewModel.ScreenshotChallenges.Count.Equals(ViewModel.NewScreenshotChallenges.Count) &&
+                ViewModel.SilhouetteChallenges.Count.Equals(ViewModel.NewSilhouetteChallenges.Count) &&
+                ViewModel.SologameChallenges.Count.Equals(ViewModel.NewSologameChallenges.Count))
+                return false;
+            return true;
+        }
         /// <summary>Changes the expander visibility.</summary>
         /// <param name="visibility">The visibility.</param>
         internal void ChangeExpanderVisibility(Visibility visibility)
@@ -725,6 +815,11 @@ namespace SyntaxError.V2.App.Views
             ViewModel.SilhouetteChallenges.Clear();
             ViewModel.SologameChallenges.Clear();
 
+            ClearNewLists();
+        }
+        /// <summary>Clears the new lists.</summary>
+        private void ClearNewLists()
+        {
             ViewModel.NewAudienceChallenges.Clear();
             ViewModel.NewCrewChallenges.Clear();
             ViewModel.NewMultipleChoiceChallenges.Clear();
