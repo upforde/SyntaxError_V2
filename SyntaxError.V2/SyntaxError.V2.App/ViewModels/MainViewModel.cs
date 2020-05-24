@@ -160,15 +160,18 @@ namespace SyntaxError.V2.App.ViewModels
         /// <returns></returns>
         internal async Task LoadChallengesFromDBAsync()
         {
-            if (ChallengesFromDB.Count == 0) await ChallengesViewModel.LoadChallengesFromDBAsync();
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.AudienceChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.CrewChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.MultipleChoiceChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.MusicChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.QuizChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.ScreenshotChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.SilhouetteChallenges);
-            ChallengesFromDB.AddRange(CreateChallengesViewModel.SologameChallenges);
+            if (ChallengesFromDB.Count == 0)
+            {
+                await ChallengesViewModel.LoadChallengesFromDBAsync();
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.AudienceChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.CrewChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.MultipleChoiceChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.MusicChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.QuizChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.ScreenshotChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.SilhouetteChallenges);
+                ChallengesFromDB.AddRange(CreateChallengesViewModel.SologameChallenges);
+            }
         }
 
         /// <summary>Loads the media objects from database asynchronous.</summary>

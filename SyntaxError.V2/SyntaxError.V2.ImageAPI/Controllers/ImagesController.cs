@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -68,6 +69,20 @@ namespace SyntaxError.V2.ImageAPI.Controllers
             }
             else
                 return BadRequest();
+        }
+
+        /// <summary>Deletes the specified file.</summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        [HttpDelete]
+        public ActionResult Delete(string name)
+        {
+            if (!System.IO.File.Exists(name))
+                return NotFound();
+
+            System.IO.File.Delete(name);
+
+            return Ok();
         }
 
         /// <summary>

@@ -65,17 +65,20 @@ namespace SyntaxError.V2.App.ViewModels
                                                             switch (param.GetType().Name)
                                                             {
                                                                 case "Game":
+                                                                    ImagesDataAccess.DeleteImageAsync(param.URI);
                                                                     Games.Remove(param as Game);
                                                                     CreateChallengesViewModel.AudienceChallenges.RemoveAll(x => x.GameID == param.ID);
                                                                     CreateChallengesViewModel.CrewChallenges.RemoveAll(x => x.GameID == param.ID);
                                                                     CreateChallengesViewModel.SologameChallenges.RemoveAll(x => x.GameID == param.ID);
                                                                     break;
                                                                 case "Image":
+                                                                    ImagesDataAccess.DeleteImageAsync(param.URI);
                                                                     Images.Remove(param as Image);
                                                                     CreateChallengesViewModel.ScreenshotChallenges.RemoveAll(x => x.ImageID == param.ID);
                                                                     CreateChallengesViewModel.SilhouetteChallenges.RemoveAll(x => x.ImageID == param.ID);
                                                                     break;
                                                                 case "Music":
+                                                                    ImagesDataAccess.DeleteImageAsync(param.URI);
                                                                     Music.Remove(param as Music);
                                                                     CreateChallengesViewModel.MusicChallenges.RemoveAll(x => x.SongID == param.ID);
                                                                     break;

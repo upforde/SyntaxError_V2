@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xaml.Interactivity;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,5 +34,13 @@ namespace SyntaxError.V2.App.DataAccess
                 return result.Headers.Location.ToString();
             }
         }
+
+        /// <summary>Deletes the image asynchronous.</summary>
+        /// <param name="uri">The URI.</param>
+        public async void DeleteImageAsync(string uri)
+        {
+            await _httpClient.DeleteAsync(uri);
+        } 
+
     }
 }
