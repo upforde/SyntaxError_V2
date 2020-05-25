@@ -94,6 +94,8 @@ namespace SyntaxError.V2.App.Views
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void MainPage_GameProfilesLoadedAsync(object sender = null, RoutedEventArgs e = null)
         {
+            AddButton.IsEnabled = false;
+            RefreshButtonDeactivate();
             var isInternetAvailable = NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable;
             if (isInternetAvailable)
             {
@@ -104,20 +106,28 @@ namespace SyntaxError.V2.App.Views
                 try
                 {
                     await ViewModel.LoadGameProfilesFromDBAsync();
-                } catch (System.Net.Http.HttpRequestException) { }
+                    AddButton.IsEnabled = true;
+                } catch (System.Net.Http.HttpRequestException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonSerializationException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonReaderException) { RefreshButtonActive(); }
 
                 listViewProgressBar.Visibility = Visibility.Collapsed;
-
+                
                 try
                 {
                     await ViewModel.LoadChallengesFromDBAsync();
-                } catch (System.Net.Http.HttpRequestException) { }
+                } catch (System.Net.Http.HttpRequestException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonSerializationException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonReaderException) { RefreshButtonActive(); }
 
                 GameProfilesList.SelectionMode = ListViewSelectionMode.Single;
                 try
                 {
                     await ViewModel.LoadMediaObjectsFromDBAsync();
-                } catch (System.Net.Http.HttpRequestException) { } catch (InvalidOperationException) { }
+                } catch (System.Net.Http.HttpRequestException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonSerializationException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonReaderException) { RefreshButtonActive(); }
+                catch (InvalidOperationException) { RefreshButtonActive(); }
             }
             ChangeButtonsEnabled(isInternetAvailable);
         }
@@ -284,6 +294,14 @@ namespace SyntaxError.V2.App.Views
             _storedGameProfile = ViewModel.GameProfiles[index];
 
             BackButton_Click(sender, e);
+        }
+
+        /// <summary>  Tries to reload the page when the <see cref="RefreshMainPage"/> button is pressed.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void RefreshMainPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage_GameProfilesLoadedAsync();
         }
 
         /// <summary>  Handles the flipping of functionality when click event of AddRemoveButton is triggered.</summary>
@@ -828,6 +846,18 @@ namespace SyntaxError.V2.App.Views
             ViewModel.NewScreenshotChallenges.Clear();
             ViewModel.NewSilhouetteChallenges.Clear();
             ViewModel.NewSologameChallenges.Clear();
+        }
+        /// <summary>  Makes the refresh button avctive .</summary>
+        private void RefreshButtonActive()
+        {
+            RefreshMainPage.Visibility = Visibility.Visible;
+            GameProfilesList.Visibility = Visibility.Collapsed;
+        }
+        /// <summary>  Deactivates the refresh button.</summary>
+        private void RefreshButtonDeactivate()
+        {
+            RefreshMainPage.Visibility = Visibility.Collapsed;
+            GameProfilesList.Visibility = Visibility.Visible;
         }
     }
 }

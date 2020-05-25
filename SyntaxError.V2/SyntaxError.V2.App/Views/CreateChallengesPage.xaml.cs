@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Windows.Input;
 using Microsoft.Toolkit.Uwp.Connectivity;
@@ -118,10 +119,18 @@ namespace SyntaxError.V2.App.Views
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void CreateChallengesPage_Loaded(object sender = null, RoutedEventArgs e = null)
         {
+            RefreshButtonDeactivate();
             var isInternetAvailable = NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable;
-            if(isInternetAvailable) await ViewModel.LoadChallengesFromDBAsync();
-            ChangeButtonsEnabled(isInternetAvailable);
-            ViewModel.RefreshList("", ChallengeList.SelectedIndex);
+            if (isInternetAvailable)
+                try
+                {
+                    await ViewModel.LoadChallengesFromDBAsync();
+                    ChangeButtonsEnabled(isInternetAvailable);
+                    ViewModel.RefreshList("", ChallengeList.SelectedIndex);
+                }
+                catch (HttpRequestException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonSerializationException) { RefreshButtonActive(); }
+                catch (Newtonsoft.Json.JsonReaderException) { RefreshButtonActive(); }
         }
 
         /// <summary>Handles the Click event of the AppBarButton_SelectionMode control.</summary>
@@ -633,5 +642,24 @@ namespace SyntaxError.V2.App.Views
                 }
             }
         }
+        /// <summary>  Makes the refresh button avctive .</summary>
+        private void RefreshButtonActive()
+        {
+            RefreshChallengePage.Visibility = Visibility.Visible;
+        }
+        /// <summary>  Deactivates the refresh button.</summary>
+        private void RefreshButtonDeactivate()
+        {
+            RefreshChallengePage.Visibility = Visibility.Collapsed;
+        }
+
+        /// <summary>  Tries to reload the page when the <see cref="RefreshMainPage"/> button is pressed.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        private void RefreshChallengePage_Click(object sender, RoutedEventArgs e)
+        {
+            CreateChallengesPage_Loaded();
+        }
+
     }
 }

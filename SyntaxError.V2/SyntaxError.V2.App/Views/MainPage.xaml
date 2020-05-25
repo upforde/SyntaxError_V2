@@ -230,7 +230,7 @@
             <Grid.Background>
                 <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
             </Grid.Background>
-                    
+
             <Grid HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Width="650" Height="500"
@@ -294,7 +294,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.AudienceChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -324,7 +324,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.CrewChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -354,7 +354,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.MultipleChoiceChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -384,7 +384,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.MusicChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -407,7 +407,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.QuizChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -437,7 +437,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.ScreenshotChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -460,7 +460,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.SilhouetteChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -483,7 +483,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.SologameChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -520,7 +520,7 @@
                             <TextBlock Text="Challenges in this Game profile:" Padding="5, 0, 5, 0" />
                             <TextBlock x:Name="GameProfileChallengeNumber" Padding="5, 0, 5, 0"/>
                         </StackPanel>
-                        
+
                         <StackPanel Grid.Row="1">
                             <controlls:Expander x:Name="AudienceChallengesExpander2" Header="AudienceChallenges"
                                                 Expanded="Expander_Expanded" Collapsed="Expander_Collapsed">
@@ -528,7 +528,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <ListView ItemsSource="{x:Bind ViewModel.NewAudienceChallenges}"
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
@@ -759,7 +759,37 @@
                                   Click="BackButton_Click"/>
                 </StackPanel>
             </Grid>
-                    
         </Grid>
+        <!--Network failure-->
+        <StackPanel x:Name="RefreshMainPage"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"
+                    BorderThickness="5"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <TextBlock Text="Uh oh, bucko! Something's gone wrong!"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Padding="5"
+                       Margin="5"/>
+            <TextBlock Text="Make sure to have a proper connection to the internet and have access to the database before smashing that refresh button fam."
+                       Style="{ThemeResource DetailBodyBaseMediumStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       MaxWidth="450"
+                       Padding="5"
+                       Margin="5"/>
+            <AppBarButton Label="Refresh"
+                          Icon="Refresh"
+                          Click="RefreshMainPage_Click"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Padding="5"
+                          Margin="5"/>
+        </StackPanel>
     </Grid>
 </Page>

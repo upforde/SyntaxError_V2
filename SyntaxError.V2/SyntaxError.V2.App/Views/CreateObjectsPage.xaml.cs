@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -132,7 +133,7 @@ namespace SyntaxError.V2.App.Views
             if (isInternetAvailable)
             {
                 GetCurrentGrid();
-            
+
                 LoadingProgressBar.Visibility = Visibility.Visible;
                 Collection.Visibility = Visibility.Collapsed;
 

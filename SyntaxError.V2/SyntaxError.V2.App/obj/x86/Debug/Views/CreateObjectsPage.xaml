@@ -7,8 +7,6 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:challengeobjects="using:SyntaxError.V2.Modell.ChallengeObjects"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"  
-    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
@@ -96,7 +94,7 @@
                     <Grid.Background>
                         <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                     </Grid.Background>
-                    
+
                     <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Width="500" Height="200"
@@ -111,7 +109,7 @@
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                
+
                                 <Grid x:ConnectionId='35' Grid.Column="0"
                                       VerticalAlignment="Center"
                                       Height="200" Width="200"
@@ -143,7 +141,7 @@
                                 </Button>
                             </Grid>
                         </StackPanel>
-                        
+
                         <StackPanel HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
                                     Orientation="Horizontal">
@@ -155,11 +153,11 @@
                                                                   />
                         </StackPanel>
                     </Grid>
-                    
+
                 </Grid>
             </Grid>
         </PivotItem>
-        
+
         <PivotItem Header="Images">
             <Grid x:ConnectionId='17' x:Name="ImagesContentArea">
                 <Grid.RowDefinitions>
@@ -181,7 +179,7 @@
                                         Width="300"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"/>
-                        
+
                         <AppBarButton x:ConnectionId='29' Label="Selection mode"
                                                                               >
                             <AppBarButton.Icon>
@@ -189,26 +187,26 @@
                                           Glyph="&#xE762;"/>
                             </AppBarButton.Icon>
                         </AppBarButton>
-                        
+
                         <AppBarButton x:ConnectionId='30' Visibility="Collapsed"
                                       Icon="Delete"
                                       Label="Delete Selected"
                                                                                />
                     </StackPanel>
-                    
+
                     <AppBarButton x:ConnectionId='27' Grid.Column="1"
                                   Icon="Add"
                                   Label="New object"
                                                                   
                                   HorizontalAlignment="Right"/>
-                    
+
                 </Grid>
 
                 <ProgressBar Grid.Row="1"
                              VerticalAlignment="Top"
                              IsIndeterminate="True"
                              Visibility="Collapsed"/>
-                
+
                 <controls:AdaptiveGridView x:ConnectionId='18'                                
                                            Grid.Row="1"
                                            StretchContentForSingleRow="False"
@@ -247,7 +245,7 @@
                     <Grid.Background>
                         <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                     </Grid.Background>
-                    
+
                     <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Width="500" Height="200"
@@ -293,7 +291,7 @@
                                 </Button>
                             </Grid>
                         </StackPanel>
-                        
+
                         <StackPanel HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
                                     Orientation="Horizontal">
@@ -305,11 +303,11 @@
                                                                   />
                         </StackPanel>
                     </Grid>
-                    
+
                 </Grid>
             </Grid>
         </PivotItem>
-        
+
         <PivotItem Header="Songs">
             <Grid x:ConnectionId='3' x:Name="SongsContentArea">
                 <Grid.RowDefinitions>
@@ -331,7 +329,7 @@
                                         Width="300"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"/>
-                        
+
                         <AppBarButton x:ConnectionId='15' Label="Selection mode"
                                                                               >
                             <AppBarButton.Icon>
@@ -339,26 +337,26 @@
                                           Glyph="&#xE762;"/>
                             </AppBarButton.Icon>
                         </AppBarButton>
-                        
+
                         <AppBarButton x:ConnectionId='16' Visibility="Collapsed"
                                       Icon="Delete"
                                       Label="Delete Selected"
                                                                                />
                     </StackPanel>
-                    
+
                     <AppBarButton x:ConnectionId='13' Grid.Column="1"
                                   Icon="Add"
                                   Label="New object"
                                                                   
                                   HorizontalAlignment="Right"/>
-                    
+
                 </Grid>
 
                 <ProgressBar Grid.Row="1"
                              VerticalAlignment="Top"
                              IsIndeterminate="True"
                              Visibility="Collapsed"/>
-                
+
                 <controls:AdaptiveGridView x:ConnectionId='4'                                
                                            Grid.Row="1"
                                            StretchContentForSingleRow="False"
@@ -397,7 +395,7 @@
                     <Grid.Background>
                         <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                     </Grid.Background>
-                    
+
                     <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Width="500" Height="200"
@@ -443,7 +441,7 @@
                                 </Button>
                             </Grid>
                         </StackPanel>
-                        
+
                         <StackPanel HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
                                     Orientation="Horizontal">
@@ -455,7 +453,7 @@
                                                                   />
                         </StackPanel>
                     </Grid>
-                    
+
                 </Grid>
             </Grid>
         </PivotItem>

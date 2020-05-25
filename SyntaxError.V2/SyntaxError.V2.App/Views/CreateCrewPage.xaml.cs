@@ -112,14 +112,18 @@ namespace SyntaxError.V2.App.Views
                 LoadingProgressBar.Visibility = Visibility.Visible;
                 CrewGrid.Visibility = Visibility.Collapsed;
 
-                try{
+                try
+                {
                     if (await ViewModel.LoadCrewMembersFromDBAsync())
                     {
                         LoadingProgressBar.Visibility = Visibility.Collapsed;
                         CrewGrid.Visibility = Visibility.Visible;
                         RefreshList();
                     }
-                } catch (System.Net.Http.HttpRequestException){}
+                }
+                catch (System.Net.Http.HttpRequestException) { }
+                catch (Newtonsoft.Json.JsonSerializationException) { }
+                catch (Newtonsoft.Json.JsonReaderException) { } 
             }
             ChangeButtonsEnabled(isInternetAvailable);
         }

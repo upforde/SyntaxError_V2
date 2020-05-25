@@ -46,19 +46,19 @@
         <StackPanel Grid.Column="0" Grid.Row="1"
                     BorderThickness="0, 0, 5, 0"
                     BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <ProgressBar x:ConnectionId='119' x:Name="listViewProgressBar" IsIndeterminate="True"/>
-            <ListView x:ConnectionId='120' x:Name="GameProfilesList"
+            <ProgressBar x:ConnectionId='121' x:Name="listViewProgressBar" IsIndeterminate="True"/>
+            <ListView x:ConnectionId='122' x:Name="GameProfilesList"
                                                                      
                         SelectionMode="Single"
                                                                             >
                 <ListView.ItemTemplate>
                     <DataTemplate x:Name="SingleLineDataTemplate"
                                                                          >
-                        <StackPanel x:ConnectionId='122' x:Name="connectedElement">
-                            <TextBlock x:ConnectionId='123'                                            
+                        <StackPanel x:ConnectionId='124' x:Name="connectedElement">
+                            <TextBlock x:ConnectionId='125'                                            
                                         Style="{ThemeResource BaseTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
-                            <TextBlock x:ConnectionId='124'                                                                         
+                            <TextBlock x:ConnectionId='126'                                                                         
                                         Style="{ThemeResource BodyTextBlockStyle}"
                                         Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                         VerticalAlignment="Center"
@@ -91,8 +91,8 @@
             </ListView.GroupStyle>
             <ListView.ItemTemplate>
                 <DataTemplate                                      >
-                    <Grid x:ConnectionId='104'>
-                        <Grid x:ConnectionId='105'                                      >
+                    <Grid x:ConnectionId='106'>
+                        <Grid x:ConnectionId='107'                                      >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition/>
@@ -102,23 +102,39 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Ellipse x:ConnectionId='116' Grid.Column="0" Grid.RowSpan="2"
+                            <Ellipse x:ConnectionId='118' Grid.Column="0" Grid.RowSpan="2"
                                         Visibility="Visible" Height="30" Width="30"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                                                                       />
                             <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock x:ConnectionId='117'                                                     
+                                <TextBlock x:ConnectionId='119'                                                     
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Stretch" />
-                                <TextBlock x:ConnectionId='118'                                                          
+                                <TextBlock x:ConnectionId='120'                                                          
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Stretch"
                                             Style="{ThemeResource BodyTextBlockStyle}"
                                             Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                             </StackPanel>
                         </Grid>
-                        <Grid x:ConnectionId='106'                                       >
+                        <Grid x:ConnectionId='108'                                       >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:ConnectionId='116' Grid.Column="0"
+                                        Visibility="Visible" Height="30" Width="30"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                                                                      />
+                            <TextBlock x:ConnectionId='117'                                                           
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Grid x:ConnectionId='109'                                       >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="Auto"/>
@@ -134,23 +150,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Stretch"/>
                         </Grid>
-                        <Grid x:ConnectionId='107'                                       >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Ellipse x:ConnectionId='112' Grid.Column="0"
-                                        Visibility="Visible" Height="30" Width="30"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left"
-                                                                                      />
-                            <TextBlock x:ConnectionId='113'                                                           
-                                        Grid.Column="1"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Stretch"/>
-                        </Grid>
-                        <Grid x:ConnectionId='108'                                          >
+                        <Grid x:ConnectionId='110'                                          >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition/>
@@ -160,16 +160,16 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Ellipse x:ConnectionId='109' Grid.Column="0" Grid.RowSpan="2"
+                            <Ellipse x:ConnectionId='111' Grid.Column="0" Grid.RowSpan="2"
                                         Visibility="Visible" Height="30" Width="30"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                                                                       />
                             <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock x:ConnectionId='110'                                        
+                                <TextBlock x:ConnectionId='112'                                        
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Stretch" />
-                                <TextBlock x:ConnectionId='111'                                                           
+                                <TextBlock x:ConnectionId='113'                                                           
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Stretch"
                                             Style="{ThemeResource BodyTextBlockStyle}"
@@ -189,30 +189,30 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Padding="0, 0, 5, 0">
-                <AppBarButton x:ConnectionId='97' x:Name="PlayButton"
+                <AppBarButton x:ConnectionId='99' x:Name="PlayButton"
                               IsEnabled="False"
                               Icon="Play"
                               Label="Play"
                                                             />
-                <AppBarButton x:ConnectionId='98' x:Name="AddButton"
+                <AppBarButton x:ConnectionId='100' x:Name="AddButton"
                               Icon="Add"
                               Label="Add"
                               Visibility="Visible"
                                                            />
-                <AppBarButton x:ConnectionId='99' x:Name="EditButton"
+                <AppBarButton x:ConnectionId='101' x:Name="EditButton"
                               IsEnabled="False"
                               Icon="Edit"
                               Label="Edit"
                               Visibility="Visible"
                                                             
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                <AppBarButton x:ConnectionId='100' x:Name="RefreshButton"
+                <AppBarButton x:ConnectionId='102' x:Name="RefreshButton"
                               IsEnabled="False"
                               Label="Reset Save"
                               Icon="Refresh"
                                                                  
                               CommandParameter="{Binding ElementName=GameProfilesList, Path=SelectedItem }"/>
-                <AppBarButton x:ConnectionId='101' x:Name="DeleteButton"
+                <AppBarButton x:ConnectionId='103' x:Name="DeleteButton"
                               Icon="Delete"
                               Label="Delete"
                               Visibility="Visible"
@@ -230,7 +230,7 @@
             <Grid.Background>
                 <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
             </Grid.Background>
-                    
+
             <Grid HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Width="650" Height="500"
@@ -247,14 +247,14 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox x:ConnectionId='6' x:Name="SmokeGridText"
+                <TextBox x:ConnectionId='8' x:Name="SmokeGridText"
                          Grid.Row="0"
                          Grid.Column="0" 
                          FontSize="35"
                          Margin="12"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Left" />
-                <Button x:ConnectionId='7' Grid.Row="0"
+                <Button x:ConnectionId='9' Grid.Row="0"
                         Grid.Column="1"
                                                 
                         VerticalAlignment="Top"
@@ -285,17 +285,17 @@
                         <StackPanel Grid.Row="0"
                                     Orientation="Horizontal">
                             <TextBlock Text="Total Challenges:" Padding="5, 0, 5, 0"/>
-                            <TextBlock x:ConnectionId='96' x:Name="TotalChallengeNumber" Padding="5, 0, 5, 0"/>
+                            <TextBlock x:ConnectionId='98' x:Name="TotalChallengeNumber" Padding="5, 0, 5, 0"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1">
-                            <controlls:Expander x:ConnectionId='54' x:Name="AudienceChallengesExpander" Header="AudienceChallenges"
+                            <controlls:Expander x:ConnectionId='56' x:Name="AudienceChallengesExpander" Header="AudienceChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='91'                                                    
+
+                                    <ListView x:ConnectionId='93'                                                    
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -303,11 +303,11 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                          >
-                                                <StackPanel x:ConnectionId='93'>
-                                                    <TextBlock x:ConnectionId='94'                                           
+                                                <StackPanel x:ConnectionId='95'>
+                                                    <TextBlock x:ConnectionId='96'                                           
                                                                 VerticalAlignment="Center"
                                                                 HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='95'                                       
+                                                    <TextBlock x:ConnectionId='97'                                       
                                                                 VerticalAlignment="Top"
                                                                 HorizontalAlignment="Stretch"
                                                                 Style="{ThemeResource BodyTextBlockStyle}"
@@ -318,14 +318,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='55' x:Name="CrewChallengesExpander" Header="CrewChallenges"
+                            <controlls:Expander x:ConnectionId='57' x:Name="CrewChallengesExpander" Header="CrewChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='86'                                                
+
+                                    <ListView x:ConnectionId='88'                                                
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -333,11 +333,11 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                      >
-                                                <StackPanel x:ConnectionId='88'>
-                                                    <TextBlock x:ConnectionId='89'                                           
+                                                <StackPanel x:ConnectionId='90'>
+                                                    <TextBlock x:ConnectionId='91'                                           
                                                                 VerticalAlignment="Center"
                                                                 HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='90'                                       
+                                                    <TextBlock x:ConnectionId='92'                                       
                                                                 VerticalAlignment="Top"
                                                                 HorizontalAlignment="Stretch"
                                                                 Style="{ThemeResource BodyTextBlockStyle}"
@@ -348,14 +348,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='56' x:Name="MultipleChoiceChallengesExpander" Header="MultipleChoiceChallenges"
+                            <controlls:Expander x:ConnectionId='58' x:Name="MultipleChoiceChallengesExpander" Header="MultipleChoiceChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='81'                                                          
+
+                                    <ListView x:ConnectionId='83'                                                          
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -363,11 +363,11 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                                >
-                                                <StackPanel x:ConnectionId='83'>
-                                                    <TextBlock x:ConnectionId='84'                              
+                                                <StackPanel x:ConnectionId='85'>
+                                                    <TextBlock x:ConnectionId='86'                              
                                                                VerticalAlignment="Center"
                                                                HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='85'                                             
+                                                    <TextBlock x:ConnectionId='87'                                             
                                                                VerticalAlignment="Top"
                                                                HorizontalAlignment="Stretch"
                                                                Style="{ThemeResource BodyTextBlockStyle}"
@@ -378,14 +378,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='57' x:Name="MusicChallengesExpander" Header="MusicChallenges"
+                            <controlls:Expander x:ConnectionId='59' x:Name="MusicChallengesExpander" Header="MusicChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='78'                                                 
+
+                                    <ListView x:ConnectionId='80'                                                 
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -393,7 +393,7 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                       >
-                                                <TextBlock x:ConnectionId='80'                                        
+                                                <TextBlock x:ConnectionId='82'                                        
                                                            VerticalAlignment="Center"
                                                            HorizontalAlignment="Stretch"/>
                                             </DataTemplate>
@@ -401,14 +401,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='58' x:Name="QuizChallengesExpander" Header="QuizChallenges"
+                            <controlls:Expander x:ConnectionId='60' x:Name="QuizChallengesExpander" Header="QuizChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='73'                                                
+
+                                    <ListView x:ConnectionId='75'                                                
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -416,11 +416,11 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                      >
-                                                <StackPanel x:ConnectionId='75'>
-                                                    <TextBlock x:ConnectionId='76'                              
+                                                <StackPanel x:ConnectionId='77'>
+                                                    <TextBlock x:ConnectionId='78'                              
                                                                VerticalAlignment="Center"
                                                                HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='77'                                             
+                                                    <TextBlock x:ConnectionId='79'                                             
                                                                VerticalAlignment="Top"
                                                                HorizontalAlignment="Stretch"
                                                                Style="{ThemeResource BodyTextBlockStyle}"
@@ -431,14 +431,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='59' x:Name="ScreenshotChallengesExpander" Header="ScreenshotChallenges"
+                            <controlls:Expander x:ConnectionId='61' x:Name="ScreenshotChallengesExpander" Header="ScreenshotChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='70'                                                      
+
+                                    <ListView x:ConnectionId='72'                                                      
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -446,7 +446,7 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                            >
-                                                <TextBlock x:ConnectionId='72'                                         
+                                                <TextBlock x:ConnectionId='74'                                         
                                                            VerticalAlignment="Center"
                                                            HorizontalAlignment="Stretch"/>
                                             </DataTemplate>
@@ -454,14 +454,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='60' x:Name="SilhouetteChallengesExpander" Header="SilhouetteChallenges"
+                            <controlls:Expander x:ConnectionId='62' x:Name="SilhouetteChallengesExpander" Header="SilhouetteChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='67'                                                      
+
+                                    <ListView x:ConnectionId='69'                                                      
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -469,7 +469,7 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                            >
-                                                <TextBlock x:ConnectionId='69'                                         
+                                                <TextBlock x:ConnectionId='71'                                         
                                                            VerticalAlignment="Center"
                                                            HorizontalAlignment="Stretch"/>
                                             </DataTemplate>
@@ -477,14 +477,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='61' x:Name="SologameChallengesExpander" Header="SologameChallenges"
+                            <controlls:Expander x:ConnectionId='63' x:Name="SologameChallengesExpander" Header="SologameChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='62'                                                    
+
+                                    <ListView x:ConnectionId='64'                                                    
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                    
@@ -492,11 +492,11 @@
                                                                          >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                          >
-                                                <StackPanel x:ConnectionId='64'>
-                                                    <TextBlock x:ConnectionId='65'                                           
+                                                <StackPanel x:ConnectionId='66'>
+                                                    <TextBlock x:ConnectionId='67'                                           
                                                                 VerticalAlignment="Center"
                                                                 HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='66'                                       
+                                                    <TextBlock x:ConnectionId='68'                                       
                                                                 VerticalAlignment="Top"
                                                                 HorizontalAlignment="Stretch"
                                                                 Style="{ThemeResource BodyTextBlockStyle}"
@@ -518,18 +518,18 @@
 
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
                             <TextBlock Text="Challenges in this Game profile:" Padding="5, 0, 5, 0" />
-                            <TextBlock x:ConnectionId='53' x:Name="GameProfileChallengeNumber" Padding="5, 0, 5, 0"/>
+                            <TextBlock x:ConnectionId='55' x:Name="GameProfileChallengeNumber" Padding="5, 0, 5, 0"/>
                         </StackPanel>
-                        
+
                         <StackPanel Grid.Row="1">
-                            <controlls:Expander x:ConnectionId='11' x:Name="AudienceChallengesExpander2" Header="AudienceChallenges"
+                            <controlls:Expander x:ConnectionId='13' x:Name="AudienceChallengesExpander2" Header="AudienceChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
-                                    
-                                    <ListView x:ConnectionId='48'                                                       
+
+                                    <ListView x:ConnectionId='50'                                                       
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -537,11 +537,11 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                          >
-                                                <StackPanel x:ConnectionId='50'>
-                                                    <TextBlock x:ConnectionId='51'                                           
+                                                <StackPanel x:ConnectionId='52'>
+                                                    <TextBlock x:ConnectionId='53'                                           
                                                                 VerticalAlignment="Center"
                                                                 HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='52'                                       
+                                                    <TextBlock x:ConnectionId='54'                                       
                                                                 VerticalAlignment="Top"
                                                                 HorizontalAlignment="Stretch"
                                                                 Style="{ThemeResource BodyTextBlockStyle}"
@@ -552,14 +552,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='12' x:Name="CrewChallengesExpander2" Header="CrewChallenges"
+                            <controlls:Expander x:ConnectionId='14' x:Name="CrewChallengesExpander2" Header="CrewChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='43'                                                   
+                                    <ListView x:ConnectionId='45'                                                   
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -567,11 +567,11 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                      >
-                                                <StackPanel x:ConnectionId='45'>
-                                                    <TextBlock x:ConnectionId='46'                                           
+                                                <StackPanel x:ConnectionId='47'>
+                                                    <TextBlock x:ConnectionId='48'                                           
                                                                 VerticalAlignment="Center"
                                                                 HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='47'                                       
+                                                    <TextBlock x:ConnectionId='49'                                       
                                                                 VerticalAlignment="Top"
                                                                 HorizontalAlignment="Stretch"
                                                                 Style="{ThemeResource BodyTextBlockStyle}"
@@ -582,14 +582,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='13' x:Name="MultipleChoiceChallengesExpander2" Header="MultipleChoiceChallenges"
+                            <controlls:Expander x:ConnectionId='15' x:Name="MultipleChoiceChallengesExpander2" Header="MultipleChoiceChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='38'                                                             
+                                    <ListView x:ConnectionId='40'                                                             
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -597,11 +597,11 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                                >
-                                                <StackPanel x:ConnectionId='40'>
-                                                    <TextBlock x:ConnectionId='41'                              
+                                                <StackPanel x:ConnectionId='42'>
+                                                    <TextBlock x:ConnectionId='43'                              
                                                                VerticalAlignment="Center"
                                                                HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='42'                                             
+                                                    <TextBlock x:ConnectionId='44'                                             
                                                                VerticalAlignment="Top"
                                                                HorizontalAlignment="Stretch"
                                                                Style="{ThemeResource BodyTextBlockStyle}"
@@ -612,14 +612,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='14' x:Name="MusicChallengesExpander2" Header="MusicChallenges"
+                            <controlls:Expander x:ConnectionId='16' x:Name="MusicChallengesExpander2" Header="MusicChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='35'                                                    
+                                    <ListView x:ConnectionId='37'                                                    
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -627,7 +627,7 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                       >
-                                                <TextBlock x:ConnectionId='37'                                        
+                                                <TextBlock x:ConnectionId='39'                                        
                                                            VerticalAlignment="Center"
                                                            HorizontalAlignment="Stretch"/>
                                             </DataTemplate>
@@ -635,14 +635,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='15' x:Name="QuizChallengesExpander2" Header="QuizChallenges"
+                            <controlls:Expander x:ConnectionId='17' x:Name="QuizChallengesExpander2" Header="QuizChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='30'                                                   
+                                    <ListView x:ConnectionId='32'                                                   
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -650,11 +650,11 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                      >
-                                                <StackPanel x:ConnectionId='32'>
-                                                    <TextBlock x:ConnectionId='33'                              
+                                                <StackPanel x:ConnectionId='34'>
+                                                    <TextBlock x:ConnectionId='35'                              
                                                                VerticalAlignment="Center"
                                                                HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='34'                                             
+                                                    <TextBlock x:ConnectionId='36'                                             
                                                                VerticalAlignment="Top"
                                                                HorizontalAlignment="Stretch"
                                                                Style="{ThemeResource BodyTextBlockStyle}"
@@ -665,14 +665,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='16' x:Name="ScreenshotChallengesExpander2" Header="ScreenshotChallenges"
+                            <controlls:Expander x:ConnectionId='18' x:Name="ScreenshotChallengesExpander2" Header="ScreenshotChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='27'                                                         
+                                    <ListView x:ConnectionId='29'                                                         
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -680,7 +680,7 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                            >
-                                                <TextBlock x:ConnectionId='29'                                         
+                                                <TextBlock x:ConnectionId='31'                                         
                                                            VerticalAlignment="Center"
                                                            HorizontalAlignment="Stretch"/>
                                             </DataTemplate>
@@ -688,14 +688,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='17' x:Name="SilhouetteChallengesExpander2" Header="SilhouetteChallenges"
+                            <controlls:Expander x:ConnectionId='19' x:Name="SilhouetteChallengesExpander2" Header="SilhouetteChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='24'                                                         
+                                    <ListView x:ConnectionId='26'                                                         
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -703,7 +703,7 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                            >
-                                                <TextBlock x:ConnectionId='26'                                         
+                                                <TextBlock x:ConnectionId='28'                                         
                                                            VerticalAlignment="Center"
                                                            HorizontalAlignment="Stretch"/>
                                             </DataTemplate>
@@ -711,14 +711,14 @@
                                     </ListView>
                                 </Grid>
                             </controlls:Expander>
-                            <controlls:Expander x:ConnectionId='18' x:Name="SologameChallengesExpander2" Header="SologameChallenges"
+                            <controlls:Expander x:ConnectionId='20' x:Name="SologameChallengesExpander2" Header="SologameChallenges"
                                                                                                            >
                                 <Grid Height="300" Width="300">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="300"/>
                                     </Grid.RowDefinitions>
 
-                                    <ListView x:ConnectionId='19'                                                       
+                                    <ListView x:ConnectionId='21'                                                       
                                               CanDragItems="True" CanReorderItems="False" AllowDrop="True"
                                               SelectionMode="Extended"
                                                                                                          
@@ -726,11 +726,11 @@
                                                                                >
                                         <ListView.ItemTemplate>
                                             <DataTemplate                                          >
-                                                <StackPanel x:ConnectionId='21'>
-                                                    <TextBlock x:ConnectionId='22'                                           
+                                                <StackPanel x:ConnectionId='23'>
+                                                    <TextBlock x:ConnectionId='24'                                           
                                                                 VerticalAlignment="Center"
                                                                 HorizontalAlignment="Stretch" />
-                                                    <TextBlock x:ConnectionId='23'                                       
+                                                    <TextBlock x:ConnectionId='25'                                       
                                                                 VerticalAlignment="Top"
                                                                 HorizontalAlignment="Stretch"
                                                                 Style="{ThemeResource BodyTextBlockStyle}"
@@ -749,18 +749,48 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Orientation="Horizontal">
-                    <AppBarButton x:ConnectionId='8' x:Name="AddRemoveAll"
+                    <AppBarButton x:ConnectionId='10' x:Name="AddRemoveAll"
                                   Icon="Switch"/>
-                    <AppBarButton x:ConnectionId='9' Label="Save"
+                    <AppBarButton x:ConnectionId='11' Label="Save"
                                   Icon="Accept"
                                                           />
-                    <AppBarButton x:ConnectionId='10' Label="Cancel"
+                    <AppBarButton x:ConnectionId='12' Label="Cancel"
                                   Icon="Cancel"
                                                           />
                 </StackPanel>
             </Grid>
-                    
         </Grid>
+        <!--Network failure-->
+        <StackPanel x:ConnectionId='6' x:Name="RefreshMainPage"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"
+                    BorderThickness="5"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <TextBlock Text="Uh oh, bucko! Something's gone wrong!"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Padding="5"
+                       Margin="5"/>
+            <TextBlock Text="Make sure to have a proper connection to the internet and have access to the database before smashing that refresh button fam."
+                       Style="{ThemeResource DetailBodyBaseMediumStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       MaxWidth="450"
+                       Padding="5"
+                       Margin="5"/>
+            <AppBarButton x:ConnectionId='7' Label="Refresh"
+                          Icon="Refresh"
+                                                       
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Padding="5"
+                          Margin="5"/>
+        </StackPanel>
     </Grid>
 </Page>
 

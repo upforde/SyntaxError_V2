@@ -26,13 +26,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -98,7 +98,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="650" Height="350"
@@ -112,7 +112,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"
@@ -155,7 +155,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -233,13 +233,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -305,7 +305,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                        
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="650" Height="350"
@@ -319,7 +319,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"
@@ -439,13 +439,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -486,7 +486,7 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                
+
                                     <TextBlock Grid.Row="0" Text="{x:Bind ChallengeTask}"
                                                 HorizontalAlignment="Stretch"
                                                 Style="{ThemeResource SubtitleTextBlockStyle}"
@@ -502,7 +502,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="550" Height="300"
@@ -516,7 +516,7 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="200"/>
                                     </Grid.RowDefinitions>
-                                
+
                                     <TextBox Grid.Row="0"
                                              FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
@@ -609,13 +609,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -679,7 +679,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="650" Height="350"
@@ -693,7 +693,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox Grid.Row="0"
                                              FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
@@ -735,7 +735,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -813,13 +813,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -871,7 +871,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="600" Height="250"
@@ -885,7 +885,7 @@
                                         <RowDefinition />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox Grid.Row="0"
                                              FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
@@ -910,7 +910,7 @@
                                                                   BlurRadius="15"
                                                                   ShadowOpacity="1"
                                                                   Color="#77DD77">
-                                                <TextBox Name="QuizAnswer"
+                                            <TextBox Name="QuizAnswer"
                                                          FontSize="35"
                                                          PlaceholderText="Correct answer"/>
                                         </controls:DropShadowPanel>
@@ -945,13 +945,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -1015,7 +1015,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="650" Height="350"
@@ -1029,7 +1029,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox Grid.Row="0"
                                              FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
@@ -1071,7 +1071,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -1149,13 +1149,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -1219,7 +1219,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="650" Height="350"
@@ -1233,7 +1233,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox Grid.Row="0"
                                              FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
@@ -1275,7 +1275,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -1353,13 +1353,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <AutoSuggestBox IsEnabled="True" PlaceholderText="Search" 
                                             TextChanged="AutoSuggestBox_TextChanged"
@@ -1425,7 +1425,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
                         </Grid.Background>
-                    
+
                         <Grid HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Width="650" Height="350"
@@ -1439,7 +1439,7 @@
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBox FontSize="35"
                                              Margin="12" VerticalAlignment="Center"
                                              HorizontalAlignment="Left"
@@ -1482,7 +1482,7 @@
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <Grid Grid.Column="0"
                                                       VerticalAlignment="Center"
                                                       Height="200" Width="200"
@@ -1515,7 +1515,7 @@
                                                 </Button>
                                             </Grid>
                                         </StackPanel>
-                                        
+
                                         <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Games}"
                                                   Margin="25,0,0,0" VerticalAlignment="Center"
                                                   Width="200" SelectionChanged="ComboBox_SelectionChanged">
@@ -1556,5 +1556,36 @@
                 </Grid>
             </PivotItem>
         </Pivot>
+        <!--Network failure-->
+        <StackPanel x:Name="RefreshChallengePage"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"
+                    BorderThickness="5"
+                    BorderBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <TextBlock Text="Uh oh, bucko! Something's gone wrong!"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Padding="5"
+                       Margin="5"/>
+            <TextBlock Text="Make sure to have a proper connection to the internet and have access to the database before smashing that refresh button fam."
+                       Style="{ThemeResource DetailBodyBaseMediumStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       MaxWidth="450"
+                       Padding="5"
+                       Margin="5"/>
+            <AppBarButton Label="Refresh"
+                          Icon="Refresh"
+                          Click="RefreshChallengePage_Click"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Padding="5"
+                          Margin="5"/>
+        </StackPanel>
     </Grid>
 </Page>
