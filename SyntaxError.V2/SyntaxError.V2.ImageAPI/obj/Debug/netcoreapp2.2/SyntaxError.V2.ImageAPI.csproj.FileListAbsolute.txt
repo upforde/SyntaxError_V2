@@ -24,7 +24,6 @@ C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAP
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.runtimeconfig.dev.json
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.dll
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\bin\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.pdb
-C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.csprojAssemblyReference.cache
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.csproj.CoreCompileInputs.cache
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.RazorAssemblyInfo.cache
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.RazorAssemblyInfo.cs
@@ -34,3 +33,4 @@ C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAP
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.dll
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.pdb
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.genruntimeconfig.cache
+C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.ImageAPI\obj\Debug\netcoreapp2.2\SyntaxError.V2.ImageAPI.csprojAssemblyReference.cache
