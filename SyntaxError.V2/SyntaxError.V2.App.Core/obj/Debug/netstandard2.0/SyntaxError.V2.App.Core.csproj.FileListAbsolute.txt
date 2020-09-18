@@ -16,3 +16,12 @@ C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.App.Cor
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.AssemblyInfo.cs
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll
 C:\Users\upfor\Desktop\Skole\DotNET\Backup\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.pdb
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.deps.json
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.pdb
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.csprojAssemblyReference.cache
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.csproj.CoreCompileInputs.cache
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.AssemblyInfoInputs.cache
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.AssemblyInfo.cs
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll
+D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\obj\Debug\netstandard2.0\SyntaxError.V2.App.Core.pdb

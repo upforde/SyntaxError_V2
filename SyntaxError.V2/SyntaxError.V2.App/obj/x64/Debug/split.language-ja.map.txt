@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-ja"
+"ResourceDimensions"		"language-ja-jp"
+
+[Files]
+"D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\obj\x64\Debug\split.language-ja.pri"			"resources.pri"

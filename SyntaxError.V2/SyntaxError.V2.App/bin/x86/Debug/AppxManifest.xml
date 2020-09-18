@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF" Publisher="CN=upfor" Version="1.0.0.0" ProcessorArchitecture="x86" />
+  <Identity Name="B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF" Publisher="CN=upforde" Version="2.0.1.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>SyntaxError.V2.App</DisplayName>

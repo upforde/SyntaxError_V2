@@ -9,23 +9,23 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>B8A5F51B-C66E-40BF-B4F9-F1C00EC30FAF</PackageIdentityName>
-    <PackageIdentityPublisher>CN=upfor</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\obj\x86\Debug\</IntermediateOutputPath>
+    <PackageIdentityPublisher>CN=upforde</PackageIdentityPublisher>
+    <IntermediateOutputPath>D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
       <PackagePath>entrypoint\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
@@ -76,10 +76,10 @@
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\win2d.uwp\1.21.0\runtimes\win10-x86\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App.Core\bin\Debug\netstandard2.0\SyntaxError.V2.App.Core.dll">
       <PackagePath>SyntaxError.V2.App.Core.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Modell.dll">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.Model\bin\Debug\netcoreapp2.1\SyntaxError.V2.Modell.dll">
       <PackagePath>SyntaxError.V2.Modell.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\robmikh.compositionsurfacefactory\0.7.3\lib\uap10.0\Robmikh.CompositionSurfaceFactory.winmd">
@@ -94,155 +94,113 @@
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.toolkit.uwp.ui.controls\5.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\AudienceBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\AudienceBorder.png">
       <PackagePath>Assets\AudienceBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Audience_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Audience_Logo.png">
       <PackagePath>Assets\Audience_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\CrewBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\CrewBorder.png">
       <PackagePath>Assets\CrewBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Crew_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Crew_Logo.png">
       <PackagePath>Assets\Crew_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoiceBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoiceBorder.png">
       <PackagePath>Assets\MultipleChoiceBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoice_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MultipleChoice_Logo.png">
       <PackagePath>Assets\MultipleChoice_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MusicBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\MusicBorder.png">
       <PackagePath>Assets\MusicBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Music_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Music_Logo.png">
       <PackagePath>Assets\Music_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\QuizBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\QuizBorder.png">
       <PackagePath>Assets\QuizBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Quiz_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Quiz_Logo.png">
       <PackagePath>Assets\Quiz_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\ScreenshotBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\ScreenshotBorder.png">
       <PackagePath>Assets\ScreenshotBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Screenshot_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Screenshot_Logo.png">
       <PackagePath>Assets\Screenshot_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SilhouetteBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SilhouetteBorder.png">
       <PackagePath>Assets\SilhouetteBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Silhouette_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Silhouette_Logo.png">
       <PackagePath>Assets\Silhouette_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SologameBorder.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SologameBorder.png">
       <PackagePath>Assets\SologameBorder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Sologame_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Sologame_Logo.png">
       <PackagePath>Assets\Sologame_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SyntaxError_Logo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SyntaxError_Logo.png">
       <PackagePath>Assets\SyntaxError_Logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\audience_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\audience_challenge_thumbnail.jpg">
       <PackagePath>Assets\audience_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\crew_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\crew_challenge_thumbnail.jpg">
       <PackagePath>Assets\crew_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\multiply_choice_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\multiply_choice_challenge_thumbnail.jpg">
       <PackagePath>Assets\multiply_choice_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\music_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\music_challenge_thumbnail.jpg">
       <PackagePath>Assets\music_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\quiz_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\quiz_challenge_thumbnail.jpg">
       <PackagePath>Assets\quiz_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\screenshot_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\screenshot_challenge_thumbnail.jpg">
       <PackagePath>Assets\screenshot_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\silhouette_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\silhouette_challenge_thumbnail.jpg">
       <PackagePath>Assets\silhouette_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\sologame_challenge_thumbnail.jpg">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Assets\sologame_challenge_thumbnail.jpg">
       <PackagePath>Assets\sologame_challenge_thumbnail.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml">
       <PackagePath>SyntaxError.V2.DatabaseConfig.ConsoleApp.xr.xml</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\App.xbf">
-      <PackagePath>App.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\Page.xbf">
-      <PackagePath>Styles\Page.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\_Colors.xbf">
-      <PackagePath>Styles\_Colors.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\_FontSizes.xbf">
-      <PackagePath>Styles\_FontSizes.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\_Thickness.xbf">
-      <PackagePath>Styles\_Thickness.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Styles\TextBlock.xbf">
-      <PackagePath>Styles\TextBlock.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\AdminPage.xbf">
-      <PackagePath>Views\AdminPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateChallengesPage.xbf">
-      <PackagePath>Views\CreateChallengesPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateCrewPage.xbf">
-      <PackagePath>Views\CreateCrewPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\CreateObjectsPage.xbf">
-      <PackagePath>Views\CreateObjectsPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\GamePage.xbf">
-      <PackagePath>Views\GamePage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\MainPage.xbf">
-      <PackagePath>Views\MainPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\SettingsPage.xbf">
-      <PackagePath>Views\SettingsPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Views\ShellPage.xbf">
-      <PackagePath>Views\ShellPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.18362.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -253,10 +211,10 @@
     <AppxPackagedFile Include="C:\Users\upfor\.nuget\packages\microsoft.ui.xaml\2.0.181018004\build\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>WinMetadata\Microsoft.UI.Xaml.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\upfor\Desktop\Skole\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
+    <AppxPackagedFile Include="D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x86\Debug\Core\SyntaxError.V2.DatabaseConfig.ConsoleApp.exe">
       <PackagePath>SyntaxError.V2.DatabaseConfig.ConsoleApp.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

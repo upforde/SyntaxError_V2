@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iwv1p1Mq+V6s6YH5JhAsnTmns7GBMKWgXzKA+WSrWhrKKaVzMjdZUew+YnAfMWPtqyMIcH99DHGEaVqtg2urBg==",
+  "dgSpecHash": "UxxKZ6TM7nE6/ql6/IbeX0FAkam6zDPJEVAJyiiYhbKxEE+iebzCTJmUCuFU4bbPs+hWTsVUmkRk8scCr7MwSw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj",
+  "projectFilePath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\upfor\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",

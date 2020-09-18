@@ -1,0 +1,503 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="SyntaxError.V2.App.Views.AdminPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <!--SyntaxErrorShakeImage-->
+        <Storyboard x:ConnectionId='2' x:Name="ForeverRotAnim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SyntaxErrorShakeImage"
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                           Duration="0:0:2" RepeatBehavior="Forever">
+                <LinearDoubleKeyFrame Value="30" KeyTime="0:0:0.5" />
+                <LinearDoubleKeyFrame Value="0" KeyTime="0:0:1" />
+                <LinearDoubleKeyFrame Value="-30" KeyTime="0:0:1.5" />
+                <LinearDoubleKeyFrame Value="0" KeyTime="0:0:1.99" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Grid x:ConnectionId='3' x:Name="ContentArea"
+          Margin="{StaticResource MediumLeftRightMargin}"
+          Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <Grid x:ConnectionId='4' x:Name="ControllPanel">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Source="/Assets/SyntaxError_Logo.png"
+                   Margin="0, 0, 0, 25"/>
+            <Button x:ConnectionId='5' x:Name="SyntaxErrorFixButton"
+                    Grid.Row="0" Grid.Column="3"
+                    Visibility="Collapsed"
+                                                       
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">Fix SyntaxError</Button>
+            <Image x:ConnectionId='6' x:Name="SyntaxErrorShakeImage"
+                   Source="/Assets/SyntaxError_Logo.png"
+                   Height="150" Width="150"
+                   Grid.Row="0" Grid.Column="3"
+                   Visibility="Collapsed"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   RenderTransformOrigin=".5,.5">
+                <Image.RenderTransform>
+                    <RotateTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+            <StackPanel x:ConnectionId='7' x:Name="AudienceButtonArea"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='46' x:Name="AudienceButton"
+                                                         
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Audience</Button>
+                        <Button x:ConnectionId='47' x:Name="NewAudienceButton"
+                                                               
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                                Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                          ShadowOpacity="1"
+                                          OffsetX="2"
+                                          OffsetY="2"
+                                          Color="#004FFC">
+                    <TextBlock Text="Next game:"
+                               Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                                  ShadowOpacity="1"
+                                                  OffsetX="2"
+                                                  OffsetY="2"
+                                                  Color="#004FFC">
+                        <TextBlock x:ConnectionId='45' x:Name="AudienceNextGame"
+                                                                                     
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <Grid x:ConnectionId='8' x:Name="CrewButtonArea"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="0, 0, 0, 5"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='43' x:Name="CrewButton"
+                                                     
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Crew</Button>
+                    <Button x:ConnectionId='44' x:Name="NewCrewButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel Grid.Row="1"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock Text="Next game:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock x:ConnectionId='42' x:Name="CrewNextGame"
+                                                                                          
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="2"
+                            HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock Text="Next crew:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#BA00DF">
+                        <TextBlock x:ConnectionId='41' x:Name="CrewNextCrew"
+                                                                                 
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
+            <Grid x:ConnectionId='9' x:Name="MultipleChoiceButtonArea"
+                  Grid.Row="1"
+                  Grid.Column="2"
+                  Margin="0, 0, 0, 5"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='39' x:Name="MultipleChoiceButton"
+                                                         
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Multiple Choice</Button>
+                    <Button x:ConnectionId='40' x:Name="NewMultipleChoiceButton"
+                                                               
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel Grid.Row="1">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock Text="Question:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock x:ConnectionId='38' x:Name="MultipleChoiceQuiestion"
+                                                                                               
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock Text="Answer:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock x:ConnectionId='37' x:Name="MultipleChoiceAnswer"
+                                                                                                
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </Grid>
+            <StackPanel x:ConnectionId='10' x:Name="MusicButtonArea"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='35' x:Name="MusicButton"
+                                                      
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Music</Button>
+                    <Button x:ConnectionId='36' x:Name="NewMusicButton"
+                                                            
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#F2FF00">
+                        <TextBlock Text="Next song:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#F2FF00">
+                    <TextBlock x:ConnectionId='34' x:Name="MusicNextSong"
+                                                                              
+                               Padding="10, 0, 0, 2"/>
+                </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:ConnectionId='11' x:Name="QuizButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='32' x:Name="QuizButton"
+                                                     
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Quiz</Button>
+                    <Button x:ConnectionId='33' x:Name="NewQuizButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock Text="Question:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock x:ConnectionId='31' x:Name="QuizQuiestion"
+                                                                                     
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock Text="Answer:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#12A5D8">
+                        <TextBlock x:ConnectionId='30' x:Name="QuizAnswer"
+                                                                                      
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:ConnectionId='12' x:Name="ScreenshotButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='28' x:Name="ScreenshotButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Screenshot</Button>
+                    <Button x:ConnectionId='29' x:Name="NewScreenshotButton"
+                                                                 
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                          ShadowOpacity="1"
+                                          OffsetX="2"
+                                          OffsetY="2"
+                                          Color="#00C132">
+                    <TextBlock Text="Next screenshot:"
+                               Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                                  ShadowOpacity="1"
+                                                  OffsetX="2"
+                                                  OffsetY="2"
+                                                  Color="#00C132">
+                        <TextBlock x:ConnectionId='27' x:Name="ScreenshotNextScreenshot"
+                                                                                        
+                                   Padding="10, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:ConnectionId='13' x:Name="SilhouetteButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='25' x:Name="SilhouetteButton"
+                                                           
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Silhouette</Button>
+                        <Button x:ConnectionId='26' x:Name="NewSilhouetteButton"
+                                                                     
+                                Margin="0, 0, 0, 5"
+                                HorizontalAlignment="Center"
+                                Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#00FFFB">
+                        <TextBlock Text="Next silhouette:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#00FFFB">
+                    <TextBlock x:ConnectionId='24' x:Name="SilhouetteNextSilhouette"
+                                                                                    
+                               Padding="10, 0, 0, 2"/>
+                </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:ConnectionId='14' x:Name="SologameButtonArea"
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="0, 0, 0, 5"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button x:ConnectionId='22' x:Name="SologameButton"
+                                                         
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0">Sologame</Button>
+                    <Button x:ConnectionId='23' x:Name="NewSologameButton"
+                                                               
+                            Margin="0, 0, 0, 5"
+                            HorizontalAlignment="Center"
+                            Grid.Column="1">Reroll</Button>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center">
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                        <TextBlock Text="Next game:"
+                                   Padding="5, 0, 0, 2"/>
+                    </controls:DropShadowPanel>
+                    <controls:DropShadowPanel BlurRadius="8"
+                                              ShadowOpacity="1"
+                                              OffsetX="2"
+                                              OffsetY="2"
+                                              Color="#FE0000">
+                    <TextBlock x:ConnectionId='21' x:Name="SologameNextGame"
+                                                                                 
+                               Padding="10, 0, 0, 2"/>
+                </controls:DropShadowPanel>
+                </StackPanel>
+            </StackPanel>
+            <Grid x:ConnectionId='15' x:Name="ActionButtonArea"
+                  Grid.ColumnSpan="4"
+                  Grid.Row="3"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Button x:ConnectionId='16' x:Name="PlayButton"
+                        Grid.Column="0"
+                                                 
+                        IsEnabled="False">
+                    Play
+                </Button>
+                <Button x:ConnectionId='17' x:Name="DeselectButton"
+                        Grid.Column="1"
+                                                     
+                        IsEnabled="False">
+                    Deselect
+                </Button>
+                <Button x:ConnectionId='18' x:Name="AnswerButton"
+                        Grid.Column="2"
+                                                   
+                        IsEnabled="False">
+                    Answer
+                </Button>
+                <Button x:ConnectionId='19' x:Name="DoneButton"
+                        Grid.Column="3"
+                                                 
+                        IsEnabled="False">
+                    Done
+                </Button>
+                <Button x:ConnectionId='20' x:Name="RandomButton"
+                        Grid.Column="4"
+                                                   
+                        IsEnabled="True">Random</Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
+

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+ZkJVppcdNZCoKwtKrEyLOpau0b6eNgSrZ/maEUE1kaIvV/H9EMayvdUGuBsJ7HW68lhEk17/cQ9XETM9Sugyg==",
+  "dgSpecHash": "sdIWOkFs3vuuAy2qLIWPSBGCGoZ4dk1fHJkAIL0qhqDrIs+pLPzh5+88aYLC97HvJH71WBEo7q8HBq2X3UdgUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App.Core\\SyntaxError.V2.App.Core.csproj",
+  "projectFilePath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App.Core\\SyntaxError.V2.App.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\upfor\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

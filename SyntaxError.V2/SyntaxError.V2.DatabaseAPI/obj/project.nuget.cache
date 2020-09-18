@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "08idkV8a74T6eFC9GaZwz9mPOpAWDVumHLEdm1GVUmryP3H2cCmDWvxN3PME6SXRr0mFgXvCOOBIfIFa2C9OvA==",
+  "dgSpecHash": "H4nhSjOxmj2ATLL72TAogeaWQIBttfkkbAOxzkPIqxipG+gozNFkYzJJGtX3sPLh1Go/Why/kAHT+RsTmHuKVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseAPI\\SyntaxError.V2.DatabaseAPI.csproj",
+  "projectFilePath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseAPI\\SyntaxError.V2.DatabaseAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\upfor\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",

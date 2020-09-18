@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M18UycJWfOAUVn64ANJQWtTVBHzjEmUxO4cxypOLDSUqyZQRzSXbIWsv5AcRsi0zgyofltNkcs2FAwB+m1fo9g==",
+  "dgSpecHash": "jF+IyqyCcvN9PphFIP4VVo8EUgfJ/CwTZbSZke262tat/PlG5ho+TyCywGCtuha8nLpHmnowFFBZGg6PGejucw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App\\SyntaxError.V2.App.csproj",
+  "projectFilePath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.App\\SyntaxError.V2.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\upfor\\.nuget\\packages\\colorcode.core\\2.0.6\\colorcode.core.2.0.6.nupkg.sha512",
     "C:\\Users\\upfor\\.nuget\\packages\\colorcode.uwp\\2.0.6\\colorcode.uwp.2.0.6.nupkg.sha512",

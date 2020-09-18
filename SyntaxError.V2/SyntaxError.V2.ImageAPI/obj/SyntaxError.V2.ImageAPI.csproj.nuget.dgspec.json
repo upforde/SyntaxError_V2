@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj": {}
+    "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj": {
+    "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj",
+        "projectUniqueName": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj",
         "projectName": "SyntaxError.V2.ImageAPI",
-        "projectPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj",
+        "projectPath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\SyntaxError.V2.ImageAPI.csproj",
         "packagesPath": "C:\\Users\\upfor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\obj\\",
+        "outputPath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.ImageAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

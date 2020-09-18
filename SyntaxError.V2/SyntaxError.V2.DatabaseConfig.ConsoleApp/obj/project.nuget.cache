@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x7GHC45Wk3Z/7YWEu4ymbCyZvrUmad1OTxLx5fELX/61HUXVNu9oUf+Fkyr2yZyUFxyNMNf0G7xFM7WeobvHew==",
+  "dgSpecHash": "4ccbxFXcYIKMXFAOOmBMZ84oNvYXS3R3Mh/klVk6Eir8t0yovwZpaSBtOyQNH3zzfdEkxLBjvskM6qBC6fgC4g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\upfor\\Desktop\\Skole\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
+  "projectFilePath": "D:\\Skole\\Bachelor\\DotNET\\SyntaxError_V2\\SyntaxError.V2\\SyntaxError.V2.DatabaseConfig.ConsoleApp\\SyntaxError.V2.DatabaseConfig.ConsoleApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\upfor\\.nuget\\packages\\microsoft.codeanalysis.fxcopanalyzers\\2.9.8\\microsoft.codeanalysis.fxcopanalyzers.2.9.8.nupkg.sha512",
     "C:\\Users\\upfor\\.nuget\\packages\\microsoft.codeanalysis.versioncheckanalyzer\\2.9.8\\microsoft.codeanalysis.versioncheckanalyzer.2.9.8.nupkg.sha512",

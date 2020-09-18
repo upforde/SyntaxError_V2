@@ -1,0 +1,1 @@
+MainPackage=D:\Skole\Bachelor\DotNET\SyntaxError_V2\SyntaxError.V2\SyntaxError.V2.App\bin\x64\Debug\SyntaxError.V2.App_2.0.1.0_x64_Debug.msix
